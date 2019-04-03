@@ -1,8 +1,8 @@
-package com.infoshareacademy.jjdd6.userdata;
+package com.infoshareacademy.jjdd6.userinput;
 
 import java.util.Scanner;
 
-public class GetUserData {
+public class GetUserInput {
     private static Scanner scanner = new Scanner(System.in);
 
     public static String getStringFromUser(String displayText) {
