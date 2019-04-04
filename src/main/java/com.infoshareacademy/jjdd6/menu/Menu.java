@@ -1,4 +1,4 @@
-package com.infoshareacademy.jjdd6.errorzy;
+package com.infoshareacademy.jjdd6.menu;
 
 
 import java.util.Scanner;
