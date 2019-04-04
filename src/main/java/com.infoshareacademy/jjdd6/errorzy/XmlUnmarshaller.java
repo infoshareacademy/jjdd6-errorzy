@@ -1,15 +1,11 @@
 package com.infoshareacademy.jjdd6.errorzy;
 
 
-import com.infoshareacademy.jjdd6.errorzy.bikeFinder.FindCountry;
-
 import javax.xml.bind.JAXBContext;
 import javax.xml.bind.JAXBException;
 import javax.xml.bind.Unmarshaller;
 import java.io.File;
-import java.util.ArrayList;
 import java.util.Arrays;
-import java.util.LinkedList;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -40,24 +36,47 @@ public class XmlUnmarshaller {
         JAXBContext jaxbContext = JAXBContext.newInstance(Markers.class);
         Unmarshaller jaxbUnmarshaller = jaxbContext.createUnmarshaller();
         Markers markerslist = (Markers) jaxbUnmarshaller.unmarshal(file);
-        System.out.println(markerslist.getCountryList());
 
-        List<Markers> List2 = Arrays.asList(markerslist);
-        getCounries(List2).forEach(System.out::println);
+        System.out.println(Arrays.listOfCountries());
+
+//        List<String> mar = markerslist.getCountryList()
+//                .stream()
+//                .map()
+//                .;
+
+//        System.out.println(markerslist.getCountryList()
+//                .stream()
+//                .map(c->c.getCountry_name())
+//                .fo);
+//
+//        for (Country c : markerslist.getCountryList()) {
+//            for (City city : c.getCityList()) {
+//                city.getName();
+//                System.out.println(city.getName());
+//            }
+//        }
+
+
+//        List <Country> uniqueListOfCountry = Arrays.asList(){
+//
+//        }
+
+//        System.out.println(markerslist.getCountryList()
+//                .stream()
+//                .map(c -> {
+//                    double lat = c.getLat();
+//                    double lng = c.getLng();
+//                    return lat + lng;
+//                }
+//                .collect(Collectors.toList())));
 
 
     }
-    public static List<String> getCounries(List<Markers> List2){
-        return List2.stream()
-                .map(Markers::getCountry_name)
-                .collect(Collectors.toList());
-    };
 
-//    private List<City> getCities(List<Country> countiesData) {
-//        List<City> allCities = new LinkedList<>();
-//        for (Country c : countiesData) {
-//            allCities.addAll(c.getCityList());
-//        }
-//        return allCities;
-//    }
+    public static List<String> listOfCountries(List<Country> countries) {
+        return  countries.stream()
+                .distinct()
+                .map(Country::getCountry_name)
+                .collect(Collectors.toList());
+    }
 }
