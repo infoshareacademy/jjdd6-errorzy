@@ -1,6 +1,6 @@
 package com.infoshareacademy.jjdd6.errorzy;
 
-import java.io.IOException;
+
 import java.util.Scanner;
 
 public class Menu {
@@ -40,6 +40,7 @@ public class Menu {
         System.out.println();
         System.out.println("     To start available options select number ");
         System.out.println("     To exit press 0 ");
+        System.out.println("     Select number of options ");
 
 
         Scanner scanner = new Scanner(System.in);
@@ -47,8 +48,7 @@ public class Menu {
         return number;
     }
 
-    public static void main(String[] args) throws IOException {
-        Scanner scanner = new Scanner(System.in);
+    public static void main(String[] args) {
 
         int select = -1;
         while (select != 0) {
@@ -60,11 +60,11 @@ public class Menu {
                     break;
                 case 2:
                     System.out.println("Find the nearest place");
-                   FindPlaceRunner.run();
+                    FindPlaceRunner.run();
                     break;
                 case 3:
                     System.out.println("Show list of Countries");
-                  ListOfCountriesRunner.run();
+                    ListOfCountriesRunner.run();
                     break;
                 case 4:
                     System.out.println("Show list of Cities");
@@ -84,6 +84,7 @@ public class Menu {
             }
         }
     }
-
-
 }
+
+
+
