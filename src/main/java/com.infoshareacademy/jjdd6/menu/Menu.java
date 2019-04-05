@@ -79,7 +79,11 @@ public class Menu {
                     break;
                 default:
                     System.out.println("Select number one more time");
-
+                    try {
+                        Thread.sleep(3000);
+                    } catch (InterruptedException e) {
+                        e.printStackTrace();
+                    }
                     break;
             }
         }

@@ -1,10 +1,12 @@
 package com.infoshareacademy.jjdd6.menu;
 
+import java.util.Scanner;
+
 public class FindBikeRunner {
 
-    public static void run(){
+    public static void run() {
 
-        Bike bike = new Bike();
+       InsideMenu insideMenu = new InsideMenu();
 
     }
 }
