@@ -7,7 +7,7 @@ import java.util.List;
 
 public class StationsInMyArea {
 
-    public List<Place> findStationsWithinRadius(double lat, double lng, double radius) {
+    public List<Place> findStationsWithinRadius(double lat, double lng, double radiusInKilometers) {
         //TODO insert correct placeList.
         List<Place> placeList = ClosestStation.mockedPlaceList();
         ClosestStation closestStation = new ClosestStation();
@@ -15,7 +15,7 @@ public class StationsInMyArea {
 
         for (Place place : placeList) {
             double distanceToStation = closestStation.getDistanceBetweenTwoGeoPoints(lat, lng, place);
-            if (distanceToStation <= radius) {
+            if (distanceToStation <= radiusInKilometers) {
                 placesWithinRadius.add(place);
             }
         }
