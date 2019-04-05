@@ -21,18 +21,15 @@ public class ClosestStation {
                 + Math.cos(Math.toRadians(lat1)) * Math.cos(Math.toRadians(lat2))
                 * Math.sin(lngDistance / 2) * Math.sin(lngDistance / 2);
         double c = 2 * Math.atan2(sqrt(a), sqrt(1 - a));
-        double distance = EARTH_RADIUS_IN_METERS * c; // convert to meters
-
+        double distance = EARTH_RADIUS_IN_METERS * c;
         distance = Math.pow(distance, 2);
         double roundStepOne = round((sqrt(distance) / 1000.0) * 1000.0);
         double roundStepTwo = roundStepOne / 1000.0;
-
         return roundStepTwo;
     }
 
     public Place findTheClosestPlace(double lat, double lng) {
         //TODO Implement list of places.
-
         List<Place> placeList = mockedPlaceList();
         Place closestPlace = placeList.get(0);
         double distanceToClosestStation = Double.MAX_VALUE;
@@ -46,7 +43,7 @@ public class ClosestStation {
         return closestPlace;
     }
 
-    public List<Place> mockedPlaceList() {
+    public static List<Place> mockedPlaceList() {
         Place place1 = new Place(53.2345, 12.3452, "Gdynia", 1, null);
         Place place2 = new Place(4.2345, -13.3452, "Gdańsk", 2, null);
         Place place3 = new Place(0.2345, -155.3452, "Olsztyn", 3, null);
