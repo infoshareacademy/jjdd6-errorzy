@@ -4,10 +4,9 @@ package com.infoshareacademy.jjdd6.menu;
 import java.util.Scanner;
 
 public class Menu {
-    //public static void main(String[] args) {
 
 
-    public static int StartAplicationMenu() {
+    public static int startAplicationMenu() {
         System.out.println();
         System.out.println();
         System.out.println("                                          $\"   *.      \n" +
@@ -44,7 +43,7 @@ public class Menu {
 
 
         Scanner scanner = new Scanner(System.in);
-        int number = scanner.nextInt();
+        int number = Integer.parseInt(scanner.nextLine());
         return number;
     }
 
@@ -52,7 +51,7 @@ public class Menu {
 
         int select = -1;
         while (select != 0) {
-            select = StartAplicationMenu();
+            select = startAplicationMenu();
             switch (select) {
                 case 1:
                     System.out.println("Find free Bike");
