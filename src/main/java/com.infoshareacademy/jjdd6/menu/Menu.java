@@ -51,7 +51,12 @@ public class Menu {
 
         int select = -1;
         while (select != 0) {
-            select = startAplicationMenu();
+            try {
+                select = startAplicationMenu();
+            } catch (NumberFormatException e) {
+                System.err.println("This is not a fucking number!");
+            }
+
             switch (select) {
                 case 1:
                     System.out.println("Find free Bike");
@@ -84,6 +89,7 @@ public class Menu {
                         e.printStackTrace();
                     }
                     break;
+
             }
         }
     }

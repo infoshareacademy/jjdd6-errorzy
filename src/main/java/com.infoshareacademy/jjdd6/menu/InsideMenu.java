@@ -7,11 +7,18 @@ public class InsideMenu {
 
         Scanner scanner = new Scanner(System.in);
 
-                while (true) {
-                System.out.println("To return to the main menu press 0");
-                if (Integer.parseInt(scanner.nextLine()) == 0) {
-                    break;
-                }
+        while (true) {
+            System.out.println("To return to the main menu press 0");
+            try {
+                int number = Integer.parseInt(scanner.nextLine());
+                } catch (NumberFormatException e) {
+                System.err.println("This is not a number!");
+            }
+            if (Integer.parseInt(scanner.nextLine()) == 0) {
+                break;
+
             }
         }
     }
+}
+
