@@ -39,7 +39,7 @@ public class Menu {
         System.out.println();
         System.out.println("     To start available options select number ");
         System.out.println("     To exit press 0 ");
-        System.out.println("     Select number of options ");
+        System.out.println("     Select number ");
 
 
         Scanner scanner = new Scanner(System.in);
@@ -76,7 +76,7 @@ public class Menu {
                     break;
                 case 5:
                     System.out.println("Show statistics for Countries or Cities");
-                    // Tu bedzie jeszcze jednak klasa;
+                    // TODO Tu bedzie jeszcze jedna klasa ;
                     break;
                 case 0:
                     System.out.println("Bye-bye!");
