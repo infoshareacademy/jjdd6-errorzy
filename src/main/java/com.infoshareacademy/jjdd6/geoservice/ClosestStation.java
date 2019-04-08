@@ -1,6 +1,7 @@
 package com.infoshareacademy.jjdd6.geoservice;
 
 import com.infoshareacademy.jjdd6.errorzy.Place;
+import com.infoshareacademy.jjdd6.errorzy.PlacesProvider;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -10,6 +11,12 @@ import static java.lang.Math.sqrt;
 
 public class ClosestStation {
     public final static double EARTH_RADIUS_IN_METERS = 6371 * 1000;
+
+    private PlacesProvider placesProvider;
+
+    public ClosestStation(PlacesProvider placesProvider) {
+        this.placesProvider = placesProvider;
+    }
 
     public double getDistanceBetweenTwoGeoPoints(double lat1, double lng1, Place place) {
 
@@ -29,8 +36,8 @@ public class ClosestStation {
     }
 
     public Place findTheClosestPlace(double lat, double lng) {
-        //TODO Implement list of places.
-        List<Place> placeList = mockedPlaceList();
+        //TODO Insert List of places.
+        List<Place> placeList = placesProvider.getPlaces();
         Place closestPlace = placeList.get(0);
         double distanceToClosestStation = Double.MAX_VALUE;
         for (Place place : placeList) {
