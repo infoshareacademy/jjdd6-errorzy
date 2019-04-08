@@ -1,16 +1,16 @@
-package com.infoshareacademy.jjdd6.errorzy;
+package com.infoshareacademy.jjdd6.errorzy.xmlunmarshaller;
 
+
+import com.infoshareacademy.jjdd6.errorzy.Markers;
 
 import javax.xml.bind.JAXBContext;
 import javax.xml.bind.JAXBException;
 import javax.xml.bind.Unmarshaller;
 import java.io.File;
-import java.util.Arrays;
-import java.util.List;
-import java.util.stream.Collectors;
+
 
 public class XmlUnmarshaller {
-    public static void main(String[] args) throws JAXBException {
+    public static void main(String[] args) {
 
         System.out.println("Let's ride!");
         System.out.println("                                          $\"   *.      \n" +
@@ -32,11 +32,18 @@ public class XmlUnmarshaller {
                 "       \"*==*\"\"                             ^\"*==*\"\"   ");
         System.out.println("  ");
 
+
+    }
+
+    public Markers getMarkerlist() throws JAXBException {
+
+
         File file = new File("nextbike-live.xml");
         JAXBContext jaxbContext = JAXBContext.newInstance(Markers.class);
         Unmarshaller jaxbUnmarshaller = jaxbContext.createUnmarshaller();
         Markers markerslist = (Markers) jaxbUnmarshaller.unmarshal(file);
 
+        return markerslist;
 
     }
 }
