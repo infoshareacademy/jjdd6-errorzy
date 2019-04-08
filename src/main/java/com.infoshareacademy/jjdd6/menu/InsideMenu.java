@@ -6,7 +6,7 @@ public class InsideMenu {
     public static void run() {
 
         Scanner scanner = new Scanner(System.in);
-        int number = 0;
+        int number = 1;
 
         while (true) {
             System.out.println("To return to the main menu press 0");
