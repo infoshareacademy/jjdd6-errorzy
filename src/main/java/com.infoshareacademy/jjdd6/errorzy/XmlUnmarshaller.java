@@ -32,51 +32,11 @@ public class XmlUnmarshaller {
                 "       \"*==*\"\"                             ^\"*==*\"\"   ");
         System.out.println("  ");
 
-        File file = new File("nextbike-official.xml");
+        File file = new File("nextbike-live.xml");
         JAXBContext jaxbContext = JAXBContext.newInstance(Markers.class);
         Unmarshaller jaxbUnmarshaller = jaxbContext.createUnmarshaller();
         Markers markerslist = (Markers) jaxbUnmarshaller.unmarshal(file);
 
-        System.out.println(Arrays.listOfCountries());
 
-//        List<String> mar = markerslist.getCountryList()
-//                .stream()
-//                .map()
-//                .;
-
-//        System.out.println(markerslist.getCountryList()
-//                .stream()
-//                .map(c->c.getCountry_name())
-//                .fo);
-//
-//        for (Country c : markerslist.getCountryList()) {
-//            for (City city : c.getCityList()) {
-//                city.getName();
-//                System.out.println(city.getName());
-//            }
-//        }
-
-
-//        List <Country> uniqueListOfCountry = Arrays.asList(){
-//
-//        }
-
-//        System.out.println(markerslist.getCountryList()
-//                .stream()
-//                .map(c -> {
-//                    double lat = c.getLat();
-//                    double lng = c.getLng();
-//                    return lat + lng;
-//                }
-//                .collect(Collectors.toList())));
-
-
-    }
-
-    public static List<String> listOfCountries(List<Country> countries) {
-        return  countries.stream()
-                .distinct()
-                .map(Country::getCountry_name)
-                .collect(Collectors.toList());
     }
 }
