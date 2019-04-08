@@ -4,20 +4,20 @@ import javax.xml.bind.annotation.XmlAttribute;
 
 public class Bike {
     private int number;
-    private int bike_type;
-    private String lock_type;
+    private int bikeType;
+    private String lockType;
     private int active;
     private String state;
-    private int electric_lock;
-    private String board_computer;
-    private int pedelec_battery;
+    private int electricLock;
+    private String boardComputer;
+    private int pedelecBattery;
 
     public Bike() {
     }
 
-    public Bike(int number, int bike_type) {
+    public Bike(int number, int bikeType) {
         this.number = number;
-        this.bike_type = bike_type;
+        this.bikeType = bikeType;
     }
 
     @XmlAttribute(name = "number")
@@ -30,20 +30,20 @@ public class Bike {
     }
 
     @XmlAttribute(name = "bike_type")
-    public int getBike_type() {
-        return bike_type;
+    public int getBikeType() {
+        return bikeType;
     }
 
-    public void setBike_type(int bike_type) {
-        this.bike_type = bike_type;
+    public void setBikeType(int bikeType) {
+        this.bikeType = bikeType;
     }
 
-    public String getLock_type() {
-        return lock_type;
+    public String getLockType() {
+        return lockType;
     }
 
-    public void setLock_type(String lock_type) {
-        this.lock_type = lock_type;
+    public void setlockType(String lockType) {
+        this.lockType = lockType;
     }
 
     public int getActive() {
@@ -62,35 +62,35 @@ public class Bike {
         this.state = state;
     }
 
-    public int getElectric_lock() {
-        return electric_lock;
+    public int getElectricLock() {
+        return electricLock;
     }
 
-    public void setElectric_lock(int electric_lock) {
-        this.electric_lock = electric_lock;
+    public void setElectricLock(int electricLock) {
+        this.electricLock = electricLock;
     }
 
-    public String getBoard_computer() {
-        return board_computer;
+    public String getBoardComputer() {
+        return boardComputer;
     }
 
-    public void setBoard_computer(String board_computer) {
-        this.board_computer = board_computer;
+    public void setBoardComputer(String boardComputer) {
+        this.boardComputer = boardComputer;
     }
 
-    public int getPedelec_battery() {
-        return pedelec_battery;
+    public int getPedelecBattery() {
+        return pedelecBattery;
     }
 
-    public void setPedelec_battery(int pedelec_battery) {
-        this.pedelec_battery = pedelec_battery;
+    public void setPedelecBattery(int pedelecBattery) {
+        this.pedelecBattery = pedelecBattery;
     }
 
     @Override
     public String toString() {
         return "Bike{" +
                 "number=" + number +
-                ", bike_type=" + bike_type +
+                ", bikeType=" + bikeType +
                 '}';
     }
 }
