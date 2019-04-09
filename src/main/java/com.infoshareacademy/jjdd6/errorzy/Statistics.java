@@ -9,5 +9,6 @@ public class Statistics {
 
     public void cityStats(Integer bikeStations, String city) {
         System.out.println("There is: " + bikeStations + " bike stations in "+city);
+
     }
 }
