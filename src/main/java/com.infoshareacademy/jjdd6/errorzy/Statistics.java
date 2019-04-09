@@ -11,6 +11,4 @@ public class Statistics {
         System.out.println("There is: " + bikeStations + " bike stations in "+city);
 
     }
-
-
 }
