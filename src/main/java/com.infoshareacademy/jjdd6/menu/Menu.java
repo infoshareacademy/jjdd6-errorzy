@@ -43,8 +43,7 @@ public class Menu {
 
 
         Scanner scanner = new Scanner(System.in);
-        int number = Integer.parseInt(scanner.nextLine());
-        return number;
+        return Integer.parseInt(scanner.nextLine());
     }
 
     public static void main(String[] args) {
