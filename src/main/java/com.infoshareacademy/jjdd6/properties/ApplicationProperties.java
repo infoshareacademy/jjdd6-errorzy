@@ -14,4 +14,8 @@ public class ApplicationProperties {
     public void getProperties() {
         properties.list(System.out);
     }
+
+    public String getDistanceUnit() {
+        return properties.getProperty("distanceUnit");
+    }
 }
