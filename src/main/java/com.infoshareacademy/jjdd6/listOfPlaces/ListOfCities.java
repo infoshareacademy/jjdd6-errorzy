@@ -1,4 +1,4 @@
-package com.infoshareacademy.jjdd6.ListOfPlaces;
+package com.infoshareacademy.jjdd6.listOfPlaces;
 
 import com.infoshareacademy.jjdd6.errorzy.City;
 import com.infoshareacademy.jjdd6.errorzy.Place;
