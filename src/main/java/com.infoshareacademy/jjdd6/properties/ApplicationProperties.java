@@ -12,12 +12,6 @@ public class ApplicationProperties {
     }
 
     public void getProperties() {
-
         properties.list(System.out);
-//        Map<String, String> configMap = new HashMap<>();
-//        properties.getProperty("version");
-//        properties.getProperty("name", "Errzorzy_App");
-//        properties.getProperty("group");
-
     }
 }
