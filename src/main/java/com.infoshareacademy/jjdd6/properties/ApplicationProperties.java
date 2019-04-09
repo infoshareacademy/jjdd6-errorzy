@@ -8,7 +8,7 @@ public class ApplicationProperties {
     private Properties properties = new Properties();
 
     public void loadAppProperties() throws IOException {
-        properties.load(new FileInputStream("src/data/dataConfig.properties"));
+        properties.load(new FileInputStream("data/dataConfig.properties"));
     }
 
     public void getProperties() {
