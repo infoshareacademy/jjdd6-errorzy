@@ -6,8 +6,8 @@ import org.apache.logging.log4j.Logger;
 
 public class InsideMenu {
     public static void run() {
-        Logger logger = LogManager.getLogger(InsideMenu.class.getName());
-        logger.info("Inside menu has been runned.");
+        private static final Logger LOGGER = LogManager.getLogger(InsideMenu.class.getName());
+        LOGGER.info("Inside menu has been runned.");
 
         Scanner scanner = new Scanner(System.in);
         int number = 1;
@@ -16,10 +16,10 @@ public class InsideMenu {
             System.out.println("To return to the main menu press 0");
             try {
                 number = Integer.parseInt(scanner.nextLine());
-                logger.info("User took number: " + number +".");
+                LOGGER.info("User took number: " + number +".");
             } catch (NumberFormatException e) {
                 System.err.println("This is not a number!");
-                logger.warn("User took invalid number.");
+                LOGGER.warn("User took invalid number.");
             }
             if (number == 0) {
                 break;
