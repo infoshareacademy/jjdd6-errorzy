@@ -16,6 +16,6 @@ public class ApplicationProperties {
     }
 
     public String getDistanceUnit() {
-        return properties.getProperty("distanceUnit");
+        return properties.getProperty("distanceUnit", "km");
     }
 }
