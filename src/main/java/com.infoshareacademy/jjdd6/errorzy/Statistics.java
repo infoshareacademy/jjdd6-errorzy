@@ -9,7 +9,6 @@ public class Statistics {
 
 
 
-
     public void countryStats(Integer bikeStations, String country) {
         logger.info("Statistics for country: " + country + " created.");
         System.out.println("There is: " + bikeStations + " bike stations in "+country);
@@ -20,4 +19,5 @@ public class Statistics {
         System.out.println("There is: " + bikeStations + " bike stations in "+city);
 
     }
+
 }
