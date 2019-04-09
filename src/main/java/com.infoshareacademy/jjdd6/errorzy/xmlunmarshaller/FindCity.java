@@ -8,7 +8,6 @@ import java.util.stream.Collectors;
 
 public class FindCity {
 
-
     private FindCountry findCountry = new FindCountry();
 
     private List<Country> getCities() throws JAXBException {

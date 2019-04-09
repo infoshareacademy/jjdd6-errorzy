@@ -8,9 +8,7 @@ import java.util.stream.Collectors;
 
 public class FindCountry {
 
-
     private XmlUnmarshaller xmlUnmarshaller = new XmlUnmarshaller();
-
 
     public List<Country> getCountries() throws JAXBException {
 
@@ -18,7 +16,5 @@ public class FindCountry {
                 .stream()
                 .distinct()
                 .collect(Collectors.toList());
-
     }
-
 }

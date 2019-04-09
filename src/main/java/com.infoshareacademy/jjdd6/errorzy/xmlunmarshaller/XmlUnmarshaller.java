@@ -1,6 +1,5 @@
 package com.infoshareacademy.jjdd6.errorzy.xmlunmarshaller;
 
-
 import com.infoshareacademy.jjdd6.errorzy.City;
 import com.infoshareacademy.jjdd6.errorzy.Country;
 import com.infoshareacademy.jjdd6.errorzy.Markers;
@@ -13,9 +12,7 @@ import java.util.List;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
-
 public class XmlUnmarshaller {
-
 
     public static void main(String[] args) {
 
@@ -38,12 +35,9 @@ public class XmlUnmarshaller {
                 "    %.         z*\"                      ^%.        .r\"\n" +
                 "       \"*==*\"\"                             ^\"*==*\"\"   ");
         System.out.println("  ");
-
-
     }
 
     public Markers getMarkerlist() throws JAXBException {
-
 
         File file = new File("nextbike-live.xml");
         JAXBContext jaxbContext = JAXBContext.newInstance(Markers.class);
