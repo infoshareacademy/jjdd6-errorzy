@@ -1,15 +1,22 @@
 package com.infoshareacademy.jjdd6.errorzy.xmlunmarshaller;
 
 
+import com.infoshareacademy.jjdd6.errorzy.City;
+import com.infoshareacademy.jjdd6.errorzy.Country;
 import com.infoshareacademy.jjdd6.errorzy.Markers;
 
 import javax.xml.bind.JAXBContext;
 import javax.xml.bind.JAXBException;
 import javax.xml.bind.Unmarshaller;
 import java.io.File;
+import java.util.List;
+import java.util.stream.Collectors;
+import java.util.stream.Stream;
 
 
 public class XmlUnmarshaller {
+
+
     public static void main(String[] args) {
 
         System.out.println("Let's ride!");
@@ -44,6 +51,5 @@ public class XmlUnmarshaller {
         Markers markerslist = (Markers) jaxbUnmarshaller.unmarshal(file);
 
         return markerslist;
-
     }
 }
