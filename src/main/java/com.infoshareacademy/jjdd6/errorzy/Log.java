@@ -7,5 +7,5 @@ import org.apache.logging.log4j.LogManager;
 
 
 public class Log {
-    private static final Logger logger = LogManager.getLogger(this.getClass().getName());
+    private static final Logger logger = LogManager.getLogger(Log.class.getName());
 }
