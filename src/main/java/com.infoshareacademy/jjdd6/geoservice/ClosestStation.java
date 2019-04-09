@@ -51,11 +51,11 @@ public class ClosestStation {
     }
 
     public static List<Place> mockedPlaceList() {
-        Place place1 = new Place(53.2345, 12.3452, "Gdynia", 1, null);
-        Place place2 = new Place(4.2345, -13.3452, "Gdańsk", 2, null);
-        Place place3 = new Place(0.2345, -155.3452, "Olsztyn", 3, null);
-        Place place4 = new Place(23.2245, 42.3452, "Kwidzyń", 4, null);
-        Place place5 = new Place(-64.2345, 174.3452, "Warszawa", 5, null);
+        Place place1 = new Place(54.32, -18.32, "Gdynia", 1, null);
+        Place place2 = new Place(54.22, -18.38, "Gdańsk", 2, null);
+        Place place3 = new Place( 53.47, -20.30, "Olsztyn", 3, null);
+        Place place4 = new Place(54.44, -18.56, "Kwidzyn", 4, null);
+        Place place5 = new Place(52.12, -21.02, "Warszawa", 5, null);
         List<Place> mockedPlaceList = new ArrayList<>();
 
         mockedPlaceList.add(place1);
