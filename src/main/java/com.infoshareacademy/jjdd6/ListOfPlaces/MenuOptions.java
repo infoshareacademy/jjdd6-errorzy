@@ -10,7 +10,7 @@ public class MenuOptions {
 
     private Map<String, Country> countries;
 
-    public MenuOptions(Map<String, Country> countries) {
+    public MenuOptions(Map<String, Country > countries) {
         this.countries = countries;
     }
 

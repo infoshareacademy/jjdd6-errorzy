@@ -14,13 +14,13 @@ public class Place {
     private int spot;
     private int number;
     private int bikes;
-    private int booked_bikes;
-    private int bike_racks;
-    private int free_racks;
-    private String terminal_type;
-    private int[] bike_numbers;
-    private String bike_types;
-    private int place_type;
+    private int bookedBikes;
+    private int bikeRacks;
+    private int freeRacks;
+    private String terminalType;
+    private int[] bikeNumbers;
+    private String bikeTypes;
+    private int placeType;
     private List<Bike> bikeList;
 
     public Place() {
@@ -94,60 +94,60 @@ public class Place {
         this.bikes = bikes;
     }
 
-    public int getBooked_bikes() {
-        return booked_bikes;
+    public int getBookedBikes() {
+        return bookedBikes;
     }
 
-    public void setBooked_bikes(int booked_bikes) {
-        this.booked_bikes = booked_bikes;
+    public void setBookedBikes(int bookedBikes) {
+        this.bookedBikes = bookedBikes;
     }
 
-    public int getBike_racks() {
-        return bike_racks;
+    public int getBikeRacks() {
+        return bikeRacks;
     }
 
-    public void setBike_racks(int bike_racks) {
-        this.bike_racks = bike_racks;
+    public void setBikeRacks(int bikeRacks) {
+        this.bikeRacks = bikeRacks;
     }
 
-    public int getFree_racks() {
-        return free_racks;
+    public int getFreeRacks() {
+        return freeRacks;
     }
 
-    public void setFree_racks(int free_racks) {
-        this.free_racks = free_racks;
+    public void setFreeRacks(int freeRacks) {
+        this.freeRacks = freeRacks;
     }
 
-    public String getTerminal_type() {
-        return terminal_type;
+    public String getTerminalType() {
+        return terminalType;
     }
 
-    public void setTerminal_type(String terminal_type) {
-        this.terminal_type = terminal_type;
+    public void setTerminalType(String terminalType) {
+        this.terminalType = terminalType;
     }
 
-    public int[] getBike_numbers() {
-        return bike_numbers;
+    public int[] getBikeNumbers() {
+        return bikeNumbers;
     }
 
-    public void setBike_numbers(int[] bike_numbers) {
-        this.bike_numbers = bike_numbers;
+    public void setBikeNumbers(int[] bikeNumbers) {
+        this.bikeNumbers = bikeNumbers;
     }
 
-    public String getBike_types() {
-        return bike_types;
+    public String getBikeTypes() {
+        return bikeTypes;
     }
 
-    public void setBike_types(String bike_types) {
-        this.bike_types = bike_types;
+    public void setBikeTypes(String bikeTypes) {
+        this.bikeTypes = bikeTypes;
     }
 
-    public int getPlace_type() {
-        return place_type;
+    public int getPlaceType() {
+        return placeType;
     }
 
-    public void setPlace_type(int place_type) {
-        this.place_type = place_type;
+    public void setPlaceType(int placeType) {
+        this.placeType = placeType;
     }
 
     @XmlElement(name = "bike")

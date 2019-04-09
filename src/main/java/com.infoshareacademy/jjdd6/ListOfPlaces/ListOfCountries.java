@@ -6,7 +6,7 @@ import com.infoshareacademy.jjdd6.errorzy.Country;
 import java.util.List;
 import java.util.Optional;
 
-public class ListOfCountries  {
+public class ListOfCountries {
 
 
     private List<Country> countries;
@@ -14,6 +14,9 @@ public class ListOfCountries  {
     public ListOfCountries() {
         countries.add(new Country(null, 46d, 18d, "Poland"));
         countries.add(new Country(null, 46d, 0d, "United Kingdom"));
+        countries.add(new Country(null, 46d, 13d, "Germany"));
+        countries.add(new Country(null, 43d, 4d, "France"));
+        countries.add(new Country(null, 42d, 42d, "Russia"));
     }
 
 
@@ -28,7 +31,7 @@ public class ListOfCountries  {
 
     public List<City> getCitiesWithNextBike(String countryName) {
         Optional<Country> country = countries.stream()
-                .filter(x->x.getCountry().equals(countryName))
+                .filter(x -> x.getCountry().equals(countryName))
                 .findFirst();
 
         return country.get().getCityList();

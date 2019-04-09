@@ -9,17 +9,17 @@ public class City {
     private double lat;
     private double lng;
     private int zoom;
-    private String maps_icon;
+    private String mapsIcon;
     private String alias;
-    private int break_city;
+    private int breakCity;
     private String name;
-    private int num_places;
-    private int refresh_rate;
+    private int numPlaces;
+    private int refreshRate;
     private String bounds;
-    private int booked_bikes;
-    private int set_point_bikes;
-    private int available_bikes;
-    private String bike_types;
+    private int bookedBikes;
+    private int setPointBikes;
+    private int availableBikes;
+    private String bikeTypes;
     private List<Place> placeList;
 
     public City() {
@@ -75,12 +75,12 @@ public class City {
         this.zoom = zoom;
     }
 
-    public String getMaps_icon() {
-        return maps_icon;
+    public String getMapsIcon() {
+        return mapsIcon;
     }
 
-    public void setMaps_icon(String maps_icon) {
-        this.maps_icon = maps_icon;
+    public void setMapsIcon(String mapsIcon) {
+        this.mapsIcon = mapsIcon;
     }
 
     public String getAlias() {
@@ -91,12 +91,12 @@ public class City {
         this.alias = alias;
     }
 
-    public int getBreak_city() {
-        return break_city;
+    public int getBreakCity() {
+        return breakCity;
     }
 
-    public void setBreak_city(int break_city) {
-        this.break_city = break_city;
+    public void setBreakCity(int breakCity) {
+        this.breakCity = breakCity;
     }
 
     @XmlAttribute(name = "name")
@@ -108,20 +108,20 @@ public class City {
         this.name = name;
     }
 
-    public int getNum_places() {
-        return num_places;
+    public int getNumPlaces() {
+        return numPlaces;
     }
 
-    public void setNum_places(int num_places) {
-        this.num_places = num_places;
+    public void setNumPlaces(int numPlaces) {
+        this.numPlaces = numPlaces;
     }
 
-    public int getRefresh_rate() {
-        return refresh_rate;
+    public int getRefreshRate() {
+        return refreshRate;
     }
 
-    public void setRefresh_rate(int refresh_rate) {
-        this.refresh_rate = refresh_rate;
+    public void setRefreshRate(int refreshRate) {
+        this.refreshRate = refreshRate;
     }
 
     public String getBounds() {
@@ -132,36 +132,36 @@ public class City {
         this.bounds = bounds;
     }
 
-    public int getBooked_bikes() {
-        return booked_bikes;
+    public int getBookedBikes() {
+        return bookedBikes;
     }
 
-    public void setBooked_bikes(int booked_bikes) {
-        this.booked_bikes = booked_bikes;
+    public void setBookedBikes(int bookedBikes) {
+        this.bookedBikes = bookedBikes;
     }
 
-    public int getSet_point_bikes() {
-        return set_point_bikes;
+    public int getSetPointBikes() {
+        return setPointBikes;
     }
 
-    public void setSet_point_bikes(int set_point_bikes) {
-        this.set_point_bikes = set_point_bikes;
+    public void setSetPointBikes(int setPointBikes) {
+        this.setPointBikes = setPointBikes;
     }
 
-    public int getAvailable_bikes() {
-        return available_bikes;
+    public int getAvailableBikes() {
+        return availableBikes;
     }
 
-    public void setAvailable_bikes(int available_bikes) {
-        this.available_bikes = available_bikes;
+    public void setAvailableBikes(int availableBikes) {
+        this.availableBikes = availableBikes;
     }
 
-    public String getBike_types() {
-        return bike_types;
+    public String getBikeTypes() {
+        return bikeTypes;
     }
 
-    public void setBike_types(String bike_types) {
-        this.bike_types = bike_types;
+    public void setBikeTypes(String bikeTypes) {
+        this.bikeTypes = bikeTypes;
     }
 
     @Override
