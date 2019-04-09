@@ -18,26 +18,26 @@ public class Country {
     private String email;
     private String timezone;
     private String currency;
-    private String country_calling_code;
-    private String system_operator_address;
+    private String countryCallingCode;
+    private String systemOperatorAddress;
     private String country;
-    private String country_name;
+    private String countryName;
     private String terms;
     private String policy;
     private String website;
-    private int booked_bikes;
-    private int set_point_bikes;
-    private int available_bikes;
+    private int bookedBikes;
+    private int setPointBikes;
+    private int availableBikes;
     private String pricing;
 
     public Country() {
     }
 
-    public Country(List<City> cityList, double lat, double lng, String country_name) {
+    public Country(List<City> cityList, double lat, double lng, String countryName) {
         this.cityList = cityList;
         this.lat = lat;
         this.lng = lng;
-        this.country_name = country_name;
+        this.countryName = countryName;
     }
 
     @XmlElement(name = "city")
@@ -131,20 +131,20 @@ public class Country {
         this.currency = currency;
     }
 
-    public String getCountry_calling_code() {
-        return country_calling_code;
+    public String getCountryCallingCode() {
+        return countryCallingCode;
     }
 
-    public void setCountry_calling_code(String country_calling_code) {
-        this.country_calling_code = country_calling_code;
+    public void setCountryCallingCode(String countryCallingCode) {
+        this.countryCallingCode = countryCallingCode;
     }
 
-    public String getSystem_operator_address() {
-        return system_operator_address;
+    public String getSystemOperatorAddress() {
+        return systemOperatorAddress;
     }
 
-    public void setSystem_operator_address(String system_operator_address) {
-        this.system_operator_address = system_operator_address;
+    public void setSystemOperatorAddress(String systemOperatorAddress) {
+        this.systemOperatorAddress = systemOperatorAddress;
     }
 
     public void setCountry(String country) {
@@ -152,16 +152,16 @@ public class Country {
     }
 
     @XmlAttribute(name = "country_name")
-    public String getCountry_name() {
-        return country_name;
+    public String getCountryName() {
+        return countryName;
     }
 
     public String getCountry() {
         return country;
     }
 
-    public void setCountry_name(String country_name) {
-        this.country_name = country_name;
+    public void setCountryName(String countryName) {
+        this.countryName = countryName;
     }
 
     public String getTerms() {
@@ -188,28 +188,28 @@ public class Country {
         this.website = website;
     }
 
-    public int getBooked_bikes() {
-        return booked_bikes;
+    public int getBookedBikes() {
+        return bookedBikes;
     }
 
-    public void setBooked_bikes(int booked_bikes) {
-        this.booked_bikes = booked_bikes;
+    public void setBookedBikes(int bookedBikes) {
+        this.bookedBikes = bookedBikes;
     }
 
-    public int getSet_point_bikes() {
-        return set_point_bikes;
+    public int getSetPointBikes() {
+        return setPointBikes;
     }
 
-    public void setSet_point_bikes(int set_point_bikes) {
-        this.set_point_bikes = set_point_bikes;
+    public void setSetPointBikes(int setPointBikes) {
+        this.setPointBikes = setPointBikes;
     }
 
-    public int getAvailable_bikes() {
-        return available_bikes;
+    public int getAvailableBikes() {
+        return availableBikes;
     }
 
-    public void setAvailable_bikes(int available_bikes) {
-        this.available_bikes = available_bikes;
+    public void setAvailableBikes(int availableBikes) {
+        this.availableBikes = availableBikes;
     }
 
     public String getPricing() {
@@ -226,7 +226,7 @@ public class Country {
                 "cityList=" + cityList +
                 ", lat=" + lat +
                 ", lng=" + lng +
-                ", country_name='" + country_name + '\'' +
+                ", countryName='" + countryName + '\'' +
                 '}';
     }
 }
