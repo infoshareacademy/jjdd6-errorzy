@@ -23,7 +23,6 @@ public class InsideMenu {
             }
             if (number == 0) {
                 break;
-
             }
         }
     }
