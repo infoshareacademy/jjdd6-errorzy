@@ -7,7 +7,7 @@ import org.apache.logging.log4j.Logger;
 public class InsideMenu {
     public static void run() {
         private static final Logger LOGGER = LogManager.getLogger(InsideMenu.class.getName());
-        LOGGER.info("Inside menu has been run.");
+        LOGGER.info("Inside menu has been runned.");
 
         Scanner scanner = new Scanner(System.in);
         int number = 1;
