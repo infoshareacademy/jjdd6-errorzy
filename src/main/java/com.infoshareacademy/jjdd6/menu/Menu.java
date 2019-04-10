@@ -6,32 +6,7 @@ import java.util.Scanner;
 public class Menu {
 
 
-    public static int startApplicationMenu() {
-        printBikeLogo();
-
-        printMenuText();
-
-        Scanner scanner = new Scanner(System.in);
-        return Integer.parseInt(scanner.nextLine());
-    }
-
-    private static void printMenuText() {
-        System.out.println();
-        System.out.println("     ****************************************");
-        System.out.println("     *                 MENU                 *");
-        System.out.println("     ****************************************");
-        System.out.println("     1. Find free Bike");
-        System.out.println("     2. Find the nearest place");
-        System.out.println("     3. Show list of Countries");
-        System.out.println("     4. Show list of Cities");
-        System.out.println("     5. Show statistics for Countries or Cities");
-        System.out.println();
-        System.out.println("     To start available options select number ");
-        System.out.println("     To exit press 0 ");
-        System.out.println("     Select number ");
-    }
-
-    private static void printBikeLogo() {
+    public static int startAplicationMenu() {
         System.out.println();
         System.out.println();
         System.out.println("                                          $\"   *.      \n" +
@@ -52,6 +27,23 @@ public class Menu {
                 "    %.         z*\"                      ^%.        .r\"\n" +
                 "       \"*==*\"\"                             ^\"*==*\"\"   ");
         System.out.println();
+        System.out.println();
+        System.out.println("     ****************************************");
+        System.out.println("     *                 MENU                 *");
+        System.out.println("     ****************************************");
+        System.out.println("     1. Find free Bike");
+        System.out.println("     2. Find the nearest place");
+        System.out.println("     3. Show list of Countries");
+        System.out.println("     4. Show list of Cities");
+        System.out.println("     5. Show statistics for Countries or Cities");
+        System.out.println();
+        System.out.println("     To start available options select number ");
+        System.out.println("     To exit press 0 ");
+        System.out.println("     Select number ");
+
+
+        Scanner scanner = new Scanner(System.in);
+        return Integer.parseInt(scanner.nextLine());
     }
 
     public static void main(String[] args) {
@@ -59,7 +51,7 @@ public class Menu {
         int select = -1;
         while (select != 0) {
             try {
-                select = startApplicationMenu();
+                select = startAplicationMenu();
             } catch (NumberFormatException e) {
                 System.err.println("This is not a fucking number!");
             }
