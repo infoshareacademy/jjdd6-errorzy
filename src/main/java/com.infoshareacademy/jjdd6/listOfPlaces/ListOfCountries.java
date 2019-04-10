@@ -1,41 +1,43 @@
 package com.infoshareacademy.jjdd6.listOfPlaces;
 
-import com.infoshareacademy.jjdd6.errorzy.City;
 import com.infoshareacademy.jjdd6.errorzy.Country;
 
-import java.util.List;
-import java.util.Optional;
+import java.util.*;
 
 public class ListOfCountries {
 
 
-    private List<Country> countries;
+    private List<Country> mockedCountries;
 
     public ListOfCountries() {
-        countries.add(new Country(null, 46d, 18d, "Poland"));
-        countries.add(new Country(null, 46d, 0d, "United Kingdom"));
-        countries.add(new Country(null, 46d, 13d, "Germany"));
-        countries.add(new Country(null, 43d, 4d, "France"));
-        countries.add(new Country(null, 42d, 42d, "Russia"));
+        mockedCountries.add(new Country(null, 46d, 18d, "Poland"));
+        mockedCountries.add(new Country(null, 46d, 0d, "United Kingdom"));
+        mockedCountries.add(new Country(null, 46d, 13d, "Germany"));
+        mockedCountries.add(new Country(null, 43d, 4d, "France"));
+        mockedCountries.add(new Country(null, 42d, 42d, "Russia"));
     }
 
 
     public ListOfCountries(List<Country> countries) {
-        this.countries = countries;
+        this.mockedCountries = countries;
     }
 
 
-    public List<Country> getCountries() {
-        return countries;
+    public List<Country> getMockedCountries() {
+        return mockedCountries;
     }
 
-    public List<City> getCitiesWithNextBike(String countryName) {
-        Optional<Country> country = countries.stream()
+    public void getCitiesWithNextBike(String countryName) {
+        Optional<Country> country = mockedCountries.stream()
                 .filter(x -> x.getCountry().equals(countryName))
                 .findFirst();
 
-        return country.get().getCityList();
+        country
+                .map(c -> c.getCityList())
+                .orElse(new ArrayList<>());
+
 
     }
+
 
 }
