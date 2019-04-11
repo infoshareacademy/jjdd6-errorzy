@@ -23,10 +23,10 @@ public class FindPlaceRunner {
         StationsInMyArea stationsInMyArea = new StationsInMyArea();
 
         double latitude = GetUserInput.getDoubleFromUser("Insert your latitude: ");
-        double longitude = GetUserInput.getDoubleFromUser("Insert your longitude");
+        double longitude = GetUserInput.getDoubleFromUser("Insert your longitude: ");
 
         Place closestPlace = closestStation.findTheClosestPlace(latitude, longitude);
-        double distance = kilometersToMeters(applicationProperties,
+        double distanceToClosestPlace = kilometersToMeters(applicationProperties,
                 closestStation.getDistanceBetweenTwoGeoPoints(latitude, longitude, closestPlace));
 
         printChooseMenu();
@@ -34,30 +34,38 @@ public class FindPlaceRunner {
 
         switch (select) {
             case 1:
-                System.out.println(String.format("The closest bike stand is %s, you are %f %s from it.", closestPlace.getName(),
-                        distance, applicationProperties.getDistanceUnit()));
+                chooseFindClosestStation(applicationProperties, closestPlace, distanceToClosestPlace);
                 break;
             case 2:
-                double distanceInKm = GetUserInput.getDoubleFromUser("You are interested in station in distance of (km): ");
-                List<Place> listStationsInArea = stationsInMyArea.findStationsWithinRadius(latitude, longitude, distanceInKm);
-
-                System.out.println("There are: " + stationsInMyArea.getNumberOfStationsWithinRadius(listStationsInArea) +
-                        " stations in vicinity of " + distanceInKm + " km");
-                listStationsInArea.stream()
-                        .map(p -> p.getName())
-                        .forEach(System.out::println);
+                chooseStationsInMyArea(stationsInMyArea, latitude, longitude);
                 break;
             default:
-                System.out.println("There is no such an option.");
+                System.out.println("There is no such option.");
         }
 
         InsideMenu.run();
     }
 
+    private static void chooseFindClosestStation(ApplicationProperties applicationProperties, Place closestPlace, double distance) {
+        System.out.println(String.format("The closest bike stand is %s, you are %f %s from it.", closestPlace.getName(),
+                distance, applicationProperties.getDistanceUnit()));
+    }
+
+    private static void chooseStationsInMyArea(StationsInMyArea stationsInMyArea, double latitude, double longitude) {
+        double distanceInKm = GetUserInput.getDoubleFromUser("You are interested in station in distance of (km): ");
+        List<Place> listStationsInArea = stationsInMyArea.findStationsWithinRadius(latitude, longitude, distanceInKm);
+
+        System.out.println("There are: " + stationsInMyArea.getNumberOfStationsWithinRadius(listStationsInArea) +
+                " stations in vicinity of " + distanceInKm + " km");
+
+        listStationsInArea.stream()
+                .map(p -> p.getName())
+                .forEach(System.out::println);
+    }
+
     private static double kilometersToMeters(ApplicationProperties applicationProperties, double distance) {
         if (applicationProperties.getDistanceUnit().equals("m")) {
             return distance = distance * 1000.0;
-
         }
         return distance;
     }
