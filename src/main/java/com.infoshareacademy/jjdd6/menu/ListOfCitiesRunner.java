@@ -9,12 +9,12 @@ import java.util.concurrent.atomic.AtomicInteger;
 public class ListOfCitiesRunner {
     public static void run() throws JAXBException {
 
-        FindCity findCity= new FindCity();
+        FindCity findCity = new FindCity();
         AtomicInteger index = new AtomicInteger();
 
         findCity.getCities()
                 .stream()
-                .map(m->m.getName())
+                .map(m -> m.getName())
                 .distinct()
                 .sorted()
                 .forEach(n -> System.out.println(index.incrementAndGet() + ". " + n));
