@@ -24,17 +24,22 @@ public class FindPlaceRunner {
                 Place closestPlace = closestStation.findTheClosestPlace(latitude, longitude);
 
                 System.out.println(closestPlace.getName() + " is "
-                        + closestStation.getDistanceBetweenTwoGeoPoints(latitude, longitude, closestPlace) + " from you.");
+                        + closestStation.getDistanceBetweenTwoGeoPoints(latitude, longitude, closestPlace) + " km" + " from your position.");
+                break;
             case 2:
                 double distanceInKm = GetUserInput.getDoubleFromUser("You are interested in station in distance of: ");
                 List<Place> listStationsInArea = stationsInMyArea.findStationsWithinRadius(latitude, longitude, distanceInKm);
 
                 System.out.println("There are: " + stationsInMyArea.getNumberOfStationsWithinRadius(listStationsInArea) +
-                        " stations in vicinity of " + distanceInKm);
+                        " stations in vicinity of " + distanceInKm + "km");
                 listStationsInArea.stream()
                         .map(p -> p.getName())
                         .forEach(System.out::println);
+                break;
+            default:
+                System.out.println("There is no such an option.");
         }
+
         InsideMenu.run();
     }
 
