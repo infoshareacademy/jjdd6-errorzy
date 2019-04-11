@@ -5,6 +5,7 @@ import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
 public class Statistics {
+
     private static final Logger LOGGER = LogManager.getLogger(Statistics.class.getName());
 
     public void countryStats(Country country) {
