@@ -27,13 +27,14 @@ public class ShowStatisticsRunner {
                 System.out.println("List of available Country");
                 listOfCountry();
                 countryName = GetUserInput.getStringFromUser("Insert your Country name from list");
-//                statistics.countryStats(listOfCountry());
+                //statistics.countryStats(countryName);
                 break;
             case 2:
                 System.out.println("Show Statistics for Cities");
                 listOfCities();
                 cityName = GetUserInput.getStringFromUser("Insert your City name from list");
-                break;
+//                statistics.cityStats(cityName);
+               break;
             default:
                 System.out.println("Select number one more time");
 
