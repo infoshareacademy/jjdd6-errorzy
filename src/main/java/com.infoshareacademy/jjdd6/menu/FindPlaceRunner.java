@@ -3,35 +3,46 @@ package com.infoshareacademy.jjdd6.menu;
 import com.infoshareacademy.jjdd6.errorzy.Place;
 import com.infoshareacademy.jjdd6.geoservice.ClosestStation;
 import com.infoshareacademy.jjdd6.geoservice.StationsInMyArea;
+import com.infoshareacademy.jjdd6.properties.ApplicationProperties;
 import com.infoshareacademy.jjdd6.userinput.GetUserInput;
 
+import java.io.IOException;
 import java.util.List;
 
 public class FindPlaceRunner {
+
     public static void run() {
+        ApplicationProperties applicationProperties = new ApplicationProperties();
+        try {
+            applicationProperties.loadAppProperties();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
 
         ClosestStation closestStation = new ClosestStation();
         StationsInMyArea stationsInMyArea = new StationsInMyArea();
+
         double latitude = GetUserInput.getDoubleFromUser("Insert your latitude: ");
         double longitude = GetUserInput.getDoubleFromUser("Insert your longitude");
+
+        Place closestPlace = closestStation.findTheClosestPlace(latitude, longitude);
+        double distance = kilometersToMeters(applicationProperties,
+                closestStation.getDistanceBetweenTwoGeoPoints(latitude, longitude, closestPlace));
 
         printChooseMenu();
         int select = GetUserInput.getIntegerFromUser("Choose an option: ");
 
         switch (select) {
-
             case 1:
-                Place closestPlace = closestStation.findTheClosestPlace(latitude, longitude);
-
-                System.out.println(closestPlace.getName() + " is "
-                        + closestStation.getDistanceBetweenTwoGeoPoints(latitude, longitude, closestPlace) + " km" + " from your position.");
+                System.out.println(String.format("The closest bike stand is %s, you are %f %s from it.", closestPlace.getName(),
+                        distance, applicationProperties.getDistanceUnit()));
                 break;
             case 2:
-                double distanceInKm = GetUserInput.getDoubleFromUser("You are interested in station in distance of: ");
+                double distanceInKm = GetUserInput.getDoubleFromUser("You are interested in station in distance of (km): ");
                 List<Place> listStationsInArea = stationsInMyArea.findStationsWithinRadius(latitude, longitude, distanceInKm);
 
                 System.out.println("There are: " + stationsInMyArea.getNumberOfStationsWithinRadius(listStationsInArea) +
-                        " stations in vicinity of " + distanceInKm + "km");
+                        " stations in vicinity of " + distanceInKm + " km");
                 listStationsInArea.stream()
                         .map(p -> p.getName())
                         .forEach(System.out::println);
@@ -41,6 +52,14 @@ public class FindPlaceRunner {
         }
 
         InsideMenu.run();
+    }
+
+    private static double kilometersToMeters(ApplicationProperties applicationProperties, double distance) {
+        if (applicationProperties.getDistanceUnit().equals("m")) {
+            return distance = distance * 1000.0;
+
+        }
+        return distance;
     }
 
     private static void printChooseMenu() {
