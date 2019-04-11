@@ -7,9 +7,7 @@ public class ListOfCountriesRunner {
     public static void run() {
 
 
-        ListOfCities listOfCities = new ListOfCities();
-        listOfCities.getMockedCities();
-        System.out.println();
+
 
         InsideMenu.run();
 
