@@ -54,7 +54,7 @@ public class Menu {
             try {
                 select = startAplicationMenu();
             } catch (NumberFormatException e) {
-                System.err.println("This is not a fucking number!");
+                System.err.println("This is not a number!");
             }
 
             switch (select) {
@@ -76,7 +76,7 @@ public class Menu {
                     break;
                 case 5:
                     System.out.println("Show statistics for Countries or Cities");
-                    // TODO Tu bedzie jeszcze jedna klasa ;
+                    ShowStatisticsRunner.run();
                     break;
                 case 0:
                     System.out.println("Bye-bye!");
