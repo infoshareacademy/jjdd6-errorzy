@@ -1,47 +1,59 @@
 package com.infoshareacademy.jjdd6.menu;
 
-import com.infoshareacademy.jjdd6.errorzy.Country;
 import com.infoshareacademy.jjdd6.errorzy.Statistics;
+import com.infoshareacademy.jjdd6.errorzy.xmlunmarshaller.FindCity;
 import com.infoshareacademy.jjdd6.errorzy.xmlunmarshaller.FindCountry;
 import com.infoshareacademy.jjdd6.userinput.GetUserInput;
 
 import javax.xml.bind.JAXBException;
-import java.util.List;
-import java.util.Scanner;
-import java.util.stream.Collectors;
+import java.util.concurrent.atomic.AtomicInteger;
+
 
 
 public class ShowStatisticsRunner {
     public static void run() throws JAXBException {
 
-        statisticsMenu();
-
-
         Statistics statistics = new Statistics();
-        FindCountry findCountry = new FindCountry();
-        findCountry.getCountries().stream().map(country -> country.getCityList()).distinct().collect(Collectors.toList());
 
-        Scanner scanner = new Scanner(System.in);
-        scanner.nextLine();
+        FindCity findCity = new FindCity();
+        String countryName;
+        String cityName;
+
+        statisticsMenu();
 
         int select = GetUserInput.getIntegerFromUser("Choose an option: ");
         switch (select) {
             case 1:
-                System.out.println("Show Statistics for Country");
-
-
+                System.out.println("List of available Country");
+                listOfCountry();
+                countryName = GetUserInput.getStringFromUser("Insert your Country name from list");
+//                statistics.countryStats(listOfCountry());
                 break;
             case 2:
                 System.out.println("Show Statistics for Cities");
-
+                listOfCities();
+                cityName = GetUserInput.getStringFromUser("Insert your City name from list");
                 break;
-
+            default:
+                System.out.println("Select number one more time");
 
         }
 
         InsideMenu.run();
+
     }
 
+    private static void listOfCountry() throws JAXBException {
+        FindCountry findCountry = new FindCountry();
+        AtomicInteger index = new AtomicInteger();
+        findCountry.getCountries().stream().map(m -> m.getCountryName()).distinct().sorted().forEach(n -> System.out.println(index.incrementAndGet() + ". " + n));
+    }
+
+    private static void listOfCities() throws JAXBException {
+        FindCity findCity = new FindCity();
+        AtomicInteger index = new AtomicInteger();
+        findCity.getCities().stream().map(m -> m.getName()).distinct().sorted().forEach(n -> System.out.println(index.incrementAndGet() + ". " + n));
+    }
 
     private static void statisticsMenu() {
 
