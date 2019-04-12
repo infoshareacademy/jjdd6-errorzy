@@ -1,6 +1,7 @@
 package com.infoshareacademy.jjdd6.menu;
 
 
+import javax.xml.bind.JAXBException;
 import java.util.Scanner;
 
 public class Menu {
@@ -46,7 +47,7 @@ public class Menu {
         return Integer.parseInt(scanner.nextLine());
     }
 
-    public static void main(String[] args) {
+    public static void main(String[] args) throws JAXBException {
 
         int select = -1;
         while (select != 0) {
