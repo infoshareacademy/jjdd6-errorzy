@@ -68,11 +68,11 @@ public class Menu {
                     break;
                 case 3:
                     System.out.println("Show list of Countries");
-                    ListOfCountriesRunner.run();
+                    CountryPrinterRunner.run();
                     break;
                 case 4:
                     System.out.println("Show list of Cities");
-                    ListOfCitiesRunner.run();
+                    CitiesPrinterRunner.run();
                     break;
                 case 5:
                     System.out.println("Show statistics for Countries or Cities");
