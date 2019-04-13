@@ -1,6 +1,6 @@
 package com.infoshareacademy.jjdd6.menu;
-import com.infoshareacademy.jjdd6.listOfPlaces.ListOfCities;
-import com.infoshareacademy.jjdd6.listOfPlaces.ListOfCountries;
+import com.infoshareacademy.jjdd6.listOfPlaces.CityPrinter;
+import com.infoshareacademy.jjdd6.listOfPlaces.CountryPrinter;
 import com.infoshareacademy.jjdd6.errorzy.statistics.Statistics;
 import com.infoshareacademy.jjdd6.userinput.GetUserInput;
 import javax.xml.bind.JAXBException;
@@ -9,8 +9,8 @@ import javax.xml.bind.JAXBException;
 public class ShowStatisticsRunner {
     public static void run() throws JAXBException {
         Statistics statistics = new Statistics();
-        ListOfCountries listOfCountries = new ListOfCountries();
-        ListOfCities listOfCities = new ListOfCities();
+        CountryPrinter listOfCountries = new CountryPrinter();
+        CityPrinter listOfCities = new CityPrinter();
         String countryName;
         String cityName;
 
@@ -20,13 +20,13 @@ public class ShowStatisticsRunner {
         switch (select) {
             case 1:
                 System.out.println("List of available Country");
-                listOfCountries.run();
+                listOfCountries.printCountryList();
                 countryName = GetUserInput.getStringFromUser("Insert your Country name from list");
                 statistics.statisticsForCountry(countryName);
                 break;
             case 2:
                 System.out.println("Show Statistics for Cities");
-                listOfCities.run();
+                listOfCities.printCityList();
                 cityName = GetUserInput.getStringFromUser("Insert your City name from list");
                 statistics.statisticsForCities(cityName);
                 break;

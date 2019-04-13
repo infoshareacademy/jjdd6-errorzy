@@ -1,5 +1,4 @@
 package com.infoshareacademy.jjdd6.errorzy.statistics;
-
 import com.infoshareacademy.jjdd6.errorzy.City;
 import com.infoshareacademy.jjdd6.errorzy.Country;
 import com.infoshareacademy.jjdd6.errorzy.Place;
@@ -31,7 +30,6 @@ public class Statistics {
 
         System.out.println(places.size());
         return countries;
-
     }
 
     public static List<City> statisticsForCities(String cityNm) throws JAXBException {

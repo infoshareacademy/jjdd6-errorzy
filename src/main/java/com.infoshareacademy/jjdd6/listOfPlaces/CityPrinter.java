@@ -1,26 +1,24 @@
 package com.infoshareacademy.jjdd6.listOfPlaces;
 
-
-import com.infoshareacademy.jjdd6.errorzy.xmlunmarshaller.CountrySearch;
+import com.infoshareacademy.jjdd6.errorzy.xmlunmarshaller.CitySearch;
 
 import javax.xml.bind.JAXBException;
 import java.util.concurrent.atomic.AtomicInteger;
 
-public class ListOfCountries {
+public class CityPrinter {
+    public static void printCityList() throws JAXBException {
 
-
-    public static void run() throws JAXBException {
-        CountrySearch findCountry = new CountrySearch();
+        CitySearch citySearch = new CitySearch();
         AtomicInteger index = new AtomicInteger();
 
-        findCountry
-                .getCountries()
+        citySearch.getCities()
                 .stream()
-                .map(m -> m.getCountryName())
+                .map(m -> m.getName())
                 .distinct()
                 .sorted()
                 .forEach(n -> System.out.println(index.incrementAndGet() + ". " + n));
 
-
     }
 }
+
+
