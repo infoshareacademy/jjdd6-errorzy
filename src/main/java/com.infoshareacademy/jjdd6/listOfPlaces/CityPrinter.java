@@ -1,5 +1,4 @@
 package com.infoshareacademy.jjdd6.listOfPlaces;
-
 import com.infoshareacademy.jjdd6.errorzy.xmlunmarshaller.CitySearch;
 
 import javax.xml.bind.JAXBException;
@@ -17,7 +16,6 @@ public class CityPrinter {
                 .distinct()
                 .sorted()
                 .forEach(n -> System.out.println(index.incrementAndGet() + ". " + n));
-
     }
 }
 

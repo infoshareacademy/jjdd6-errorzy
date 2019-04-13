@@ -16,8 +16,7 @@ public class Statistics {
 
         List<City> cities = countries
                 .stream()
-                .filter(x -> x.getCountryName()
-                        .equals(countryNm))
+                .filter(x -> x.getCountryName().equals(countryNm))
                 .flatMap(c -> c.getCityList()
                         .stream())
                 .collect(Collectors.toList());
@@ -37,8 +36,7 @@ public class Statistics {
         List<City> cities = findCity.getCities();
         List<Place> places = cities
                 .stream()
-                .filter(x -> x.getName()
-                        .equals(cityNm))
+                .filter(x -> x.getName().equals(cityNm))
                 .flatMap(c -> c.getPlaceList()
                         .stream())
                 .collect(Collectors.toList());
