@@ -20,4 +20,11 @@ public class FindCity {
                 .distinct()
                 .collect(Collectors.toList());
     }
+
+    public List<City> getCitiesForCountry(String countryName) throws JAXBException {
+        return findCountry.getCountries().stream()
+                .filter(x -> x.getCountryName().equals(countryName))
+                .flatMap(c -> c.getCityList().stream())
+                .collect(Collectors.toList());
+    }
 }
