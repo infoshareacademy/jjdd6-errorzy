@@ -54,7 +54,7 @@ public class Menu {
             try {
                 select = startAplicationMenu();
             } catch (NumberFormatException e) {
-                System.err.println("This is not a fucking number!");
+                System.err.println("This is not a number!");
             }
 
             switch (select) {
@@ -68,15 +68,15 @@ public class Menu {
                     break;
                 case 3:
                     System.out.println("Show list of Countries");
-                    ListOfCountriesRunner.run();
+                    CountryPrinterRunner.run();
                     break;
                 case 4:
                     System.out.println("Show list of Cities");
-                    ListOfCitiesRunner.run();
+                    CitiesPrinterRunner.run();
                     break;
                 case 5:
                     System.out.println("Show statistics for Countries or Cities");
-                    // TODO Tu bedzie jeszcze jedna klasa ;
+                    ShowStatisticsRunner.run();
                     break;
                 case 0:
                     System.out.println("Bye-bye!");
