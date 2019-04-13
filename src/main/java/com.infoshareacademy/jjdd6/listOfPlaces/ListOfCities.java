@@ -1,7 +1,6 @@
 package com.infoshareacademy.jjdd6.listOfPlaces;
 
-import com.infoshareacademy.jjdd6.errorzy.xmlunmarshaller.FindCity;
-import com.infoshareacademy.jjdd6.errorzy.xmlunmarshaller.FindCountry;
+import com.infoshareacademy.jjdd6.errorzy.xmlunmarshaller.CitySearch;
 
 import javax.xml.bind.JAXBException;
 import java.util.concurrent.atomic.AtomicInteger;
@@ -9,7 +8,7 @@ import java.util.concurrent.atomic.AtomicInteger;
 public class ListOfCities {
     public static void run() throws JAXBException {
 
-        FindCity findCity = new FindCity();
+        CitySearch findCity = new CitySearch();
         AtomicInteger index = new AtomicInteger();
 
         findCity.getCities()

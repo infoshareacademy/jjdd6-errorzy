@@ -6,7 +6,7 @@ import javax.xml.bind.JAXBException;
 import java.util.List;
 import java.util.stream.Collectors;
 
-public class FindCountry {
+public class CountrySearch {
 
     private XmlUnmarshaller xmlUnmarshaller = new XmlUnmarshaller();
 

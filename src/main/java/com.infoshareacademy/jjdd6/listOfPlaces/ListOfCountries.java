@@ -1,7 +1,7 @@
 package com.infoshareacademy.jjdd6.listOfPlaces;
 
 
-import com.infoshareacademy.jjdd6.errorzy.xmlunmarshaller.FindCountry;
+import com.infoshareacademy.jjdd6.errorzy.xmlunmarshaller.CountrySearch;
 
 import javax.xml.bind.JAXBException;
 import java.util.concurrent.atomic.AtomicInteger;
@@ -10,7 +10,7 @@ public class ListOfCountries {
 
 
     public static void run() throws JAXBException {
-        FindCountry findCountry = new FindCountry();
+        CountrySearch findCountry = new CountrySearch();
         AtomicInteger index = new AtomicInteger();
 
         findCountry
