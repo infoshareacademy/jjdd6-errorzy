@@ -8,6 +8,10 @@ import com.infoshareacademy.jjdd6.errorzy.xmlunmarshaller.CountrySearch;
 import com.infoshareacademy.jjdd6.errorzy.xmlunmarshaller.PlaceSearch;
 import com.infoshareacademy.jjdd6.userinput.GetUserInput;
 
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
+
+
 import javax.xml.bind.JAXBException;
 import java.util.Map;
 
@@ -15,6 +19,9 @@ public class FindBikeRunner {
     private CitySearch citySearch = new CitySearch();
     private CountrySearch countrySearch = new CountrySearch();
     private PlaceSearch placeSearch = new PlaceSearch();
+
+    private static final Logger LOGGER = LogManager.getLogger(InsideMenu.class.getName());
+
 
     public void run() {
 
@@ -27,7 +34,7 @@ public class FindBikeRunner {
             printCitiesForCountry(countryMap, chosenCountry);
 
         } catch (JAXBException e) {
-            e.printStackTrace();
+            LOGGER.warn("JAXB Exception: " + e);
         }
 
         InsideMenu.run();
