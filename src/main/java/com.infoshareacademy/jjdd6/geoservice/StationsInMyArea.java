@@ -1,16 +1,22 @@
 package com.infoshareacademy.jjdd6.geoservice;
 
 import com.infoshareacademy.jjdd6.errorzy.Place;
+import com.infoshareacademy.jjdd6.errorzy.xmlunmarshaller.PlaceSearch;
 
-import java.util.ArrayList;
+import javax.xml.bind.JAXBException;
 import java.util.List;
 import java.util.stream.Collectors;
 
 public class StationsInMyArea {
+    private PlaceSearch placeSearch = new PlaceSearch();
 
     public List<Place> findStationsWithinRadius(double lat, double lng, double radiusInKilometers) {
-        //TODO insert correct placeList.
-        List<Place> placeList = ClosestStation.mockedPlaceList();
+        List<Place> placeList = null;
+        try {
+            placeList = placeSearch.getPlaces();
+        } catch (JAXBException e) {
+            e.printStackTrace();
+        }
         ClosestStation closestStation = new ClosestStation();
 
         return placeList.stream()
