@@ -1,9 +1,9 @@
 package com.infoshareacademy.jjdd6.geoservice;
 
 import com.infoshareacademy.jjdd6.errorzy.Place;
-import com.infoshareacademy.jjdd6.errorzy.PlacesProvider;
+import com.infoshareacademy.jjdd6.errorzy.xmlunmarshaller.PlaceSearch;
 
-import java.util.ArrayList;
+import javax.xml.bind.JAXBException;
 import java.util.List;
 
 import static java.lang.Math.round;
@@ -11,6 +11,7 @@ import static java.lang.Math.sqrt;
 
 public class ClosestStation {
     public final static double EARTH_RADIUS_IN_METERS = 6371 * 1000;
+    private PlaceSearch placeSearch = new PlaceSearch();
 
     public double getDistanceBetweenTwoGeoPoints(double lat1, double lng1, Place place) {
 
@@ -30,8 +31,12 @@ public class ClosestStation {
     }
 
     public Place findTheClosestPlace(double lat, double lng) {
-        //TODO Insert List of places.
-        List<Place> placeList = mockedPlaceList();
+        List<Place> placeList = null;
+        try {
+            placeList = placeSearch.getPlaces();
+        } catch (JAXBException e) {
+            e.printStackTrace();
+        }
         Place closestPlace = placeList.get(0);
         double distanceToClosestStation = Double.MAX_VALUE;
         for (Place place : placeList) {
@@ -42,22 +47,5 @@ public class ClosestStation {
             }
         }
         return closestPlace;
-    }
-
-    public static List<Place> mockedPlaceList() {
-        Place place1 = new Place(54.32, -18.32, "Gdynia", 1, null);
-        Place place2 = new Place(54.22, -18.38, "Gdańsk", 2, null);
-        Place place3 = new Place( 53.47, -20.30, "Olsztyn", 3, null);
-        Place place4 = new Place(54.44, -18.56, "Kwidzyn", 4, null);
-        Place place5 = new Place(52.12, -21.02, "Warszawa", 5, null);
-        List<Place> mockedPlaceList = new ArrayList<>();
-
-        mockedPlaceList.add(place1);
-        mockedPlaceList.add(place2);
-        mockedPlaceList.add(place3);
-        mockedPlaceList.add(place4);
-        mockedPlaceList.add(place5);
-
-        return mockedPlaceList;
     }
 }
