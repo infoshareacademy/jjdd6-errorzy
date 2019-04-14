@@ -18,7 +18,7 @@ public class Place {
     private int bikeRacks;
     private int freeRacks;
     private String terminalType;
-    private int[] bikeNumbers;
+    private String bikeNumbers;
     private String bikeTypes;
     private int placeType;
     private List<Bike> bikeList;
@@ -86,6 +86,7 @@ public class Place {
         this.number = number;
     }
 
+    @XmlAttribute(name = "bikes")
     public int getBikes() {
         return bikes;
     }
@@ -126,11 +127,12 @@ public class Place {
         this.terminalType = terminalType;
     }
 
-    public int[] getBikeNumbers() {
+    @XmlAttribute(name = "bike_numbers")
+    public String getBikeNumbers() {
         return bikeNumbers;
     }
 
-    public void setBikeNumbers(int[] bikeNumbers) {
+    public void setBikeNumbers(String bikeNumbers) {
         this.bikeNumbers = bikeNumbers;
     }
 

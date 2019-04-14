@@ -60,7 +60,7 @@ public class Menu {
             switch (select) {
                 case 1:
                     System.out.println("Find free Bike");
-                    FindBikeRunner.run();
+                    (new FindBikeRunner()).run();
                     break;
                 case 2:
                     System.out.println("Find the nearest place");
