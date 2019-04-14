@@ -4,6 +4,8 @@ import com.infoshareacademy.jjdd6.errorzy.Country;
 
 import javax.xml.bind.JAXBException;
 import java.util.List;
+import java.util.Map;
+import java.util.TreeMap;
 import java.util.stream.Collectors;
 
 public class CountrySearch {
@@ -16,5 +18,16 @@ public class CountrySearch {
                 .stream()
                 .distinct()
                 .collect(Collectors.toList());
+    }
+
+    public Map<String, Country> getMapOfCountries() throws JAXBException {
+        Map<String, Country> countryMap = new TreeMap<>();
+
+        for (Country country : getCountries()) {
+            if (!countryMap.containsKey(country.getCountryName())) {
+                countryMap.put(country.getCountryName(), country);
+            }
+        }
+        return countryMap;
     }
 }
