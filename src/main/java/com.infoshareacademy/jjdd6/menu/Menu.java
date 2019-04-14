@@ -1,6 +1,7 @@
 package com.infoshareacademy.jjdd6.menu;
 
 
+import javax.xml.bind.JAXBException;
 import java.util.Scanner;
 
 public class Menu {
@@ -46,14 +47,14 @@ public class Menu {
         return Integer.parseInt(scanner.nextLine());
     }
 
-    public static void main(String[] args) {
+    public static void main(String[] args) throws JAXBException {
 
         int select = -1;
         while (select != 0) {
             try {
                 select = startAplicationMenu();
             } catch (NumberFormatException e) {
-                System.err.println("This is not a fucking number!");
+                System.err.println("This is not a number!");
             }
 
             switch (select) {
@@ -67,15 +68,15 @@ public class Menu {
                     break;
                 case 3:
                     System.out.println("Show list of Countries");
-                    ListOfCountriesRunner.run();
+                    CountryPrinterRunner.run();
                     break;
                 case 4:
                     System.out.println("Show list of Cities");
-                    ListOfCitiesRunner.run();
+                    CitiesPrinterRunner.run();
                     break;
                 case 5:
                     System.out.println("Show statistics for Countries or Cities");
-                    // TODO Tu bedzie jeszcze jedna klasa ;
+                    ShowStatisticsRunner.run();
                     break;
                 case 0:
                     System.out.println("Bye-bye!");

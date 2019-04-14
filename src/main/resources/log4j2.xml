@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Configuration>
+    <Appenders>
+        <RollingFile name="DEF"
+                     fileName   ="logs/logs.log"
+                     filePattern="logs/logs.log.%d{dd-MM-yyyy HH-mm-ss}">
+            <PatternLayout pattern="%d{ISO8601} UTC [%25.25t] %-5p %25.25c %x - %m%n"/>
+            <TimeBasedTriggeringPolicy modulate="true" />
+        </RollingFile>
+    </Appenders>
+    <Loggers>
+        <Root level="INFO" >
+            <AppenderRef ref="DEF" />
+        </Root>
+    </Loggers>
+</Configuration>
