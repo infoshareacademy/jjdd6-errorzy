@@ -6,9 +6,13 @@
 
     <groupId>com.infoshareacademy.jjdd6.errorzy</groupId>
     <artifactId>jjdd6-errorzy</artifactId>
+    <packaging>pom</packaging>
     <version>1.0-SNAPSHOT</version>
 
-    <name>jjdd6-errorzy</name>
+    <modules>
+        <module>web</module>
+        <module>base</module>
+    </modules>
 
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
