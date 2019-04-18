@@ -1,16 +1,16 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<Configuration>
+<Configuration status="INFO">
     <Appenders>
-        <RollingFile name="DEF"
-                     fileName   ="logs/logs.log"
-                     filePattern="logs/logs.log.%d{dd-MM-yyyy HH-mm-ss}">
-            <PatternLayout pattern="%d{ISO8601} UTC [%25.25t] %-5p %25.25c %x - %m%n"/>
-            <TimeBasedTriggeringPolicy modulate="true" />
-        </RollingFile>
+        <Console name="Console" target="SYSTEM_OUT">
+            <PatternLayout pattern="%d{HH:mm:ss.SSS} [%t] %-5level %logger{36} - %msg%n" />
+        </Console>
+        <File name="MyFile" fileName="logs/log.log" immediateFlush="false" append="false">
+            <PatternLayout pattern="%d{yyy-MM-dd HH:mm:ss.SSS} [%t] %-5level %logger{36} - %msg%n"/>
+        </File>
     </Appenders>
     <Loggers>
-        <Root level="INFO" >
-            <AppenderRef ref="DEF" />
+        <Root level="debug">
+            <AppenderRef ref="MyFile"/>
         </Root>
     </Loggers>
 </Configuration>
