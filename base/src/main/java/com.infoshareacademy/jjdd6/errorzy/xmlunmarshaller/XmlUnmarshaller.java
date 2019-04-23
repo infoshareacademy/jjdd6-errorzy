@@ -16,9 +16,9 @@ public class XmlUnmarshaller {
 
     private static final Logger LOGGER = LogManager.getLogger(InsideMenu.class.getName());
 
-    public Markers getMarkersList() {
+    public Markers getMarkersList(String path) {
 
-        File file = new File("nextbike-live.xml");
+        File file = new File(path);
         try {
             JAXBContext jaxbContext = JAXBContext.newInstance(Markers.class);
             Unmarshaller jaxbUnmarshaller = jaxbContext.createUnmarshaller();
