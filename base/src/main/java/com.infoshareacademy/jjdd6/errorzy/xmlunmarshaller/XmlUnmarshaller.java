@@ -1,46 +1,31 @@
 package com.infoshareacademy.jjdd6.errorzy.xmlunmarshaller;
 
 import com.infoshareacademy.jjdd6.errorzy.Markers;
+import com.infoshareacademy.jjdd6.menu.InsideMenu;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 
+import javax.ejb.Stateless;
 import javax.xml.bind.JAXBContext;
 import javax.xml.bind.JAXBException;
 import javax.xml.bind.Unmarshaller;
 import java.io.File;
 
+@Stateless
 public class XmlUnmarshaller {
 
-    public static void main(String[] args) {
+    private static final Logger LOGGER = LogManager.getLogger(InsideMenu.class.getName());
 
-        System.out.println("Let's ride!");
-        System.out.println("                                          $\"   *.      \n" +
-                "              d$$$$$$$P\"                  $    J\n" +
-                "                  ^$.                     4r  \"\n" +
-                "                  d\"b                    .db\n" +
-                "                 P   $                  e\" $\n" +
-                "        ..ec.. .\"     *.              zP   $.zec..\n" +
-                "    .^        3*b.     *.           .P\" .@\"4F      \"4\n" +
-                "  .\" *       d\"  ^b.    *c        .$\"  d\" * $      *  %\n" +
-                " /     *    P      $.    \"c      d\"   @    * r    *    3\n" +
-                "4        .eE........$r===e$$$$eeP    J       *.. *      b\n" +
-                "$       $$$$$       $   4$$$$$$$     F       d$$$.      4\n" +
-                "$ * * * $$$$$ * * * $   4$$$$$$$     L * * * *$$$\"* * * 4\n" +
-                "4         \"      \"\"3P ===$$$$$$\"     3         \"        P\n" +
-                " *      *   *      $       \"\"\"        b      *   *     J\n" +
-                "  \".  *       *  .P                    %. *        *  @\n" +
-                "    %.         z*\"                      ^%.        .r\"\n" +
-                "       \"*==*\"\"                             ^\"*==*\"\"   ");
-        System.out.println("  ");
-    }
-
-    public Markers getMarkerlist() throws JAXBException {
+    public Markers getMarkersList() {
 
         File file = new File("nextbike-live.xml");
-        JAXBContext jaxbContext = JAXBContext.newInstance(Markers.class);
-        Unmarshaller jaxbUnmarshaller = jaxbContext.createUnmarshaller();
-        Markers markerslist = (Markers) jaxbUnmarshaller.unmarshal(file);
-
-        return markerslist;
-
+        try {
+            JAXBContext jaxbContext = JAXBContext.newInstance(Markers.class);
+            Unmarshaller jaxbUnmarshaller = jaxbContext.createUnmarshaller();
+            return (Markers) jaxbUnmarshaller.unmarshal(file);
+        } catch (JAXBException e) {
+            LOGGER.error("JAXB Exception: " + e);
+            return new Markers();
+        }
     }
-
 }

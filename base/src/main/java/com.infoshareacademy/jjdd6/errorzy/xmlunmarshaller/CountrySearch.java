@@ -14,7 +14,7 @@ public class CountrySearch {
 
     public List<Country> getCountries() throws JAXBException {
 
-        return xmlUnmarshaller.getMarkerlist().getCountryList()
+        return xmlUnmarshaller.getMarkersList().getCountryList()
                 .stream()
                 .distinct()
                 .collect(Collectors.toList());
