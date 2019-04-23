@@ -13,7 +13,7 @@ import java.io.IOException;
 import java.util.Map;
 
 @WebServlet("/country-servlet")
-public class GetCountryServlet extends HttpServlet {
+public class CountryServlet extends HttpServlet {
 
     @Inject
     private CountrySearch countrySearch;
