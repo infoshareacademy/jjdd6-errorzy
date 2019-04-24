@@ -1,6 +1,5 @@
 package freemarker;
 
-
 import freemarker.template.Configuration;
 import freemarker.template.TemplateExceptionHandler;
 
