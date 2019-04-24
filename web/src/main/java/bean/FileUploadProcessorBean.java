@@ -1,4 +1,5 @@
 package bean;
+
 import javax.enterprise.context.RequestScoped;
 import javax.servlet.http.Part;
 import java.io.File;
@@ -16,7 +17,7 @@ public class FileUploadProcessorBean {
     public File uploadFile(Part filePart) throws IOException {
         String fileName = Paths.get(filePart.getSubmittedFileName()).getFileName().toString();
 
-               File file = new File(getUploadFilesPath() + fileName);
+        File file = new File(getUploadFilesPath() + fileName);
 
         Files.deleteIfExists(file.toPath());
 
@@ -33,7 +34,7 @@ public class FileUploadProcessorBean {
         Properties settings = new Properties();
         settings.load(Thread.currentThread()
                 .getContextClassLoader().getResource(SETTINGS_FILE).openStream());
-        return settings.getProperty("Upload.Path.File");
+        return settings.getProperty("Upload.Path");
     }
 
 }
