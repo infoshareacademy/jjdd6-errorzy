@@ -1,9 +1,11 @@
-package servlet;
+package com.infoshareacademy.jjdd6.errorzy.web;
 
-import bean.FileUploadProcessorBean;
-import freemarker.TemplateProvider;
+import com.infoshareacademy.jjdd6.errorzy.freemarker.TemplateProvider;
+import com.infoshareacademy.jjdd6.errorzy.upload.FileUploadProcessorBean;
 import freemarker.template.Template;
 import freemarker.template.TemplateException;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 
 import javax.inject.Inject;
 import javax.servlet.ServletException;
@@ -20,22 +22,25 @@ import java.io.PrintWriter;
 @MultipartConfig
 public class UploadServlet extends HttpServlet {
 
+    public static final String UPLOAD_TEMPLATE = "upload-servlet.ftlh";
+    private static final Logger LOGGER = LogManager.getLogger(UploadServlet.class.getName());
+
     @Inject
     TemplateProvider templateProvider;
+
     @Inject
     FileUploadProcessorBean fileUploadProcessorBean;
-    @Override
 
+    @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 
         PrintWriter writer = resp.getWriter();
-        Template template = templateProvider.getTemplate(getServletContext(), "upload-servlet.ftlh");
+        Template template = templateProvider.getTemplate(getServletContext(), UPLOAD_TEMPLATE);
         try {
             template.process(null, writer);
         } catch (TemplateException e) {
-            e.printStackTrace();
+            LOGGER.warn("Template not found" + e);
         }
-
     }
 
     @Override
@@ -44,4 +49,3 @@ public class UploadServlet extends HttpServlet {
         File file = fileUploadProcessorBean.uploadFile(req.getPart("file"));
     }
 }
-

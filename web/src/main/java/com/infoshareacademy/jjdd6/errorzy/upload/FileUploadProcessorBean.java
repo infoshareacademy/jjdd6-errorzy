@@ -1,4 +1,4 @@
-package bean;
+package com.infoshareacademy.jjdd6.errorzy.upload;
 
 import javax.enterprise.context.RequestScoped;
 import javax.servlet.http.Part;
