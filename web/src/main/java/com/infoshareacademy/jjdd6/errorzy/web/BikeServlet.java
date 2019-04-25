@@ -1,8 +1,8 @@
 package com.infoshareacademy.jjdd6.errorzy.web;
 
 import com.infoshareacademy.jjdd6.errorzy.Country;
+import com.infoshareacademy.jjdd6.errorzy.freemarker.TemplateProvider;
 import com.infoshareacademy.jjdd6.errorzy.xmlunmarshaller.CountrySearch;
-import freemarker.TemplateProvider;
 import freemarker.template.Template;
 import freemarker.template.TemplateException;
 
@@ -17,17 +17,20 @@ import java.io.PrintWriter;
 import java.util.HashMap;
 import java.util.Map;
 
-@WebServlet("/bike-servlet")
+@WebServlet("/bike-servlet/*")
 public class BikeServlet extends HttpServlet {
 
     @Inject
     private CountrySearch countrySearch;
 
     @Inject
-    TemplateProvider templateProvider;
+    private TemplateProvider templateProvider;
 
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+
+//        String[] servletMapping = req.getHttpServletMapping().getMatchValue().split("/");
+//        String action = servletMapping[servletMapping.length - 1];
 
         PrintWriter writer = resp.getWriter();
         Template template = templateProvider.getTemplate(getServletContext(), "bike-servlet-template.ftlh");
@@ -36,13 +39,13 @@ public class BikeServlet extends HttpServlet {
         Map<String, Object> mapWithCountryNames = new HashMap<>();
         mapWithCountryNames.put("root", countryMap);
 
-
+//        String chosenCountry = req.getP
+//        Map<String, City> cityMap = citySearch.getMapOfCitiesForCountry()
 
         try {
             template.process(mapWithCountryNames, writer);
         } catch (TemplateException e) {
             e.printStackTrace();
         }
-
     }
 }
