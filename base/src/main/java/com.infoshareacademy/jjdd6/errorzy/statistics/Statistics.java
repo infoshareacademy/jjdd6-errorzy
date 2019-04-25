@@ -10,7 +10,7 @@ import java.util.List;
 import java.util.stream.Collectors;
 
 public class Statistics {
-    public static List<Country> statisticsForCountry(String countryNm) throws JAXBException {
+    public static List<Country> statisticsForCountry(String countryNm) {
         CountrySearch findCountry = new CountrySearch();
         List<Country> countries = findCountry.getCountries();
 
