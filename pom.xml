@@ -38,6 +38,11 @@
             <version>RELEASE</version>
         </dependency>
         <dependency>
+            <groupId>javax</groupId>
+            <artifactId>javaee-api</artifactId>
+            <version>8.0</version>
+        </dependency>
+        <dependency>
             <groupId>com.sun.xml.bind</groupId>
             <artifactId>jaxb-impl</artifactId>
             <version>RELEASE</version>

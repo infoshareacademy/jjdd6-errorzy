@@ -2,25 +2,27 @@ package com.infoshareacademy.jjdd6.errorzy.xmlunmarshaller;
 
 import com.infoshareacademy.jjdd6.errorzy.Country;
 
-import javax.xml.bind.JAXBException;
+import javax.ejb.Stateless;
 import java.util.List;
 import java.util.Map;
 import java.util.TreeMap;
 import java.util.stream.Collectors;
 
+@Stateless
 public class CountrySearch {
 
     private XmlUnmarshaller xmlUnmarshaller = new XmlUnmarshaller();
 
-    public List<Country> getCountries() throws JAXBException {
+    public List<Country> getCountries() {
 
-        return xmlUnmarshaller.getMarkerlist().getCountryList()
+        String path = this.getClass().getResource("/nextbike-live.xml").getPath();
+        return xmlUnmarshaller.getMarkersList(path).getCountryList()
                 .stream()
                 .distinct()
                 .collect(Collectors.toList());
     }
 
-    public Map<String, Country> getMapOfCountries() throws JAXBException {
+    public Map<String, Country> getMapOfCountries() {
         Map<String, Country> countryMap = new TreeMap<>();
 
         for (Country country : getCountries()) {
