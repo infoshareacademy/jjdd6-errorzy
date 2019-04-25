@@ -36,6 +36,8 @@ public class BikeServlet extends HttpServlet {
         Map<String, Object> mapWithCountryNames = new HashMap<>();
         mapWithCountryNames.put("root", countryMap);
 
+
+
         try {
             template.process(mapWithCountryNames, writer);
         } catch (TemplateException e) {

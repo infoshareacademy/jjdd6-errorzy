@@ -7,7 +7,7 @@
 <body>
 <#list root?keys as key>
     <ol>
-        <li><a href="/url">${key}</a></li>
+        <li><a href="/${key}">${key}</a></li>
     </ol>
 </#list>
 </body>
