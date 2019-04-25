@@ -1,7 +1,6 @@
 package servlet;
 
-import com.infoshareacademy.jjdd6.errorzy.City;
-import com.infoshareacademy.jjdd6.menu.CitiesPrinterRunner;
+import com.infoshareacademy.jjdd6.listOfPlaces.CityPrinter;
 
 import javax.inject.Inject;
 import javax.servlet.ServletException;
@@ -10,23 +9,21 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
-import java.util.List;
+import java.util.HashMap;
+import java.util.Map;
 
 @WebServlet("/show-city-list")
 public class ShowCityListServlet extends HttpServlet {
+    @Inject
+    CityPrinter cityPrinter;
+
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        resp.getWriter().println("ERRORZY RULES!");
-    }
 
-    @Inject
-    CitiesPrinterRunner citiesPrinterRunner;
+        Map<String, Object> model = new HashMap<>();
+        String templateName = "city-list.ftlh";
 
-    private void findAll(HttpServletRequest req, HttpServletResponse resp) throws IOException {
-        final List<City> result = computerDao.findAll();
-        LOG.info("Found {} objects", result.size());
-        for (Computer p : result) {
-            resp.getWriter().write(p.toString() + "\n");
-        }
+//        resp.getWriter().println("<h1>CITY LIST</h1>");
+//        resp.getWriter().println();
     }
 }
