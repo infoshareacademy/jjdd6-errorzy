@@ -1,9 +1,6 @@
 package com.infoshareacademy.jjdd6.errorzy.upload;
-
-import com.infoshareacademy.jjdd6.errorzy.web.UploadServlet;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
-
 import javax.enterprise.context.RequestScoped;
 import javax.servlet.http.Part;
 import java.io.File;
@@ -18,7 +15,7 @@ public class FileUploadProcessorBean {
 
     private static final String SETTINGS_FILE = "settings.properties";
 
-    private static final Logger LOGGER = LogManager.getLogger(UploadServlet.class.getName());
+    private static final Logger LOGGER = LogManager.getLogger(FileUploadProcessorBean.class.getName());
 
     public File uploadFile(Part filePart) throws IOException {
         String fileName = Paths.get(filePart.getSubmittedFileName()).getFileName().toString();
@@ -34,7 +31,7 @@ public class FileUploadProcessorBean {
 
         fileContent.close();
 
-        LOGGER.info("File has been saved  " + file.toPath() + file.length());
+        LOGGER.info("File has been saved  " + file.toPath() + " and size file is " + file.length());
 
         return file;
     }
