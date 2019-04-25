@@ -26,10 +26,10 @@ public class UploadServlet extends HttpServlet {
     private static final Logger LOGGER = LogManager.getLogger(UploadServlet.class.getName());
 
     @Inject
-    TemplateProvider templateProvider;
+    private TemplateProvider templateProvider;
 
     @Inject
-    FileUploadProcessorBean fileUploadProcessorBean;
+    private FileUploadProcessorBean fileUploadProcessorBean;
 
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
