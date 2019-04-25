@@ -1,4 +1,4 @@
-package servlet;
+package com.infoshareacademy.jjdd6.errorzy.web;
 
 import com.infoshareacademy.jjdd6.errorzy.Country;
 import com.infoshareacademy.jjdd6.errorzy.xmlunmarshaller.CountrySearch;

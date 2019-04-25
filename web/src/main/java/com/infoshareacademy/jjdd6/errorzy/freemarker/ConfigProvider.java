@@ -1,4 +1,4 @@
-package freemarker;
+package com.infoshareacademy.jjdd6.errorzy.freemarker;
 
 import freemarker.template.Configuration;
 import freemarker.template.TemplateExceptionHandler;
