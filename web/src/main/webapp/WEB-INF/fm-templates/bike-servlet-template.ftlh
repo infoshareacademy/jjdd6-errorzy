@@ -5,10 +5,16 @@
     <title>Bike finder</title>
 </head>
 <body>
-<#list root?keys as key>
-    <ol>
-        <li><a href="/bike-servlet/${key}">${key}</a></li>
-    </ol>
-</#list>
+
+<#if root??>
+    <select>
+        <#list root?keys as key>
+            <option value"${key}">${key}</option>
+        </#list>
+    </select>
+</#if>
+
+
+
 </body>
 </html>
