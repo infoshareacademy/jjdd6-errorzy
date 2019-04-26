@@ -10,7 +10,7 @@ import java.util.List;
 import java.util.stream.Collectors;
 
 public class Statistics {
-    public static List<Country> statisticsForCountry(String countryNm) {
+    public static int getStatisticsForCountry(String countryNm)  {
         CountrySearch findCountry = new CountrySearch();
         List<Country> countries = findCountry.getCountries();
 
@@ -27,11 +27,10 @@ public class Statistics {
                         .stream())
                 .collect(Collectors.toList());
 
-        System.out.println(places.size());
-        return countries;
+        return places.size();
     }
 
-    public static List<City> statisticsForCities(String cityNm) throws JAXBException {
+    public static int statisticsForCities(String cityNm) throws JAXBException {
         CitySearch findCity = new CitySearch();
         List<City> cities = findCity.getCities();
         List<Place> places = cities
@@ -41,7 +40,7 @@ public class Statistics {
                         .stream())
                 .collect(Collectors.toList());
 
-        System.out.println(places.size());
-        return cities;
+
+        return places.size();
     }
 }
