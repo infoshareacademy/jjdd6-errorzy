@@ -1,5 +1,7 @@
 package com.infoshareacademy.jjdd6.errorzy.web;
 import com.infoshareacademy.jjdd6.errorzy.statistics.Statistics;
+import com.infoshareacademy.jjdd6.errorzy.statistics.StatisticsValidator;
+
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -21,7 +23,11 @@ public class StatisticsServlet extends HttpServlet {
         if (city == null)
         resp.getWriter().println(Statistics.getStatisticsForCountry(country));
         // Walidator czy to co jest w countr i city czy istnieje w bazie
-
+        boolean cityResult = StatisticsValidator.checkIfCityExists(city);
+        boolean countryResult = StatisticsValidator.checkIfCountryExists(country);
+        if(!(cityResult && countryResult)) {
+            throw new IllegalStateException("Nie ma next bajka tutaj!!!!!!@");
+        }
         //czy miasto nalezy do panstwa
         //jesli tak to
     //    resp.getWriter().println(Statistics.statisticsForCities(city));
