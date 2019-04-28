@@ -1,8 +1,14 @@
 package com.infoshareacademy.jjdd6.errorzy.web;
 
+import com.infoshareacademy.jjdd6.errorzy.Bike;
+import com.infoshareacademy.jjdd6.errorzy.City;
 import com.infoshareacademy.jjdd6.errorzy.Country;
+import com.infoshareacademy.jjdd6.errorzy.Place;
 import com.infoshareacademy.jjdd6.errorzy.freemarker.TemplateProvider;
+import com.infoshareacademy.jjdd6.errorzy.xmlunmarshaller.BikeSearch;
+import com.infoshareacademy.jjdd6.errorzy.xmlunmarshaller.CitySearch;
 import com.infoshareacademy.jjdd6.errorzy.xmlunmarshaller.CountrySearch;
+import com.infoshareacademy.jjdd6.errorzy.xmlunmarshaller.PlaceSearch;
 import freemarker.template.Template;
 import freemarker.template.TemplateException;
 
@@ -20,8 +26,18 @@ import java.util.Map;
 @WebServlet("/bike-servlet/*")
 public class BikeServlet extends HttpServlet {
 
+
     @Inject
     private CountrySearch countrySearch;
+
+    @Inject
+    private CitySearch citySearch;
+
+    @Inject
+    private PlaceSearch placeSearch;
+
+    @Inject
+    private BikeSearch bikeSearch;
 
     @Inject
     private TemplateProvider templateProvider;
@@ -29,21 +45,43 @@ public class BikeServlet extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 
-//        String[] servletMapping = req.getHttpServletMapping().getMatchValue().split("/");
-//        String action = servletMapping[servletMapping.length - 1];
-
-        PrintWriter writer = resp.getWriter();
         Template template = templateProvider.getTemplate(getServletContext(), "bike-servlet-template.ftlh");
+        PrintWriter writer = resp.getWriter();
 
-        Map<String, Country> countryMap = countrySearch.getMapOfCountries();
-        Map<String, Object> mapWithCountryNames = new HashMap<>();
-        mapWithCountryNames.put("root", countryMap);
+        if (!(req.getParameter("country") == null)) {
 
-//        String chosenCountry = req.getP
-//        Map<String, City> cityMap = citySearch.getMapOfCitiesForCountry()
+            Map<String, City> cityMap = citySearch.getMapOfCitiesForCountry(req.getParameter("country"));
+            Map<String, Object> mapWithCityNames = new HashMap<>();
+            mapWithCityNames.put("cityRoot", cityMap);
+            processTemplate(writer, template, mapWithCityNames);
 
+
+        } else if (!(req.getParameter("city") == null)) {
+
+            Map<String, Place> placeMap = placeSearch.getMapOfPlaces(req.getParameter("city"));
+            Map<String, Object> mapWithPlaceNames = new HashMap<>();
+            mapWithPlaceNames.put("placeRoot", placeMap);
+            mapWithPlaceNames.put("cityName", req.getParameter("city"));
+            processTemplate(writer, template, mapWithPlaceNames);
+
+        } else if (!(req.getParameter("place") == null)) {
+
+            Map<String, Bike> bikeMap = bikeSearch.getMapOfBikesForPlace(req.getParameter("place"));
+            Map<String, Object> mapWithBikeNames = new HashMap<>();
+            mapWithBikeNames.put("bikeRoot", bikeMap);
+            processTemplate(writer, template, mapWithBikeNames);
+        } else {
+
+            Map<String, Country> countryMap = countrySearch.getMapOfCountries();
+            Map<String, Object> mapWithCountryNames = new HashMap<>();
+            mapWithCountryNames.put("countryRoot", countryMap);
+            processTemplate(writer, template, mapWithCountryNames);
+        }
+    }
+
+    private void processTemplate(PrintWriter writer, Template template, Map<String, Object> templateMap) throws IOException {
         try {
-            template.process(mapWithCountryNames, writer);
+            template.process(templateMap, writer);
         } catch (TemplateException e) {
             e.printStackTrace();
         }

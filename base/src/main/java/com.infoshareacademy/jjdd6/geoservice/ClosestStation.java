@@ -3,7 +3,6 @@ package com.infoshareacademy.jjdd6.geoservice;
 import com.infoshareacademy.jjdd6.errorzy.Place;
 import com.infoshareacademy.jjdd6.errorzy.xmlunmarshaller.PlaceSearch;
 
-import javax.xml.bind.JAXBException;
 import java.util.List;
 
 import static java.lang.Math.sqrt;
@@ -28,12 +27,7 @@ public class ClosestStation {
     }
 
     public Place findTheClosestPlace(double lat, double lng) {
-        List<Place> placeList = null;
-        try {
-            placeList = placeSearch.getPlaces();
-        } catch (JAXBException e) {
-            e.printStackTrace();
-        }
+        List<Place> placeList = placeSearch.getPlaces();
         Place closestPlace = placeList.get(0);
         double distanceToClosestStation = Double.MAX_VALUE;
         for (Place place : placeList) {
