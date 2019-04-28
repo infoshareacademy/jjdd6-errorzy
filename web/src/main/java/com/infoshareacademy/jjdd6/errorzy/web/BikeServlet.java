@@ -11,6 +11,8 @@ import com.infoshareacademy.jjdd6.errorzy.xmlunmarshaller.CountrySearch;
 import com.infoshareacademy.jjdd6.errorzy.xmlunmarshaller.PlaceSearch;
 import freemarker.template.Template;
 import freemarker.template.TemplateException;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 
 import javax.inject.Inject;
 import javax.servlet.ServletException;
@@ -26,6 +28,7 @@ import java.util.Map;
 @WebServlet("/bike-servlet/*")
 public class BikeServlet extends HttpServlet {
 
+    private static final Logger LOGGER = LogManager.getLogger(BikeServlet.class.getName());
 
     @Inject
     private CountrySearch countrySearch;
@@ -83,7 +86,7 @@ public class BikeServlet extends HttpServlet {
         try {
             template.process(templateMap, writer);
         } catch (TemplateException e) {
-            e.printStackTrace();
+            LOGGER.warn("Template Not Found :" + e);
         }
     }
 }
