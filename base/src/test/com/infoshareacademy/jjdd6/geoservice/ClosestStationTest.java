@@ -40,6 +40,14 @@ class ClosestStationTest {
     }
 
     @Test
+    void testDistanceBetweenTwoGeoPointsForValidNull() {
+
+        Assertions.assertThat(closestStation.getDistanceBetweenTwoGeoPoints(52.2297, 21.0122, createdMockedList().get(0)))
+                .isNotNaN()
+                .isPositive()
+                .isCloseTo(303.100, Offset.offset(0.01));
+    }
+    @Test
     void testTheClosestPlaceIsCorrect() {
 
         Assertions.assertThat(closestStation.findTheClosestPlace(52.5067, 13.2846, createdMockedList()))

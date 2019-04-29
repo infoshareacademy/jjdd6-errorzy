@@ -24,11 +24,12 @@ public class FindPlaceRunner {
         ClosestStation closestStation = new ClosestStation();
         StationsInMyArea stationsInMyArea = new StationsInMyArea();
         PlaceSearch placeSearch = new PlaceSearch();
+        List<Place> placeList = placeSearch.getPlaces();
 
         double latitude = GetUserInput.getDoubleFromUser("Insert your latitude: ");
         double longitude = GetUserInput.getDoubleFromUser("Insert your longitude: ");
 
-        Place closestPlace = closestStation.findTheClosestPlace(latitude, longitude, placeSearch.getPlaces());
+        Place closestPlace = closestStation.findTheClosestPlace(latitude, longitude, placeList);
         double distanceToClosestPlace = kilometersToMeters(applicationProperties,
                 closestStation.getDistanceBetweenTwoGeoPoints(latitude, longitude, closestPlace));
 
@@ -40,7 +41,7 @@ public class FindPlaceRunner {
                 chooseFindClosestStation(applicationProperties, closestPlace, distanceToClosestPlace);
                 break;
             case 2:
-                chooseStationsInMyArea(stationsInMyArea, latitude, longitude);
+                chooseStationsInMyArea(stationsInMyArea, latitude, longitude, placeList);
                 break;
             default:
                 System.out.println("There is no such option.");
@@ -54,11 +55,11 @@ public class FindPlaceRunner {
                 distance, applicationProperties.getDistanceUnit()));
     }
 
-    private static void chooseStationsInMyArea(StationsInMyArea stationsInMyArea, double latitude, double longitude) {
+    private static void chooseStationsInMyArea(StationsInMyArea stationsInMyArea, double latitude, double longitude, List<Place> placeList) {
         double distanceInKm = GetUserInput.getDoubleFromUser("You are interested in station in distance of (km): ");
-        List<Place> listStationsInArea = stationsInMyArea.findStationsWithinRadius(latitude, longitude, distanceInKm);
+        List<Place> listStationsInArea = stationsInMyArea.findStationsWithinRadius(latitude, longitude, distanceInKm, placeList);
 
-        System.out.println("There are: " + stationsInMyArea.getNumberOfStationsWithinRadius(listStationsInArea) +
+        System.out.println("There are: " + listStationsInArea.size() +
                 " stations in vicinity of " + distanceInKm + " km");
 
         listStationsInArea.stream()
