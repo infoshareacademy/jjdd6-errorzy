@@ -1,13 +1,13 @@
 package com.infoshareacademy.jjdd6.menu;
 
 import com.infoshareacademy.jjdd6.errorzy.Place;
+import com.infoshareacademy.jjdd6.errorzy.xmlunmarshaller.PlaceSearch;
 import com.infoshareacademy.jjdd6.geoservice.ClosestStation;
 import com.infoshareacademy.jjdd6.geoservice.StationsInMyArea;
 import com.infoshareacademy.jjdd6.properties.ApplicationProperties;
 import com.infoshareacademy.jjdd6.userinput.GetUserInput;
 
 import java.io.IOException;
-import java.text.DecimalFormat;
 import java.util.List;
 
 public class FindPlaceRunner {
@@ -23,11 +23,12 @@ public class FindPlaceRunner {
 
         ClosestStation closestStation = new ClosestStation();
         StationsInMyArea stationsInMyArea = new StationsInMyArea();
+        PlaceSearch placeSearch = new PlaceSearch();
 
         double latitude = GetUserInput.getDoubleFromUser("Insert your latitude: ");
         double longitude = GetUserInput.getDoubleFromUser("Insert your longitude: ");
 
-        Place closestPlace = closestStation.findTheClosestPlace(latitude, longitude);
+        Place closestPlace = closestStation.findTheClosestPlace(latitude, longitude, placeSearch.getPlaces());
         double distanceToClosestPlace = kilometersToMeters(applicationProperties,
                 closestStation.getDistanceBetweenTwoGeoPoints(latitude, longitude, closestPlace));
 
@@ -50,7 +51,7 @@ public class FindPlaceRunner {
 
     private static void chooseFindClosestStation(ApplicationProperties applicationProperties, Place closestPlace, double distance) {
         System.out.println(String.format("The closest bike stand is %s, you are %.3f %s from it.", closestPlace.getName(),
-                 distance, applicationProperties.getDistanceUnit()));
+                distance, applicationProperties.getDistanceUnit()));
     }
 
     private static void chooseStationsInMyArea(StationsInMyArea stationsInMyArea, double latitude, double longitude) {
