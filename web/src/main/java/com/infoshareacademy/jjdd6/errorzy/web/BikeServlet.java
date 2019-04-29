@@ -48,42 +48,40 @@ public class BikeServlet extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 
-        Template template = templateProvider.getTemplate(getServletContext(), "bike-servlet-template.ftlh");
         PrintWriter writer = resp.getWriter();
 
         if (!(req.getParameter("country") == null)) {
 
             Map<String, City> cityMap = citySearch.getMapOfCitiesForCountry(req.getParameter("country"));
-            Map<String, Object> mapWithCityNames = new HashMap<>();
-            mapWithCityNames.put("cityRoot", cityMap);
-            processTemplate(writer, template, mapWithCityNames);
-
-
+            createRootMap(writer, cityMap, "cityRoot");
         } else if (!(req.getParameter("city") == null)) {
 
             Map<String, Place> placeMap = placeSearch.getMapOfPlaces(req.getParameter("city"));
-            Map<String, Object> mapWithPlaceNames = new HashMap<>();
-            mapWithPlaceNames.put("placeRoot", placeMap);
-            mapWithPlaceNames.put("cityName", req.getParameter("city"));
-            processTemplate(writer, template, mapWithPlaceNames);
-
+            createRootMap(writer, placeMap, "placeRoot");
         } else if (!(req.getParameter("place") == null)) {
 
             Map<String, Bike> bikeMap = bikeSearch.getMapOfBikesForPlace(req.getParameter("place"));
-            Map<String, Object> mapWithBikeNames = new HashMap<>();
-            mapWithBikeNames.put("bikeRoot", bikeMap);
-            processTemplate(writer, template, mapWithBikeNames);
+            createRootMap(writer, bikeMap, "bikeRoot");
         } else {
 
             Map<String, Country> countryMap = countrySearch.getMapOfCountries();
-            Map<String, Object> mapWithCountryNames = new HashMap<>();
-            mapWithCountryNames.put("countryRoot", countryMap);
-            processTemplate(writer, template, mapWithCountryNames);
+            createRootMap(writer, countryMap, "countryRoot");
         }
     }
 
-    private void processTemplate(PrintWriter writer, Template template, Map<String, Object> templateMap) throws IOException {
+    private void createRootMap(PrintWriter writer, Object mapWithBikeData, String rootName) {
+        Map<String, Object> mapForFreemarker = new HashMap<>();
+        mapForFreemarker.put(rootName, mapWithBikeData);
         try {
+            processTemplate(writer, mapForFreemarker);
+        } catch (IOException e) {
+            LOGGER.warn("None map found :" + e);
+        }
+    }
+
+    private void processTemplate(PrintWriter writer, Map<String, Object> templateMap) throws IOException {
+        try {
+            Template template = templateProvider.getTemplate(getServletContext(), "bike-servlet-template.ftlh");
             template.process(templateMap, writer);
         } catch (TemplateException e) {
             LOGGER.warn("Template Not Found :" + e);
