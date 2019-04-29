@@ -7,10 +7,8 @@ import com.infoshareacademy.jjdd6.errorzy.xmlunmarshaller.CitySearch;
 import com.infoshareacademy.jjdd6.errorzy.xmlunmarshaller.CountrySearch;
 import com.infoshareacademy.jjdd6.errorzy.xmlunmarshaller.PlaceSearch;
 import com.infoshareacademy.jjdd6.userinput.GetUserInput;
-
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
-
 
 import javax.xml.bind.JAXBException;
 import java.util.Map;
@@ -22,7 +20,6 @@ public class FindBikeRunner {
 
     private static final Logger LOGGER = LogManager.getLogger(InsideMenu.class.getName());
 
-
     public void run() {
 
         try {
@@ -30,6 +27,7 @@ public class FindBikeRunner {
             Map<String, Country> countryMap = countrySearch.getMapOfCountries();
             countryMap.keySet().forEach(System.out::println);
             System.out.println();
+
             String chosenCountry = GetUserInput.getStringFromUser("Choose a country: ");
             printCitiesForCountry(countryMap, chosenCountry);
 

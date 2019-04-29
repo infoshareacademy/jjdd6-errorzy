@@ -15,7 +15,7 @@ public class CountrySearch {
 
     public List<Country> getCountries() {
 
-        String path = this.getClass().getResource("/nextbike-live.xml").getPath();
+        String path = "/tmp/nextbike-live.xml";
         return xmlUnmarshaller.getMarkersList(path).getCountryList()
                 .stream()
                 .distinct()
