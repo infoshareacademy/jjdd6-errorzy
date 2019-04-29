@@ -31,7 +31,7 @@ public class StatisticsServlet extends HttpServlet {
         //czy miasto nalezy do panstwa
         //jesli tak to
     //    resp.getWriter().println(Statistics.statisticsForCities(city));
-        ;
+       // ;
 
 
      //   resp.getWriter().println(statistics.statisticsForCities(city).size());
