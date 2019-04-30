@@ -26,8 +26,7 @@ public class ClosestStation {
         return distanceInKm;
     }
 
-    public Place findTheClosestPlace(double lat, double lng) {
-        List<Place> placeList = placeSearch.getPlaces();
+    public Place findTheClosestPlace(double lat, double lng, List<Place> placeList) {
         Place closestPlace = placeList.get(0);
         double distanceToClosestStation = Double.MAX_VALUE;
         for (Place place : placeList) {
