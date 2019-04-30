@@ -23,12 +23,12 @@
 
 
 <#if cityRoot??>
+    <p> In this country is <#if statisticRoot??>
+            <#list statisticRoot?keys as key>
+                ${key}
+            </#list>
+        </#if> places. For show number of places for city from this country, choice name of city from list.</p>
     <form action="/number-of-places" method="get" enctype="application/x-www-form-urlencoded" accept-charset="UTF-16">
-        <p> In this country is <#if statisticRoot??>
-                <#list statisticRoot?keys as key>
-                    ${key}
-                </#list>
-            </#if> places. For show number of places for city from this country, choice name of city from list.</p>
         <select name="city">
             <#list cityRoot?keys as key>
                 <option value"${key}?lower_case">${key}</option>
@@ -36,12 +36,11 @@
             <input type="submit" value="Show number of places for city.">
         </select>
     </form>
-    <#assign city = cityName?values>
-
 </#if>
+
+
 <#if placesRoot??>
-<form action="/number-of-places" method="get" enctype="application/x-www-form-urlencoded" accept-charset="UTF-16">
-    <p> In this city is <#if statisticRoot??>
+    <p> In this city is  <#if statisticRoot??>
             <#list statisticRoot?keys as key>
                 ${key}
             </#list>

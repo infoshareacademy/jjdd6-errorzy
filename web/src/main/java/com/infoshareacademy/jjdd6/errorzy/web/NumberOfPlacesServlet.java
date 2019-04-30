@@ -55,16 +55,17 @@ public class NumberOfPlacesServlet extends HttpServlet {
             mapWithIntegerForCity.put(numberOfCities, null);
             createRootMap(writer, numberOfCities, "placesRoot", "statisticsRoot", mapWithIntegerForCity);
 
-        } else {
+       } else {
 
-            Map<String, Country> countryMap = countrySearch.getMapOfCountries();
-            Integer numberOfCities = statistics.getStatisticsForCities(req.getParameter("city"));
-            Map<Integer, Object> mapWithIntegerForCity = new HashMap<>();
-            mapWithIntegerForCity.put(numberOfCities, null);
-            createRootMap(writer, countryMap, "countryRoot", "statisticsRoot", mapWithIntegerForCity);
+        Map<String, Country> countryMap = countrySearch.getMapOfCountries();
+        Integer numberOfCities = statistics.getStatisticsForCities(req.getParameter("city"));
+        Map<Integer, Object> mapWithIntegerForCity = new HashMap<>();
+        mapWithIntegerForCity.put(numberOfCities, null);
+        createRootMap(writer, countryMap, "countryRoot", "statisticsRoot", mapWithIntegerForCity);
 
-        }
     }
+
+}
 
 
     private void createRootMap(PrintWriter writer, Object mapWithPlacesData, String rootName, String statisticRoot, Object mapWithInt) {
