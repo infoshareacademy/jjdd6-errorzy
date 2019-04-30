@@ -16,7 +16,7 @@ public class StationsInMyArea {
 
         if (placeList == null) {
             LOGGER.warn("Place list is empty." );
-            throw new NullPointerException("Place list is empty");
+            throw new IllegalArgumentException("Place list is empty");
         }
 
         return placeList.stream()
