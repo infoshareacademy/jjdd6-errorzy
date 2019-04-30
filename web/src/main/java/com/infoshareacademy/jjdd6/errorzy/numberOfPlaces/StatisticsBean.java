@@ -1,4 +1,4 @@
-package com.infoshareacademy.jjdd6.errorzy.statistics;
+package com.infoshareacademy.jjdd6.errorzy.numberOfPlaces;
 
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
@@ -11,6 +11,6 @@ public class StatisticsBean {
 
     private static final Logger LOGGER = LogManager.getLogger(StatisticsBean.class.getName());
 
-//    public Statistics statisticsParameter ()
-//}
+
+
 }

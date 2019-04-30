@@ -1,7 +1,7 @@
 package com.infoshareacademy.jjdd6.menu;
 import com.infoshareacademy.jjdd6.listOfPlaces.CityPrinter;
 import com.infoshareacademy.jjdd6.listOfPlaces.CountryPrinter;
-import com.infoshareacademy.jjdd6.errorzy.statistics.Statistics;
+import com.infoshareacademy.jjdd6.errorzy.numberOfPlaces.Statistics;
 import com.infoshareacademy.jjdd6.userinput.GetUserInput;
 import javax.xml.bind.JAXBException;
 
@@ -29,7 +29,7 @@ public class ShowStatisticsRunner {
                 System.out.println("Show Statistics for Cities");
                 listOfCities.printCityList();
                 cityName = GetUserInput.getStringFromUser("Insert your City name from list");
-                int cityResult = statistics.statisticsForCities(cityName);
+                int cityResult = statistics.getStatisticsForCities(cityName);
                 System.out.println(cityResult);
                 break;
             default:

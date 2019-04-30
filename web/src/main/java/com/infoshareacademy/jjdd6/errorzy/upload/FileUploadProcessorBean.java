@@ -1,6 +1,8 @@
 package com.infoshareacademy.jjdd6.errorzy.upload;
+
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
+
 import javax.enterprise.context.RequestScoped;
 import javax.servlet.http.Part;
 import java.io.File;
@@ -23,7 +25,7 @@ public class FileUploadProcessorBean {
 
         File file = new File(getUploadFilesPath() + fileName);
 
-       Files.deleteIfExists(file.toPath());
+        Files.deleteIfExists(file.toPath());
 
         InputStream fileContent = filePart.getInputStream();
 
@@ -35,6 +37,7 @@ public class FileUploadProcessorBean {
 
         return file;
     }
+
     public String getUploadFilesPath() throws IOException {
         Properties settings = new Properties();
         settings.load(Thread.currentThread()

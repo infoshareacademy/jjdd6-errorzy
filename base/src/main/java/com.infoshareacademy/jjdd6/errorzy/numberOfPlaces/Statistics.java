@@ -1,11 +1,10 @@
-package com.infoshareacademy.jjdd6.errorzy.statistics;
+package com.infoshareacademy.jjdd6.errorzy.numberOfPlaces;
 import com.infoshareacademy.jjdd6.errorzy.City;
 import com.infoshareacademy.jjdd6.errorzy.Country;
 import com.infoshareacademy.jjdd6.errorzy.Place;
 import com.infoshareacademy.jjdd6.errorzy.xmlunmarshaller.CitySearch;
 import com.infoshareacademy.jjdd6.errorzy.xmlunmarshaller.CountrySearch;
 
-import javax.xml.bind.JAXBException;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -30,7 +29,7 @@ public class Statistics {
         return places.size();
     }
 
-    public static int statisticsForCities(String cityNm) throws JAXBException {
+    public static int getStatisticsForCities(String cityNm)  {
         CitySearch findCity = new CitySearch();
         List<City> cities = findCity.getCities();
         List<Place> places = cities
