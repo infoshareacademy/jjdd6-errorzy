@@ -1,8 +1,9 @@
 package com.infoshareacademy.jjdd6.errorzy.web;
 
+import com.infoshareacademy.jjdd6.errorzy.City;
 import com.infoshareacademy.jjdd6.errorzy.Country;
 import com.infoshareacademy.jjdd6.errorzy.freemarker.TemplateProvider;
-import com.infoshareacademy.jjdd6.errorzy.numberOfPlaces.NumberOfPlacesValidator;
+import com.infoshareacademy.jjdd6.errorzy.numberOfPlaces.Statistics;
 import com.infoshareacademy.jjdd6.errorzy.xmlunmarshaller.CitySearch;
 import com.infoshareacademy.jjdd6.errorzy.xmlunmarshaller.CountrySearch;
 import freemarker.template.Template;
@@ -28,46 +29,67 @@ public class NumberOfPlacesServlet extends HttpServlet {
     @Inject
     private TemplateProvider templateProvider;
     @Inject
-    private NumberOfPlacesValidator statisticsValidator;
-    @Inject
     private CitySearch citySearch;
     @Inject
     private CountrySearch countrySearch;
+    @Inject
+    private Statistics statistics;
 
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws IOException {
 
-        Template template = templateProvider.getTemplate(getServletContext(), "number-of-places-servlet.ftlh");
+
         PrintWriter writer = resp.getWriter();
 
-        String countryName = req.getParameter("country");
-        String cityName = req.getParameter("city");
-        boolean cityResult = statisticsValidator.checkIfCityExists(cityName);
-        boolean countryResult = statisticsValidator.checkIfCountryExists(countryName);
+        if (!(req.getParameter("country") == null)) {
 
-        //Map<String, City> cityMap = citySearch.getMapOfCitiesForCountry(req.getParameter("country"));
-        Map<String, Country> countryMap = countrySearch.getMapOfCountries();
-        Map<String, Object> mapOfCountries = new HashMap<>();
-        mapOfCountries.put("countryRoot", countryMap);
+            Map<String, City> cityMap = citySearch.getMapOfCitiesForCountry(req.getParameter("country"));
+            Integer numberOfCountries = statistics.getStatisticsForCountry(req.getParameter("country"));
+            Map<Integer, Object> mapWithIntegerForCountry = new HashMap<>();
+            mapWithIntegerForCountry.put(numberOfCountries, null);
+            createRootMap(writer, cityMap, "cityRoot", "statisticRoot", mapWithIntegerForCountry);
+        } else if (!(req.getParameter("city") == null)) {
 
-//        if (!(cityResult || countryResult)) {
-//            throw new IllegalStateException("Sorry, there is no nextbike in this country or city");
-//        } else if (cityName == null) {
-//            resp.getWriter().println(Statistics.getStatisticsForCountry(countryName));
-//
-//        } else if (countryName == null) {
-//            resp.getWriter().println(Statistics.getStatisticsForCities(cityName));
-//
-//        } else if (countryName == null && cityName == null) {
-//            throw new IllegalStateException("Sorry, you must enter the name of the country or city");
-//
-//        }
+            Integer numberOfCities = statistics.getStatisticsForCities(req.getParameter("city"));
+            Map<Integer, Object> mapWithIntegerForCity = new HashMap<>();
+            mapWithIntegerForCity.put(numberOfCities, null);
+            createRootMap(writer, numberOfCities, "placesRoot", "statisticsRoot", mapWithIntegerForCity);
 
+        } else {
+
+            Map<String, Country> countryMap = countrySearch.getMapOfCountries();
+            Integer numberOfCities = statistics.getStatisticsForCities(req.getParameter("city"));
+            Map<Integer, Object> mapWithIntegerForCity = new HashMap<>();
+            mapWithIntegerForCity.put(numberOfCities, null);
+            createRootMap(writer, countryMap, "countryRoot", "statisticsRoot", mapWithIntegerForCity);
+
+        }
+    }
+
+
+    private void createRootMap(PrintWriter writer, Object mapWithPlacesData, String rootName, String statisticRoot, Object mapWithInt) {
+        Map<String, Object> mapForFreemarker = new HashMap<>();
+        mapForFreemarker.put(rootName, mapWithPlacesData);
+        mapForFreemarker.put(statisticRoot, mapWithInt);
         try {
-            template.process(mapOfCountries, writer);
+            processTemplate(writer, mapForFreemarker);
+        } catch (IOException e) {
+            LOGGER.warn("Map Not Found :" + e);
+        }
+    }
+
+    private void processTemplate(PrintWriter writer, Map<String, Object> templateMap) throws IOException {
+        try {
+            Template template = templateProvider.getTemplate(getServletContext(), "number-of-places-servlet.ftlh");
+            template.process(templateMap, writer);
         } catch (TemplateException e) {
-            e.printStackTrace();
+            LOGGER.warn("Template Not Found :" + e);
         }
     }
 
 }
+
+
+
+
+

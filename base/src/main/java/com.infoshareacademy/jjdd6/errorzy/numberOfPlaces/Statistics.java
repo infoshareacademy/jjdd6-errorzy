@@ -5,9 +5,11 @@ import com.infoshareacademy.jjdd6.errorzy.Place;
 import com.infoshareacademy.jjdd6.errorzy.xmlunmarshaller.CitySearch;
 import com.infoshareacademy.jjdd6.errorzy.xmlunmarshaller.CountrySearch;
 
+import javax.ejb.Stateless;
 import java.util.List;
 import java.util.stream.Collectors;
 
+@Stateless
 public class Statistics {
     public static int getStatisticsForCountry(String countryNm)  {
         CountrySearch findCountry = new CountrySearch();
