@@ -23,8 +23,8 @@
 
 
 <#if cityRoot??>
-    <p> In this country is <#if statisticRoot??>
-            <#list statisticRoot?keys as key>
+    <p> In this country is <#if countryStatisticRoot??>
+            <#list countryStatisticRoot?keys as key>
                 ${key}
             </#list>
         </#if> places. For show number of places for city from this country, choice name of city from list.</p>
@@ -40,8 +40,8 @@
 
 
 <#if placesRoot??>
-    <p> In this city is  <#if statisticRoot??>
-            <#list statisticRoot?keys as key>
+    <p> In this city is  <#if cityStatisticRoot??>
+            <#list cityStatisticRoot?keys as key>
                 ${key}
             </#list>
         </#if> places.</p>

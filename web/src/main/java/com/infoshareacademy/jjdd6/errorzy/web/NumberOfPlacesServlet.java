@@ -47,31 +47,29 @@ public class NumberOfPlacesServlet extends HttpServlet {
             Integer numberOfCountries = statistics.getStatisticsForCountry(req.getParameter("country"));
             Map<Integer, Object> mapWithIntegerForCountry = new HashMap<>();
             mapWithIntegerForCountry.put(numberOfCountries, null);
-            createRootMap(writer, cityMap, "cityRoot", "statisticRoot", mapWithIntegerForCountry);
+            createRootMap(writer, cityMap, "cityRoot", "countryStatisticRoot", mapWithIntegerForCountry, null, null);
         } else if (!(req.getParameter("city") == null)) {
 
             Integer numberOfCities = statistics.getStatisticsForCities(req.getParameter("city"));
             Map<Integer, Object> mapWithIntegerForCity = new HashMap<>();
             mapWithIntegerForCity.put(numberOfCities, null);
-            createRootMap(writer, numberOfCities, "placesRoot", "statisticsRoot", mapWithIntegerForCity);
+            createRootMap(writer, numberOfCities, "placesRoot",null, null, "cityStatisticsRoot", mapWithIntegerForCity);
 
-       } else {
+        } else {
 
-        Map<String, Country> countryMap = countrySearch.getMapOfCountries();
-        Integer numberOfCities = statistics.getStatisticsForCities(req.getParameter("city"));
-        Map<Integer, Object> mapWithIntegerForCity = new HashMap<>();
-        mapWithIntegerForCity.put(numberOfCities, null);
-        createRootMap(writer, countryMap, "countryRoot", "statisticsRoot", mapWithIntegerForCity);
+            Map<String, Country> countryMap = countrySearch.getMapOfCountries();
+            createRootMap(writer, countryMap, "countryRoot", null, null, null, null);
+
+        }
+
 
     }
 
-}
-
-
-    private void createRootMap(PrintWriter writer, Object mapWithPlacesData, String rootName, String statisticRoot, Object mapWithInt) {
+    private void createRootMap(PrintWriter writer, Object mapWithPlacesData, String rootName, String countryStatisticRoot, Object mapWithInt, String cityStatisticRoot, Object mapWithNewInt) {
         Map<String, Object> mapForFreemarker = new HashMap<>();
         mapForFreemarker.put(rootName, mapWithPlacesData);
-        mapForFreemarker.put(statisticRoot, mapWithInt);
+        mapForFreemarker.put(countryStatisticRoot, mapWithInt);
+        mapForFreemarker.put(cityStatisticRoot,mapWithNewInt);
         try {
             processTemplate(writer, mapForFreemarker);
         } catch (IOException e) {
