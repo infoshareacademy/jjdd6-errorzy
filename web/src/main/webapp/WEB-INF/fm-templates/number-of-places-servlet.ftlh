@@ -23,11 +23,7 @@
 
 
 <#if cityRoot??>
-    <p> In this country is <#if countryStatisticRoot??>
-            <#list countryStatisticRoot?keys as key>
-                ${key}
-            </#list>
-        </#if> places. For show number of places for city from this country, choice name of city from list.</p>
+    <p> In this country is ${numberOfCountries!} places. For show number of places for city from this country, choice name of city from list.</p>
     <form action="/number-of-places" method="get" enctype="application/x-www-form-urlencoded" accept-charset="UTF-16">
         <select name="city">
             <#list cityRoot?keys as key>
@@ -39,12 +35,8 @@
 </#if>
 
 
-<#if placesRoot??>
-    <p> In this city is  <#if cityStatisticRoot??>
-            <#list cityStatisticRoot?keys as key>
-                ${key}
-            </#list>
-        </#if> places.</p>
+<#if numberOfCities??>
+    <p> In this city is  ${numberOfCities!} places.</p>
 
 </#if>
 </body>

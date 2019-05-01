@@ -39,32 +39,31 @@ public class NumberOfPlacesServlet extends HttpServlet {
 
         PrintWriter writer = resp.getWriter();
 
+        Map<String, Object> mapForFreemarker = new HashMap<>();
+
         if (!(req.getParameter("country") == null)) {
 
             Map<String, City> cityMap = citySearch.getMapOfCitiesForCountry(req.getParameter("country"));
             Integer numberOfCountries = statistics.getStatisticsForCountry(req.getParameter("country"));
-            Map<Integer, Object> mapWithIntegerForCountry = new HashMap<>();
-            mapWithIntegerForCountry.put(numberOfCountries, numberOfCountries);
-            createRootMap(writer, cityMap, "cityRoot", "countryStatisticRoot", mapWithIntegerForCountry, null, null);
+            mapForFreemarker.put("numberOfCountries", numberOfCountries);
+            mapForFreemarker.put("cityRoot", cityMap);
+            createRootMap(writer, mapForFreemarker);
         } else if (!(req.getParameter("city") == null)) {
 
             Integer numberOfCities = statistics.getStatisticsForCities(req.getParameter("city"));
-            Map<Integer, Object> mapWithIntegerForCity = new HashMap<>();
-            mapWithIntegerForCity.put(numberOfCities, numberOfCities);
-            createRootMap(writer, numberOfCities, "placesRoot", null, null, "cityStatisticRoot", mapWithIntegerForCity);
+            mapForFreemarker.put("numberOfCities", numberOfCities);
+            createRootMap(writer, mapForFreemarker);
 
         } else {
 
             Map<String, Country> countryMap = countrySearch.getMapOfCountries();
-            createRootMap(writer, countryMap, "countryRoot", null, null, null, null);
+            mapForFreemarker.put("countryRoot", countryMap);
+            createRootMap(writer, mapForFreemarker);
         }
     }
 
-    private void createRootMap(PrintWriter writer, Object mapWithPlacesData, String rootName, String countryStatisticRoot, Object mapWithInt, String cityStatisticRoot, Object mapWithNewInt) {
-        Map<String, Object> mapForFreemarker = new HashMap<>();
-        mapForFreemarker.put(rootName, mapWithPlacesData);
-        mapForFreemarker.put(countryStatisticRoot, mapWithInt);
-        mapForFreemarker.put(cityStatisticRoot, mapWithNewInt);
+    private void createRootMap(PrintWriter writer, Map<String, Object> mapForFreemarker) {
+
         try {
             processTemplate(writer, mapForFreemarker);
         } catch (IOException e) {
