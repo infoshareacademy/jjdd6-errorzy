@@ -16,14 +16,15 @@
                 <option value"${key}?lower_case">${key}</option>
             </#list>
             <input type="submit" value="Show list of cities">
-            </select>
+        </select>
     </form>
-    </#if>
+</#if>
 
 
 
 <#if cityRoot??>
-    <p> In this country is ${numberOfCountries!} places. For show number of places for city from this country, choice name of city from list.</p>
+    <p> In this country is ${numberOfCountries!} places. For show number of places for city from this country, choice
+        name of city from list.</p>
     <form action="/number-of-places" method="get" enctype="application/x-www-form-urlencoded" accept-charset="UTF-16">
         <select name="city">
             <#list cityRoot?keys as key>
@@ -36,7 +37,7 @@
 
 
 <#if numberOfCities??>
-    <p> In this city is  ${numberOfCities!} places.</p>
+    <p> In this city is ${numberOfCities!} places.</p>
 
 </#if>
 </body>

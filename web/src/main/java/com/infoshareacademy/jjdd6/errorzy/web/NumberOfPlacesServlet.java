@@ -61,16 +61,13 @@ public class NumberOfPlacesServlet extends HttpServlet {
             createRootMap(writer, mapForFreemarker);
         }
     }
-
     private void createRootMap(PrintWriter writer, Map<String, Object> mapForFreemarker) {
-
         try {
             processTemplate(writer, mapForFreemarker);
         } catch (IOException e) {
             LOGGER.warn("Map Not Found :" + e);
         }
     }
-
     private void processTemplate(PrintWriter writer, Map<String, Object> templateMap) throws IOException {
         try {
             Template template = templateProvider.getTemplate(getServletContext(), "number-of-places-servlet.ftlh");
