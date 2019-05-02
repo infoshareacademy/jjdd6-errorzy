@@ -6,8 +6,8 @@ import javax.persistence.Id;
 import javax.persistence.Table;
 
 @Entity
-@Table(name = "CREATED_PROMOTED_POINTS")
-public class CreationPromotedPoint {
+@Table(name = "PROMOTED_POINTS")
+public class PromotedPointModel {
 
     @Id
     @Column(name = "added_point_id")
@@ -21,7 +21,7 @@ public class CreationPromotedPoint {
         this.addingPointId = addingPointId;
     }
 
-    public CreationPromotedPoint(int addingPointId) {
+    public PromotedPointModel(int addingPointId) {
         this.addingPointId = addingPointId;
     }
 }
