@@ -5,6 +5,8 @@ import com.infoshareacademy.jjdd6.errorzy.freemarker.TemplateProvider;
 import com.infoshareacademy.jjdd6.geoservice.ClosestStation;
 import freemarker.template.Template;
 import freemarker.template.TemplateException;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 
 import javax.inject.Inject;
 import javax.servlet.ServletException;
@@ -20,10 +22,12 @@ import java.util.Map;
 @WebServlet("/closestPlace-servlet")
 public class ClosestStationServlet extends HttpServlet {
 
+    private static final Logger LOGGER = LogManager.getLogger(ClosestStationServlet.class.getName());
+
     @Inject
-    TemplateProvider templateProvider;
+    private TemplateProvider templateProvider;
     @Inject
-    ClosestStation closestStation;
+    private ClosestStation closestStation;
 
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
@@ -37,6 +41,7 @@ public class ClosestStationServlet extends HttpServlet {
                 Double.parseDouble(req.getParameter("lng"));
             } catch (NumberFormatException e) {
                 resp.getWriter().println("Wrong input! It should be double!");
+                LOGGER.info("Wrong input inserted(Should be Double).");
                 return;
             }
 
@@ -59,7 +64,7 @@ public class ClosestStationServlet extends HttpServlet {
         try {
             template.process(model, writer);
         } catch (TemplateException e) {
-            e.printStackTrace();
+            LOGGER.warn("Template not found: " + e);
         }
     }
 }
