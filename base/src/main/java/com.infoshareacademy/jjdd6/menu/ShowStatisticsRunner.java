@@ -1,7 +1,7 @@
 package com.infoshareacademy.jjdd6.menu;
 import com.infoshareacademy.jjdd6.listOfPlaces.CityPrinter;
 import com.infoshareacademy.jjdd6.listOfPlaces.CountryPrinter;
-import com.infoshareacademy.jjdd6.errorzy.statistics.Statistics;
+import com.infoshareacademy.jjdd6.errorzy.numberOfPlaces.Statistics;
 import com.infoshareacademy.jjdd6.userinput.GetUserInput;
 import javax.xml.bind.JAXBException;
 
@@ -22,16 +22,18 @@ public class ShowStatisticsRunner {
                 System.out.println("List of available Country");
                 listOfCountries.printCountryList();
                 countryName = GetUserInput.getStringFromUser("Insert your Country name from list");
-                statistics.statisticsForCountry(countryName);
+                int countryResult = statistics.getStatisticsForCountry(countryName);
+                System.out.println(countryResult);
                 break;
             case 2:
                 System.out.println("Show Statistics for Cities");
                 listOfCities.printCityList();
                 cityName = GetUserInput.getStringFromUser("Insert your City name from list");
-                statistics.statisticsForCities(cityName);
+                int cityResult = statistics.getStatisticsForCities(cityName);
+                System.out.println(cityResult);
                 break;
             default:
-                System.out.println("Sory bad input try again");
+                System.out.println("Sorry bad input try again");
         }
         InsideMenu.run();
     }
