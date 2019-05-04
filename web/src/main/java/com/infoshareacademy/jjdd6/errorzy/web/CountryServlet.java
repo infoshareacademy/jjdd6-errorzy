@@ -4,6 +4,7 @@ import com.infoshareacademy.jjdd6.errorzy.Country;
 import com.infoshareacademy.jjdd6.errorzy.freemarker.TemplateProvider;
 import com.infoshareacademy.jjdd6.errorzy.xmlunmarshaller.CountrySearch;
 import freemarker.template.Template;
+import freemarker.template.TemplateException;
 
 import javax.inject.Inject;
 import javax.servlet.ServletException;
@@ -12,26 +13,33 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
+import java.io.Writer;
+import java.util.HashMap;
 import java.util.Map;
 
-
-@WebServlet("/countries")
+@WebServlet("/country-servlet")
 public class CountryServlet extends HttpServlet {
 
     @Inject
     private CountrySearch countrySearch;
-    TemplateProvider templateProvider;
+    @Inject
+    private TemplateProvider templateProvider;
 
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+        Writer writer = resp.getWriter();
+        Template template = templateProvider.getTemplate(getServletContext(), "country-servlet.ftlh");
 
-        Template template = templateProvider.getTemplate(getServletContext(), "countries.ftlh");
-        template.dump(resp.getWriter());
+        Map<String, Country> countryMap = countrySearch.getMapOfCountries();
+        Map<String, Object> model = new HashMap<>();
 
-        int i = 1;
-        for (Map.Entry<String, Country> entry : countrySearch.getMapOfCountries().entrySet()) {
-            resp.getWriter().println(i + ". " + entry.getKey());
-            i++;
+        model.put("modelData", countryMap);
+
+        try {
+            template.process(model, writer);
+        } catch (TemplateException e) {
+            e.printStackTrace();
         }
+
     }
 }

@@ -49,7 +49,7 @@
                                 Find the nearest station</button></a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="countries.ftlh"><button type="button" class="btn btn-primary btn-lg">
+                        <a class="nav-link" href="country-servlet.ftlh"><button type="button" class="btn btn-primary btn-lg">
                                 Show all countries</button></a>
                     </li>
                     <li class="nav-item">
