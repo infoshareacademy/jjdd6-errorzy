@@ -23,7 +23,7 @@ public class Menu {
         System.out.println("     2. Find the nearest place");
         System.out.println("     3. Show list of Countries");
         System.out.println("     4. Show list of Cities");
-        System.out.println("     5. Show statistics for Countries or Cities");
+        System.out.println("     5. Show number of places for Countries or Cities");
         System.out.println();
         System.out.println("     To start available options select number ");
         System.out.println("     To exit press 0 ");
@@ -81,7 +81,7 @@ public class Menu {
                     CitiesPrinterRunner.run();
                     break;
                 case 5:
-                    System.out.println("Show statistics for Countries or Cities");
+                    System.out.println("Show number of places for Countries or Cities");
                     ShowStatisticsRunner.run();
                     break;
                 case 0:
