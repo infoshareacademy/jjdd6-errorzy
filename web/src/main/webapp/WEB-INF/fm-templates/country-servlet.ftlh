@@ -130,24 +130,6 @@
         </div>
     </div>
     </div>
-
-    <table class="table">
-        <thead>
-        <tr>
-            <th scope="col">#</th>
-            <th scope="col">Value</th>
-        </tr>
-        </thead>
-        <tbody>
-        <#list rootData as value>
-            <tr>
-                <th scope="row">${value?index+1}</th>
-                <td>${value}</td>
-            </tr>
-        </#list>
-        </tbody>
-    </table>
-
 </main>
 <!--Footer-->
 <footer>
