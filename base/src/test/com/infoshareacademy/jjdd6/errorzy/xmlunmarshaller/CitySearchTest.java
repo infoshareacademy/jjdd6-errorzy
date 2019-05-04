@@ -8,7 +8,9 @@ import org.mockito.Mock;
 import org.mockito.junit.jupiter.MockitoExtension;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.mockito.Mockito.when;
@@ -41,6 +43,19 @@ class CitySearchTest {
 
     @Test
     void testIfGetMapOfCitiesForCountry() {
+        //Given
+        when(citySearch.getMapOfCitiesForCountry("Poland")).thenReturn(mockedCityMap());
+        //When
+        Map<String, City> result = citySearch.getMapOfCitiesForCountry("Poland");
+        //Then
+        assertThat(result).hasSize(3).containsKeys("Warszawa", "Gdansk", "Gdynia");
+    }
 
+    private Map<String, City> mockedCityMap() {
+        Map<String, City> createdMockedMap = new HashMap<>();
+        createdMockedMap.put("Warszawa", new City(12.2223, 83.2322, "Warszawa", null));
+        createdMockedMap.put("Gdynia", new City(54.2223, 18.2322, "Gdynia", null));
+        createdMockedMap.put("Gdansk", new City(54.2223, 34.2322, "Gdansk", null));
+        return createdMockedMap;
     }
 }
