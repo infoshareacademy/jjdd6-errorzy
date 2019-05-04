@@ -36,17 +36,18 @@ public class ClosestStationServlet extends HttpServlet {
         Map<String, Object> model = new HashMap<>();
 
         if (!(req.getParameter("lat") == (null) && req.getParameter("lng") == (null))) {
+            double lat;
+            double lng;
+
             try {
-                Double.parseDouble(req.getParameter("lat"));
-                Double.parseDouble(req.getParameter("lng"));
+                lat = Double.parseDouble(req.getParameter("lat"));
+                lng = Double.parseDouble(req.getParameter("lng"));
             } catch (NumberFormatException e) {
                 resp.getWriter().println("Wrong input! It should be double!");
                 LOGGER.info("Wrong input inserted(Should be Double).");
                 return;
             }
 
-            double lat = Double.parseDouble(req.getParameter("lat"));
-            double lng = Double.parseDouble(req.getParameter("lng"));
             String distanceUnit = req.getParameter("unit");
 
             Place closestPlace = closestStation.findTheClosestPlace(lat, lng);
