@@ -14,14 +14,13 @@ public class PlaceSearch {
     private CitySearch citySearch = new CitySearch();
 
     public List<Place> getPlaces() {
-
         return citySearch.getCities().stream()
                 .map(city -> city.getPlaceList())
                 .flatMap(places -> places.stream())
                 .collect(Collectors.toList());
     }
 
-    public List<Place> getPlacesForCity(String cityName) {
+    private List<Place> getPlacesForCity(String cityName) {
         return citySearch.getCities().stream()
                 .filter(x -> x.getName().equals(cityName))
                 .flatMap(c -> c.getPlaceList().stream())
