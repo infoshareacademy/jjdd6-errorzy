@@ -19,8 +19,6 @@ import static org.mockito.Mockito.when;
 class CountrySearchTest {
 
     @Mock
-    private XmlUnmarshaller xmlUnmarshaller;
-    @InjectMocks
     private CountrySearch countrySearch;
     private List<Country> mockedList;
 
@@ -39,12 +37,8 @@ class CountrySearchTest {
     @Test
     void testIfCountriesGetProperly() {
         //Given
-        when(xmlUnmarshaller.getMarkersList(path).getCountryList()).thenReturn(List.of(
-                new Country(null, 54.12312, 54.11231, "Country1"),
-                new Country(null, 12.121, 92.2121, "Country2"),
-                new Country(null, -12.214212, 22.3131, "Country3"),
-                new Country(null, 173.1231, -123.31231, "Country4"),
-                new Country(null, 12.2223, 83.2322, "Country5")));
+//        when(xmlUnmarshaller.getMarkersList(path).getCountryList()).thenReturn(mockedList);
+        when(countrySearch.getCountries()).thenReturn(mockedList);
         //When
         List<Country> result = countrySearch.getCountries();
         //Then
