@@ -102,31 +102,31 @@
     <div class="container">
         <div class="card border-0 shadow my-5 bg-dark">
             <div class="card-body p-5">
-                <div style="height: 500px">
-                    <center>
-                        <h2 class="text-light">All countries available:</h2>
-                        <#if modelData??>
-                            <table class="table table-striped text-light col-lg-4">
-                                <br>
-                                <tbody>
-                                <thead>
-                                <tr>
-                                    <th scope="col">#</th>
-                                    <th scope="col">Country</th>
-                                </tr>
-                                </thead>
-                                <#list modelData?keys as key>
+                <#--                <div style="height: 500px">-->
+                <center>
+                    <h2 class="text-light">All countries available:</h2>
+                    <#if modelData??>
+                        <table class="table table-striped text-light col-lg-4">
+                            <br>
+                            <tbody>
+                            <thead>
+                            <tr>
+                                <th scope="col">#</th>
+                                <th scope="col">Country</th>
+                            </tr>
+                            </thead>
+                            <#list modelData?keys as key>
                                 <tr>
                                     <th scope="row">${key?index+1}</th>
                                     <td>${key}</td>
                                 </tr>
-                                </#list>
-                                </tbody>
-                            </table>
-                        </#if>
-                    </center>
-                </div>
+                            </#list>
+                            </tbody>
+                        </table>
+                    </#if>
+                </center>
             </div>
+            <#--            </div>-->
         </div>
     </div>
     </div>
