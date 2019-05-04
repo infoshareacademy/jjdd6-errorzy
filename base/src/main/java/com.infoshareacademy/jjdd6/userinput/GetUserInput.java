@@ -1,8 +1,9 @@
 package com.infoshareacademy.jjdd6.userinput;
 
-import java.util.Scanner;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
+
+import java.util.Scanner;
 
 public class GetUserInput {
     private static final Logger LOGGER = LogManager.getLogger(GetUserInput.class.getName());
@@ -17,7 +18,7 @@ public class GetUserInput {
         System.out.println(displayText);
         while (true) {
             try {
-                LOGGER.info("User picked option number: "+ displayText + ".");
+                LOGGER.info("User picked option number: " + displayText + ".");
                 return Integer.parseInt(scanner.nextLine());
             } catch (NumberFormatException e) {
                 System.out.println("Wrong input! Please insert again.");
