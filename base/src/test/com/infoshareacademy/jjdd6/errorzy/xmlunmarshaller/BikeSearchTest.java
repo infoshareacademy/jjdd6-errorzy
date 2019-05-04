@@ -19,7 +19,7 @@ class BikeSearchTest {
     BikeSearch bikeSearch;
 
     @Test
-    void getMapOfBikesForPlace() {
+    void testIfGetMapOfBikesForPlaceProperlyExecuted() {
         //Given
         when(bikeSearch.getMapOfBikesForPlace("PlaceTest")).thenReturn(mockedBikeMap());
         //When
