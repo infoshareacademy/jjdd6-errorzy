@@ -1,16 +1,17 @@
 package com.infoshareacademy.jjdd6.errorzy.xmlunmarshaller;
 
 import com.infoshareacademy.jjdd6.errorzy.Country;
+import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
-import org.mockito.InjectMocks;
 import org.mockito.Mock;
-import org.mockito.Mockito;
 import org.mockito.junit.jupiter.MockitoExtension;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.mockito.Mockito.when;
@@ -37,7 +38,6 @@ class CountrySearchTest {
     @Test
     void testIfCountriesGetProperly() {
         //Given
-//        when(xmlUnmarshaller.getMarkersList(path).getCountryList()).thenReturn(mockedList);
         when(countrySearch.getCountries()).thenReturn(mockedList);
         //When
         List<Country> result = countrySearch.getCountries();
@@ -48,10 +48,20 @@ class CountrySearchTest {
     @Test
     void testIfMapOfCountriesHasProperSize() {
         //Given
-
+        when(countrySearch.getMapOfCountries()).thenReturn(mockedCountryMap());
         //When
-
+        Map<String, Country> result = countrySearch.getMapOfCountries();
         //Then
+        assertThat(result).hasSize(3)
+                .containsKeys("Poland", "Germany", "Italy")
+                .doesNotContainKeys("Russia");
     }
 
+    private Map<String, Country> mockedCountryMap() {
+        Map<String, Country> createdMockedMap = new HashMap<>();
+        createdMockedMap.put("Germany", new Country(null, 12.2223, 83.2322, "Germany"));
+        createdMockedMap.put("Poland", new Country(null, 54.2223, 18.2322, "Poland"));
+        createdMockedMap.put("Italy", new Country(null, 54.2223, 34.2322, "Italy"));
+        return createdMockedMap;
+    }
 }

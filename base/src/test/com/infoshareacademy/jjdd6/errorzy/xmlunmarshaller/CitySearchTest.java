@@ -1,25 +1,22 @@
 package com.infoshareacademy.jjdd6.errorzy.xmlunmarshaller;
 
 import com.infoshareacademy.jjdd6.errorzy.City;
-import com.infoshareacademy.jjdd6.errorzy.Country;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
-import org.mockito.InjectMocks;
+import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.Mock;
+import org.mockito.junit.jupiter.MockitoExtension;
 
 import java.util.ArrayList;
-import java.util.Collection;
 import java.util.List;
-import java.util.stream.Collectors;
 
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.mockito.Mockito.when;
 
+@ExtendWith(MockitoExtension.class)
 class CitySearchTest {
 
     @Mock
-    CountrySearch countrySearch;
-    @InjectMocks
     CitySearch citySearch;
 
     private List<City> mockedList;
@@ -33,14 +30,9 @@ class CitySearchTest {
     }
 
     @Test
-    void getCities() {
+    void testIfGetCitiesProperly() {
         //Given
-        when(countrySearch.getCountries()
-                .stream()
-                .map(Country::getCityList)
-                .flatMap(Collection::stream)
-                .distinct().collect(Collectors.toList())
-        ).thenReturn(mockedList);
+        when(citySearch.getCities()).thenReturn(mockedList);
         //When
         List<City> result = citySearch.getCities();
         //Then
@@ -48,6 +40,7 @@ class CitySearchTest {
     }
 
     @Test
-    void getMapOfCitiesForCountry() {
+    void testIfGetMapOfCitiesForCountry() {
+
     }
 }
