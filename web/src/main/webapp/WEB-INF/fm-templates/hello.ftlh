@@ -4,7 +4,9 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
-    <script src="https://code.jquery.com/jquery-1.10.2.js"></script>
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
+            integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
+            crossorigin="anonymous"></script>
 
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
           integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
@@ -16,6 +18,37 @@
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
             integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
             crossorigin="anonymous"></script>
+
+    <script>function bs_input_file() {
+            $(".input-file").before(
+                function () {
+                    if (!$(this).prev().hasClass('input-ghost')) {
+                        var element = $("<input type='file' class='input-ghost' style='visibility:hidden; height:0'>");
+                        element.attr("name", $(this).attr("name"));
+                        element.change(function () {
+                            element.next(element).find('input').val((element.val()).split('\\').pop());
+                        });
+                        $(this).find("button.btn-choose").click(function () {
+                            element.click();
+                        });
+                        $(this).find("button.btn-reset").click(function () {
+                            element.val(null);
+                            $(this).parents(".input-file").find('input').val('');
+                        });
+                        $(this).find('input').css("cursor", "pointer");
+                        $(this).find('input').mousedown(function () {
+                            $(this).parents('.input-file').prev().click();
+                            return false;
+                        });
+                        return element;
+                    }
+                }
+            );
+        }
+
+        $(function () {
+            bs_input_file();
+        });</script>
     <style>
         @import url('https://fonts.googleapis.com/css?family=Playfair+Display|Roboto:500');
     </style>
@@ -46,34 +79,51 @@
 
 
                 <li class="nav-item">
-                    <a class="nav-link" href="/bike-servlet"><button type="button" class="btn btn-primary btn-lg">
-                            Find free bike</button></a>
+                    <a class="nav-link" href="/bike-servlet">
+                        <button type="button" class="btn btn-primary btn-lg">
+                            Find free bike
+                        </button>
+                    </a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="neareststation.html"><button type="button" class="btn btn-primary btn-lg">
-                            Find the nearest station</button></a>
+                    <a class="nav-link" href="/closestPlace-servlet">
+                        <button type="button" class="btn btn-primary btn-lg">
+                            Find the nearest station
+                        </button>
+                    </a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="/country-servlet"><button type="button" class="btn btn-primary btn-lg">
-                            Show all countries</button></a>
+                    <a class="nav-link" href="/country-servlet">
+                        <button type="button" class="btn btn-primary btn-lg">
+                            Show all countries
+                        </button>
+                    </a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="listofcities.html"><button type="button" class="btn btn-primary btn-lg">
-                            Show list of cities</button></a>
+                    <a class="nav-link" href="listofcities.html">
+                        <button type="button" class="btn btn-primary btn-lg">
+                            Show list of cities
+                        </button>
+                    </a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="statistics.html"><button type="button" class="btn btn-primary btn-lg">
-                            Show statistics</button></a>
+                    <a class="nav-link" href="statistics.html">
+                        <button type="button" class="btn btn-primary btn-lg">
+                            Show statistics
+                        </button>
+                    </a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="contact.html"><button type="button" class="btn btn-primary btn-lg">
-                            Contact us</button></a>
+                    <a class="nav-link" href="contact.html">
+                        <button type="button" class="btn btn-primary btn-lg">
+                            Contact us
+                        </button>
+                    </a>
                 </li>
             </ul>
         </div>
     </div>
 </nav>
-
 
 
 <!-- Page Content -->
@@ -90,15 +140,29 @@
                         </h1>
                         <br>
                         <br>
-
-                    </center>
+                        <form method="post" action="/upload" enctype="multipart/form-data">
+                            <!-- COMPONENT START -->
+                            <div class="form-group">
+                                <div class="input-group input-file" name="file">
+                                    <input type="text" class="form-control" placeholder='Choose an xml file...'
+                                           name="file"/>
+                                    <span class="input-group-btn">
+        		                    <button class="btn btn-light btn-choose" type="button">Choose</button>
+    		                    </span>
+                                </div>
+                            </div>
+                            <!-- COMPONENT END -->
+                            <div class="form-group">
+                                <button type="submit" class="btn btn-primary" name="save">Submit</button>
+                                <button type="reset" class="btn btn-danger">Reset</button>
+                            </div>
+                        </form>
                 </div>
             </div>
         </div>
     </div>
+    </center>
 </main>
-
-
 
 <!--Footer-->
 <footer>

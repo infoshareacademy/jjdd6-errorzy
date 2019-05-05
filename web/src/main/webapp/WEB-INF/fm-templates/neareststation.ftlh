@@ -27,7 +27,7 @@
     <nav class="navbar navbar-expand-lg navbar-dark bg-dark static-top mb-4 shadow-lg">
         <div class="container">
 
-            <a class="navbar-brand" href="index.html"><strong class="googlefont">RvR</strong></a>
+            <a class="navbar-brand" href="../../../../../HTMLsheets/index.html"><strong class="googlefont">RvЯ</strong></a>
 
 
             <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive"
@@ -47,35 +47,35 @@
                         </a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="neareststation.ftlh">
+                        <a class="nav-link" href="#">
                             <button type="button" class="btn btn-primary btn-lg">
                                 Find the nearest station
                             </button>
                         </a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="#">
+                        <a class="nav-link" href="../../../../../HTMLsheets/showallcountries.html">
                             <button type="button" class="btn btn-primary btn-lg">
                                 Show all countries
                             </button>
                         </a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="listofcities.html">
+                        <a class="nav-link" href="../../../../../HTMLsheets/listofcities.html">
                             <button type="button" class="btn btn-primary btn-lg">
                                 Show list of cities
                             </button>
                         </a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="statistics.html">
+                        <a class="nav-link" href="../../../../../HTMLsheets/statistics.html">
                             <button type="button" class="btn btn-primary btn-lg">
                                 Show statistics
                             </button>
                         </a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="contact.html">
+                        <a class="nav-link" href="../../../../../HTMLsheets/contact.html">
                             <button type="button" class="btn btn-primary btn-lg">
                                 Contact us
                             </button>
@@ -102,33 +102,59 @@
     <div class="container">
         <div class="card border-0 shadow my-5 bg-dark">
             <div class="card-body p-5">
-                <#--                <div style="height: 500px">-->
+
                 <center>
-                    <h2 class="text-light">All countries available:</h2>
-                    <#if modelData??>
-                        <table class="table table-striped text-light col-lg-4">
-                            <br>
-                            <tbody>
-                            <thead>
-                            <tr>
-                                <th scope="col">#</th>
-                                <th scope="col">Country</th>
-                            </tr>
-                            </thead>
-                            <#list modelData?keys as key>
-                                <tr>
-                                    <th scope="row">${key?index+1}</th>
-                                    <td>${key}</td>
-                                </tr>
-                            </#list>
-                            </tbody>
-                        </table>
-                    </#if>
+                    <h1 class="text-light">
+                        <strong>Find the nearest bike station <br></strong>
+                    </h1>
+                    <br>
+                    <br>
+
                 </center>
+                <form class="col-md-12" action="/closestPlace-servlet" method="get">
+                    <div class="form-group col-md-6">
+                        <label for="latInput"> <font color="white">Lateral coordinates:</font></label>
+                        <input type="number" step="any" class="form-control" id="latInput" name="lat">
+                        <small id="latHelp" class="form-text text-muted">Insert lateral coordinates (i.e.
+                            54.5188900), North with '+', South with'-'
+                        </small>
+                    </div>
+
+                    <div class="form-group col-md-6">
+                        <label for="lngInput"> <font color="white"> Longitudinal coordinates:</font></label>
+                        <input type="number" step="any" class="form-control" id="lngInput" name="lng">
+                        <small id="lngHelp" class="form-text text-muted">Insert longitudinal coordinates (i.e.
+                            18.5318800), East with '+', West with'-'
+                        </small>
+                    </div>
+
+                    <div class="form-group col-md-6">
+                        <p><font color="white"> Distance unit:</font><br></p>
+                        <div class="custom-control custom-radio custom-control-inline">
+                            <input type="radio" id="kilometersUnit" name="unit" class="custom-control-input"
+                                   value="kilometer" checked="checked">
+                            <label class="custom-control-label" for="kilometersUnit"><font
+                                        color="white">km</font></label>
+                        </div>
+
+                        <div class="custom-control custom-radio custom-control-inline">
+                            <input type="radio" id="meterUnit" name="unit" class="custom-control-input">
+                            <label class="custom-control-label" for="meterUnit"><font
+                                        color="white">m</font></label>
+                        </div>
+                        <br>
+                    </div>
+                    <div class="form-group col">
+                        <button type="submit" class="btn btn-primary">Find</button>
+                    </div>
+                </form>
+
+                <#if place??>
+                    <h2>The closest bike stand is ${place.name}, it is ${distanceToPlace} ${distanceUnit} from you.</h2>
+                </#if>
+
             </div>
-            <#--            </div>-->
         </div>
-    </div>
     </div>
 </main>
 <!--Footer-->
