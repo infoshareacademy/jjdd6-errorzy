@@ -138,7 +138,7 @@
                         </div>
 
                         <div class="custom-control custom-radio custom-control-inline">
-                            <input type="radio" id="meterUnit" name="unit" class="custom-control-input">
+                            <input type="radio" id="meterUnit" name="unit" class="custom-control-input" value="meter">
                             <label class="custom-control-label" for="meterUnit"><font
                                         color="white">m</font></label>
                         </div>
@@ -150,7 +150,7 @@
                 </form>
 
                 <#if place??>
-                    <h2>The closest bike stand is ${place.name}, it is ${distanceToPlace} ${distanceUnit} from you.</h2>
+                    <h5 class="text-light">The closest bike stand is ${place.name}, it is ${distanceToPlace} ${distanceUnit} from you.</h5>
                 </#if>
 
             </div>
