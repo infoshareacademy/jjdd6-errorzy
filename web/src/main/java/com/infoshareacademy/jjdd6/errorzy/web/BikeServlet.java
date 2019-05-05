@@ -81,7 +81,7 @@ public class BikeServlet extends HttpServlet {
 
     private void processTemplate(PrintWriter writer, Map<String, Object> templateMap) throws IOException {
         try {
-            Template template = templateProvider.getTemplate(getServletContext(), "findbike.ftlh");
+            Template template = templateProvider.getTemplate(getServletContext(), "bike-servlet.ftlh");
             template.process(templateMap, writer);
         } catch (TemplateException e) {
             LOGGER.warn("Template Not Found :" + e);

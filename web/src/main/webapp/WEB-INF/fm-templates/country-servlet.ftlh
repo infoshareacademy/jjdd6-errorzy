@@ -40,7 +40,7 @@
 
 
                     <li class="nav-item">
-                        <a class="nav-link" href="findbike.ftlh">
+                        <a class="nav-link" href="bike-servlet.ftlh">
                             <button type="button" class="btn btn-primary btn-lg">
                                 Find free bike
                             </button>
