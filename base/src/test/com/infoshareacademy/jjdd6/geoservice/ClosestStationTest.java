@@ -1,27 +1,33 @@
 package com.infoshareacademy.jjdd6.geoservice;
 
 import com.infoshareacademy.jjdd6.errorzy.Place;
+import com.infoshareacademy.jjdd6.errorzy.xmlunmarshaller.PlaceSearch;
 import org.assertj.core.data.Offset;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
+import org.mockito.InjectMocks;
+import org.mockito.Mock;
 import org.mockito.junit.jupiter.MockitoExtension;
 
 import java.util.ArrayList;
 import java.util.List;
 
 import static org.assertj.core.api.Assertions.assertThat;
+import static org.mockito.Mockito.when;
 
 @ExtendWith(MockitoExtension.class)
 class ClosestStationTest {
 
+    @Mock
+    private PlaceSearch placeSearch;
+    @InjectMocks
     private ClosestStation closestStation;
+
     private List<Place> mockedList;
 
     @BeforeEach
     void setupTest() {
-        closestStation = new ClosestStation();
-
         mockedList = new ArrayList<>();
         mockedList.add(new Place(54.5189, 18.5305, "Gdynia", 0, null));
         mockedList.add(new Place(40.7128, -74.0060, "New York", 0, null));
@@ -38,15 +44,23 @@ class ClosestStationTest {
 
     @Test
     void testTheClosestPlaceIsCorrect() {
+        //Given
+        when(placeSearch.getPlaces()).thenReturn(mockedList);
+        //When
+        Place actualPlace = closestStation.findTheClosestPlace(52.5067, 13.2846);
+        //Then
         Place expectedPlace = mockedList.get(0);
-        Place actualPlace = closestStation.findTheClosestPlace(52.5067, 13.2846, mockedList);
         assertThat(actualPlace).isEqualTo(expectedPlace);
     }
 
     @Test
     void testTheClosestPlaceIsIncorrect() {
+        //Given
+        when(placeSearch.getPlaces()).thenReturn(mockedList);
+        //When
+        Place actualPlace = closestStation.findTheClosestPlace(52.5067, 13.2846);
+        //Then
         Place expectedPlace = mockedList.get(2);
-        Place actualPlace = closestStation.findTheClosestPlace(52.5067, 13.2846, mockedList);
         assertThat(actualPlace).isNotEqualTo(expectedPlace);
     }
 }
