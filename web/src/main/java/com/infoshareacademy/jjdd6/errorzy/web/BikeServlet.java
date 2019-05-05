@@ -59,9 +59,15 @@ public class BikeServlet extends HttpServlet {
             Map<String, Place> placeMap = placeSearch.getMapOfPlaces(req.getParameter("city"));
             createRootMap(writer, placeMap, "placeRoot");
         } else if (!(req.getParameter("place") == null)) {
+            Map<String, Bike> bikeMap;
+            try {
+                bikeMap = bikeSearch.getMapOfBikesForPlace(req.getParameter("place"));
+                createRootMap(writer, bikeMap, "bikeRoot");
+            } catch (Exception e) {
+                LOGGER.warn("Exception caught when loading bikes");
+                resp.setStatus(HttpServletResponse.SC_NOT_FOUND);
+            }
 
-            Map<String, Bike> bikeMap = bikeSearch.getMapOfBikesForPlace(req.getParameter("place"));
-            createRootMap(writer, bikeMap, "bikeRoot");
         } else {
 
             Map<String, Country> countryMap = countrySearch.getMapOfCountries();
