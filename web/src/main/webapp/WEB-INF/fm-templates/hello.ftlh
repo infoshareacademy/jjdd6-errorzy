@@ -80,42 +80,42 @@
 
                 <li class="nav-item">
                     <a class="nav-link" href="/bike-servlet">
-                        <button type="button" class="btn btn-primary btn-lg">
+                        <button type="button" class="btn btn-outline-light">
                             Find free bike
                         </button>
                     </a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link" href="/closestPlace-servlet">
-                        <button type="button" class="btn btn-primary btn-lg">
+                        <button type="button" class="btn btn-outline-light">
                             Find the nearest station
                         </button>
                     </a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link" href="/country-servlet">
-                        <button type="button" class="btn btn-primary btn-lg">
+                        <button type="button" class="btn btn-outline-light">
                             Show all countries
                         </button>
                     </a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link" href="#">
-                        <button type="button" class="btn btn-primary btn-lg">
+                        <button type="button" class="btn btn-outline-light">
                             Show list of cities
                         </button>
                     </a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link" href="#">
-                        <button type="button" class="btn btn-primary btn-lg">
+                        <button type="button" class="btn btn-outline-light">
                             Show statistics
                         </button>
                     </a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link" href="#">
-                        <button type="button" class="btn btn-primary btn-lg">
+                        <button type="button" class="btn btn-outline-light">
                             Contact us
                         </button>
                     </a>
