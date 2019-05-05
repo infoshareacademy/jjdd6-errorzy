@@ -18,7 +18,7 @@
     <style>
         @import url('https://fonts.googleapis.com/css?family=Playfair+Display|Roboto:500');
     </style>
-    <title>Errorzy presents:</title>
+    <title>Errorzy presents</title>
 </head>
 
 <body background="https://wallpapers-house.com/data/out/6/wallpaper2you_109365.jpg">
@@ -28,7 +28,7 @@
     <nav class="navbar navbar-expand-lg navbar-dark bg-dark static-top mb-4 shadow-lg">
         <div class="container">
 
-            <a class="navbar-brand" href="../../../../../HTMLsheets/index.html"><strong class="googlefont">RvЯ</strong></a>
+            <a class="navbar-brand" href="hello.ftlh"><strong class="googlefont">RvЯ</strong></a>
 
 
             <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive"
@@ -41,42 +41,42 @@
 
 
                     <li class="nav-item">
-                        <a class="nav-link" href="#">
+                        <a class="nav-link" href="/bike-servlet">
                             <button type="button" class="btn btn-primary btn-lg">
                                 Find free bike
                             </button>
                         </a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="../../../../../HTMLsheets/neareststation.html">
+                        <a class="nav-link" href="/closestPlace-servlet">
                             <button type="button" class="btn btn-primary btn-lg">
                                 Find the nearest station
                             </button>
                         </a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="../../../../../HTMLsheets/showallcountries.html">
+                        <a class="nav-link" href="/country-servlet">
                             <button type="button" class="btn btn-primary btn-lg">
                                 Show all countries
                             </button>
                         </a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="../../../../../HTMLsheets/listofcities.html">
+                        <a class="nav-link" href="#">
                             <button type="button" class="btn btn-primary btn-lg">
                                 Show list of cities
                             </button>
                         </a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="../../../../../HTMLsheets/statistics.html">
+                        <a class="nav-link" href="#">
                             <button type="button" class="btn btn-primary btn-lg">
                                 Show statistics
                             </button>
                         </a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="../../../../../HTMLsheets/contact.html">
+                        <a class="nav-link" href="#">
                             <button type="button" class="btn btn-primary btn-lg">
                                 Contact us
                             </button>

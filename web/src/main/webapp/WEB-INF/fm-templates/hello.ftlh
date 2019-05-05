@@ -66,7 +66,7 @@
 <nav class="navbar navbar-expand-lg navbar-dark bg-dark static-top mb-4 shadow-lg">
     <div class="container">
 
-        <a class="navbar-brand" href="#"><strong class="googlefont">RvR</strong></a>
+        <a class="navbar-brand" href="hello.ftlh"><strong class="googlefont">RvЯ</strong></a>
 
 
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive"
@@ -100,32 +100,38 @@
                     </a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="listofcities.html">
+                    <a class="nav-link" href="#">
                         <button type="button" class="btn btn-primary btn-lg">
                             Show list of cities
                         </button>
                     </a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="statistics.html">
+                    <a class="nav-link" href="#">
                         <button type="button" class="btn btn-primary btn-lg">
                             Show statistics
                         </button>
                     </a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="contact.html">
+                    <a class="nav-link" href="#">
                         <button type="button" class="btn btn-primary btn-lg">
                             Contact us
                         </button>
                     </a>
+
                 </li>
             </ul>
         </div>
     </div>
 </nav>
+<div id="intro" class="view">
 
+    <div class="mask">
 
+    </div>
+
+</div>
 <!-- Page Content -->
 
 <main>
