@@ -104,9 +104,9 @@
             <div class="card-body p-5">
 
                 <center>
-                    <h1 class="text-light">
+                    <h2 class="text-light">
                         <strong>Find the nearest bike station <br></strong>
-                    </h1>
+                    </h2>
                     <br>
                     <br>
 

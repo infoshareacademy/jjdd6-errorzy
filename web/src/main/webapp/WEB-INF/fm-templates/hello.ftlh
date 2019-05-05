@@ -142,7 +142,7 @@
                 <div style="height: 500px">
                     <center>
                         <h1 class="text-light">
-                            RvR application
+                            RvЯ application
                         </h1>
                         <br>
                         <br>

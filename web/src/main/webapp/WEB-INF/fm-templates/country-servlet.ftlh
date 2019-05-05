@@ -102,9 +102,9 @@
     <div class="container">
         <div class="card border-0 shadow my-5 bg-dark">
             <div class="card-body p-5">
-                <#--                <div style="height: 500px">-->
+
                 <center>
-                    <h2 class="text-light">All countries available:</h2>
+                    <h2 class="text-light">All available countries</h2>
                     <#if modelData??>
                         <table class="table table-striped text-light col-lg-4">
                             <br>

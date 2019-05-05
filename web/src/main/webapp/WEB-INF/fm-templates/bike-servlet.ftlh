@@ -103,30 +103,30 @@
     <div class="container">
         <div class="card border-0 shadow my-5 bg-dark">
             <div class="card-body p-5">
-                <h2 class="text-light">Find your bike</h2>
 
                 <center>
-                <#if countryRoot??>
+                    <h2 class="text-light">Find your bike</h2>
+                    <#if countryRoot??>
 
-                    <table class="table table-striped text-light col-md-4">
-                        <br>
-                        <tbody>
-                        <thead>
-                        <tr>
-                            <th scope="col">#</th>
-                            <th scope="col">Country</th>
-                        </tr>
-                        </thead>
-
-                        <#list countryRoot?keys as key>
+                        <table class="table table-striped text-light col-md-4">
+                            <br>
+                            <tbody>
+                            <thead>
                             <tr>
-                                <td scope="row">${key?index+1}</td>
-                                <td><a href="/bike-servlet?country=${key}" style="color:white">${key}</a></td>
+                                <th scope="col">#</th>
+                                <th scope="col">Country</th>
                             </tr>
-                        </#list>
+                            </thead>
 
-                        </tbody>
-                    </table>
+                            <#list countryRoot?keys as key>
+                                <tr>
+                                    <td scope="row">${key?index+1}</td>
+                                    <td><a href="/bike-servlet?country=${key}" style="color:white">${key}</a></td>
+                                </tr>
+                            </#list>
+
+                            </tbody>
+                        </table>
                     </#if>
 
                     <#if cityRoot??>
