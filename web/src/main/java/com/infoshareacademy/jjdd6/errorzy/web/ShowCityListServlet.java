@@ -1,6 +1,7 @@
-package servlet;
+package com.infoshareacademy.jjdd6.errorzy.web;
 
-import com.infoshareacademy.jjdd6.listOfPlaces.CityPrinter;
+import com.infoshareacademy.jjdd6.errorzy.City;
+import com.infoshareacademy.jjdd6.errorzy.xmlunmarshaller.CitySearch;
 
 import javax.inject.Inject;
 import javax.servlet.ServletException;
@@ -14,16 +15,21 @@ import java.util.Map;
 
 @WebServlet("/show-city-list")
 public class ShowCityListServlet extends HttpServlet {
+
+
+    Map<String, Object> model = new HashMap<>();
+    String templateName = "city-list.ftlh";
+
+
     @Inject
-    CityPrinter cityPrinter;
+    private CitySearch citySearch;
 
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-
-        Map<String, Object> model = new HashMap<>();
-        String templateName = "city-list.ftlh";
-
-//        resp.getWriter().println("<h1>CITY LIST</h1>");
-//        resp.getWriter().println();
+        int i = 1;
+        for (Map.Entry<String, City> entry : citySearch.getMapOfCitiesForCountry().entrySet()) {
+            resp.getWriter().println(i + ". " + entry.getKey());
+            i++;
+        }
     }
 }

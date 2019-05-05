@@ -3,12 +3,12 @@ package com.infoshareacademy.jjdd6.geoservice;
 import com.infoshareacademy.jjdd6.errorzy.Place;
 import com.infoshareacademy.jjdd6.errorzy.xmlunmarshaller.PlaceSearch;
 
-import javax.xml.bind.JAXBException;
+import javax.ejb.Stateless;
 import java.util.List;
 
-import static java.lang.Math.round;
 import static java.lang.Math.sqrt;
 
+@Stateless
 public class ClosestStation {
     public final static double EARTH_RADIUS_IN_METERS = 6371 * 1000;
     private PlaceSearch placeSearch = new PlaceSearch();
@@ -24,19 +24,12 @@ public class ClosestStation {
                 * Math.sin(lngDistance / 2) * Math.sin(lngDistance / 2);
         double c = 2 * Math.atan2(sqrt(a), sqrt(1 - a));
         double distance = EARTH_RADIUS_IN_METERS * c;
-        distance = Math.pow(distance, 2);
-        double roundStepOne = round((sqrt(distance) / 1000.0) * 1000.0);
-        double roundStepTwo = roundStepOne / 1000.0;
-        return roundStepTwo;
+        double distanceInKm = distance / 1000.0;
+        return distanceInKm;
     }
 
     public Place findTheClosestPlace(double lat, double lng) {
-        List<Place> placeList = null;
-        try {
-            placeList = placeSearch.getPlaces();
-        } catch (JAXBException e) {
-            e.printStackTrace();
-        }
+        List<Place> placeList = placeSearch.getPlaces();
         Place closestPlace = placeList.get(0);
         double distanceToClosestStation = Double.MAX_VALUE;
         for (Place place : placeList) {

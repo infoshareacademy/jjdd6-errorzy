@@ -1,13 +1,36 @@
 package com.infoshareacademy.jjdd6.menu;
 
-
 import javax.xml.bind.JAXBException;
 import java.util.Scanner;
 
 public class Menu {
 
+    public static int startApplicationMenu() {
 
-    public static int startAplicationMenu() {
+        displayBikeLogo();
+        displayMenuText();
+
+        Scanner scanner = new Scanner(System.in);
+        return Integer.parseInt(scanner.nextLine());
+    }
+
+    private static void displayMenuText() {
+        System.out.println();
+        System.out.println("     ****************************************");
+        System.out.println("     *                 MENU                 *");
+        System.out.println("     ****************************************");
+        System.out.println("     1. Find free Bike");
+        System.out.println("     2. Find the nearest place");
+        System.out.println("     3. Show list of Countries");
+        System.out.println("     4. Show list of Cities");
+        System.out.println("     5. Show number of places for Countries or Cities");
+        System.out.println();
+        System.out.println("     To start available options select number ");
+        System.out.println("     To exit press 0 ");
+        System.out.println("     Select number ");
+    }
+
+    private static void displayBikeLogo() {
         System.out.println();
         System.out.println();
         System.out.println("                                          $\"   *.      \n" +
@@ -28,23 +51,6 @@ public class Menu {
                 "    %.         z*\"                      ^%.        .r\"\n" +
                 "       \"*==*\"\"                             ^\"*==*\"\"   ");
         System.out.println();
-        System.out.println();
-        System.out.println("     ****************************************");
-        System.out.println("     *                 MENU                 *");
-        System.out.println("     ****************************************");
-        System.out.println("     1. Find free Bike");
-        System.out.println("     2. Find the nearest place");
-        System.out.println("     3. Show list of Countries");
-        System.out.println("     4. Show list of Cities");
-        System.out.println("     5. Show statistics for Countries or Cities");
-        System.out.println();
-        System.out.println("     To start available options select number ");
-        System.out.println("     To exit press 0 ");
-        System.out.println("     Select number ");
-
-
-        Scanner scanner = new Scanner(System.in);
-        return Integer.parseInt(scanner.nextLine());
     }
 
     public static void main(String[] args) throws JAXBException {
@@ -52,7 +58,7 @@ public class Menu {
         int select = -1;
         while (select != 0) {
             try {
-                select = startAplicationMenu();
+                select = startApplicationMenu();
             } catch (NumberFormatException e) {
                 System.err.println("This is not a number!");
             }
@@ -75,7 +81,7 @@ public class Menu {
                     CitiesPrinterRunner.run();
                     break;
                 case 5:
-                    System.out.println("Show statistics for Countries or Cities");
+                    System.out.println("Show number of places for Countries or Cities");
                     ShowStatisticsRunner.run();
                     break;
                 case 0:
