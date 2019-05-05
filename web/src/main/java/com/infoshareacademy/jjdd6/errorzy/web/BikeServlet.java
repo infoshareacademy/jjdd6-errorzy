@@ -47,7 +47,7 @@ public class BikeServlet extends HttpServlet {
 
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-
+        resp.setContentType("text/html;charset=UTF-8");
         PrintWriter writer = resp.getWriter();
 
         if (!(req.getParameter("country") == null)) {
@@ -81,7 +81,7 @@ public class BikeServlet extends HttpServlet {
 
     private void processTemplate(PrintWriter writer, Map<String, Object> templateMap) throws IOException {
         try {
-            Template template = templateProvider.getTemplate(getServletContext(), "bike-servlet-template.ftlh");
+            Template template = templateProvider.getTemplate(getServletContext(), "findbike.ftlh");
             template.process(templateMap, writer);
         } catch (TemplateException e) {
             LOGGER.warn("Template Not Found :" + e);
