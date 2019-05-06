@@ -47,7 +47,7 @@ public class BikeServlet extends HttpServlet {
 
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-
+        resp.setContentType("text/html;charset=UTF-8");
         PrintWriter writer = resp.getWriter();
 
         if (!(req.getParameter("country") == null)) {
@@ -59,9 +59,15 @@ public class BikeServlet extends HttpServlet {
             Map<String, Place> placeMap = placeSearch.getMapOfPlaces(req.getParameter("city"));
             createRootMap(writer, placeMap, "placeRoot");
         } else if (!(req.getParameter("place") == null)) {
+            Map<String, Bike> bikeMap;
+            try {
+                bikeMap = bikeSearch.getMapOfBikesForPlace(req.getParameter("place"));
+                createRootMap(writer, bikeMap, "bikeRoot");
+            } catch (Exception e) {
+                LOGGER.warn("Exception caught when loading bikes");
+                resp.setStatus(HttpServletResponse.SC_NOT_FOUND);
+            }
 
-            Map<String, Bike> bikeMap = bikeSearch.getMapOfBikesForPlace(req.getParameter("place"));
-            createRootMap(writer, bikeMap, "bikeRoot");
         } else {
 
             Map<String, Country> countryMap = countrySearch.getMapOfCountries();
@@ -81,7 +87,7 @@ public class BikeServlet extends HttpServlet {
 
     private void processTemplate(PrintWriter writer, Map<String, Object> templateMap) throws IOException {
         try {
-            Template template = templateProvider.getTemplate(getServletContext(), "bike-servlet-template.ftlh");
+            Template template = templateProvider.getTemplate(getServletContext(), "bike-servlet.ftlh");
             template.process(templateMap, writer);
         } catch (TemplateException e) {
             LOGGER.warn("Template Not Found :" + e);
