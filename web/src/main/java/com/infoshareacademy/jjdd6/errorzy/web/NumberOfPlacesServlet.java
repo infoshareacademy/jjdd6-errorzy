@@ -10,6 +10,7 @@ import freemarker.template.Template;
 import freemarker.template.TemplateException;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
+
 import javax.inject.Inject;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -61,6 +62,7 @@ public class NumberOfPlacesServlet extends HttpServlet {
             createRootMap(writer, mapForFreemarker);
         }
     }
+
     private void createRootMap(PrintWriter writer, Map<String, Object> mapForFreemarker) {
         try {
             processTemplate(writer, mapForFreemarker);
@@ -68,6 +70,7 @@ public class NumberOfPlacesServlet extends HttpServlet {
             LOGGER.warn("Map Not Found :" + e);
         }
     }
+
     private void processTemplate(PrintWriter writer, Map<String, Object> templateMap) throws IOException {
         try {
             Template template = templateProvider.getTemplate(getServletContext(), "number-of-places-servlet.ftlh");

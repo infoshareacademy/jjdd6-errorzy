@@ -5,6 +5,8 @@ import com.infoshareacademy.jjdd6.errorzy.freemarker.TemplateProvider;
 import com.infoshareacademy.jjdd6.errorzy.xmlunmarshaller.CountrySearch;
 import freemarker.template.Template;
 import freemarker.template.TemplateException;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 
 import javax.inject.Inject;
 import javax.servlet.ServletException;
@@ -19,6 +21,8 @@ import java.util.Map;
 
 @WebServlet("/country-servlet")
 public class CountryServlet extends HttpServlet {
+
+    private static final Logger LOGGER = LogManager.getLogger(CountryServlet.class.getName());
 
     @Inject
     private CountrySearch countrySearch;
@@ -39,7 +43,7 @@ public class CountryServlet extends HttpServlet {
         try {
             template.process(model, writer);
         } catch (TemplateException e) {
-            e.printStackTrace();
+            LOGGER.warn("Template not found" + e);
         }
 
     }

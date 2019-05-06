@@ -15,7 +15,7 @@ import java.io.IOException;
 public class HelloServlet extends HttpServlet {
 
     @Inject
-    TemplateProvider templateProvider;
+    private TemplateProvider templateProvider;
 
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
