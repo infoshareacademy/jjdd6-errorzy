@@ -27,7 +27,7 @@
     <nav class="navbar navbar-expand-lg navbar-dark bg-dark static-top mb-4 shadow-lg">
         <div class="container">
 
-            <a class="navbar-brand" href="index.html"><strong class="googlefont">RvR</strong></a>
+            <a class="navbar-brand" href="hello.ftlh"><strong class="googlefont">RvЯ</strong></a>
 
 
             <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive"
@@ -40,47 +40,32 @@
 
 
                     <li class="nav-item">
-                        <a class="nav-link" href="bike-servlet.ftlh">
-                            <button type="button" class="btn btn-primary btn-lg">
+                        <a class="nav-link" href="/bike-servlet">
+                            <button type="button" class="btn btn-outline-light">
                                 Find free bike
                             </button>
                         </a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="neareststation.ftlh">
-                            <button type="button" class="btn btn-primary btn-lg">
+                        <a class="nav-link" href="/closestPlace-servlet">
+                            <button type="button" class="btn btn-outline-light">
                                 Find the nearest station
                             </button>
                         </a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="#">
-                            <button type="button" class="btn btn-primary btn-lg">
+                        <a class="nav-link" href="/country-servlet">
+                            <button type="button" class="btn btn-outline-light">
                                 Show all countries
                             </button>
                         </a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="listofcities.html">
-                            <button type="button" class="btn btn-primary btn-lg">
+                        <a class="nav-link" href="/show-city-list">
+                            <button type="button" class="btn btn-outline-light">
                                 Show list of cities
                             </button>
                         </a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="statistics.html">
-                            <button type="button" class="btn btn-primary btn-lg">
-                                Show statistics
-                            </button>
-                        </a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="contact.html">
-                            <button type="button" class="btn btn-primary btn-lg">
-                                Contact us
-                            </button>
-                        </a>
-
                     </li>
                 </ul>
             </div>
