@@ -1,9 +1,12 @@
 package com.infoshareacademy.jjdd6.listOfPlaces;
+
 import com.infoshareacademy.jjdd6.errorzy.xmlunmarshaller.CitySearch;
 
+import javax.enterprise.context.RequestScoped;
 import javax.xml.bind.JAXBException;
 import java.util.concurrent.atomic.AtomicInteger;
 
+@RequestScoped
 public class CityPrinter {
     public static void printCityList() throws JAXBException {
 

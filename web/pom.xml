@@ -80,20 +80,11 @@
         <finalName>web</finalName>
         <plugins>
             <plugin>
-                <groupId>org.apache.maven.plugins</groupId>
-                <artifactId>maven-war-plugin</artifactId>
-                <version>3.2.0</version>
-                <configuration>
-                    <failOnMissingWebXml>false</failOnMissingWebXml>
-                </configuration>
-            </plugin>
-
-            <plugin>
                 <groupId>org.wildfly.plugins</groupId>
                 <artifactId>wildfly-maven-plugin</artifactId>
                 <version>1.2.1.Final</version>
                 <configuration>
-                    <name>jjdd6-errorzy.war</name>
+                    <name>rvr.war</name>
                 </configuration>
                 <executions>
                     <execution>
@@ -104,6 +95,8 @@
                     </execution>
                 </executions>
             </plugin>
+
+
 
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
