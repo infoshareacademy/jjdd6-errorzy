@@ -28,6 +28,7 @@ public class CityListServlet extends HttpServlet {
 
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+        resp.setContentType("text/html;charset=UTF-8");
         Writer writer = resp.getWriter();
         Template template = templateProvider.getTemplate(getServletContext(), "city-list-servlet.ftlh");
 
