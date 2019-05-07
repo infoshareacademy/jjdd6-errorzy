@@ -12,7 +12,7 @@
     <data-source>
         <name>java:ds/errorzy</name>
         <class-name>com.mysql.cj.jdbc.MysqlDataSource</class-name>
-        <url>jdbc:mysql://errorzy_database:3306/errorzy_database</url>
+        <url>jdbc:mysql://0.0.0.0:6603/errorzy_database?useLegacyDatetimeCode=false&amp;serverTimezone=Europe/Warsaw</url>
         <user>root</user>
         <password>root</password>
     </data-source>
