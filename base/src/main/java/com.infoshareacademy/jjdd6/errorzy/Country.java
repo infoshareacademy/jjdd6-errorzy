@@ -14,14 +14,16 @@ public class Country {
     @Column(name = "id")
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
+
     @OneToMany(mappedBy = "country", fetch = FetchType.EAGER)
     private List<City> cityList;
+
     @Column(name = "lateral")
-    @NotNull
     private double lat;
+
     @Column(name = "longitudinal")
-    @NotNull
     private double lng;
+
     @Column(name = "country_name")
     @NotNull
     private String countryName;

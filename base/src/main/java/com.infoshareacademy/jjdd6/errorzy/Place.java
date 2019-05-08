@@ -26,14 +26,13 @@ public class Place {
     private double lat;
 
     @Column(name = "longitudinal")
-    @NotNull
     private double lng;
 
-    @Column(name = "name")
+    @Column(name = "place_name")
     @NotNull
     private String name;
 
-    @Column(name = "number")
+    @Column(name = "place_number")
     private int number;
 
     @Transient

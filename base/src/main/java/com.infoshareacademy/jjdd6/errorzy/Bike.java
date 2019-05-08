@@ -18,7 +18,6 @@ public class Bike {
     private Place place;
 
     @Column(name = "bike_number")
-    @NotNull
     private int number;
 
     @Column(name = "bike_type")

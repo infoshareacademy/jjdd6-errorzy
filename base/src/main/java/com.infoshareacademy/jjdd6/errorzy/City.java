@@ -22,18 +22,15 @@ public class City {
     @OneToMany(mappedBy = "city")
     private List<Place> placeList;
 
-    @Column(name = "lateral")
-    @NotNull
+    @Column(name = "lateral", columnDefinition = "DECIMAL(16,10)")
     private double lat;
 
-    @Column(name = "longitudinal")
-    @NotNull
-    private double lng;
-
-    @Column(name = "name")
+    @Column(name = "city_name")
     @NotNull
     private String name;
 
+    @Column(name = "longitudinal", columnDefinition = "DECIMAL(10,6)")
+    private double lng;
     @Transient
     private int numPlaces;
     @Transient
@@ -100,7 +97,6 @@ public class City {
     public void setAvailableBikes(int availableBikes) {
         this.availableBikes = availableBikes;
     }
-
 
     @Override
     public String toString() {
