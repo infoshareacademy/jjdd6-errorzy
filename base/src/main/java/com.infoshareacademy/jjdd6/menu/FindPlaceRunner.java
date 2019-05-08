@@ -29,7 +29,8 @@ public class FindPlaceRunner {
         double latitude = GetUserInput.getDoubleFromUser("Insert your latitude: ");
         double longitude = GetUserInput.getDoubleFromUser("Insert your longitude: ");
 
-        Place closestPlace = closestStation.findTheClosestPlace(latitude, longitude, placeList);
+
+        Place closestPlace = closestStation.findTheClosestPlace(latitude, longitude);
         double distanceToClosestPlace = kilometersToMeters(applicationProperties,
                 closestStation.getDistanceBetweenTwoGeoPoints(latitude, longitude, closestPlace));
 

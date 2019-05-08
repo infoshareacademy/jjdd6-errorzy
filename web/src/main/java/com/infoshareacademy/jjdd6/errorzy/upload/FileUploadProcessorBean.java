@@ -22,7 +22,6 @@ public class FileUploadProcessorBean {
     public File uploadFile(Part filePart) throws IOException {
         String fileName = Paths.get(filePart.getSubmittedFileName()).getFileName().toString();
 
-
         File file = new File(getUploadFilesPath() + fileName);
 
         Files.deleteIfExists(file.toPath());

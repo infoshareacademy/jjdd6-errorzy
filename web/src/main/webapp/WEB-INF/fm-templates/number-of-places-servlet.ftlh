@@ -38,7 +38,6 @@
 
 <#if numberOfCities??>
     <p> In this city is ${numberOfCities!} places.</p>
-
 </#if>
 </body>
 
