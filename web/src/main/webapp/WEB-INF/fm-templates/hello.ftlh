@@ -100,26 +100,11 @@
                     </a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="#">
+                    <a class="nav-link" href="/show-city-list">
                         <button type="button" class="btn btn-outline-light">
                             Show list of cities
                         </button>
                     </a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="#">
-                        <button type="button" class="btn btn-outline-light">
-                            Show statistics
-                        </button>
-                    </a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="#">
-                        <button type="button" class="btn btn-outline-light">
-                            Contact us
-                        </button>
-                    </a>
-
                 </li>
             </ul>
         </div>

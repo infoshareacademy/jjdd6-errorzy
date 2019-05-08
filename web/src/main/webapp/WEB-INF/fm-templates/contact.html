@@ -85,35 +85,39 @@
 <main>
 
     <div class="container">
-        <div class="card border-0 shadow my-5 bg-dark">
-            <div class="card-body p-5">
+        <div class="card border-0 shadow my-5">
+            <div class="card-body p-5 bg-dark">
+                <div style="height: 525px">
 
-                <center>
-                    <h2 class="text-light">All available countries</h2>
-                    <#if modelData??>
-                        <table class="table table-striped text-light col-lg-4">
-                            <br>
-                            <tbody>
-                            <thead>
-                            <tr>
-                                <th scope="col">#</th>
-                                <th scope="col">Country</th>
-                            </tr>
-                            </thead>
-                            <#list modelData?keys as key>
-                                <tr>
-                                    <th scope="row">${key?index+1}</th>
-                                    <td>${key}</td>
-                                </tr>
-                            </#list>
-                            </tbody>
-                        </table>
-                    </#if>
-                </center>
+                    <h1 class="text-light">
+                        Contact us now:
+                    </h1>
+                    <form>
+                        <div class="form-group col-5">
+                            <label class="text-light">Name</label>
+                            <input type="text" class="form-control" id="text1" placeholder="Enter name here">
+                        </div>
+                        <div class="form-group col-5">
+                            <label  class="text-light">Surname</label>
+                            <input type="text" class="form-control" id="text" placeholder="Enter surname here">
+                        </div>
+                        <div class="form-group col-5">
+                            <label for="exampleInputEmail1" class="text-light">Email address</label>
+                            <input type="email" class="form-control bg-light" id="exampleInputEmail1"
+                                   placeholder="your@email.com">
+                        </div>
+                        <div class="form-group col-5">
+                            <label for="message" class="text-light">Your message</label>
+                                <input type=""class="form-control" style="height: 156px" id="message" placeholder="Your message">
+
+                        </div>
+                        <div class="form-group col-5">
+                            <button type="button" class="btn btn-success">Send it!</button>
+                        </div>
+                    </form>
+                </div>
             </div>
-            <#--            </div>-->
         </div>
-    </div>
     </div>
 </main>
 <!--Footer-->
