@@ -22,10 +22,10 @@ public class Place {
     @OneToMany(mappedBy = "place")
     private List<Bike> bikeList;
 
-    @Column(name = "lateral")
+    @Column(name = "lateral_coordinate")
     private double lat;
 
-    @Column(name = "longitudinal")
+    @Column(name = "longitudinal_coordinate")
     private double lng;
 
     @Column(name = "place_name")

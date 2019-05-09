@@ -18,10 +18,10 @@ public class Country {
     @OneToMany(mappedBy = "country", fetch = FetchType.EAGER)
     private List<City> cityList;
 
-    @Column(name = "lateral")
+    @Column(name = "lateral_coordinate")
     private double lat;
 
-    @Column(name = "longitudinal")
+    @Column(name = "longitudinal_coordinate")
     private double lng;
 
     @Column(name = "country_name")

@@ -22,15 +22,17 @@ public class City {
     @OneToMany(mappedBy = "city")
     private List<Place> placeList;
 
-    @Column(name = "lateral", columnDefinition = "DECIMAL(16,10)")
+    @Column(name = "lateral_coordinate", columnDefinition = "DECIMAL(10,6)")
     private double lat;
+
+    @Column(name = "longitudinal_coordinate", columnDefinition = "DECIMAL(10,6)")
+    private double lng;
+
 
     @Column(name = "city_name")
     @NotNull
     private String name;
 
-    @Column(name = "longitudinal", columnDefinition = "DECIMAL(10,6)")
-    private double lng;
     @Transient
     private int numPlaces;
     @Transient
