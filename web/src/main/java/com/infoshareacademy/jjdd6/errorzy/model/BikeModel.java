@@ -1,7 +1,6 @@
 package com.infoshareacademy.jjdd6.errorzy.model;
 
 import javax.persistence.*;
-import javax.xml.bind.annotation.XmlAttribute;
 
 @Entity
 @Table(name = "BIKES")
@@ -30,7 +29,6 @@ public class BikeModel {
         this.bikeType = bikeType;
     }
 
-    @XmlAttribute(name = "number")
     public int getNumber() {
         return number;
     }
@@ -39,7 +37,6 @@ public class BikeModel {
         this.number = number;
     }
 
-    @XmlAttribute(name = "bike_type")
     public int getBikeType() {
         return bikeType;
     }

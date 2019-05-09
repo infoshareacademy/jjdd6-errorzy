@@ -19,7 +19,8 @@ public class CityModel {
     @JoinColumn(name = "country_id")
     private CountryModel country;
 
-    @OneToMany(mappedBy = "city")
+//    @OneToMany(mappedBy = "city")
+    @Transient
     private List<PlaceModel> placeList;
 
     @Column(name = "lateral_coordinate", columnDefinition = "DECIMAL(10,6)")
@@ -48,7 +49,6 @@ public class CityModel {
         this.placeList = placeList;
     }
 
-    @XmlElement(name = "place")
     public List<PlaceModel> getPlaceList() {
         return placeList;
     }
@@ -57,7 +57,6 @@ public class CityModel {
         this.placeList = placeList;
     }
 
-    @XmlAttribute(name = "lat")
     public double getLat() {
         return lat;
     }
@@ -66,7 +65,6 @@ public class CityModel {
         this.lat = lat;
     }
 
-    @XmlAttribute(name = "lng")
     public double getLng() {
         return lng;
     }
@@ -75,7 +73,6 @@ public class CityModel {
         this.lng = lng;
     }
 
-    @XmlAttribute(name = "name")
     public String getName() {
         return name;
     }

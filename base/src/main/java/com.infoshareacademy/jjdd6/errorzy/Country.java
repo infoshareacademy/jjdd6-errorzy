@@ -18,11 +18,11 @@ public class Country {
     public Country() {
     }
 
-    public Country(List<City> cityList, double lat, double lng, String countryName) {
-        this.cityList = cityList;
+    public Country(double lat, double lng, String countryName, List<City> cityList) {
         this.lat = lat;
         this.lng = lng;
         this.countryName = countryName;
+        this.cityList = cityList;
     }
 
     @XmlElement(name = "city")

@@ -2,8 +2,6 @@ package com.infoshareacademy.jjdd6.errorzy.model;
 
 import javax.persistence.*;
 import javax.validation.constraints.NotNull;
-import javax.xml.bind.annotation.XmlAttribute;
-import javax.xml.bind.annotation.XmlElement;
 import java.util.List;
 
 @Entity
@@ -45,7 +43,6 @@ public class CountryModel {
         this.countryName = countryName;
     }
 
-    @XmlElement(name = "city")
     public List<CityModel> getCityList() {
         return cityList;
     }
@@ -54,7 +51,6 @@ public class CountryModel {
         this.cityList = cityList;
     }
 
-    @XmlAttribute(name = "lat")
     public double getLat() {
         return lat;
     }
@@ -63,7 +59,6 @@ public class CountryModel {
         this.lat = lat;
     }
 
-    @XmlAttribute(name = "lng")
     public double getLng() {
         return lng;
     }
@@ -84,7 +79,6 @@ public class CountryModel {
         this.country = country;
     }
 
-    @XmlAttribute(name = "country_name")
     public String getCountryName() {
         return countryName;
     }

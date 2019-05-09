@@ -2,8 +2,6 @@ package com.infoshareacademy.jjdd6.errorzy.model;
 
 import javax.persistence.*;
 import javax.validation.constraints.NotNull;
-import javax.xml.bind.annotation.XmlAttribute;
-import javax.xml.bind.annotation.XmlElement;
 import java.util.List;
 
 @Entity
@@ -15,8 +13,9 @@ public class PlaceModel {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @ManyToOne
-    @JoinColumn(name = "city_id")
+    //    @ManyToOne
+//    @JoinColumn(name = "city_id")
+    @Transient
     private CityModel city;
 
     @OneToMany(mappedBy = "place")
@@ -40,7 +39,6 @@ public class PlaceModel {
     @Transient
     private String bikeNumbers;
 
-
     public PlaceModel() {
     }
 
@@ -52,7 +50,6 @@ public class PlaceModel {
         this.bikeList = bikeList;
     }
 
-    @XmlAttribute(name = "lat")
     public double getLat() {
         return lat;
     }
@@ -61,7 +58,6 @@ public class PlaceModel {
         this.lat = lat;
     }
 
-    @XmlAttribute(name = "lng")
     public double getLng() {
         return lng;
     }
@@ -70,7 +66,6 @@ public class PlaceModel {
         this.lng = lng;
     }
 
-    @XmlAttribute(name = "name")
     public String getName() {
         return name;
     }
@@ -79,7 +74,6 @@ public class PlaceModel {
         this.name = name;
     }
 
-    @XmlAttribute(name = "number")
     public int getNumber() {
         return number;
     }
@@ -88,7 +82,6 @@ public class PlaceModel {
         this.number = number;
     }
 
-    @XmlAttribute(name = "bikes")
     public int getBikes() {
         return bikes;
     }
@@ -97,7 +90,6 @@ public class PlaceModel {
         this.bikes = bikes;
     }
 
-    @XmlAttribute(name = "bike_numbers")
     public String getBikeNumbers() {
         return bikeNumbers;
     }
@@ -106,7 +98,6 @@ public class PlaceModel {
         this.bikeNumbers = bikeNumbers;
     }
 
-    @XmlElement(name = "bike")
     public List<BikeModel> getBikeList() {
         return bikeList;
     }
