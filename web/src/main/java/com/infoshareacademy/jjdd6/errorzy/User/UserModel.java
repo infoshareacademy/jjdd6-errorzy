@@ -1,8 +1,12 @@
 package com.infoshareacademy.jjdd6.errorzy.User;
 
+import com.infoshareacademy.jjdd6.errorzy.Place;
+
 import javax.persistence.*;
 import javax.validation.constraints.Email;
 import javax.validation.constraints.NotNull;
+import java.awt.*;
+import java.util.List;
 
 @Entity
 @Table(name = "USERS")
@@ -24,6 +28,12 @@ public class UserModel {
     @Column(name = "promoted_points")
     @NotNull
     private String promotedPoints;
+
+    @ManyToMany
+    @@JoinTable(name = "POINTS_TO_USERS",
+    joinColumns = @JoinColumn(name = "user_id", referencedColumnName = "id"),
+    inverseJoinColumns = @JoinColumn(name = "place_name", referencedColumnName = "name"))
+    private List<Place> places;
 
     public UserModel() {
     }

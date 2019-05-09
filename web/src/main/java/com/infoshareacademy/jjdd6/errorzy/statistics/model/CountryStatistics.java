@@ -15,7 +15,7 @@ public class CountryStatistics {
         @Column(name = "country")
         private String country;
 
-        @Column(name = "numberOfVisits")
+        @Column(name = "number_of_visits")
         private Long numberOfVisits;
 
         public CountryStatistics() {

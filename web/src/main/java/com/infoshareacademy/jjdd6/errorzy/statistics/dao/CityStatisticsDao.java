@@ -40,7 +40,7 @@ public class CityStatisticsDao {
     }
 
     public List<CityStatistics> findMostChecked() {
-        final Query query = entityManager.createQuery("SELECT cit FROM CityStatistics cit WHERE numberOfVisits = SELECT max(numberOfVisits) FROM CityStatistics)");
+        final Query query = entityManager.createQuery("SELECT cit FROM CityStatistics cit WHERE numberOfVisits = (SELECT max(numberOfVisits)) FROM CityStatistics)");
 
         return query.getResultList();
     }

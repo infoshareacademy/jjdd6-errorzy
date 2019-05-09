@@ -13,7 +13,7 @@ public class CityStatistics {
     @Column(name = "city")
     private String city;
 
-    @Column(name = "numberOfVisits")
+    @Column(name = "number_of_visits")
     private Long numberOfVisits;
 
     public CityStatistics() {

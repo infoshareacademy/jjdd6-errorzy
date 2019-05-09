@@ -4,6 +4,7 @@ import javax.persistence.*;
 import javax.validation.constraints.NotNull;
 import javax.xml.bind.annotation.XmlAttribute;
 import javax.xml.bind.annotation.XmlElement;
+import javax.xml.registry.infomodel.User;
 import java.util.List;
 
 @Entity
@@ -21,6 +22,9 @@ public class Place {
 
     @OneToMany(mappedBy = "place")
     private List<Bike> bikeList;
+
+    @ManyToMany(mappedBy = "places")
+    private List<UserModel> userModels;
 
     @Column(name = "lateral_coordinate")
     private double lat;
