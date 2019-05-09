@@ -17,9 +17,9 @@ public class UserModel {
     @Email
     private String email;
 
-    @Column(name = "role_administration")
+    @Column(name = "administration_role")
     @NotNull
-    private Boolean roleAdministration;
+    private Boolean administrationRole;
 
     @Column(name = "promoted_points")
     @NotNull
@@ -44,12 +44,12 @@ public class UserModel {
         this.email = email;
     }
 
-    public Boolean getRoleAdministration() {
-        return roleAdministration;
+    public Boolean getAdministrationRole() {
+        return administrationRole;
     }
 
-    public void setRoleAdministration(Boolean roleAdministration) {
-        this.roleAdministration = roleAdministration;
+    public void setAdministrationRole(Boolean administrationRole) {
+        this.administrationRole = administrationRole;
     }
 
     public String getPromotedPoints() {
@@ -60,9 +60,9 @@ public class UserModel {
         this.promotedPoints = promotedPoints;
     }
 
-    public UserModel(@Email String email, @NotNull Boolean roleAdministration, @NotNull String promotedPoints) {
+    public UserModel(@Email String email, @NotNull Boolean administrationRole, @NotNull String promotedPoints) {
         this.email = email;
-        this.roleAdministration = roleAdministration;
+        this.administrationRole = administrationRole;
         this.promotedPoints = promotedPoints;
     }
 
