@@ -1,6 +1,7 @@
 package com.infoshareacademy.jjdd6.errorzy.web;
 
 import com.infoshareacademy.jjdd6.errorzy.Country;
+import com.infoshareacademy.jjdd6.errorzy.dao.CountryDao;
 import com.infoshareacademy.jjdd6.errorzy.freemarker.TemplateProvider;
 import com.infoshareacademy.jjdd6.errorzy.xmlunmarshaller.CountrySearch;
 import freemarker.template.Template;
@@ -28,6 +29,8 @@ public class CountryServlet extends HttpServlet {
     private CountrySearch countrySearch;
     @Inject
     private TemplateProvider templateProvider;
+    @Inject
+    private CountryDao countryDao;
 
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
