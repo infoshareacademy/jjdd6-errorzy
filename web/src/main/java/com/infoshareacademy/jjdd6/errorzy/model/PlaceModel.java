@@ -8,7 +8,7 @@ import java.util.List;
 
 @Entity
 @Table(name = "PLACES")
-public class Place {
+public class PlaceModel {
 
     @Id
     @Column(name = "id")
@@ -17,10 +17,10 @@ public class Place {
 
     @ManyToOne
     @JoinColumn(name = "city_id")
-    private City city;
+    private CityModel city;
 
     @OneToMany(mappedBy = "place")
-    private List<Bike> bikeList;
+    private List<BikeModel> bikeList;
 
     @Column(name = "lateral_coordinate")
     private double lat;
@@ -41,10 +41,10 @@ public class Place {
     private String bikeNumbers;
 
 
-    public Place() {
+    public PlaceModel() {
     }
 
-    public Place(double lat, double lng, String name, int number, List<Bike> bikeList) {
+    public PlaceModel(double lat, double lng, String name, int number, List<BikeModel> bikeList) {
         this.lat = lat;
         this.lng = lng;
         this.name = name;
@@ -107,17 +107,17 @@ public class Place {
     }
 
     @XmlElement(name = "bike")
-    public List<Bike> getBikeList() {
+    public List<BikeModel> getBikeList() {
         return bikeList;
     }
 
-    public void setBikeList(List<Bike> bikeList) {
+    public void setBikeList(List<BikeModel> bikeList) {
         this.bikeList = bikeList;
     }
 
     @Override
     public String toString() {
-        return "Place{" +
+        return "PlaceModel{" +
                 "lat=" + lat +
                 ", lng=" + lng +
                 ", name='" + name + '\'' +

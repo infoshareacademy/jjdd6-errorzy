@@ -7,54 +7,51 @@ import javax.xml.bind.annotation.XmlElement;
 import java.util.List;
 
 @Entity
-@Table(name = "CITIES")
-public class City {
+@Table(name = "COUNTRIES")
+public class CountryModel {
 
     @Id
     @Column(name = "id")
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @ManyToOne
-    @JoinColumn(name = "country_id")
-    private Country country;
+    @OneToMany(mappedBy = "country", fetch = FetchType.EAGER)
+    private List<CityModel> cityList;
 
-    @OneToMany(mappedBy = "city")
-    private List<Place> placeList;
-
-    @Column(name = "lateral_coordinate", columnDefinition = "DECIMAL(10,6)")
+    @Column(name = "lateral_coordinate")
     private double lat;
 
-    @Column(name = "longitudinal_coordinate", columnDefinition = "DECIMAL(10,6)")
+    @Column(name = "longitudinal_coordinate")
     private double lng;
 
-
-    @Column(name = "city_name")
+    @Column(name = "country_name")
     @NotNull
-    private String name;
+    private String countryName;
 
     @Transient
-    private int numPlaces;
+    private String name;
+    @Transient
+    private String country;
     @Transient
     private int availableBikes;
 
-    public City() {
+    public CountryModel() {
     }
 
-    public City(double lat, double lng, String name, List<Place> placeList) {
+    public CountryModel(List<CityModel> cityList, double lat, double lng, String countryName) {
+        this.cityList = cityList;
         this.lat = lat;
         this.lng = lng;
-        this.name = name;
-        this.placeList = placeList;
+        this.countryName = countryName;
     }
 
-    @XmlElement(name = "place")
-    public List<Place> getPlaceList() {
-        return placeList;
+    @XmlElement(name = "city")
+    public List<CityModel> getCityList() {
+        return cityList;
     }
 
-    public void setPlaceList(List<Place> placeList) {
-        this.placeList = placeList;
+    public void setCityList(List<CityModel> cityList) {
+        this.cityList = cityList;
     }
 
     @XmlAttribute(name = "lat")
@@ -75,7 +72,6 @@ public class City {
         this.lng = lng;
     }
 
-    @XmlAttribute(name = "name")
     public String getName() {
         return name;
     }
@@ -84,12 +80,21 @@ public class City {
         this.name = name;
     }
 
-    public int getNumPlaces() {
-        return numPlaces;
+    public void setCountry(String country) {
+        this.country = country;
     }
 
-    public void setNumPlaces(int numPlaces) {
-        this.numPlaces = numPlaces;
+    @XmlAttribute(name = "country_name")
+    public String getCountryName() {
+        return countryName;
+    }
+
+    public String getCountry() {
+        return country;
+    }
+
+    public void setCountryName(String countryName) {
+        this.countryName = countryName;
     }
 
     public int getAvailableBikes() {
@@ -102,11 +107,11 @@ public class City {
 
     @Override
     public String toString() {
-        return "City{" +
-                "lat=" + lat +
+        return "CountryModel{" +
+                "cityList=" + cityList +
+                ", lat=" + lat +
                 ", lng=" + lng +
-                ", name='" + name + '\'' +
-                ", placeList=" + placeList +
+                ", countryName='" + countryName + '\'' +
                 '}';
     }
 }

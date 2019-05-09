@@ -5,7 +5,7 @@ import javax.xml.bind.annotation.XmlAttribute;
 
 @Entity
 @Table(name = "BIKES")
-public class Bike {
+public class BikeModel {
 
     @Id
     @Column(name = "id")
@@ -14,7 +14,7 @@ public class Bike {
 
     @ManyToOne
     @JoinColumn(name = "place_id")
-    private Place place;
+    private PlaceModel place;
 
     @Column(name = "bike_number")
     private int number;
@@ -22,10 +22,10 @@ public class Bike {
     @Column(name = "bike_type")
     private int bikeType;
 
-    public Bike() {
+    public BikeModel() {
     }
 
-    public Bike(int number, int bikeType) {
+    public BikeModel(int number, int bikeType) {
         this.number = number;
         this.bikeType = bikeType;
     }
@@ -50,7 +50,7 @@ public class Bike {
 
     @Override
     public String toString() {
-        return "Bike{" +
+        return "BikeModel{" +
                 "number=" + number +
                 ", bikeType=" + bikeType +
                 '}';
