@@ -1,26 +1,42 @@
 package com.infoshareacademy.jjdd6.errorzy;
 
+import javax.persistence.*;
+import javax.validation.constraints.NotNull;
 import javax.xml.bind.annotation.XmlAttribute;
 import javax.xml.bind.annotation.XmlElement;
 import java.util.List;
 
+@Entity
+@Table(name = "CITIES")
 public class City {
-    private int uid;
-    private double lat;
-    private double lng;
-    private int zoom;
-    private String mapsIcon;
-    private String alias;
-    private int breakCity;
-    private String name;
-    private int numPlaces;
-    private int refreshRate;
-    private String bounds;
-    private int bookedBikes;
-    private int setPointBikes;
-    private int availableBikes;
-    private String bikeTypes;
+
+    @Id
+    @Column(name = "id")
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Long id;
+
+    @ManyToOne
+    @JoinColumn(name = "country_id")
+    private Country country;
+
+    @OneToMany(mappedBy = "city")
     private List<Place> placeList;
+
+    @Column(name = "lateral_coordinate", columnDefinition = "DECIMAL(10,6)")
+    private double lat;
+
+    @Column(name = "longitudinal_coordinate", columnDefinition = "DECIMAL(10,6)")
+    private double lng;
+
+
+    @Column(name = "city_name")
+    @NotNull
+    private String name;
+
+    @Transient
+    private int numPlaces;
+    @Transient
+    private int availableBikes;
 
     public City() {
     }
@@ -41,14 +57,6 @@ public class City {
         this.placeList = placeList;
     }
 
-    public int getUid() {
-        return uid;
-    }
-
-    public void setUid(int uid) {
-        this.uid = uid;
-    }
-
     @XmlAttribute(name = "lat")
     public double getLat() {
         return lat;
@@ -65,38 +73,6 @@ public class City {
 
     public void setLng(double lng) {
         this.lng = lng;
-    }
-
-    public int getZoom() {
-        return zoom;
-    }
-
-    public void setZoom(int zoom) {
-        this.zoom = zoom;
-    }
-
-    public String getMapsIcon() {
-        return mapsIcon;
-    }
-
-    public void setMapsIcon(String mapsIcon) {
-        this.mapsIcon = mapsIcon;
-    }
-
-    public String getAlias() {
-        return alias;
-    }
-
-    public void setAlias(String alias) {
-        this.alias = alias;
-    }
-
-    public int getBreakCity() {
-        return breakCity;
-    }
-
-    public void setBreakCity(int breakCity) {
-        this.breakCity = breakCity;
     }
 
     @XmlAttribute(name = "name")
@@ -116,52 +92,12 @@ public class City {
         this.numPlaces = numPlaces;
     }
 
-    public int getRefreshRate() {
-        return refreshRate;
-    }
-
-    public void setRefreshRate(int refreshRate) {
-        this.refreshRate = refreshRate;
-    }
-
-    public String getBounds() {
-        return bounds;
-    }
-
-    public void setBounds(String bounds) {
-        this.bounds = bounds;
-    }
-
-    public int getBookedBikes() {
-        return bookedBikes;
-    }
-
-    public void setBookedBikes(int bookedBikes) {
-        this.bookedBikes = bookedBikes;
-    }
-
-    public int getSetPointBikes() {
-        return setPointBikes;
-    }
-
-    public void setSetPointBikes(int setPointBikes) {
-        this.setPointBikes = setPointBikes;
-    }
-
     public int getAvailableBikes() {
         return availableBikes;
     }
 
     public void setAvailableBikes(int availableBikes) {
         this.availableBikes = availableBikes;
-    }
-
-    public String getBikeTypes() {
-        return bikeTypes;
-    }
-
-    public void setBikeTypes(String bikeTypes) {
-        this.bikeTypes = bikeTypes;
     }
 
     @Override
@@ -174,9 +110,3 @@ public class City {
                 '}';
     }
 }
-
-
-
-
-
-

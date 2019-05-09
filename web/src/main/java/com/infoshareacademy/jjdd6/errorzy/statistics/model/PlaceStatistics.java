@@ -1,9 +1,7 @@
 package com.infoshareacademy.jjdd6.errorzy.statistics.model;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.Id;
-import javax.persistence.Table;
+import javax.persistence.*;
+import javax.validation.constraints.NotNull;
 
 @Entity
 @Table(name = "PLACE_STATISTICS")
@@ -11,9 +9,10 @@ public class PlaceStatistics {
 
     @Id
     @Column(name = "place")
+    @NotNull
     private String place;
 
-    @Column(name = "numberOfVisits")
+    @Column(name = "number_of_visits")
     private Long numberOfVisits;
 
     public PlaceStatistics() {

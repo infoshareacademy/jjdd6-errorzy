@@ -1,6 +1,7 @@
 package com.infoshareacademy.jjdd6.errorzy.statistics.dao;
 
 import com.infoshareacademy.jjdd6.errorzy.statistics.model.CountryStatistics;
+
 import javax.ejb.Stateful;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;

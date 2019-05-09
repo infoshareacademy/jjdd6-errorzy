@@ -9,7 +9,6 @@ import java.util.List;
 @Stateful
 public class UserDao {
     @PersistenceContext
-
     private EntityManager entityManager;
 
 

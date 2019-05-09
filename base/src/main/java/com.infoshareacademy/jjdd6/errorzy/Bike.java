@@ -1,16 +1,27 @@
 package com.infoshareacademy.jjdd6.errorzy;
 
+import javax.persistence.*;
+import javax.validation.constraints.NotNull;
 import javax.xml.bind.annotation.XmlAttribute;
 
+@Entity
+@Table(name = "BIKES")
 public class Bike {
+
+    @Id
+    @Column(name = "id")
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Long id;
+
+    @ManyToOne
+    @JoinColumn(name = "place_id")
+    private Place place;
+
+    @Column(name = "bike_number")
     private int number;
+
+    @Column(name = "bike_type")
     private int bikeType;
-    private String lockType;
-    private int active;
-    private String state;
-    private int electricLock;
-    private String boardComputer;
-    private int pedelecBattery;
 
     public Bike() {
     }
@@ -36,54 +47,6 @@ public class Bike {
 
     public void setBikeType(int bikeType) {
         this.bikeType = bikeType;
-    }
-
-    public String getLockType() {
-        return lockType;
-    }
-
-    public void setlockType(String lockType) {
-        this.lockType = lockType;
-    }
-
-    public int getActive() {
-        return active;
-    }
-
-    public void setActive(int active) {
-        this.active = active;
-    }
-
-    public String getState() {
-        return state;
-    }
-
-    public void setState(String state) {
-        this.state = state;
-    }
-
-    public int getElectricLock() {
-        return electricLock;
-    }
-
-    public void setElectricLock(int electricLock) {
-        this.electricLock = electricLock;
-    }
-
-    public String getBoardComputer() {
-        return boardComputer;
-    }
-
-    public void setBoardComputer(String boardComputer) {
-        this.boardComputer = boardComputer;
-    }
-
-    public int getPedelecBattery() {
-        return pedelecBattery;
-    }
-
-    public void setPedelecBattery(int pedelecBattery) {
-        this.pedelecBattery = pedelecBattery;
     }
 
     @Override
