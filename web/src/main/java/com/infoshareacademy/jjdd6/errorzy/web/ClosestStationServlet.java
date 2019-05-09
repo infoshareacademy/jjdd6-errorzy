@@ -52,6 +52,7 @@ public class ClosestStationServlet extends HttpServlet {
             String distanceUnit = req.getParameter("unit");
 
             Place closestPlace = closestStation.findTheClosestPlace(lat, lng);
+            //
             double distance = closestStation.getDistanceBetweenTwoGeoPoints(lat, lng, closestPlace);
 
             if (distanceUnit.equals("meter")) {

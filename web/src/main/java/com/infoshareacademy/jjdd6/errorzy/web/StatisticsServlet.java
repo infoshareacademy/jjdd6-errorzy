@@ -45,8 +45,6 @@ public class StatisticsServlet extends HttpServlet {
 
         if (action.equals("update")) {
             updateStatiscics(req, resp);
-        } else if (action.equals("save")) {
-            saveStatiscics(req, resp);
         } else if (action.equals("delete")) {
             deleteStatiscics(req, resp);
         } else if (action.equals("findByName")) {
@@ -71,16 +69,16 @@ public class StatisticsServlet extends HttpServlet {
     private void findByNameStatiscics(HttpServletRequest req, HttpServletResponse resp) {
     }
 
-
     private void deleteStatiscics(HttpServletRequest req, HttpServletResponse resp) {
+        final String name = new String(req.getParameter("name"));
+        LOGGER.info("Removing statistics for = {}", name);
+
     }
 
-    private void saveStatiscics(HttpServletRequest req, HttpServletResponse resp) {
-    }
 
     private void updateStatiscics(HttpServletRequest req, HttpServletResponse resp) throws IOException {
         final String name = new String(req.getParameter("name"));
-        LOGGER.info("Updating statistics with name = {}", name);
-        //final Statistics existingStatistics =;
+        LOGGER.info("Updating statistics for = {}", name);
+        final Statistics existingStatistics = ;
     }
 }
