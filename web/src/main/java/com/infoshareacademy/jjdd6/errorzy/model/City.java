@@ -1,18 +1,41 @@
-package com.infoshareacademy.jjdd6.errorzy;
+package com.infoshareacademy.jjdd6.errorzy.model;
 
+import javax.persistence.*;
+import javax.validation.constraints.NotNull;
 import javax.xml.bind.annotation.XmlAttribute;
 import javax.xml.bind.annotation.XmlElement;
 import java.util.List;
 
+@Entity
+@Table(name = "CITIES")
 public class City {
 
+    @Id
+    @Column(name = "id")
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
+
+    @ManyToOne
+    @JoinColumn(name = "country_id")
     private Country country;
+
+    @OneToMany(mappedBy = "city")
     private List<Place> placeList;
+
+    @Column(name = "lateral_coordinate", columnDefinition = "DECIMAL(10,6)")
     private double lat;
+
+    @Column(name = "longitudinal_coordinate", columnDefinition = "DECIMAL(10,6)")
     private double lng;
+
+
+    @Column(name = "city_name")
+    @NotNull
     private String name;
+
+    @Transient
     private int numPlaces;
+    @Transient
     private int availableBikes;
 
     public City() {

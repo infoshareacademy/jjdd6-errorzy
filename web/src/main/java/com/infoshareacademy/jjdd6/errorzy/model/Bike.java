@@ -1,13 +1,25 @@
-package com.infoshareacademy.jjdd6.errorzy;
+package com.infoshareacademy.jjdd6.errorzy.model;
 
+import javax.persistence.*;
 import javax.xml.bind.annotation.XmlAttribute;
 
-
+@Entity
+@Table(name = "BIKES")
 public class Bike {
 
+    @Id
+    @Column(name = "id")
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
+
+    @ManyToOne
+    @JoinColumn(name = "place_id")
     private Place place;
+
+    @Column(name = "bike_number")
     private int number;
+
+    @Column(name = "bike_type")
     private int bikeType;
 
     public Bike() {
