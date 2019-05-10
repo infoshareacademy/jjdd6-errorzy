@@ -24,9 +24,10 @@ public class BikeModel {
     public BikeModel() {
     }
 
-    public BikeModel(int number, int bikeType) {
+    public BikeModel(int number, int bikeType, PlaceModel placeModel) {
         this.number = number;
         this.bikeType = bikeType;
+        this.place = placeModel;
     }
 
     public int getNumber() {

@@ -2,6 +2,7 @@ package com.infoshareacademy.jjdd6.errorzy.service;
 
 import com.infoshareacademy.jjdd6.errorzy.dao.BikeDao;
 import com.infoshareacademy.jjdd6.errorzy.model.BikeModel;
+import com.infoshareacademy.jjdd6.errorzy.model.PlaceModel;
 import com.infoshareacademy.jjdd6.errorzy.xmlunmarshaller.BikeSearch;
 
 import javax.ejb.Singleton;
@@ -25,13 +26,16 @@ public class BikeXmlToDBLoader {
         bikeModelList.forEach(bike -> bikeDao.save(bike));
     }
 
-    public List<BikeModel> prepareBikeModelList(String placeName) {
-        LOGGER.info("Bikes for place are being loaded" + placeName);
-        List<BikeModel> bikeModelList = bikeSearch.getMapOfBikesForPlace(placeName).values().stream()
+    public List<BikeModel> prepareBikeModelList(PlaceModel placeModel) {
+        LOGGER.info("Bikes for place are being loaded " + placeModel.getName());
+
+        List<BikeModel> bikeModelList = bikeSearch.getMapOfBikesForPlace(placeModel.getName()).values().stream()
                 .filter(Objects::nonNull)
-                .map(bike -> new BikeModel(bike.getNumber(), bike.getBikeType()))
+                .map(bike -> new BikeModel(bike.getNumber(), bike.getBikeType(), placeModel))
                 .collect(Collectors.toList());
+
         loadBikeXmlToDataBase(bikeModelList);
+
         return bikeModelList;
     }
 }

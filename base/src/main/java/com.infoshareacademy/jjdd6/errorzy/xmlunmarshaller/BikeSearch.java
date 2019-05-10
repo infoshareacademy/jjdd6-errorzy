@@ -17,6 +17,7 @@ public class BikeSearch {
         return placeSearch.getPlaces().stream()
                 .filter(Objects::nonNull)
                 .filter(place -> place.getName().equals(placeName))
+                .filter(place -> place.getBikeList() != null)
                 .map(place -> place.getBikeList().stream())
                 .flatMap(bikeStream -> bikeStream)
                 .filter(Objects::nonNull)

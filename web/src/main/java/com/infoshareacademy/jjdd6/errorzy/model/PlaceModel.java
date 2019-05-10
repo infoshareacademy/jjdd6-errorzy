@@ -42,12 +42,11 @@ public class PlaceModel {
     public PlaceModel() {
     }
 
-    public PlaceModel(double lat, double lng, String name, int number, List<BikeModel> bikeList) {
+    public PlaceModel(double lat, double lng, String name, int number) {
         this.lat = lat;
         this.lng = lng;
         this.name = name;
         this.number = number;
-        this.bikeList = bikeList;
     }
 
     public double getLat() {
