@@ -3,6 +3,7 @@ package com.infoshareacademy.jjdd6.errorzy.web;
 import com.infoshareacademy.jjdd6.errorzy.Country;
 import com.infoshareacademy.jjdd6.errorzy.dao.CountryDao;
 import com.infoshareacademy.jjdd6.errorzy.freemarker.TemplateProvider;
+import com.infoshareacademy.jjdd6.errorzy.statistics.dao.CountryStatisticsDao;
 import com.infoshareacademy.jjdd6.errorzy.xmlunmarshaller.CountrySearch;
 import freemarker.template.Template;
 import freemarker.template.TemplateException;
@@ -31,6 +32,8 @@ public class CountryServlet extends HttpServlet {
     private TemplateProvider templateProvider;
     @Inject
     private CountryDao countryDao;
+    @Inject
+    private CountryStatisticsDao countryStatisticsDao;
 
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
@@ -45,6 +48,7 @@ public class CountryServlet extends HttpServlet {
 
         try {
             template.process(model, writer);
+//            countryStatisticsDao.addToStatistics();
         } catch (TemplateException e) {
             LOGGER.warn("Template not found" + e);
         }

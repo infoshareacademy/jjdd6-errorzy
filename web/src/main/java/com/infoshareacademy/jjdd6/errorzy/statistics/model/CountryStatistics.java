@@ -9,9 +9,9 @@ import javax.validation.constraints.NotNull;
 public class CountryStatistics {
 
 
-        @Id
-        @Column(name = "country")
-        private String country;
+    @Id
+    @Column(name = "country")
+    private String country;
 
     @Column(name = "number_of_visits")
     private Long numberOfVisits;
@@ -24,9 +24,9 @@ public class CountryStatistics {
         this.numberOfVisits = numberOfVisits;
     }
 
-        public String getCountry() {
-            return country;
-        }
+    public String getCountry() {
+        return country;
+    }
 
     public void setCountry(String name) {
         this.country = name;

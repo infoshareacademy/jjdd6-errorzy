@@ -12,8 +12,9 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
+import java.util.List;
 
-@WebServlet("/country_statistics")
+@WebServlet("/country-statistics")
 public class CountryStatisticsServlet extends HttpServlet {
 
     private static final Logger LOGGER = LogManager.getLogger(CountryStatisticsServlet.class.getName());
@@ -32,51 +33,62 @@ public class CountryStatisticsServlet extends HttpServlet {
             return;
         }
 
-        if (action.equals("update")) {
-            updateCountryStatiscics(req, resp);
-        } else if (action.equals("delete")) {
+
+        if (action.equals("delete")) {
             deleteCountryStatiscics(req, resp);
         } else if (action.equals("findByName")) {
             findByNameCountryStatiscics(req, resp);
+        } else if (action.equals("findAll")) {
+            findAllCountryStatistics(req, resp);
         } else if (action.equals("findMostChecked")) {
             findMostCheckedCountryStatiscics(req, resp);
-        } else if (action.equals("addToStatistics")) {
-            addToStatisticCountryStatiscics(req, resp);
         } else {
-            resp.getWriter().write("Unkown action.");
+            resp.getWriter().write("Unknown action.");
         }
 
 
     }
 
 
-    private void updateCountryStatiscics(HttpServletRequest req, HttpServletResponse resp) throws IOException {
+    private void deleteCountryStatiscics(HttpServletRequest req, HttpServletResponse resp) throws IOException {
         final String country = new String(req.getParameter("country"));
-        LOGGER.info("Updating statistics for = {}", country);
-        final CountryStatistics existingCountryStatistics = countryStatisticsDao.findByName(country);
-        if (existingCountryStatistics == null) {
-            LOGGER.info("This country name = {} has not been searched yet, nothing to be updated");
-        } else {
-            existingCountryStatistics.setNumberOfVisits(Long.parseLong(req.getParameter("number of visit")));
+        LOGGER.info("Removing statistics for = {}", country);
 
-            countryStatisticsDao.update(existingCountryStatistics);
-            LOGGER.info("Statistics for this country name = {} have been updated");
+        countryStatisticsDao.delete(country);
+
+        findAllCountryStatistics(req, resp);
+    }
+
+    private void findAllCountryStatistics(HttpServletRequest req, HttpServletResponse resp) throws IOException {
+        final List<CountryStatistics> result = countryStatisticsDao.findAll();
+        LOGGER.info("Found {} objects", result.size());
+        for (CountryStatistics cou : result) {
+            resp.getWriter().write(cou.toString() + "\n");
+        }
+
+    }
+
+    private void findMostCheckedCountryStatiscics(HttpServletRequest req, HttpServletResponse resp) throws IOException {
+        Long numberOfVisits = req.getParameter(Long.parseLong(req.getParameter("number of visit"));
+
+        final List<CountryStatistics> result = countryStatisticsDao.findMostChecked();
+
+        LOGGER.info("Found {} objects", result.size());
+
+        for (CountryStatistics cou : result) {
+            resp.getWriter().write(cou.toString() + "\n");
+
         }
     }
 
+    private void findByNameCountryStatiscics(HttpServletRequest req, HttpServletResponse resp) throws IOException {
+        final String country = new String(req.getParameter("country"));
 
-    private void addToStatisticCountryStatiscics(HttpServletRequest req, HttpServletResponse resp) {
-    }
+        LOGGER.info("Found {} objects", country);
 
-    private void findMostCheckedCountryStatiscics(HttpServletRequest req, HttpServletResponse resp) {
-    }
-
-    private void findByNameCountryStatiscics(HttpServletRequest req, HttpServletResponse resp) {
-    }
-
-    private void deleteCountryStatiscics(HttpServletRequest req, HttpServletResponse resp) {
-        final String name = new String(req.getParameter("name"));
-        LOGGER.info("Removing statistics for = {}", name);
+        for (CountryStatistics cou : country) {
+            resp.getWriter().write(cou + "\n");
+        }
 
     }
 

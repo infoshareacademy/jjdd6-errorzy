@@ -1,5 +1,6 @@
 package com.infoshareacademy.jjdd6.errorzy.statistics.dao;
 
+import com.infoshareacademy.jjdd6.errorzy.Country;
 import com.infoshareacademy.jjdd6.errorzy.statistics.model.CountryStatistics;
 
 import javax.ejb.Stateful;
@@ -46,12 +47,15 @@ public class CountryStatisticsDao {
     }
 
     public void addToStatistics(String country) {
-        final Query query = entityManager.createNativeQuery(
-                "INSERT INTO COUNTRY_STATISTICS (name, numberOfVisits) " +
-                        "VALUES(:country, 1 ) ON DUPLICATE KEY UPDATE " +
-                        "numberOfVisits = numberOfVisits +1");
-        query.setParameter("country", country.toUpperCase());
-        query.executeUpdate();
-        return;
+        CountryStatistics stats = findByName(country);
+        if (stats == null) {
+            stats = new CountryStatistics();
+            stats.setCountry(country);
+            stats.setNumberOfVisits(1l);
+            entityManager.persist(stats);
+        } else {
+            stats.setNumberOfVisits(stats.getNumberOfVisits() + 1);
+            entityManager.merge(stats);
+        }
     }
 }

@@ -5,7 +5,6 @@ import com.infoshareacademy.jjdd6.errorzy.Place;
 import javax.persistence.*;
 import javax.validation.constraints.Email;
 import javax.validation.constraints.NotNull;
-import java.awt.*;
 import java.util.List;
 
 @Entity

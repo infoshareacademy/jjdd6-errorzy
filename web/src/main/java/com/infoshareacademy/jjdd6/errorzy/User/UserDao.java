@@ -36,4 +36,13 @@ public class UserDao {
         final Query query = entityManager.createQuery("SELECT u FROM UserModel u");
         return query.getResultList();
     }
+
+    public UserModel findByEmail(String email) {
+        return entityManager.find(UserModel.class, email);
+    }
+
+    public UserModel findByAdministrationRole(Boolean administrationRole) {
+        return entityManager.find(UserModel.class, administrationRole == true);
+    }
+
 }
