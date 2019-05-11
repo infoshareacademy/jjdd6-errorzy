@@ -21,14 +21,14 @@ public class CountryXmlToDBLoader {
     private CityXmlToDBLoader cityXmlToDBLoader;
 
     @PostConstruct
-    public void loadCountryXmlToDataBase() {
+    public void loadCountryModelToDataBase() {
         countrySearch.getMapOfCountries().values().forEach(country -> {
             CountryModel countryModel = new CountryModel(country.getLat(),
                     country.getLng(),
                     country.getCountryName());
             countryDao.save(countryModel);
 
-            cityXmlToDBLoader.prepareCityModelList(countryModel);
+            cityXmlToDBLoader.loadCityModelToDataBase(countryModel);
         });
     }
 }

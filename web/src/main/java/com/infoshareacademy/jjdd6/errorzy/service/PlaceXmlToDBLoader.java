@@ -18,11 +18,7 @@ public class PlaceXmlToDBLoader {
     @Inject
     private BikeXmlToDBLoader bikeXmlToDBLoader;
 
-//    private void loadPlaceXmlToDataBase() {
-//        preparePlaceModelList();
-//    }
-
-    public void preparePlaceModelList(CityModel cityModel) {
+    public void loadPlaceModelToDataBase(CityModel cityModel) {
         placeSearch.getMapOfPlaces(cityModel.getName()).values().forEach(place -> {
             PlaceModel placeModel = new PlaceModel(place.getLat(),
                     place.getLng(),
@@ -31,7 +27,7 @@ public class PlaceXmlToDBLoader {
                     cityModel);
             placeDao.save(placeModel);
 
-            bikeXmlToDBLoader.loadBikeModelToDB(placeModel);
+            bikeXmlToDBLoader.loadBikeModelToDataBase(placeModel);
         });
     }
 }

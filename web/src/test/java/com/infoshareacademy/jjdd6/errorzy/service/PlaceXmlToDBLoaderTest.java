@@ -36,17 +36,17 @@ public class PlaceXmlToDBLoaderTest {
         // given
 //        when(placeSearch.getPlaces()).thenReturn(mockedPlaceList());
 //        String mockedPlaceName1 = "Metro Imielin";
-//        when(bikeXmlToDBLoader.loadBikeModelToDB(Mockito.eq(mockedPlaceName1)))
+//        when(bikeXmlToDBLoader.loadBikeModelToDataBase(Mockito.eq(mockedPlaceName1)))
 //                .thenReturn(mockedBikeModelList());
 //        String mockedPlaceName2 = "Metro Racławicka";
-//        when(bikeXmlToDBLoader.loadBikeModelToDB(Mockito.eq(mockedPlaceName2)))
+//        when(bikeXmlToDBLoader.loadBikeModelToDataBase(Mockito.eq(mockedPlaceName2)))
 //                .thenReturn(mockedBikeModelList());
 //        String mockedPlaceName3 = "Metro Kabaty";
-//        when(bikeXmlToDBLoader.loadBikeModelToDB(Mockito.eq(mockedPlaceName3)))
+//        when(bikeXmlToDBLoader.loadBikeModelToDataBase(Mockito.eq(mockedPlaceName3)))
 //                .thenReturn(mockedBikeModelList());
 
 //        // when
-//        List<PlaceModel> result = classUnderTest.preparePlaceModelList();
+//        List<PlaceModel> result = classUnderTest.loadPlaceModelToDataBase();
 //
 //        // then
 //        assertThat(result).extracting(PlaceModel::getName).containsExactly(mockedPlaceName1, mockedPlaceName2, mockedPlaceName3);

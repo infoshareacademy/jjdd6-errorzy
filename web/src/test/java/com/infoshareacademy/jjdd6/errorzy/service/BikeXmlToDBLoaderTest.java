@@ -31,7 +31,7 @@ public class BikeXmlToDBLoaderTest {
 //        when(bikeSearch.getMapOfBikesForPlace(Mockito.eq(placeName))).thenReturn(mockedBikeList());
 //
 //        // when
-//        List<BikeModel> result = classUnderTest.loadBikeModelToDB(placeName);
+//        List<BikeModel> result = classUnderTest.loadBikeModelToDataBase(placeName);
 //
 //        // then
 //        assertThat(result).extracting(BikeModel::getNumber).containsExactly(15223, 19223);
