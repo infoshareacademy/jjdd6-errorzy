@@ -1,6 +1,8 @@
 package com.infoshareacademy.jjdd6.errorzy.statistics.dao;
 
 import com.infoshareacademy.jjdd6.errorzy.statistics.model.CityStatistics;
+import com.infoshareacademy.jjdd6.errorzy.statistics.model.CountryStatistics;
+
 import javax.ejb.Stateful;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
@@ -46,14 +48,18 @@ public class CityStatisticsDao {
     }
 
     public void addToStatistics(String city) {
-        final Query query = entityManager.createNativeQuery(
-                "INSERT INTO CITY_STATISTICS (name, numberOfVisits) " +
-                        "VALUES(:city, 1 ) ON DUPLICATE KEY UPDATE " +
-                        "numberOfVisits = numberOfVisits +1");
-        query.setParameter("city", city.toUpperCase());
-        query.executeUpdate();
-        return;
+        CityStatistics stats = findByName(city);
+        if (stats == null) {
+            stats = new CityStatistics();
+            stats.setCity(city);
+            stats.setNumberOfVisits(1l);
+            entityManager.persist(stats);
+        } else {
+            stats.setNumberOfVisits(stats.getNumberOfVisits() + 1);
+            entityManager.merge(stats);
+        }
     }
 }
+
 
 

@@ -45,13 +45,16 @@ public class PlaceStatisticsDao {
     }
 
     public void addToStatistics(String place) {
-        final Query query = entityManager.createNativeQuery(
-                "INSERT INTO PLACE_STATISTICS (name, numberOfVisits) " +
-                        "VALUES(:place, 1 ) ON DUPLICATE KEY UPDATE " +
-                        "numberOfVisits = numberOfVisits +1");
-        query.setParameter("place", place.toUpperCase());
-        query.executeUpdate();
-        return;
+        PlaceStatistics stats = findByName(place);
+        if (stats == null) {
+            stats = new PlaceStatistics();
+            stats.setPlace(place);
+            stats.setNumberOfVisits(1l);
+            entityManager.persist(stats);
+        } else {
+            stats.setNumberOfVisits(stats.getNumberOfVisits() + 1);
+            entityManager.merge(stats);
+        }
     }
 }
 
