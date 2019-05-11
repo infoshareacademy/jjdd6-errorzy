@@ -1,5 +1,6 @@
 package com.infoshareacademy.jjdd6.geoservice;
 
+import com.infoshareacademy.jjdd6.errorzy.Place;
 import com.infoshareacademy.jjdd6.errorzy.xmlunmarshaller.PlaceSearch;
 import org.assertj.core.data.Offset;
 import org.junit.jupiter.api.BeforeEach;

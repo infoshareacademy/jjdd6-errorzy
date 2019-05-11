@@ -1,5 +1,6 @@
 package com.infoshareacademy.jjdd6.menu;
 
+import com.infoshareacademy.jjdd6.errorzy.Place;
 import com.infoshareacademy.jjdd6.errorzy.xmlunmarshaller.PlaceSearch;
 import com.infoshareacademy.jjdd6.geoservice.ClosestStation;
 import com.infoshareacademy.jjdd6.geoservice.StationsInMyArea;

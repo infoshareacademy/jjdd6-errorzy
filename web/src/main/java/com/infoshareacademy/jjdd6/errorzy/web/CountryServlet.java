@@ -1,11 +1,13 @@
 package com.infoshareacademy.jjdd6.errorzy.web;
 
+import com.infoshareacademy.jjdd6.errorzy.Country;
 import com.infoshareacademy.jjdd6.errorzy.freemarker.TemplateProvider;
 import com.infoshareacademy.jjdd6.errorzy.xmlunmarshaller.CountrySearch;
 import freemarker.template.Template;
 import freemarker.template.TemplateException;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
+
 import javax.inject.Inject;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
