@@ -14,6 +14,7 @@ public class CountryStatistics {
     private String country;
 
     @Column(name = "number_of_visits")
+    @NotNull
     private Long numberOfVisits;
 
     public CountryStatistics() {
@@ -38,5 +39,13 @@ public class CountryStatistics {
 
     public void setNumberOfVisits(Long numberOfVisits) {
         this.numberOfVisits = numberOfVisits;
+    }
+
+    @Override
+    public String toString() {
+        return "CountryStatistics{" +
+                "country='" + country + '\'' +
+                ", numberOfVisits=" + numberOfVisits +
+                '}';
     }
 }

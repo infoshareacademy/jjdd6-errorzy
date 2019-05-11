@@ -33,7 +33,6 @@ public class CountryStatisticsServlet extends HttpServlet {
             return;
         }
 
-
         if (action.equals("delete")) {
             deleteCountryStatiscics(req, resp);
         } else if (action.equals("findByName")) {
@@ -49,48 +48,35 @@ public class CountryStatisticsServlet extends HttpServlet {
 
     }
 
-
     private void deleteCountryStatiscics(HttpServletRequest req, HttpServletResponse resp) throws IOException {
         final String country = new String(req.getParameter("country"));
         LOGGER.info("Removing statistics for = {}", country);
 
         countryStatisticsDao.delete(country);
-
         findAllCountryStatistics(req, resp);
     }
 
     private void findAllCountryStatistics(HttpServletRequest req, HttpServletResponse resp) throws IOException {
-        final List<CountryStatistics> result = countryStatisticsDao.findAll();
-        LOGGER.info("Found {} objects", result.size());
-        for (CountryStatistics cou : result) {
+        final List<CountryStatistics> countryList = countryStatisticsDao.findAll();
+        LOGGER.info("Found {} objects", countryList.size());
+
+        for (CountryStatistics cou : countryList) {
             resp.getWriter().write(cou.toString() + "\n");
         }
-
     }
 
     private void findMostCheckedCountryStatiscics(HttpServletRequest req, HttpServletResponse resp) throws IOException {
-        Long numberOfVisits = req.getParameter(Long.parseLong(req.getParameter("number of visit"));
+        final CountryStatistics countryName = countryStatisticsDao.findMostChecked();
+        LOGGER.info("Found {} objects", countryName.toString());
 
-        final List<CountryStatistics> result = countryStatisticsDao.findMostChecked();
-
-        LOGGER.info("Found {} objects", result.size());
-
-        for (CountryStatistics cou : result) {
-            resp.getWriter().write(cou.toString() + "\n");
-
-        }
+        resp.getWriter().write(countryName.toString());
     }
 
     private void findByNameCountryStatiscics(HttpServletRequest req, HttpServletResponse resp) throws IOException {
-        final String country = new String(req.getParameter("country"));
+        final String name = req.getParameter("country");
+        final CountryStatistics countryName = countryStatisticsDao.findByName(name);
+        LOGGER.info("Found {} objects", countryName.toString());
 
-        LOGGER.info("Found {} objects", country);
-
-        for (CountryStatistics cou : country) {
-            resp.getWriter().write(cou + "\n");
-        }
-
+        resp.getWriter().write(countryName.toString());
     }
-
-
 }

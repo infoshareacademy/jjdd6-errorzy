@@ -2,7 +2,6 @@ package com.infoshareacademy.jjdd6.errorzy.web;
 
 import com.infoshareacademy.jjdd6.errorzy.statistics.dao.CityStatisticsDao;
 import com.infoshareacademy.jjdd6.errorzy.statistics.model.CityStatistics;
-import com.infoshareacademy.jjdd6.errorzy.statistics.model.CountryStatistics;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
@@ -46,7 +45,6 @@ public class CityStatisticsServlet extends HttpServlet {
             resp.getWriter().write("Unknown action.");
         }
 
-
     }
 
     private void deleteCityStatiscics(HttpServletRequest req, HttpServletResponse resp) throws IOException {
@@ -59,21 +57,27 @@ public class CityStatisticsServlet extends HttpServlet {
     }
 
     private void findAllCityStatistics(HttpServletRequest req, HttpServletResponse resp) throws IOException {
-        final List<CityStatistics> result = cityStatisticsDao.findAll();
-        LOGGER.info("Found {} objects", result.size());
+        final List<CityStatistics> cityList = cityStatisticsDao.findAll();
+        LOGGER.info("Found {} objects", cityList.size());
 
-        for (CityStatistics cit : result) {
+        for (CityStatistics cit : cityList) {
             resp.getWriter().write(cit.toString() + "\n");
         }
     }
 
+    private void findMostCityCountryStatiscics(HttpServletRequest req, HttpServletResponse resp) throws IOException {
+        final CityStatistics cityName = cityStatisticsDao.findMostChecked();
+        LOGGER.info("Found {} objects", cityName.toString());
 
-    private void findMostCityCountryStatiscics(HttpServletRequest req, HttpServletResponse resp) {
+        resp.getWriter().write(cityName.toString());
     }
 
-    private void findByNameCityStatiscics(HttpServletRequest req, HttpServletResponse resp) {
+    private void findByNameCityStatiscics(HttpServletRequest req, HttpServletResponse resp) throws IOException {
+        final String name = req.getParameter("city");
+        final CityStatistics cityName = cityStatisticsDao.findByName(name);
+        LOGGER.info("Found {} objects", cityName.toString());
+
+        resp.getWriter().write(cityName.toString());
     }
-
-
 }
 

@@ -1,7 +1,6 @@
 package com.infoshareacademy.jjdd6.errorzy.statistics.dao;
 
 import com.infoshareacademy.jjdd6.errorzy.statistics.model.CityStatistics;
-import com.infoshareacademy.jjdd6.errorzy.statistics.model.CountryStatistics;
 
 import javax.ejb.Stateful;
 import javax.persistence.EntityManager;
@@ -15,14 +14,6 @@ public class CityStatisticsDao {
     @PersistenceContext
 
     private EntityManager entityManager;
-
-    public CityStatistics update(CityStatistics cit) {
-        return entityManager.merge(cit);
-    }
-
-    public void save(CityStatistics city) {
-        entityManager.persist(city);
-    }
 
     public void delete(String city) {
         final CityStatistics cit = entityManager.find(CityStatistics.class, city);
@@ -41,10 +32,10 @@ public class CityStatisticsDao {
         return query.getResultList();
     }
 
-    public List<CityStatistics> findMostChecked() {
-        final Query query = entityManager.createQuery("SELECT cit FROM CityStatistics cit WHERE numberOfVisits = SELECT max(numberOfVisits) FROM CityStatistics)");
+    public CityStatistics findMostChecked() {
 
-        return query.getResultList();
+        final Query query = entityManager.createQuery("SELECT cit.city FROM CityStatistics cit WHERE max (cit.numberOfVisits) = :numberOfVisits ORDER BY cit.city DESC ");
+        return (CityStatistics) query.getSingleResult();
     }
 
     public void addToStatistics(String city) {

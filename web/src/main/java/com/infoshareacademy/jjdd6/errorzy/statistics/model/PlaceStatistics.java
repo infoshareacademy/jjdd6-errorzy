@@ -9,10 +9,10 @@ public class PlaceStatistics {
 
     @Id
     @Column(name = "place")
-    @NotNull
     private String place;
 
     @Column(name = "number_of_visits")
+    @NotNull
     private Long numberOfVisits;
 
     public PlaceStatistics() {
@@ -37,5 +37,13 @@ public class PlaceStatistics {
 
     public void setNumberOfVisits(Long numberOfVisits) {
         this.numberOfVisits = numberOfVisits;
+    }
+
+    @Override
+    public String toString() {
+        return "PlaceStatistics{" +
+                "place='" + place + '\'' +
+                ", numberOfVisits=" + numberOfVisits +
+                '}';
     }
 }

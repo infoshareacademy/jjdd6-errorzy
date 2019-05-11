@@ -38,4 +38,12 @@ public class CityStatistics {
     public void setNumberOfVisits(Long numberOfVisits) {
         this.numberOfVisits = numberOfVisits;
     }
+
+    @Override
+    public String toString() {
+        return "CityStatistics{" +
+                "city='" + city + '\'' +
+                ", numberOfVisits=" + numberOfVisits +
+                '}';
+    }
 }

@@ -52,25 +52,29 @@ public class PlaceStatisticsServlet extends HttpServlet {
         LOGGER.info("Removing statistics for = {}", place);
 
         placeStatisticsDao.delete(place);
-
         findAllPlaceStatistics(req, resp);
     }
     private void findAllPlaceStatistics(HttpServletRequest req, HttpServletResponse resp) throws IOException {
+        final List<PlaceStatistics> placeList = placeStatisticsDao.findAll();
+        LOGGER.info("Found {} objects", placeList.size());
 
-        final List<PlaceStatistics> result = placeStatisticsDao.findAll();
-        LOGGER.info("Found {} objects", result.size());
-        for (PlaceStatistics p : result) {
+        for (PlaceStatistics p : placeList) {
             resp.getWriter().write(p.toString() + "\n");
-
         }
     }
 
-    private void findMostPlaceCountryStatiscics(HttpServletRequest req, HttpServletResponse resp) {
+    private void findMostPlaceCountryStatiscics(HttpServletRequest req, HttpServletResponse resp) throws IOException {
+        final PlaceStatistics placeName = placeStatisticsDao.findMostChecked();
+        LOGGER.info("Found {} objects", placeName.toString());
+
+        resp.getWriter().write(placeName.toString());
     }
 
-    private void findByNamePlaceStatiscics(HttpServletRequest req, HttpServletResponse resp) {
+    private void findByNamePlaceStatiscics(HttpServletRequest req, HttpServletResponse resp) throws IOException {
+        final String name = req.getParameter("place");
+        final PlaceStatistics placeName = placeStatisticsDao.findByName(name);
+        LOGGER.info("Found {} objects", placeName.toString());
+
+        resp.getWriter().write(placeName.toString());
     }
-
-
-
 }
