@@ -36,8 +36,7 @@ public class CountryModel {
     public CountryModel() {
     }
 
-    public CountryModel(List<CityModel> cityList, double lat, double lng, String countryName) {
-        this.cityList = cityList;
+    public CountryModel(double lat, double lng, String countryName) {
         this.lat = lat;
         this.lng = lng;
         this.countryName = countryName;

@@ -13,9 +13,8 @@ public class PlaceModel {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    //    @ManyToOne
-//    @JoinColumn(name = "city_id")
-    @Transient
+    @ManyToOne
+    @JoinColumn(name = "city_id")
     private CityModel city;
 
     @OneToMany(mappedBy = "place")
@@ -42,11 +41,12 @@ public class PlaceModel {
     public PlaceModel() {
     }
 
-    public PlaceModel(double lat, double lng, String name, int number) {
+    public PlaceModel(double lat, double lng, String name, int number, CityModel cityModel) {
         this.lat = lat;
         this.lng = lng;
         this.name = name;
         this.number = number;
+        this.city = cityModel;
     }
 
     public double getLat() {

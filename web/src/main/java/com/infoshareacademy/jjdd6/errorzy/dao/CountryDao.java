@@ -1,14 +1,14 @@
 package com.infoshareacademy.jjdd6.errorzy.dao;
 
-import com.infoshareacademy.jjdd6.errorzy.Country;
 import com.infoshareacademy.jjdd6.errorzy.dao.genericdao.GenericDao;
+import com.infoshareacademy.jjdd6.errorzy.model.CountryModel;
 
 import javax.ejb.Stateless;
 
 @Stateless
-public class CountryDao extends GenericDao<Country, Long> {
+public class CountryDao extends GenericDao<CountryModel, Long> {
 
     public CountryDao() {
-        super(Country.class);
+        super(CountryModel.class);
     }
 }

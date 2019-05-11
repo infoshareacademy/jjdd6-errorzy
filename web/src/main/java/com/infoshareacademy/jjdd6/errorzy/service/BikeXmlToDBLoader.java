@@ -7,10 +7,7 @@ import com.infoshareacademy.jjdd6.errorzy.xmlunmarshaller.BikeSearch;
 
 import javax.ejb.Singleton;
 import javax.inject.Inject;
-import java.util.List;
-import java.util.Objects;
 import java.util.logging.Logger;
-import java.util.stream.Collectors;
 
 @Singleton
 public class BikeXmlToDBLoader {
@@ -21,21 +18,14 @@ public class BikeXmlToDBLoader {
     @Inject
     private BikeSearch bikeSearch;
 
-    private void loadBikeXmlToDataBase(List<BikeModel> bikeModelList) {
-        LOGGER.info("Loading to DB: " + bikeModelList);
-        bikeModelList.forEach(bike -> bikeDao.save(bike));
-    }
-
-    public List<BikeModel> prepareBikeModelList(PlaceModel placeModel) {
+    public void loadBikeModelToDB(PlaceModel placeModel) {
         LOGGER.info("Bikes for place are being loaded " + placeModel.getName());
-
-        List<BikeModel> bikeModelList = bikeSearch.getMapOfBikesForPlace(placeModel.getName()).values().stream()
-                .filter(Objects::nonNull)
-                .map(bike -> new BikeModel(bike.getNumber(), bike.getBikeType(), placeModel))
-                .collect(Collectors.toList());
-
-        loadBikeXmlToDataBase(bikeModelList);
-
-        return bikeModelList;
+        bikeSearch.getMapOfBikesForPlace(placeModel.getName()).values()
+                .forEach(bike -> {
+                    BikeModel bikeModel = new BikeModel(bike.getNumber(),
+                            bike.getBikeType(),
+                            placeModel);
+                    bikeDao.save(bikeModel);
+                });
     }
 }

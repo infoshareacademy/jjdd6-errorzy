@@ -2,8 +2,6 @@ package com.infoshareacademy.jjdd6.errorzy.model;
 
 import javax.persistence.*;
 import javax.validation.constraints.NotNull;
-import javax.xml.bind.annotation.XmlAttribute;
-import javax.xml.bind.annotation.XmlElement;
 import java.util.List;
 
 @Entity
@@ -19,8 +17,7 @@ public class CityModel {
     @JoinColumn(name = "country_id")
     private CountryModel country;
 
-//    @OneToMany(mappedBy = "city")
-    @Transient
+    @OneToMany(mappedBy = "city")
     private List<PlaceModel> placeList;
 
     @Column(name = "lateral_coordinate", columnDefinition = "DECIMAL(10,6)")
@@ -28,7 +25,6 @@ public class CityModel {
 
     @Column(name = "longitudinal_coordinate", columnDefinition = "DECIMAL(10,6)")
     private double lng;
-
 
     @Column(name = "city_name")
     @NotNull
@@ -42,11 +38,11 @@ public class CityModel {
     public CityModel() {
     }
 
-    public CityModel(double lat, double lng, String name, List<PlaceModel> placeList) {
+    public CityModel(double lat, double lng, String name, CountryModel countryModel) {
         this.lat = lat;
         this.lng = lng;
         this.name = name;
-        this.placeList = placeList;
+        this.country = countryModel;
     }
 
     public List<PlaceModel> getPlaceList() {

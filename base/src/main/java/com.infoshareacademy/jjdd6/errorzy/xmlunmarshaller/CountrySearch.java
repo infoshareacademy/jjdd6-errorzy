@@ -5,6 +5,7 @@ import com.infoshareacademy.jjdd6.errorzy.Country;
 import javax.ejb.Stateless;
 import java.util.List;
 import java.util.Map;
+import java.util.Objects;
 import java.util.TreeMap;
 import java.util.stream.Collectors;
 
@@ -18,7 +19,7 @@ public class CountrySearch {
         String path = "/tmp/nextbike-live.xml";
         return xmlUnmarshaller.getMarkersList(path).getCountryList()
                 .stream()
-                .distinct()
+                .filter(Objects::nonNull)
                 .collect(Collectors.toList());
     }
 
