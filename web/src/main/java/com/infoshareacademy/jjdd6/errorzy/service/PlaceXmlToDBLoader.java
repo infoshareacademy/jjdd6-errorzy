@@ -7,9 +7,12 @@ import com.infoshareacademy.jjdd6.errorzy.xmlunmarshaller.PlaceSearch;
 
 import javax.ejb.Singleton;
 import javax.inject.Inject;
+import java.util.logging.Logger;
 
 @Singleton
 public class PlaceXmlToDBLoader {
+
+    private static final Logger LOGGER = Logger.getLogger(PlaceXmlToDBLoader.class.getName());
 
     @Inject
     private PlaceDao placeDao;
@@ -26,6 +29,8 @@ public class PlaceXmlToDBLoader {
                     place.getNumber(),
                     cityModel);
             placeDao.save(placeModel);
+
+            LOGGER.info(placeModel.getName() + ": place added to DB.");
 
             bikeXmlToDBLoader.loadBikeModelToDataBase(placeModel);
         });

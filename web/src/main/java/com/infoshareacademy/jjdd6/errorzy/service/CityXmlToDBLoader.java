@@ -7,9 +7,11 @@ import com.infoshareacademy.jjdd6.errorzy.xmlunmarshaller.CitySearch;
 
 import javax.ejb.Singleton;
 import javax.inject.Inject;
+import java.util.logging.Logger;
 
 @Singleton
 public class CityXmlToDBLoader {
+    private static final Logger LOGGER = Logger.getLogger(CityXmlToDBLoader.class.getName());
 
     @Inject
     private CityDao cityDao;
@@ -25,7 +27,7 @@ public class CityXmlToDBLoader {
                     city.getName(),
                     countryModel);
             cityDao.save(cityModel);
-
+LOGGER.info(cityModel.getName() + ": City added to DB.");
             placeXmlToDBLoader.loadPlaceModelToDataBase(cityModel);
         });
 
