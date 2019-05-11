@@ -20,7 +20,7 @@ public class CityStatisticsServlet extends HttpServlet {
     private static final Logger LOGGER = LogManager.getLogger(CityStatisticsServlet.class.getName());
 
     @Inject
-    CityStatisticsDao cityStatisticsDao;
+   private CityStatisticsDao cityStatisticsDao;
 
 
     @Override

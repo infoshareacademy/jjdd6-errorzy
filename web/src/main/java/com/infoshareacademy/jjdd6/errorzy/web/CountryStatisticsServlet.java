@@ -20,7 +20,7 @@ public class CountryStatisticsServlet extends HttpServlet {
     private static final Logger LOGGER = LogManager.getLogger(CountryStatisticsServlet.class.getName());
 
     @Inject
-    CountryStatisticsDao countryStatisticsDao;
+    private CountryStatisticsDao countryStatisticsDao;
 
 
     @Override

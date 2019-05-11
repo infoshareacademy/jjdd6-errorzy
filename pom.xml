@@ -71,7 +71,7 @@
         <dependency>
             <groupId>org.hibernate</groupId>
             <artifactId>hibernate-core</artifactId>
-            <version>LATEST</version>
+            <version>5.4.2.Final</version>
             <exclusions>
                 <exclusion>
                     <groupId>dom4j</groupId>
@@ -83,7 +83,7 @@
         <dependency>
             <groupId>org.hibernate.javax.persistence</groupId>
             <artifactId>hibernate-jpa-2.1-api</artifactId>
-            <version>LATEST</version>
+            <version>1.0.2.Final</version>
             <exclusions>
                 <exclusion>
                     <groupId>dom4j</groupId>
@@ -96,7 +96,7 @@
         <dependency>
             <groupId>mysql</groupId>
             <artifactId>mysql-connector-java</artifactId>
-            <version>LATEST</version>
+            <version>8.0.16</version>
         </dependency>
 
     </dependencies>
