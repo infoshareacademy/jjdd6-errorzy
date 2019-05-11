@@ -19,7 +19,7 @@ public class BikeXmlToDBLoader {
     private BikeSearch bikeSearch;
 
     public void loadBikeModelToDataBase(PlaceModel placeModel) {
-        LOGGER.info("Bikes for place are being loaded " + placeModel.getName());
+//        LOGGER.info("Bikes for place are being loaded " + placeModel.getName());
         bikeSearch.getMapOfBikesForPlace(placeModel.getName()).values()
                 .forEach(bike -> {
                     BikeModel bikeModel = new BikeModel(bike.getNumber(),
