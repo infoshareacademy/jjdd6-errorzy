@@ -1,5 +1,9 @@
 package com.infoshareacademy.jjdd6.errorzy.web;
 
+import com.infoshareacademy.jjdd6.errorzy.Bike;
+import com.infoshareacademy.jjdd6.errorzy.City;
+import com.infoshareacademy.jjdd6.errorzy.Country;
+import com.infoshareacademy.jjdd6.errorzy.Place;
 import com.infoshareacademy.jjdd6.errorzy.freemarker.TemplateProvider;
 import com.infoshareacademy.jjdd6.errorzy.xmlunmarshaller.BikeSearch;
 import com.infoshareacademy.jjdd6.errorzy.xmlunmarshaller.CitySearch;

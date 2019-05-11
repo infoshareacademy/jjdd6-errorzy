@@ -1,5 +1,6 @@
 package com.infoshareacademy.jjdd6.errorzy.web;
 
+import com.infoshareacademy.jjdd6.errorzy.Place;
 import com.infoshareacademy.jjdd6.errorzy.freemarker.TemplateProvider;
 import com.infoshareacademy.jjdd6.geoservice.ClosestStation;
 import freemarker.template.Template;
@@ -51,7 +52,6 @@ public class ClosestStationServlet extends HttpServlet {
             String distanceUnit = req.getParameter("unit");
 
             Place closestPlace = closestStation.findTheClosestPlace(lat, lng);
-            //
             double distance = closestStation.getDistanceBetweenTwoGeoPoints(lat, lng, closestPlace);
 
             if (distanceUnit.equals("meter")) {

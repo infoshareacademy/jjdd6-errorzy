@@ -1,5 +1,6 @@
 package com.infoshareacademy.jjdd6.errorzy.web;
 
+import com.infoshareacademy.jjdd6.errorzy.City;
 import com.infoshareacademy.jjdd6.errorzy.freemarker.TemplateProvider;
 import com.infoshareacademy.jjdd6.errorzy.xmlunmarshaller.CitySearch;
 import freemarker.template.Template;
