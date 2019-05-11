@@ -1,4 +1,4 @@
-package com.infoshareacademy.jjdd6.errorzy.User;
+package com.infoshareacademy.jjdd6.errorzy.user;
 
 import javax.ejb.Stateful;
 import javax.persistence.EntityManager;
