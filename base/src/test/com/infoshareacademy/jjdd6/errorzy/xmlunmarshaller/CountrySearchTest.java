@@ -1,6 +1,5 @@
 package com.infoshareacademy.jjdd6.errorzy.xmlunmarshaller;
 
-import com.infoshareacademy.jjdd6.errorzy.Country;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;

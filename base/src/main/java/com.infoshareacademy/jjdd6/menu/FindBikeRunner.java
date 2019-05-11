@@ -1,8 +1,5 @@
 package com.infoshareacademy.jjdd6.menu;
 
-import com.infoshareacademy.jjdd6.errorzy.City;
-import com.infoshareacademy.jjdd6.errorzy.Country;
-import com.infoshareacademy.jjdd6.errorzy.Place;
 import com.infoshareacademy.jjdd6.errorzy.xmlunmarshaller.CitySearch;
 import com.infoshareacademy.jjdd6.errorzy.xmlunmarshaller.CountrySearch;
 import com.infoshareacademy.jjdd6.errorzy.xmlunmarshaller.PlaceSearch;

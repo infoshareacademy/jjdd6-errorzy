@@ -1,7 +1,5 @@
 package com.infoshareacademy.jjdd6.errorzy.web;
 
-import com.infoshareacademy.jjdd6.errorzy.City;
-import com.infoshareacademy.jjdd6.errorzy.Country;
 import com.infoshareacademy.jjdd6.errorzy.freemarker.TemplateProvider;
 import com.infoshareacademy.jjdd6.errorzy.numberOfPlaces.Statistics;
 import com.infoshareacademy.jjdd6.errorzy.xmlunmarshaller.CitySearch;

@@ -1,6 +1,5 @@
 package com.infoshareacademy.jjdd6.geoservice;
 
-import com.infoshareacademy.jjdd6.errorzy.Place;
 import com.infoshareacademy.jjdd6.menu.InsideMenu;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;

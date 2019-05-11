@@ -1,8 +1,6 @@
 package com.infoshareacademy.jjdd6.errorzy.web;
 
-import com.infoshareacademy.jjdd6.errorzy.Place;
 import com.infoshareacademy.jjdd6.errorzy.statistics.dao.PlaceStatisticsDao;
-import com.infoshareacademy.jjdd6.errorzy.statistics.model.CountryStatistics;
 import com.infoshareacademy.jjdd6.errorzy.statistics.model.PlaceStatistics;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
