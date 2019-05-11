@@ -1,3 +1,4 @@
+<?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE web-app PUBLIC
         "-//Sun Microsystems, Inc.//DTD Web Application 2.3//EN"
         "http://java.sun.com/dtd/web-app_2_3.dtd" >
@@ -8,11 +9,17 @@
         xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee http://xmlns.jcp.org/xml/ns/javaee/web-app_3_1.xsd"
         version="3.1">
 
-    <data-source>
-        <name>java:ds/errorzy</name>
-        <class-name>com.mysql.cj.jdbc.MysqlDataSource</class-name>
-        <url>jdbc:mysql://0.0.0.0:6603/errorzy_database?useLegacyDatetimeCode=false&amp;serverTimezone=Europe/Warsaw</url>
-        <user>root</user>
-        <password>root</password>
-    </data-source>
+
+    <context-param>
+        <param-name>com.auth0.domain</param-name>
+        <param-value>errorzy.eu.auth0.com</param-value>
+    </context-param>
+    <context-param>
+        <param-name>com.auth0.clientId</param-name>
+        <param-value>MWfiUSJ8hDZrliL8bNHzkRc9o449mm99</param-value>
+    </context-param>
+    <context-param>
+        <param-name>com.auth0.clientSecret</param-name>
+        <param-value>HondA_BL2SeExfCTe5LBV-G8JKjbJ_dFQiQBUp29-kKopQ9Sc66UrMdKO0KrXWM-</param-value>
+    </context-param>
 </web-app>
