@@ -36,7 +36,7 @@ public class ClosestStationServlet extends HttpServlet {
         Template template = templateProvider.getTemplate(getServletContext(), "closest-station-servlet.ftlh");
         Map<String, Object> model = new HashMap<>();
 
-        if (!(req.getParameter("lat") == (null) && req.getParameter("lng") == (null))) {
+        if ((req.getParameter("lat") != (null) && req.getParameter("lng") != (null))) {
             double lat;
             double lng;
 
@@ -55,12 +55,14 @@ public class ClosestStationServlet extends HttpServlet {
             double distance = closestStation.getDistanceBetweenTwoGeoPoints(lat, lng, closestPlace);
 
             if (distanceUnit.equals("meter")) {
-                distance = distance * 1000;
+                distance = distance * 1000.0;
             }
 
             model.put("place", closestPlace);
             model.put("distanceToPlace", distance);
             model.put("distanceUnit", distanceUnit + "s");
+            model.put("lateralValue", lat);
+            model.put("longitudinalValue", lng);
         }
 
         try {
