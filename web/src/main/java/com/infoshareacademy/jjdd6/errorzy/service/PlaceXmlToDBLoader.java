@@ -30,8 +30,6 @@ public class PlaceXmlToDBLoader {
                     cityModel);
             placeDao.save(placeModel);
 
-            LOGGER.info(placeModel.getName() + ": place added to DB.");
-
             bikeXmlToDBLoader.loadBikeModelToDataBase(placeModel);
         });
     }

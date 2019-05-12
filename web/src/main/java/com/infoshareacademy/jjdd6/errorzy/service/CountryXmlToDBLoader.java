@@ -11,7 +11,6 @@ import javax.inject.Inject;
 import java.util.logging.Logger;
 
 @Singleton
-@Startup
 public class CountryXmlToDBLoader {
     private static final Logger LOGGER = Logger.getLogger(CountryXmlToDBLoader.class.getName());
 
@@ -22,7 +21,6 @@ public class CountryXmlToDBLoader {
     @Inject
     private CityXmlToDBLoader cityXmlToDBLoader;
 
-    @PostConstruct
     public void loadCountryModelAtStart() {
         Runnable task = this::loadCountryModelToDataBase;
         new Thread(task).start();

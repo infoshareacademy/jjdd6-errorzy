@@ -27,7 +27,7 @@ public class CityXmlToDBLoader {
                     city.getName(),
                     countryModel);
             cityDao.save(cityModel);
-LOGGER.info(cityModel.getName() + ": City added to DB.");
+
             placeXmlToDBLoader.loadPlaceModelToDataBase(cityModel);
         });
 
