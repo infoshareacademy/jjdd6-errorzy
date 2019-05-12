@@ -135,11 +135,13 @@
                 </form>
 
                 <#if place??>
+                    <#setting number_format="computer">
+
                     <h5 class="text-light">The closest bike stand is ${place.name}, it is
-                        <#if distanceUnit == "meter">
-                            ${distanceToPlace?c}
+                        <#if distanceUnit == "kilometers">
+                            ${distanceToPlace?string["0.###"]}
                         <#else>
-                            ${distanceToPlace}
+                            ${distanceToPlace?string["0"]}
                         </#if> ${distanceUnit} from you.</h5>
                 </#if>
 

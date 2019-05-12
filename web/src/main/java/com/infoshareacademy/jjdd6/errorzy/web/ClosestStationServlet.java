@@ -55,8 +55,8 @@ public class ClosestStationServlet extends HttpServlet {
             double distance = closestStation.getDistanceBetweenTwoGeoPoints(lat, lng, closestPlace);
 
             if (distanceUnit.equals("meter")) {
-                double distanceTemp = distance * 1000;
-                distance = (int) distanceTemp;
+//                double distanceTemp = distance * 1000;
+                distance = distance * 1000;
             }
 
             model.put("place", closestPlace);
