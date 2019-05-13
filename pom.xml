@@ -68,6 +68,17 @@
             <artifactId>javaee-api</artifactId>
             <version>8.0</version>
         </dependency>
+        <dependency>
+            <groupId>org.hibernate</groupId>
+            <artifactId>hibernate-core</artifactId>
+            <version>5.4.2.Final</version>
+            <exclusions>
+                <exclusion>
+                    <groupId>dom4j</groupId>
+                    <artifactId>dom4j</artifactId>
+                </exclusion>
+            </exclusions>
+        </dependency>
 
         <!-- Google Log -->
         <dependency>
@@ -75,11 +86,16 @@
             <artifactId>mvc-auth-commons</artifactId>
             <version>1.0.4</version>
         </dependency>
+
+
+
+        <!-- MySQL Driver -->
         <dependency>
             <groupId>javax.servlet</groupId>
             <artifactId>javax.servlet-api</artifactId>
             <version>3.1.0</version>
         </dependency>
+
     </dependencies>
 
     <build>

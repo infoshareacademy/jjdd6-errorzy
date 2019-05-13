@@ -36,7 +36,7 @@ public class LogoutServlet extends HttpServlet {
                 clientId,
                 returnUrl
         );
-        response.sendRedirect(logoutUrl);
+        response.sendRedirect("/home");
     }
 
 }
