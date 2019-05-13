@@ -14,14 +14,6 @@ public class PlaceStatisticsDao {
 
     private EntityManager entityManager;
 
-    public void delete(String place) {
-        final PlaceStatistics p = entityManager.find(PlaceStatistics.class, place);
-        if (p != null) {
-
-            entityManager.remove(p);
-        }
-    }
-
     public PlaceStatistics findByName(String place) {
         return entityManager.find(PlaceStatistics.class, place);
     }

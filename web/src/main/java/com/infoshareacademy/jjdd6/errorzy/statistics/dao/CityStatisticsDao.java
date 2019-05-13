@@ -15,13 +15,6 @@ public class CityStatisticsDao {
 
     private EntityManager entityManager;
 
-    public void delete(String city) {
-        final CityStatistics cit = entityManager.find(CityStatistics.class, city);
-        if (cit != null) {
-            entityManager.remove(cit);
-        }
-    }
-
     public CityStatistics findByName(String city) {
         return entityManager.find(CityStatistics.class, city);
     }

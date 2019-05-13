@@ -33,9 +33,7 @@ public class CountryStatisticsServlet extends HttpServlet {
             return;
         }
 
-        if (action.equals("delete")) {
-            deleteCountryStatiscics(req, resp);
-        } else if (action.equals("findByName")) {
+        if (action.equals("findByName")) {
             findByNameCountryStatiscics(req, resp);
         } else if (action.equals("findAll")) {
             findAllCountryStatistics(req, resp);
@@ -44,16 +42,6 @@ public class CountryStatisticsServlet extends HttpServlet {
         } else {
             resp.getWriter().write("Unknown action.");
         }
-
-
-    }
-
-    private void deleteCountryStatiscics(HttpServletRequest req, HttpServletResponse resp) throws IOException {
-        final String country = new String(req.getParameter("country"));
-        LOGGER.info("Removing statistics for = {}", country);
-
-        countryStatisticsDao.delete(country);
-        findAllCountryStatistics(req, resp);
     }
 
     private void findAllCountryStatistics(HttpServletRequest req, HttpServletResponse resp) throws IOException {
