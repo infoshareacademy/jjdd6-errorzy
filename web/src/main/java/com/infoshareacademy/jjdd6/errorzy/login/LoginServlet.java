@@ -12,7 +12,7 @@ import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 import java.io.UnsupportedEncodingException;
 
-@WebServlet(urlPatterns = {"/login"})
+@WebServlet(urlPatterns = {"/"})
 public class LoginServlet extends HttpServlet {
 
     private AuthenticationController authenticationController;
