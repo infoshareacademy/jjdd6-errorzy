@@ -5,29 +5,36 @@ import com.infoshareacademy.jjdd6.errorzy.Country;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
-import javax.ejb.Stateless;
+import javax.annotation.PostConstruct;
+import javax.ejb.Singleton;
+import javax.ejb.Startup;
+import java.util.Collection;
 import java.util.List;
 import java.util.Map;
 import java.util.TreeMap;
 import java.util.stream.Collectors;
+import java.util.stream.Stream;
 
-@Stateless
+@Singleton
+@Startup
 public class CountrySearch {
 
     private static final Logger LOG = LogManager.getLogger(CountrySearch.class);
-
     private XmlUnmarshaller xmlUnmarshaller = new XmlUnmarshaller();
+    private List<Country> countries;
 
-    public List<Country> getCountries() {
-        LOG.info("Countries from xml-file has been loaded");
+    @PostConstruct
+    private void init() {
         String path = "/tmp/nextbike-live.xml";
+        LOG.info("XML file loading started.");
+
         countries = xmlUnmarshaller.getMarkersList(path).getCountryList()
                 .stream()
                 .filter(country -> {
                     if (country != null) {
                         return true;
                     } else {
-                        LOGGER.info("----------------------------------- Empty country !!! -----------------------------------");
+                        LOG.warn("Empty country object found.");
                         return false;
                     }
                 })
@@ -35,7 +42,7 @@ public class CountrySearch {
 
         countries.forEach(System.out::println);
 
-        LOGGER.info("KONIEC LADOWANIA");
+        LOG.info("XML file loaded.");
     }
 
     public synchronized List<Country> getCountries() {
@@ -53,20 +60,23 @@ public class CountrySearch {
             if (!countryMap.containsKey(country.getCountryName())) {
                 countryMap.put(country.getCountryName(), country);
             } else {
-                List<City> oldCityList = countryMap.get(country.getCountryName()).getCityList();
-                countryMap.get(country.getCountryName()).setCityList(mergeTwoCityLists(country, oldCityList));
+                String countryName = country.getCountryName();
 
+                List<City> currentCityList = countryMap.get(countryName).getCityList();
+                List<City> cityToBeAddedList = country.getCityList();
+                Country newCountry = countryMap.get(countryName);
+                newCountry.setCityList(mergeCityLists(currentCityList, cityToBeAddedList));
 
-
+                countryMap.put(countryName, newCountry);
             }
         }
         return countryMap;
     }
 
-    private List<City> mergeTwoCityLists(Country country, List<City> oldCityList) {
-        return Stream.of(oldCityList, country.getCityList())
+    private List<City> mergeCityLists(List<City> oldCityList, List<City> newCityList) {
+
+        return Stream.of(oldCityList, newCityList)
                 .flatMap(Collection::stream)
                 .collect(Collectors.toList());
     }
-
 }

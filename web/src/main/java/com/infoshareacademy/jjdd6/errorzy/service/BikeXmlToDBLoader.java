@@ -22,14 +22,11 @@ public class BikeXmlToDBLoader {
     public void loadBikeModelToDataBase(Place place, PlaceModel placeModel) {
         if (place.getBikeList() != null) {
             place.getBikeList().stream().forEach(bike -> {
-                BikeModel bikeModel = bikeDao.findByNumber(bike.getNumber());
 
-                if (bikeModel == null) {
-                    bikeModel = new BikeModel(bike.getNumber(),
-                            bike.getBikeType(),
-                            placeModel);
-                    bikeDao.save(bikeModel);
-                }
+                BikeModel bikeModel = new BikeModel(bike.getNumber(),
+                        bike.getBikeType(),
+                        placeModel);
+                bikeDao.save(bikeModel);
             });
         }
     }

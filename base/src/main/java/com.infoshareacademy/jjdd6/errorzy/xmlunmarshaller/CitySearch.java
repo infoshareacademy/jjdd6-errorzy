@@ -6,15 +6,12 @@ import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
 import javax.ejb.Stateless;
-import java.util.Collection;
-import java.util.List;
-import java.util.Map;
-import java.util.TreeMap;
+import java.util.*;
 import java.util.stream.Collectors;
 
 @Stateless
 public class CitySearch {
-private static final Logger LOG = LogManager.getLogger(CitySearch.class);
+    private static final Logger LOG = LogManager.getLogger(CitySearch.class);
     private CountrySearch findCountry = new CountrySearch();
 
     public List<City> getCities() {
@@ -28,7 +25,7 @@ private static final Logger LOG = LogManager.getLogger(CitySearch.class);
                     if (city != null) {
                         return true;
                     } else {
-                        LOGGER.info("---------------- NULL CITY ----------------");
+                        LOG.warn("Empty city object found.");
                         return false;
                     }
                 })

@@ -26,24 +26,19 @@ public class CountryXmlToDBLoader {
     }
 
     private void loadCountryModelToDataBase() {
-        countrySearch.getCountries().forEach(country -> {
 
-            CountryModel countryModel = countryDao.findByName(country.getCountryName());
+        countrySearch.getMapOfCountries().values().forEach(country -> {
 
-            if (countryModel == null) {
-                countryModel = new CountryModel(country.getLat(),
-                        country.getLng(),
-                        country.getCountryName());
+            CountryModel countryModel = new CountryModel(country.getLat(),
+                    country.getLng(),
+                    country.getCountryName());
 
-                countryDao.save(countryModel);
-                LOGGER.info(countryModel.getCountryName() + ": Added to DB.");
-            } else {
-                LOGGER.info(countryModel.getCountryName() + ": Already exists in the DB.");
-            }
-
+            countryDao.save(countryModel);
+            LOGGER.info(countryModel.getCountryName() + ": Added to DB.");
 
             cityXmlToDBLoader.loadCityModelToDataBase(country, countryModel);
         });
-        LOGGER.info(": Loading to DB finished.");
+
+        LOGGER.info("Loading to DB finished.");
     }
 }

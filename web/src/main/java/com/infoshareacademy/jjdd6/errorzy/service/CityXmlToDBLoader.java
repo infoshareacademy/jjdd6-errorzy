@@ -23,16 +23,13 @@ public class CityXmlToDBLoader {
 
     public void loadCityModelToDataBase(Country country, CountryModel countryModel) {
         country.getCityList().stream().forEach(city -> {
-            CityModel cityModel = cityDao.findByName(city.getName());
 
-            if (cityModel == null) {
-                cityModel = new CityModel(city.getLat(),
-                        city.getLng(),
-                        city.getName(),
-                        countryModel);
+            CityModel cityModel = new CityModel(city.getLat(),
+                    city.getLng(),
+                    city.getName(),
+                    countryModel);
 
-                cityDao.save(cityModel);
-            }
+            cityDao.save(cityModel);
 
             placeXmlToDBLoader.loadPlaceModelToDataBase(city, cityModel);
         });
@@ -46,6 +43,5 @@ public class CityXmlToDBLoader {
 //
 //            placeXmlToDBLoader.loadPlaceModelToDataBase(cityModel);
 //        });
-
     }
 }

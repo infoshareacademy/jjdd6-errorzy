@@ -24,16 +24,13 @@ public class PlaceXmlToDBLoader {
 
     public void loadPlaceModelToDataBase(City city, CityModel cityModel) {
         city.getPlaceList().forEach(place -> {
-            PlaceModel placeModel = placeDao.findByName(place.getName());
 
-            if (placeModel == null) {
-                placeModel = new PlaceModel(place.getLat(),
-                        place.getLng(),
-                        place.getName(),
-                        place.getNumber(),
-                        cityModel);
-                placeDao.save(placeModel);
-            }
+            PlaceModel placeModel = new PlaceModel(place.getLat(),
+                    place.getLng(),
+                    place.getName(),
+                    place.getNumber(),
+                    cityModel);
+            placeDao.save(placeModel);
 
             bikeXmlToDBLoader.loadBikeModelToDataBase(place, placeModel);
         });
