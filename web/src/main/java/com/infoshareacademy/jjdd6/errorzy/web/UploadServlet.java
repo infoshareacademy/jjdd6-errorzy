@@ -25,7 +25,7 @@ public class UploadServlet extends HttpServlet {
 
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        resp.getWriter().println("File Uploaded Correctly");
+        resp.getWriter().println("Upload complete.");
     }
 
     @Override
@@ -34,7 +34,7 @@ public class UploadServlet extends HttpServlet {
         try {
             File file = fileUploadProcessorBean.uploadFile(req.getPart("file"));
         } catch (Exception e) {
-            LOGGER.warn("File not loaded!");
+            LOGGER.warn("Uploading file failed.");
             resp.setStatus(HttpServletResponse.SC_BAD_REQUEST);
         }
     }
