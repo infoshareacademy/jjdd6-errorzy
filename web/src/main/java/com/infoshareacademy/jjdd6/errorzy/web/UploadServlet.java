@@ -33,6 +33,7 @@ public class UploadServlet extends HttpServlet {
 
         try {
             File file = fileUploadProcessorBean.uploadFile(req.getPart("file"));
+            LOGGER.info(file + " Loaded.");
         } catch (Exception e) {
             LOGGER.warn("File not loaded!");
             resp.setStatus(HttpServletResponse.SC_BAD_REQUEST);
