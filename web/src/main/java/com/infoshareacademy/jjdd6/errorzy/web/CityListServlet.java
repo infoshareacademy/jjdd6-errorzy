@@ -2,6 +2,7 @@ package com.infoshareacademy.jjdd6.errorzy.web;
 
 import com.infoshareacademy.jjdd6.errorzy.City;
 import com.infoshareacademy.jjdd6.errorzy.freemarker.TemplateProvider;
+import com.infoshareacademy.jjdd6.errorzy.statistics.dao.CityStatisticsDao;
 import com.infoshareacademy.jjdd6.errorzy.xmlunmarshaller.CitySearch;
 import freemarker.template.Template;
 import freemarker.template.TemplateException;
@@ -25,6 +26,8 @@ public class CityListServlet extends HttpServlet {
     private CitySearch citySearch;
     @Inject
     private TemplateProvider templateProvider;
+    @Inject
+    private CityStatisticsDao cityStatisticsDao;
 
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {

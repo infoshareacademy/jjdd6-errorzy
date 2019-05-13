@@ -5,6 +5,9 @@ import com.infoshareacademy.jjdd6.errorzy.City;
 import com.infoshareacademy.jjdd6.errorzy.Country;
 import com.infoshareacademy.jjdd6.errorzy.Place;
 import com.infoshareacademy.jjdd6.errorzy.freemarker.TemplateProvider;
+import com.infoshareacademy.jjdd6.errorzy.statistics.dao.CityStatisticsDao;
+import com.infoshareacademy.jjdd6.errorzy.statistics.dao.CountryStatisticsDao;
+import com.infoshareacademy.jjdd6.errorzy.statistics.dao.PlaceStatisticsDao;
 import com.infoshareacademy.jjdd6.errorzy.xmlunmarshaller.BikeSearch;
 import com.infoshareacademy.jjdd6.errorzy.xmlunmarshaller.CitySearch;
 import com.infoshareacademy.jjdd6.errorzy.xmlunmarshaller.CountrySearch;
@@ -45,6 +48,13 @@ public class BikeServlet extends HttpServlet {
     @Inject
     private TemplateProvider templateProvider;
 
+    @Inject
+    private CityStatisticsDao cityStatisticsDao;
+    @Inject
+    private CountryStatisticsDao countryStatisticsDao;
+    @Inject
+    private PlaceStatisticsDao placeStatisticsDao;
+
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         resp.setContentType("text/html;charset=UTF-8");
@@ -55,7 +65,6 @@ public class BikeServlet extends HttpServlet {
             Map<String, City> cityMap = citySearch.getMapOfCitiesForCountry(req.getParameter("country"));
             createRootMap(writer, cityMap, "cityRoot");
         } else if (!(req.getParameter("city") == null)) {
-
             Map<String, Place> placeMap = placeSearch.getMapOfPlaces(req.getParameter("city"));
             createRootMap(writer, placeMap, "placeRoot");
         } else if (!(req.getParameter("place") == null)) {
@@ -69,7 +78,6 @@ public class BikeServlet extends HttpServlet {
             }
 
         } else {
-
             Map<String, Country> countryMap = countrySearch.getMapOfCountries();
             createRootMap(writer, countryMap, "countryRoot");
         }
