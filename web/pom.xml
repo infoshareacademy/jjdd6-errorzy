@@ -76,6 +76,7 @@
         </dependency>
     </dependencies>
 
+
     <build>
         <finalName>web</finalName>
         <plugins>
@@ -111,4 +112,5 @@
         </plugins>
 
     </build>
+
 </project>
