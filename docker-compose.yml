@@ -3,16 +3,16 @@ services:
   db:
     image: mysql
     environment:
-      - MYSQL_ROOT_PASSWORD=root
-      - MYSQL_DATABASE=errorzy_datavase
-      - MYSQL_USER=root
-      - MYSQL_PASSWORD=root
+      - MYSQL_ROOT_PASSWORD=pass123
+      - MYSQL_DATABASE=errorzy_database
+      - MYSQL_USER=errorzy
+      - MYSQL_PASSWORD=pass123
     ports:
       - 6603:3306
     command: mysqld --character-set-server=utf8 --collation-server=utf8_unicode_ci --init-connect='SET NAMES UTF8;' --innodb-flush-log-at-trx-commit=0
   app:
     build:
-      context: ./
+      context: ./web
     ports:
       - 8080:8080
       - 9990:9990

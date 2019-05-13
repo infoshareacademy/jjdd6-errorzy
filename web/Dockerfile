@@ -1,6 +1,6 @@
 FROM jboss/wildfly
 
-ADD /web/target/web.war /opt/jboss/wildfly/standalone/deployments/
+ADD target/web.war /opt/jboss/wildfly/standalone/deployments/
 
 RUN /opt/jboss/wildfly/bin/add-user.sh admin admin --silent
 
