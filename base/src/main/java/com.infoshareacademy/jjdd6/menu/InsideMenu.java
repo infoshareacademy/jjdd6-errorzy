@@ -17,10 +17,10 @@ public class InsideMenu {
             System.out.println("To return to the main menu press 0");
             try {
                 number = Integer.parseInt(scanner.nextLine());
-                LOGGER.info("User took number: " + number + ".");
+                LOGGER.info("user took number: " + number + ".");
             } catch (NumberFormatException e) {
                 System.err.println("This is not a number!");
-                LOGGER.warn("User took invalid number.");
+                LOGGER.warn("user took invalid number.");
             }
             if (number == 0) {
                 break;

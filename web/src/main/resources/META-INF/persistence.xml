@@ -7,11 +7,6 @@
     <persistence-unit name="errorzy_database" transaction-type="JTA">
         <jta-data-source>java:ds/errorzy</jta-data-source>
 
-        <class>com.infoshareacademy.jjdd6.errorzy.Country</class>
-        <class>com.infoshareacademy.jjdd6.errorzy.City</class>
-        <class>com.infoshareacademy.jjdd6.errorzy.Bike</class>
-        <class>com.infoshareacademy.jjdd6.errorzy.Place</class>
-
         <properties>
             <!-- Hibernate settings -->
             <property name="hibernate.archive.autodetection" value="class, hbm"/>
