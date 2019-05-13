@@ -4,36 +4,46 @@ import com.infoshareacademy.jjdd6.errorzy.dao.CountryDao;
 import com.infoshareacademy.jjdd6.errorzy.model.CountryModel;
 import com.infoshareacademy.jjdd6.errorzy.xmlunmarshaller.CountrySearch;
 
-import javax.annotation.PostConstruct;
+import javax.ejb.EJB;
 import javax.ejb.Singleton;
-import javax.ejb.Startup;
-import javax.inject.Inject;
+import javax.transaction.Transactional;
 import java.util.logging.Logger;
 
 @Singleton
+@Transactional
 public class CountryXmlToDBLoader {
     private static final Logger LOGGER = Logger.getLogger(CountryXmlToDBLoader.class.getName());
 
-    @Inject
+    @EJB
     private CountryDao countryDao;
-    @Inject
+    @EJB
     private CountrySearch countrySearch;
-    @Inject
+    @EJB
     private CityXmlToDBLoader cityXmlToDBLoader;
 
     public void loadCountryModelAtStart() {
-        Runnable task = this::loadCountryModelToDataBase;
-        new Thread(task).start();
+        loadCountryModelToDataBase();
     }
 
     private void loadCountryModelToDataBase() {
-        countrySearch.getMapOfCountries().values().forEach(country -> {
-            CountryModel countryModel = new CountryModel(country.getLat(),
-                    country.getLng(),
-                    country.getCountryName());
-            countryDao.save(countryModel);
-            LOGGER.info(countryModel.getCountryName() + ": Added to DB.");
-            cityXmlToDBLoader.loadCityModelToDataBase(countryModel);
+        countrySearch.getCountries().forEach(country -> {
+
+            CountryModel countryModel = countryDao.findByName(country.getCountryName());
+
+            if (countryModel == null) {
+                countryModel = new CountryModel(country.getLat(),
+                        country.getLng(),
+                        country.getCountryName());
+
+                countryDao.save(countryModel);
+                LOGGER.info(countryModel.getCountryName() + ": Added to DB.");
+            } else {
+                LOGGER.info(countryModel.getCountryName() + ": Already exists in the DB.");
+            }
+
+
+            cityXmlToDBLoader.loadCityModelToDataBase(country, countryModel);
         });
+        LOGGER.info(": Loading to DB finished.");
     }
 }

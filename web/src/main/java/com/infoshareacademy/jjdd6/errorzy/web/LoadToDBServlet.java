@@ -2,7 +2,7 @@ package com.infoshareacademy.jjdd6.errorzy.web;
 
 import com.infoshareacademy.jjdd6.errorzy.service.CountryXmlToDBLoader;
 
-import javax.inject.Inject;
+import javax.ejb.EJB;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -15,7 +15,7 @@ import java.util.logging.Logger;
 public class LoadToDBServlet extends HttpServlet {
     private static final Logger LOGGER = Logger.getLogger(LoadToDBServlet.class.getName());
 
-    @Inject
+    @EJB
     private CountryXmlToDBLoader countryXmlToDBLoader;
 
     @Override

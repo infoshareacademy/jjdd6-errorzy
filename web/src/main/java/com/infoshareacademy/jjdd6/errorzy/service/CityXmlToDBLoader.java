@@ -1,35 +1,51 @@
 package com.infoshareacademy.jjdd6.errorzy.service;
 
+import com.infoshareacademy.jjdd6.errorzy.Country;
 import com.infoshareacademy.jjdd6.errorzy.dao.CityDao;
 import com.infoshareacademy.jjdd6.errorzy.model.CityModel;
 import com.infoshareacademy.jjdd6.errorzy.model.CountryModel;
 import com.infoshareacademy.jjdd6.errorzy.xmlunmarshaller.CitySearch;
 
+import javax.ejb.EJB;
 import javax.ejb.Singleton;
-import javax.inject.Inject;
 import java.util.logging.Logger;
 
 @Singleton
 public class CityXmlToDBLoader {
     private static final Logger LOGGER = Logger.getLogger(CityXmlToDBLoader.class.getName());
 
-    @Inject
+    @EJB
     private CityDao cityDao;
-    @Inject
+    @EJB
     private CitySearch citySearch;
-    @Inject
+    @EJB
     private PlaceXmlToDBLoader placeXmlToDBLoader;
 
-    public void loadCityModelToDataBase(CountryModel countryModel) {
-        citySearch.getMapOfCitiesForCountry(countryModel.getCountryName()).values().forEach(city -> {
-            CityModel cityModel = new CityModel(city.getLat(),
-                    city.getLng(),
-                    city.getName(),
-                    countryModel);
-            cityDao.save(cityModel);
+    public void loadCityModelToDataBase(Country country, CountryModel countryModel) {
+        country.getCityList().stream().forEach(city -> {
+            CityModel cityModel = cityDao.findByName(city.getName());
 
-            placeXmlToDBLoader.loadPlaceModelToDataBase(cityModel);
+            if (cityModel == null) {
+                cityModel = new CityModel(city.getLat(),
+                        city.getLng(),
+                        city.getName(),
+                        countryModel);
+
+                cityDao.save(cityModel);
+            }
+
+            placeXmlToDBLoader.loadPlaceModelToDataBase(city, cityModel);
         });
+
+//        citySearch.getMapOfCitiesForCountry(countryModel.getCountryName()).values().forEach(city -> {
+//            CityModel cityModel = new CityModel(city.getLat(),
+//                    city.getLng(),
+//                    city.getName(),
+//                    countryModel);
+//            cityDao.save(cityModel);
+//
+//            placeXmlToDBLoader.loadPlaceModelToDataBase(cityModel);
+//        });
 
     }
 }

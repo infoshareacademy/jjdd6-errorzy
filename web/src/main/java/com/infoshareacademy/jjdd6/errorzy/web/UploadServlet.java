@@ -26,6 +26,7 @@ public class UploadServlet extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         resp.getWriter().println("File Uploaded Correctly");
+        LOGGER.info("XML loaded locally.");
     }
 
     @Override
@@ -33,7 +34,7 @@ public class UploadServlet extends HttpServlet {
 
         try {
             File file = fileUploadProcessorBean.uploadFile(req.getPart("file"));
-            LOGGER.info(file + " Loaded.");
+
         } catch (Exception e) {
             LOGGER.warn("File not loaded!");
             resp.setStatus(HttpServletResponse.SC_BAD_REQUEST);

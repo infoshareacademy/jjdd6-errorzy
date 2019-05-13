@@ -9,7 +9,7 @@ public class GenericDao<U, T> {
     private Class<U> daoClass;
 
     @PersistenceContext
-    private EntityManager entityManager;
+    protected EntityManager entityManager;
 
     public GenericDao(Class<U> daoClass) {
         this.daoClass = daoClass;

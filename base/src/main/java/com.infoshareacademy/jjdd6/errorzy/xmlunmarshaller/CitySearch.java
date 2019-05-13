@@ -5,10 +5,12 @@ import com.infoshareacademy.jjdd6.errorzy.Country;
 
 import javax.ejb.Stateless;
 import java.util.*;
+import java.util.logging.Logger;
 import java.util.stream.Collectors;
 
 @Stateless
 public class CitySearch {
+    private static final Logger LOGGER = Logger.getLogger(CountrySearch.class.getName());
 
     private CountrySearch findCountry = new CountrySearch();
 
@@ -18,7 +20,14 @@ public class CitySearch {
                 .filter(Objects::nonNull)
                 .map(Country::getCityList)
                 .flatMap(Collection::stream)
-                .filter(Objects::nonNull)
+                .filter(city -> {
+                    if (city != null) {
+                        return true;
+                    } else {
+                        LOGGER.info("---------------- NULL CITY ----------------");
+                        return false;
+                    }
+                })
                 .distinct()
                 .collect(Collectors.toList());
     }
