@@ -4,6 +4,8 @@ import com.infoshareacademy.jjdd6.errorzy.Country;
 import com.infoshareacademy.jjdd6.errorzy.Place;
 import com.infoshareacademy.jjdd6.errorzy.xmlunmarshaller.CitySearch;
 import com.infoshareacademy.jjdd6.errorzy.xmlunmarshaller.CountrySearch;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 
 import javax.ejb.Stateless;
 import java.util.List;
@@ -11,7 +13,10 @@ import java.util.stream.Collectors;
 
 @Stateless
 public class Statistics {
+    private static final Logger LOG = LogManager.getLogger(Statistics.class);
+
     public static int getStatisticsForCountry(String countryNm)  {
+        LOG.info("Statistic for country: " + countryNm + " generated.");
         CountrySearch findCountry = new CountrySearch();
         List<Country> countries = findCountry.getCountries();
 
@@ -32,6 +37,7 @@ public class Statistics {
     }
 
     public static int getStatisticsForCities(String cityNm)  {
+        LOG.info("Statistic for city: " + cityNm + " generated.");
         CitySearch findCity = new CitySearch();
         List<City> cities = findCity.getCities();
         List<Place> places = cities
