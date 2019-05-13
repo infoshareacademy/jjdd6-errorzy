@@ -23,7 +23,7 @@ public class HelloServlet extends HttpServlet {
 
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        LOG.info(" HELLO XD ");
+        LOG.info("Hello Servlet has been opened.");
         resp.setContentType("text/html;charset=UTF-8");
         Template template = templateProvider.getTemplate(getServletContext(), "hello.ftlh");
         template.dump(resp.getWriter());
