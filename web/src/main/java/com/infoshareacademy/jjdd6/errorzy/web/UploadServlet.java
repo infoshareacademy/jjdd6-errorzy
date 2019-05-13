@@ -26,6 +26,9 @@ public class UploadServlet extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         resp.getWriter().println("Upload complete.");
+
+        LOGGER.info("XML File has been uploaded.");
+
     }
 
     @Override
