@@ -6,8 +6,8 @@ import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
 import javax.annotation.PostConstruct;
-import javax.ejb.Singleton;
 import javax.ejb.Startup;
+import javax.ejb.Stateless;
 import java.util.Collection;
 import java.util.List;
 import java.util.Map;
@@ -15,7 +15,7 @@ import java.util.TreeMap;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
-@Singleton
+@Stateless
 @Startup
 public class CountrySearch {
 
@@ -53,7 +53,6 @@ public class CountrySearch {
     }
 
     public Map<String, Country> getMapOfCountries() {
-        LOG.info("Get map of countries method has been called");
         Map<String, Country> countryMap = new TreeMap<>();
 
         for (Country country : getCountries()) {

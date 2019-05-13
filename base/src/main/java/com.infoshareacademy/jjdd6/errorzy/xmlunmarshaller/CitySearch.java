@@ -6,17 +6,20 @@ import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
 import javax.ejb.Stateless;
+import javax.inject.Inject;
 import java.util.*;
 import java.util.stream.Collectors;
 
 @Stateless
 public class CitySearch {
     private static final Logger LOG = LogManager.getLogger(CitySearch.class);
-    private CountrySearch findCountry = new CountrySearch();
+
+    @Inject
+    private CountrySearch findCountry;
 
     public List<City> getCities() {
         LOG.info("List of all cities has been created.");
-        return findCountry.getCountries()
+        return findCountry.getMapOfCountries().values()
                 .stream()
                 .filter(Objects::nonNull)
                 .map(Country::getCityList)
