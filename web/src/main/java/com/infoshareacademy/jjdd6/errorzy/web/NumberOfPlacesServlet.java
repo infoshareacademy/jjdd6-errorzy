@@ -44,24 +44,29 @@ public class NumberOfPlacesServlet extends HttpServlet {
 
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws IOException {
+        LOGGER.info("NumberOfPlaces Servlet has been loaded.");
 
         PrintWriter writer = resp.getWriter();
 
         Map<String, Object> mapForFreemarker = new HashMap<>();
 
         if (!(req.getParameter("country") == null)) {
+            countryStatisticsDao.addToStatistics("country");
+            LOGGER.info("List of countries has been loaded.");
             Map<String, City> cityMap = citySearch.getMapOfCitiesForCountry(req.getParameter("country"));
             Integer numberOfCountries = statistics.getStatisticsForCountry(req.getParameter("country"));
             mapForFreemarker.put("numberOfCountries", numberOfCountries);
             mapForFreemarker.put("cityRoot", cityMap);
             createRootMap(writer, mapForFreemarker);
         } else if (!(req.getParameter("city") == null)) {
-
+            cityStatisticsDao.addToStatistics("city");
+            LOGGER.info("List of cities has been loaded.");
             Integer numberOfCities = statistics.getStatisticsForCities(req.getParameter("city"));
             mapForFreemarker.put("numberOfCities", numberOfCities);
             createRootMap(writer, mapForFreemarker);
 
         } else {
+            LOGGER.info("Data loaded.");
             Map<String, Country> countryMap = countrySearch.getMapOfCountries();
             mapForFreemarker.put("countryRoot", countryMap);
             createRootMap(writer, mapForFreemarker);
@@ -85,6 +90,8 @@ public class NumberOfPlacesServlet extends HttpServlet {
         }
     }
 }
+
+
 
 
 
