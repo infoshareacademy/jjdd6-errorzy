@@ -61,7 +61,6 @@ public class BikeServlet extends HttpServlet {
         PrintWriter writer = resp.getWriter();
 
         if (!(req.getParameter("country") == null)) {
-
             Map<String, City> cityMap = citySearch.getMapOfCitiesForCountry(req.getParameter("country"));
             createRootMap(writer, cityMap, "cityRoot");
         } else if (!(req.getParameter("city") == null)) {
@@ -76,7 +75,6 @@ public class BikeServlet extends HttpServlet {
                 LOGGER.warn("Exception caught when loading bikes");
                 resp.setStatus(HttpServletResponse.SC_NOT_FOUND);
             }
-
         } else {
             Map<String, Country> countryMap = countrySearch.getMapOfCountries();
             createRootMap(writer, countryMap, "countryRoot");
