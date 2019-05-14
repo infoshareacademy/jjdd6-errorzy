@@ -51,20 +51,19 @@ public class NumberOfPlacesServlet extends HttpServlet {
         Map<String, Object> mapForFreemarker = new HashMap<>();
 
         if (!(req.getParameter("country") == null)) {
-            countryStatisticsDao.addToStatistics("country");
             LOGGER.info("List of countries has been loaded.");
             Map<String, City> cityMap = citySearch.getMapOfCitiesForCountry(req.getParameter("country"));
             Integer numberOfCountries = statistics.getStatisticsForCountry(req.getParameter("country"));
             mapForFreemarker.put("numberOfCountries", numberOfCountries);
             mapForFreemarker.put("cityRoot", cityMap);
             createRootMap(writer, mapForFreemarker);
+            countryStatisticsDao.addToStatistics(req.getParameter("country"));
         } else if (!(req.getParameter("city") == null)) {
-            cityStatisticsDao.addToStatistics("city");
             LOGGER.info("List of cities has been loaded.");
             Integer numberOfCities = statistics.getStatisticsForCities(req.getParameter("city"));
             mapForFreemarker.put("numberOfCities", numberOfCities);
             createRootMap(writer, mapForFreemarker);
-
+            cityStatisticsDao.addToStatistics(req.getParameter("city"));
         } else {
             LOGGER.info("Data loaded.");
             Map<String, Country> countryMap = countrySearch.getMapOfCountries();

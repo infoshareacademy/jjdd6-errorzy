@@ -29,8 +29,6 @@ public class CityListServlet extends HttpServlet {
     private CitySearch citySearch;
     @Inject
     private TemplateProvider templateProvider;
-    @Inject
-    private CityStatisticsDao cityStatisticsDao;
 
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
