@@ -3,6 +3,7 @@ package com.infoshareacademy.jjdd6.errorzy.xmlunmarshaller;
 import com.infoshareacademy.jjdd6.errorzy.Place;
 
 import javax.ejb.Stateless;
+import javax.inject.Inject;
 import java.util.List;
 import java.util.Map;
 import java.util.TreeMap;
@@ -11,7 +12,8 @@ import java.util.stream.Collectors;
 @Stateless
 public class PlaceSearch {
 
-    private CitySearch citySearch = new CitySearch();
+    @Inject
+    private CitySearch citySearch;
 
     public List<Place> getPlaces() {
         return citySearch.getCities().stream()
