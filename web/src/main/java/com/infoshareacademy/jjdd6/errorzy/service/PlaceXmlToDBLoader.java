@@ -18,8 +18,6 @@ public class PlaceXmlToDBLoader {
     @EJB
     private PlaceDao placeDao;
     @EJB
-    private PlaceSearch placeSearch;
-    @EJB
     private BikeXmlToDBLoader bikeXmlToDBLoader;
 
     public void loadPlaceModelToDataBase(City city, CityModel cityModel) {
