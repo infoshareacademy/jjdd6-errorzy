@@ -44,5 +44,4 @@ public class NextBikeAPI {
                 .getContextClassLoader().getResource(SETTINGS_FILE)).openStream());
         return settings.getProperty("Upload.Path");
     }
-
 }
