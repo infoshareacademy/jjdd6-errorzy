@@ -2,6 +2,7 @@ package com.infoshareacademy.jjdd6.errorzy.web;
 
 import com.infoshareacademy.jjdd6.errorzy.Place;
 import com.infoshareacademy.jjdd6.errorzy.freemarker.TemplateProvider;
+import com.infoshareacademy.jjdd6.errorzy.statistics.dao.PlaceStatisticsDao;
 import com.infoshareacademy.jjdd6.geoservice.ClosestStation;
 import freemarker.template.Template;
 import freemarker.template.TemplateException;
@@ -28,6 +29,8 @@ public class ClosestStationServlet extends HttpServlet {
     private TemplateProvider templateProvider;
     @Inject
     private ClosestStation closestStation;
+    @Inject
+    private PlaceStatisticsDao placeStatisticsDao;
 
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
@@ -53,6 +56,9 @@ public class ClosestStationServlet extends HttpServlet {
             String distanceUnit = req.getParameter("unit");
 
             Place closestPlace = closestStation.findTheClosestPlace(lat, lng);
+
+            placeStatisticsDao.addToStatistics(closestPlace.getName());
+
             double distance = closestStation.getDistanceBetweenTwoGeoPoints(lat, lng, closestPlace);
 
             if (distanceUnit.equals("meter")) {
