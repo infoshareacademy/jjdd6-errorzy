@@ -1,24 +1,35 @@
-package com.infoshareacademy.jjdd6.errorzy;
+package com.infoshareacademy.jjdd6.errorzy.model;
 
-import javax.xml.bind.annotation.XmlAttribute;
+import javax.persistence.*;
 
+@Entity
+@Table(name = "BIKES")
+public class BikeModel {
 
-public class Bike {
-
+    @Id
+    @Column(name = "id")
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-    private Place place;
+
+    @ManyToOne
+    @JoinColumn(name = "place_id")
+    private PlaceModel place;
+
+    @Column(name = "bike_number")
     private int number;
+
+    @Column(name = "bike_type")
     private int bikeType;
 
-    public Bike() {
+    public BikeModel() {
     }
 
-    public Bike(int number, int bikeType) {
+    public BikeModel(int number, int bikeType, PlaceModel placeModel) {
         this.number = number;
         this.bikeType = bikeType;
+        this.place = placeModel;
     }
 
-    @XmlAttribute(name = "number")
     public int getNumber() {
         return number;
     }
@@ -27,7 +38,6 @@ public class Bike {
         this.number = number;
     }
 
-    @XmlAttribute(name = "bike_type")
     public int getBikeType() {
         return bikeType;
     }
@@ -38,7 +48,7 @@ public class Bike {
 
     @Override
     public String toString() {
-        return "Bike{" +
+        return "BikeModel{" +
                 "number=" + number +
                 ", bikeType=" + bikeType +
                 '}';
