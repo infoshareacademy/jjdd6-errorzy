@@ -12,7 +12,6 @@ import java.util.List;
 public class CityStatisticsDao {
 
     @PersistenceContext
-
     private EntityManager entityManager;
 
     public CityStatistics findByName(String city) {
