@@ -20,7 +20,7 @@ public class CityStatisticsServlet extends HttpServlet {
     private static final Logger LOGGER = LogManager.getLogger(CityStatisticsServlet.class.getName());
 
     @Inject
-   private CityStatisticsDao cityStatisticsDao;
+    private CityStatisticsDao cityStatisticsDao;
 
 
     @Override
@@ -33,9 +33,7 @@ public class CityStatisticsServlet extends HttpServlet {
             return;
         }
 
-        if (action.equals("delete")) {
-            deleteCityStatiscics(req, resp);
-        } else if (action.equals("findByName")) {
+        if (action.equals("findByName")) {
             findByNameCityStatiscics(req, resp);
         } else if (action.equals("findAll")) {
             findAllCityStatistics(req, resp);
@@ -44,16 +42,6 @@ public class CityStatisticsServlet extends HttpServlet {
         } else {
             resp.getWriter().write("Unknown action.");
         }
-
-    }
-
-    private void deleteCityStatiscics(HttpServletRequest req, HttpServletResponse resp) throws IOException {
-        final String city = new String(req.getParameter("city"));
-        LOGGER.info("Removing statistics for = {}", city);
-
-        cityStatisticsDao.delete(city);
-
-        findAllCityStatistics(req, resp);
     }
 
     private void findAllCityStatistics(HttpServletRequest req, HttpServletResponse resp) throws IOException {

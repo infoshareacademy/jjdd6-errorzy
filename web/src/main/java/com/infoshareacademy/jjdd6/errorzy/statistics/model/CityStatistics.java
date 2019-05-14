@@ -8,7 +8,7 @@ import javax.validation.constraints.NotNull;
 public class CityStatistics {
 
     @Id
-    @Column(name = "city")
+    @Column(name = "city", length = 200)
     private String city;
 
     @Column(name = "number_of_visits")

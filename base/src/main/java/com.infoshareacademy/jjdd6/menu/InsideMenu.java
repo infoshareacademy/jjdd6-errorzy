@@ -1,9 +1,9 @@
 package com.infoshareacademy.jjdd6.menu;
 
 import java.util.Scanner;
+import java.util.logging.LogManager;
+import java.util.logging.Logger;
 
-import org.apache.logging.log4j.LogManager;
-import org.apache.logging.log4j.Logger;
 
 public class InsideMenu {
     private static final Logger LOGGER = LogManager.getLogger(InsideMenu.class.getName());

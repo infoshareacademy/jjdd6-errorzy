@@ -12,14 +12,8 @@ import java.util.List;
 public class CountryStatisticsDao {
 
     @PersistenceContext
-    private EntityManager entityManager;
 
-    public void delete(String country) {
-        final CountryStatistics cou = entityManager.find(CountryStatistics.class, country);
-        if (cou != null) {
-            entityManager.remove(cou);
-        }
-    }
+    private EntityManager entityManager;
 
     public CountryStatistics findByName(String country) {
         return entityManager.find(CountryStatistics.class, country);

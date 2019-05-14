@@ -20,7 +20,7 @@ public class PlaceStatisticsServlet extends HttpServlet {
     private static final Logger LOGGER = LogManager.getLogger(PlaceStatisticsServlet.class.getName());
 
     @Inject
-   private PlaceStatisticsDao placeStatisticsDao;
+    private PlaceStatisticsDao placeStatisticsDao;
 
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
@@ -32,9 +32,7 @@ public class PlaceStatisticsServlet extends HttpServlet {
             return;
         }
 
-        if (action.equals("delete")) {
-            deletePlaceStatiscics(req, resp);
-        } else if (action.equals("findByName")) {
+        if (action.equals("findByName")) {
             findByNamePlaceStatiscics(req, resp);
         } else if (action.equals("findAll")) {
             findAllPlaceStatistics(req, resp);
@@ -43,15 +41,8 @@ public class PlaceStatisticsServlet extends HttpServlet {
         } else {
             resp.getWriter().write("Unknown action.");
         }
-
     }
-    private void deletePlaceStatiscics(HttpServletRequest req, HttpServletResponse resp) throws IOException {
-        final String place = new String(req.getParameter("place"));
-        LOGGER.info("Removing statistics for = {}", place);
 
-        placeStatisticsDao.delete(place);
-        findAllPlaceStatistics(req, resp);
-    }
     private void findAllPlaceStatistics(HttpServletRequest req, HttpServletResponse resp) throws IOException {
         final List<PlaceStatistics> placeList = placeStatisticsDao.findAll();
         LOGGER.info("Found {} objects", placeList.size());

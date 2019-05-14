@@ -4,6 +4,9 @@ import com.infoshareacademy.jjdd6.errorzy.City;
 import com.infoshareacademy.jjdd6.errorzy.Country;
 import com.infoshareacademy.jjdd6.errorzy.freemarker.TemplateProvider;
 import com.infoshareacademy.jjdd6.errorzy.numberOfPlaces.Statistics;
+import com.infoshareacademy.jjdd6.errorzy.statistics.dao.CityStatisticsDao;
+import com.infoshareacademy.jjdd6.errorzy.statistics.dao.CountryStatisticsDao;
+import com.infoshareacademy.jjdd6.errorzy.statistics.dao.PlaceStatisticsDao;
 import com.infoshareacademy.jjdd6.errorzy.xmlunmarshaller.CitySearch;
 import com.infoshareacademy.jjdd6.errorzy.xmlunmarshaller.CountrySearch;
 import freemarker.template.Template;
@@ -34,6 +37,10 @@ public class NumberOfPlacesServlet extends HttpServlet {
     private CountrySearch countrySearch;
     @Inject
     private Statistics statistics;
+    @Inject
+    private CityStatisticsDao cityStatisticsDao;
+    @Inject
+    private CountryStatisticsDao countryStatisticsDao;
 
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws IOException {
@@ -50,12 +57,13 @@ public class NumberOfPlacesServlet extends HttpServlet {
             mapForFreemarker.put("numberOfCountries", numberOfCountries);
             mapForFreemarker.put("cityRoot", cityMap);
             createRootMap(writer, mapForFreemarker);
+            countryStatisticsDao.addToStatistics(req.getParameter("country"));
         } else if (!(req.getParameter("city") == null)) {
             LOGGER.info("List of cities has been loaded.");
             Integer numberOfCities = statistics.getStatisticsForCities(req.getParameter("city"));
             mapForFreemarker.put("numberOfCities", numberOfCities);
             createRootMap(writer, mapForFreemarker);
-
+            cityStatisticsDao.addToStatistics(req.getParameter("city"));
         } else {
             LOGGER.info("Data loaded.");
             Map<String, Country> countryMap = countrySearch.getMapOfCountries();

@@ -10,7 +10,7 @@ public class CountryStatistics {
 
 
     @Id
-    @Column(name = "country")
+    @Column(name = "country", length = 200)
     private String country;
 
     @Column(name = "number_of_visits")
