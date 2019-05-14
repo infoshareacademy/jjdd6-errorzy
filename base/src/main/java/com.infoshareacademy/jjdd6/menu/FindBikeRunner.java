@@ -12,8 +12,6 @@ import org.apache.logging.log4j.Logger;
 
 import javax.xml.bind.JAXBException;
 import java.util.Map;
-import java.util.logging.LogManager;
-import java.util.logging.Logger;
 
 public class FindBikeRunner {
     private CitySearch citySearch = new CitySearch();
