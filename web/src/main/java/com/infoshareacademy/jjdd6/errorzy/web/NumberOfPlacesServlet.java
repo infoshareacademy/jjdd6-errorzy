@@ -92,5 +92,3 @@ public class NumberOfPlacesServlet extends HttpServlet {
 
 
 
-
-

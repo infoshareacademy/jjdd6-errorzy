@@ -24,4 +24,18 @@
         <user>root</user>
         <password>pass123</password>
     </data-source>-->
+    </data-source> -->
+
+    <context-param>
+        <param-name>com.auth0.domain</param-name>
+        <param-value>errorzy.eu.auth0.com</param-value>
+    </context-param>
+    <context-param>
+        <param-name>com.auth0.clientId</param-name>
+        <param-value>MWfiUSJ8hDZrliL8bNHzkRc9o449mm99</param-value>
+    </context-param>
+    <context-param>
+        <param-name>com.auth0.clientSecret</param-name>
+        <param-value>HondA_BL2SeExfCTe5LBV-G8JKjbJ_dFQiQBUp29-kKopQ9Sc66UrMdKO0KrXWM-</param-value>
+    </context-param>
 </web-app>
