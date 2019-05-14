@@ -6,6 +6,7 @@ import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
 import javax.ejb.Stateless;
+import javax.inject.Inject;
 import java.util.Collection;
 import java.util.List;
 import java.util.Map;
