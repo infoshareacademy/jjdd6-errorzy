@@ -1,7 +1,9 @@
 package com.infoshareacademy.jjdd6.errorzy.web;
 
 import com.infoshareacademy.jjdd6.errorzy.Country;
+import com.infoshareacademy.jjdd6.errorzy.dao.CountryDao;
 import com.infoshareacademy.jjdd6.errorzy.freemarker.TemplateProvider;
+import com.infoshareacademy.jjdd6.errorzy.statistics.dao.CountryStatisticsDao;
 import com.infoshareacademy.jjdd6.errorzy.xmlunmarshaller.CountrySearch;
 import freemarker.template.Template;
 import freemarker.template.TemplateException;
@@ -28,9 +30,12 @@ public class CountryServlet extends HttpServlet {
     private CountrySearch countrySearch;
     @Inject
     private TemplateProvider templateProvider;
+    @Inject
+    private CountryDao countryDao;
 
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+        LOGGER.info("Country servlet has been loaded.");
         resp.setContentType("text/html;charset=UTF-8");
         Writer writer = resp.getWriter();
         Template template = templateProvider.getTemplate(getServletContext(), "country-servlet.ftlh");
@@ -43,7 +48,7 @@ public class CountryServlet extends HttpServlet {
         try {
             template.process(model, writer);
         } catch (TemplateException e) {
-            LOGGER.warn("Template not found" + e);
+            LOGGER.warn("Template " + e + " not found.");
         }
 
     }

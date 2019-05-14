@@ -17,11 +17,11 @@ public class GetUserInput {
         System.out.println(displayText);
         while (true) {
             try {
-                LOGGER.info("User picked option number: "+ displayText + ".");
+                LOGGER.info("user picked option number: "+ displayText + ".");
                 return Integer.parseInt(scanner.nextLine());
             } catch (NumberFormatException e) {
                 System.out.println("Wrong input! Please insert again.");
-                LOGGER.warn("User gave wrong input, waiting for the good value.");
+                LOGGER.warn("user gave wrong input, waiting for the good value.");
             }
         }
     }
@@ -30,11 +30,11 @@ public class GetUserInput {
         System.out.println(displayText);
         while (true) {
             try {
-                LOGGER.info("User picked option number: " + displayText + ".");
+                LOGGER.info("user picked option number: " + displayText + ".");
                 return Double.parseDouble(scanner.nextLine());
             } catch (NumberFormatException e) {
                 System.out.println("Wrong input! Please insert again.");
-                LOGGER.warn("User gave wrong input, waiting for the good value.");
+                LOGGER.warn("user gave wrong input, waiting for the good value.");
             }
         }
     }

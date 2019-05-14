@@ -5,6 +5,9 @@ import com.infoshareacademy.jjdd6.errorzy.City;
 import com.infoshareacademy.jjdd6.errorzy.Country;
 import com.infoshareacademy.jjdd6.errorzy.Place;
 import com.infoshareacademy.jjdd6.errorzy.freemarker.TemplateProvider;
+import com.infoshareacademy.jjdd6.errorzy.statistics.dao.CityStatisticsDao;
+import com.infoshareacademy.jjdd6.errorzy.statistics.dao.CountryStatisticsDao;
+import com.infoshareacademy.jjdd6.errorzy.statistics.dao.PlaceStatisticsDao;
 import com.infoshareacademy.jjdd6.errorzy.xmlunmarshaller.BikeSearch;
 import com.infoshareacademy.jjdd6.errorzy.xmlunmarshaller.CitySearch;
 import com.infoshareacademy.jjdd6.errorzy.xmlunmarshaller.CountrySearch;
@@ -45,24 +48,41 @@ public class BikeServlet extends HttpServlet {
     @Inject
     private TemplateProvider templateProvider;
 
+    @Inject
+    private CityStatisticsDao cityStatisticsDao;
+    @Inject
+    private CountryStatisticsDao countryStatisticsDao;
+    @Inject
+    private PlaceStatisticsDao placeStatisticsDao;
+
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+        LOGGER.info("Bike servlet loaded.");
         resp.setContentType("text/html;charset=UTF-8");
         PrintWriter writer = resp.getWriter();
 
         if (!(req.getParameter("country") == null)) {
-
+            LOGGER.warn("Country doesn't exist.");
             Map<String, City> cityMap = citySearch.getMapOfCitiesForCountry(req.getParameter("country"));
             createRootMap(writer, cityMap, "cityRoot");
-        } else if (!(req.getParameter("city") == null)) {
 
+            countryStatisticsDao.addToStatistics(req.getParameter("country"));
+        } else if (!(req.getParameter("city") == null)) {
+            LOGGER.warn("City doesn't exist.");
             Map<String, Place> placeMap = placeSearch.getMapOfPlaces(req.getParameter("city"));
             createRootMap(writer, placeMap, "placeRoot");
+
+            cityStatisticsDao.addToStatistics("city");
         } else if (!(req.getParameter("place") == null)) {
+
+            LOGGER.warn("Place doesn't exist.");
             Map<String, Bike> bikeMap;
+
+            placeStatisticsDao.addToStatistics("place");
             try {
                 bikeMap = bikeSearch.getMapOfBikesForPlace(req.getParameter("place"));
                 createRootMap(writer, bikeMap, "bikeRoot");
+                LOGGER.info("Map of bikes has been generated.");
             } catch (Exception e) {
                 LOGGER.warn("Exception caught when loading bikes");
                 resp.setStatus(HttpServletResponse.SC_NOT_FOUND);
