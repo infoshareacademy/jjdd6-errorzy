@@ -13,8 +13,6 @@ import java.util.logging.Logger;
 @Singleton
 public class PlaceXmlToDBLoader {
 
-    private static final Logger LOGGER = Logger.getLogger(PlaceXmlToDBLoader.class.getName());
-
     @EJB
     private PlaceDao placeDao;
     @EJB

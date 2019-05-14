@@ -12,7 +12,6 @@ import java.util.logging.Logger;
 
 @Singleton
 public class BikeXmlToDBLoader {
-    private static final Logger LOGGER = Logger.getLogger(BikeXmlToDBLoader.class.getName());
 
     @EJB
     private BikeDao bikeDao;

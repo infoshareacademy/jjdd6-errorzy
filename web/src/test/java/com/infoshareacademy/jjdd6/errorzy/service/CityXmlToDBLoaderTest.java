@@ -25,12 +25,11 @@ class CityXmlToDBLoaderTest {
     CityDao cityDao;
     @Mock
     PlaceXmlToDBLoader placeXmlToDBLoader;
-
     @InjectMocks
     private CityXmlToDBLoader sut;
 
     @Test
-    public void ShouldReturnCorrectCountryList() {
+    public void shouldReturnCorrectCityList() {
         //given
         doNothing().when(placeXmlToDBLoader).loadPlaceModelToDataBase(isA(City.class), isA(CityModel.class));
 

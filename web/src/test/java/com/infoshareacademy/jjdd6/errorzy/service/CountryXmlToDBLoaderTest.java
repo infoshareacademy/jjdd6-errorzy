@@ -8,7 +8,6 @@ import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.InjectMocks;
 import org.mockito.Mock;
-import org.mockito.Mockito;
 import org.mockito.junit.jupiter.MockitoExtension;
 
 import java.util.ArrayList;
@@ -34,7 +33,7 @@ class CountryXmlToDBLoaderTest {
     private CountryXmlToDBLoader sut;
 
     @Test
-    public void shouldCheckIfCountryDabExecuted() {
+    public void shouldCheckIfCountryDaoExecuted() {
         //given
         when(countrySearch.getMapOfCountries()).thenReturn(mockedCountryMap());
         doNothing().when(cityXmlToDBLoader).loadCityModelToDataBase(isA(Country.class), isA(CountryModel.class));
