@@ -29,8 +29,6 @@ public class CountryServlet extends HttpServlet {
     private CountrySearch countrySearch;
     @Inject
     private TemplateProvider templateProvider;
-    @Inject
-    private CountryStatisticsDao countryStatisticsDao;
 
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
@@ -39,7 +37,6 @@ public class CountryServlet extends HttpServlet {
         Writer writer = resp.getWriter();
         Template template = templateProvider.getTemplate(getServletContext(), "country-servlet.ftlh");
 
-        countryStatisticsDao.addToStatistics(CountrySearch.class.getName());
         Map<String, Country> countryMap = countrySearch.getMapOfCountries();
         Map<String, Object> model = new HashMap<>();
 
