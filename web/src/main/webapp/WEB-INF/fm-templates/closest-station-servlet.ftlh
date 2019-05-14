@@ -99,7 +99,8 @@
                 <form class="col-md-12" action="/closestPlace-servlet" method="get">
                     <div class="form-group col-md-6">
                         <label for="latInput"> <font color="white">Lateral coordinates:</font></label>
-                        <input type="number" step="any" class="form-control" id="latInput" name="lat">
+                        <input type="number" step="any" class="form-control" id="latInput"
+                               name="lat" <#if lateralValue??> value="${lateralValue?string["0.#############"]}" </#if> >
                         <small id="latHelp" class="form-text text-muted">Insert lateral coordinates (i.e.
                             54.5188900), North with '+', South with'-'
                         </small>
@@ -107,7 +108,8 @@
 
                     <div class="form-group col-md-6">
                         <label for="lngInput"> <font color="white"> Longitudinal coordinates:</font></label>
-                        <input type="number" step="any" class="form-control" id="lngInput" name="lng">
+                        <input type="number" step="any" class="form-control" id="lngInput"
+                               name="lng" <#if longitudinalValue??> value="${longitudinalValue?string["0.#############"]}" </#if> >
                         <small id="lngHelp" class="form-text text-muted">Insert longitudinal coordinates (i.e.
                             18.5318800), East with '+', West with'-'
                         </small>
