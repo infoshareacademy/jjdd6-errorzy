@@ -16,12 +16,13 @@ import java.util.Properties;
 public class NextBikeAPI {
     private static final Logger LOG = LogManager.getLogger(NextBikeAPI.class);
     private final static String FILE_URL = "https://nextbike.net/maps/nextbike-official.xml";
-    private final static String FILE_NAME = "NextBike.xml";
+    private final static String FILE_NAME = "nextbike-live.xml";
     private static final String SETTINGS_FILE = "settings.properties";
 
     public void loadXMLFromURL() {
         try {
             URL url = new URL(FILE_URL);
+            LOG.info("Start of loading file from URL: " + url);
             InputStream stream = url.openStream();
 
             File file = new File(getUploadFilesPath() + FILE_NAME);

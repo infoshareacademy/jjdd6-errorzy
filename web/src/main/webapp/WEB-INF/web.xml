@@ -11,8 +11,17 @@
     <data-source>
         <name>java:ds/errorzy</name>
         <class-name>com.mysql.cj.jdbc.MysqlDataSource</class-name>
-        <url>jdbc:mysql://db/errorzy_database?useLegacyDatetimeCode=false&amp;serverTimezone=Europe/Warsaw</url>
+        <url>jdbc:mysql://localhost:4322/errorzy_database?useLegacyDatetimeCode=false&amp;serverTimezone=Europe/Warsaw</url>
         <user>root</user>
         <password>pass123</password>
     </data-source>
+
+    <!-- USE FOR DOCKER WILDFLY
+    <data-source>
+        <name>java:ds/errorzy</name>
+        <class-name>com.mysql.cj.jdbc.MysqlDataSource</class-name>
+        <url>jdbc:mysql://db/errorzy_database?useLegacyDatetimeCode=false&amp;serverTimezone=Europe/Warsaw</url>
+        <user>root</user>
+        <password>pass123</password>
+    </data-source>-->
 </web-app>
