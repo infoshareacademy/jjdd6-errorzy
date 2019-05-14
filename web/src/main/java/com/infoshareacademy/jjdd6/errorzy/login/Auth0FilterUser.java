@@ -11,7 +11,7 @@ import java.io.IOException;
 /**
  * Filter class to check if a valid session exists. This will be true if the User Id is present.
  */
-@WebFilter(urlPatterns = {"portal/home", "/bike-servlet/*", "/show-city-list", "/closestPlace-servlet", "/country-servlet", "/number-of-places", "/upload", "/country-statistics", "/city-statistics", "/place-statistics" } )
+@WebFilter(urlPatterns = {"portal/home", "/bike-servlet/*", "/show-city-list", "/closestPlace-servlet", "/country-servlet", "/number-of-places", "/upload", "/country-statistics", "/city-statistics", "/place-statistics", "/mail", "/upload" } )
 public class Auth0FilterUser implements Filter {
 
     @Override
