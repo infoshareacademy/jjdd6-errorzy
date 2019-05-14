@@ -3,6 +3,7 @@ package com.infoshareacademy.jjdd6.errorzy.api;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
+import javax.ejb.Stateless;
 import java.io.File;
 import java.io.IOException;
 import java.io.InputStream;
@@ -11,6 +12,7 @@ import java.nio.file.Files;
 import java.util.Objects;
 import java.util.Properties;
 
+@Stateless
 public class NextBikeAPI {
     private static final Logger LOG = LogManager.getLogger(NextBikeAPI.class);
     private final static String FILE_URL = "https://nextbike.net/maps/nextbike-official.xml";

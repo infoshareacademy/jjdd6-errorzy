@@ -1,8 +1,10 @@
 package com.infoshareacademy.jjdd6.errorzy.web;
 
+import com.infoshareacademy.jjdd6.errorzy.api.NextBikeAPI;
 import com.infoshareacademy.jjdd6.errorzy.service.CountryXmlToDBLoader;
 
 import javax.ejb.EJB;
+import javax.inject.Inject;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -15,12 +17,15 @@ import java.util.logging.Logger;
 public class LoadToDBServlet extends HttpServlet {
     private static final Logger LOGGER = Logger.getLogger(LoadToDBServlet.class.getName());
 
-    @EJB
+    @Inject
     private CountryXmlToDBLoader countryXmlToDBLoader;
+    @Inject
+    private NextBikeAPI nextBikeAPI;
 
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         LOGGER.info("Loading to DB started.");
-        countryXmlToDBLoader.loadCountryModelAtStart();
+
+//        countryXmlToDBLoader.loadCountryModelAtStart();
     }
 }
