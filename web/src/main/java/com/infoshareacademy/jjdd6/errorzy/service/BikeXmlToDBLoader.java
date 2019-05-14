@@ -16,8 +16,6 @@ public class BikeXmlToDBLoader {
 
     @EJB
     private BikeDao bikeDao;
-    @EJB
-    private BikeSearch bikeSearch;
 
     public void loadBikeModelToDataBase(Place place, PlaceModel placeModel) {
         if (place.getBikeList() != null) {

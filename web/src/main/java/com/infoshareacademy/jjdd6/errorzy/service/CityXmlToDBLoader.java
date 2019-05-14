@@ -4,7 +4,6 @@ import com.infoshareacademy.jjdd6.errorzy.Country;
 import com.infoshareacademy.jjdd6.errorzy.dao.CityDao;
 import com.infoshareacademy.jjdd6.errorzy.model.CityModel;
 import com.infoshareacademy.jjdd6.errorzy.model.CountryModel;
-import com.infoshareacademy.jjdd6.errorzy.xmlunmarshaller.CitySearch;
 
 import javax.ejb.EJB;
 import javax.ejb.Singleton;
@@ -16,8 +15,6 @@ public class CityXmlToDBLoader {
 
     @EJB
     private CityDao cityDao;
-    @EJB
-    private CitySearch citySearch;
     @EJB
     private PlaceXmlToDBLoader placeXmlToDBLoader;
 
@@ -33,15 +30,5 @@ public class CityXmlToDBLoader {
 
             placeXmlToDBLoader.loadPlaceModelToDataBase(city, cityModel);
         });
-
-//        citySearch.getMapOfCitiesForCountry(countryModel.getCountryName()).values().forEach(city -> {
-//            CityModel cityModel = new CityModel(city.getLat(),
-//                    city.getLng(),
-//                    city.getName(),
-//                    countryModel);
-//            cityDao.save(cityModel);
-//
-//            placeXmlToDBLoader.loadPlaceModelToDataBase(cityModel);
-//        });
     }
 }
