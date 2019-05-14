@@ -1,33 +1,54 @@
-package com.infoshareacademy.jjdd6.errorzy;
+package com.infoshareacademy.jjdd6.errorzy.model;
 
-import javax.xml.bind.annotation.XmlAttribute;
-import javax.xml.bind.annotation.XmlElement;
+import javax.persistence.*;
+import javax.validation.constraints.NotNull;
 import java.util.List;
 
-public class Place {
+@Entity
+@Table(name = "PLACES")
+public class PlaceModel {
 
+    @Id
+    @Column(name = "id")
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-    private City city;
-    private List<Bike> bikeList;
+
+    @ManyToOne
+    @JoinColumn(name = "city_id")
+    private CityModel city;
+
+    @OneToMany(mappedBy = "place")
+    private List<BikeModel> bikeList;
+
+    @Column(name = "lateral_coordinate")
     private double lat;
+
+    @Column(name = "longitudinal_coordinate")
     private double lng;
+
+    @Column(name = "place_name")
+    @NotNull
     private String name;
+
+    @Column(name = "place_number")
     private int number;
+
+    @Transient
     private int bikes;
+    @Transient
     private String bikeNumbers;
 
-    public Place() {
+    public PlaceModel() {
     }
 
-    public Place(double lat, double lng, String name, int number, List<Bike> bikeList) {
+    public PlaceModel(double lat, double lng, String name, int number, CityModel cityModel) {
         this.lat = lat;
         this.lng = lng;
         this.name = name;
         this.number = number;
-        this.bikeList = bikeList;
+        this.city = cityModel;
     }
 
-    @XmlAttribute(name = "lat")
     public double getLat() {
         return lat;
     }
@@ -36,7 +57,6 @@ public class Place {
         this.lat = lat;
     }
 
-    @XmlAttribute(name = "lng")
     public double getLng() {
         return lng;
     }
@@ -45,7 +65,6 @@ public class Place {
         this.lng = lng;
     }
 
-    @XmlAttribute(name = "name")
     public String getName() {
         return name;
     }
@@ -54,7 +73,6 @@ public class Place {
         this.name = name;
     }
 
-    @XmlAttribute(name = "number")
     public int getNumber() {
         return number;
     }
@@ -63,7 +81,6 @@ public class Place {
         this.number = number;
     }
 
-    @XmlAttribute(name = "bikes")
     public int getBikes() {
         return bikes;
     }
@@ -72,7 +89,6 @@ public class Place {
         this.bikes = bikes;
     }
 
-    @XmlAttribute(name = "bike_numbers")
     public String getBikeNumbers() {
         return bikeNumbers;
     }
@@ -81,18 +97,17 @@ public class Place {
         this.bikeNumbers = bikeNumbers;
     }
 
-    @XmlElement(name = "bike")
-    public List<Bike> getBikeList() {
+    public List<BikeModel> getBikeList() {
         return bikeList;
     }
 
-    public void setBikeList(List<Bike> bikeList) {
+    public void setBikeList(List<BikeModel> bikeList) {
         this.bikeList = bikeList;
     }
 
     @Override
     public String toString() {
-        return "Place{" +
+        return "PlaceModel{" +
                 "lat=" + lat +
                 ", lng=" + lng +
                 ", name='" + name + '\'' +

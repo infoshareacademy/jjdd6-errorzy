@@ -1,40 +1,55 @@
-package com.infoshareacademy.jjdd6.errorzy;
+package com.infoshareacademy.jjdd6.errorzy.model;
 
-import javax.xml.bind.annotation.XmlAttribute;
-import javax.xml.bind.annotation.XmlElement;
+import javax.persistence.*;
+import javax.validation.constraints.NotNull;
 import java.util.List;
 
-public class Country {
+@Entity
+@Table(name = "COUNTRIES")
+public class CountryModel {
 
+    @Id
+    @Column(name = "id")
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-    private List<City> cityList;
+
+    @OneToMany(mappedBy = "country", fetch = FetchType.EAGER)
+    private List<CityModel> cityList;
+
+    @Column(name = "lateral_coordinate")
     private double lat;
+
+    @Column(name = "longitudinal_coordinate")
     private double lng;
+
+    @Column(name = "country_name")
+    @NotNull
     private String countryName;
+
+    @Transient
     private String name;
+    @Transient
     private String country;
+    @Transient
     private int availableBikes;
 
-    public Country() {
+    public CountryModel() {
     }
 
-    public Country(double lat, double lng, String countryName, List<City> cityList) {
+    public CountryModel(double lat, double lng, String countryName) {
         this.lat = lat;
         this.lng = lng;
         this.countryName = countryName;
-        this.cityList = cityList;
     }
 
-    @XmlElement(name = "city")
-    public List<City> getCityList() {
+    public List<CityModel> getCityList() {
         return cityList;
     }
 
-    public void setCityList(List<City> cityList) {
+    public void setCityList(List<CityModel> cityList) {
         this.cityList = cityList;
     }
 
-    @XmlAttribute(name = "lat")
     public double getLat() {
         return lat;
     }
@@ -43,7 +58,6 @@ public class Country {
         this.lat = lat;
     }
 
-    @XmlAttribute(name = "lng")
     public double getLng() {
         return lng;
     }
@@ -64,7 +78,6 @@ public class Country {
         this.country = country;
     }
 
-    @XmlAttribute(name = "country_name")
     public String getCountryName() {
         return countryName;
     }
@@ -87,7 +100,7 @@ public class Country {
 
     @Override
     public String toString() {
-        return "Country{" +
+        return "CountryModel{" +
                 "cityList=" + cityList +
                 ", lat=" + lat +
                 ", lng=" + lng +

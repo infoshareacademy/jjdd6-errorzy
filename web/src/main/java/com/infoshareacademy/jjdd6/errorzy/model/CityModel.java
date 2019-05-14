@@ -1,40 +1,58 @@
-package com.infoshareacademy.jjdd6.errorzy;
+package com.infoshareacademy.jjdd6.errorzy.model;
 
-import javax.xml.bind.annotation.XmlAttribute;
-import javax.xml.bind.annotation.XmlElement;
+import javax.persistence.*;
+import javax.validation.constraints.NotNull;
 import java.util.List;
 
-public class City {
+@Entity
+@Table(name = "CITIES")
+public class CityModel {
 
+    @Id
+    @Column(name = "id")
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-    private Country country;
-    private List<Place> placeList;
+
+    @ManyToOne
+    @JoinColumn(name = "country_id")
+    private CountryModel country;
+
+    @OneToMany(mappedBy = "city")
+    private List<PlaceModel> placeList;
+
+    @Column(name = "lateral_coordinate", columnDefinition = "DECIMAL(10,6)")
     private double lat;
+
+    @Column(name = "longitudinal_coordinate", columnDefinition = "DECIMAL(10,6)")
     private double lng;
+
+    @Column(name = "city_name")
+    @NotNull
     private String name;
+
+    @Transient
     private int numPlaces;
+    @Transient
     private int availableBikes;
 
-    public City() {
+    public CityModel() {
     }
 
-    public City(double lat, double lng, String name, List<Place> placeList) {
+    public CityModel(double lat, double lng, String name, CountryModel countryModel) {
         this.lat = lat;
         this.lng = lng;
         this.name = name;
-        this.placeList = placeList;
+        this.country = countryModel;
     }
 
-    @XmlElement(name = "place")
-    public List<Place> getPlaceList() {
+    public List<PlaceModel> getPlaceList() {
         return placeList;
     }
 
-    public void setPlaceList(List<Place> placeList) {
+    public void setPlaceList(List<PlaceModel> placeList) {
         this.placeList = placeList;
     }
 
-    @XmlAttribute(name = "lat")
     public double getLat() {
         return lat;
     }
@@ -43,7 +61,6 @@ public class City {
         this.lat = lat;
     }
 
-    @XmlAttribute(name = "lng")
     public double getLng() {
         return lng;
     }
@@ -52,7 +69,6 @@ public class City {
         this.lng = lng;
     }
 
-    @XmlAttribute(name = "name")
     public String getName() {
         return name;
     }
@@ -79,7 +95,7 @@ public class City {
 
     @Override
     public String toString() {
-        return "City{" +
+        return "CityModel{" +
                 "lat=" + lat +
                 ", lng=" + lng +
                 ", name='" + name + '\'' +
