@@ -3,7 +3,6 @@ package com.infoshareacademy.jjdd6.errorzy.web;
 import com.infoshareacademy.jjdd6.errorzy.dao.CountryDao;
 import com.infoshareacademy.jjdd6.errorzy.freemarker.TemplateProvider;
 import com.infoshareacademy.jjdd6.errorzy.model.CountryModel;
-import com.infoshareacademy.jjdd6.errorzy.xmlunmarshaller.CountrySearch;
 import freemarker.template.Template;
 import freemarker.template.TemplateException;
 import org.apache.logging.log4j.LogManager;
@@ -20,6 +19,7 @@ import java.io.Writer;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.stream.Collectors;
 
 @WebServlet("/country-servlet")
 public class CountryServlet extends HttpServlet {
@@ -38,16 +38,17 @@ public class CountryServlet extends HttpServlet {
         Writer writer = resp.getWriter();
         Template template = templateProvider.getTemplate(getServletContext(), "country-servlet.ftlh");
 
-        List<CountryModel> countryModelList = countryDao.findAll();
+        List<String> countryName = countryDao.findAll().stream()
+                .map(CountryModel::getCountryName)
+                .collect(Collectors.toList());
         Map<String, Object> model = new HashMap<>();
 
-        model.put("modelData", countryModelList);
+        model.put("modelData", countryName);
 
         try {
             template.process(model, writer);
         } catch (TemplateException e) {
             LOGGER.warn("Template " + e + " not found.");
         }
-
     }
 }

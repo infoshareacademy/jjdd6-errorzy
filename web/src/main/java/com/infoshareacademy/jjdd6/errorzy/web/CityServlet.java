@@ -1,11 +1,8 @@
 package com.infoshareacademy.jjdd6.errorzy.web;
 
-import com.infoshareacademy.jjdd6.errorzy.City;
 import com.infoshareacademy.jjdd6.errorzy.freemarker.TemplateProvider;
 import com.infoshareacademy.jjdd6.errorzy.model.CityModel;
 import com.infoshareacademy.jjdd6.errorzy.service.CityService;
-import com.infoshareacademy.jjdd6.errorzy.statistics.dao.CityStatisticsDao;
-import com.infoshareacademy.jjdd6.errorzy.xmlunmarshaller.CitySearch;
 import freemarker.template.Template;
 import freemarker.template.TemplateException;
 import org.apache.logging.log4j.LogManager;
@@ -24,8 +21,8 @@ import java.util.List;
 import java.util.Map;
 
 @WebServlet("/show-city-list")
-public class CityListServlet extends HttpServlet {
-    private static final Logger LOG = LogManager.getLogger(CityListServlet.class);
+public class CityServlet extends HttpServlet {
+    private static final Logger LOG = LogManager.getLogger(CityServlet.class);
 
     @Inject
     private CityService cityService;
