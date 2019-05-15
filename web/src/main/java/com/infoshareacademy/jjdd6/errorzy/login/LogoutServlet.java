@@ -1,5 +1,8 @@
 package com.infoshareacademy.jjdd6.errorzy.login;
 
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
+
 import javax.servlet.ServletConfig;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -10,7 +13,7 @@ import java.io.IOException;
 
 @WebServlet(urlPatterns = {"/logout"})
 public class LogoutServlet extends HttpServlet {
-
+    private static final Logger LOG = LogManager.getLogger(LogoutServlet.class);
     private String domain;
     private String clientId;
 
