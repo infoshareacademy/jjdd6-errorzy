@@ -6,10 +6,10 @@ import com.infoshareacademy.jjdd6.errorzy.model.CityModel;
 import com.infoshareacademy.jjdd6.errorzy.model.CountryModel;
 
 import javax.ejb.EJB;
-import javax.ejb.Singleton;
+import javax.ejb.Stateless;
 import java.util.logging.Logger;
 
-@Singleton
+@Stateless
 public class CityXmlToDBLoader {
     private static final Logger LOGGER = Logger.getLogger(CityXmlToDBLoader.class.getName());
 
@@ -19,16 +19,19 @@ public class CityXmlToDBLoader {
     private PlaceXmlToDBLoader placeXmlToDBLoader;
 
     public void loadCityModelToDataBase(Country country, CountryModel countryModel) {
-        country.getCityList().stream().forEach(city -> {
 
-            CityModel cityModel = new CityModel(city.getLat(),
-                    city.getLng(),
-                    city.getName(),
-                    countryModel);
+        if (country.getCityList() != null) {
+            country.getCityList().stream().forEach(city -> {
 
-            cityDao.save(cityModel);
+                CityModel cityModel = new CityModel(city.getLat(),
+                        city.getLng(),
+                        city.getName(),
+                        countryModel);
 
-            placeXmlToDBLoader.loadPlaceModelToDataBase(city, cityModel);
-        });
+                cityDao.save(cityModel);
+
+                placeXmlToDBLoader.loadPlaceModelToDataBase(city, cityModel);
+            });
+        }
     }
 }
