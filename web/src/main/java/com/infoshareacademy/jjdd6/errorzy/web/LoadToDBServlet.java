@@ -1,8 +1,7 @@
 package com.infoshareacademy.jjdd6.errorzy.web;
 
 import com.infoshareacademy.jjdd6.errorzy.api.NextBikeAPI;
-import com.infoshareacademy.jjdd6.errorzy.service.CountryXmlToDBLoader;
-import com.infoshareacademy.jjdd6.errorzy.upload.FileUploadProcessorBean;
+import com.infoshareacademy.jjdd6.errorzy.service.dbloaders.CountryXmlToDBLoader;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 

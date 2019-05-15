@@ -3,6 +3,7 @@ package com.infoshareacademy.jjdd6.errorzy.service;
 import com.infoshareacademy.jjdd6.errorzy.Place;
 import com.infoshareacademy.jjdd6.errorzy.dao.BikeDao;
 import com.infoshareacademy.jjdd6.errorzy.model.PlaceModel;
+import com.infoshareacademy.jjdd6.errorzy.service.dbloaders.BikeXmlToDBLoader;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.InjectMocks;

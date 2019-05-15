@@ -5,6 +5,8 @@ import com.infoshareacademy.jjdd6.errorzy.Place;
 import com.infoshareacademy.jjdd6.errorzy.dao.PlaceDao;
 import com.infoshareacademy.jjdd6.errorzy.model.CityModel;
 import com.infoshareacademy.jjdd6.errorzy.model.PlaceModel;
+import com.infoshareacademy.jjdd6.errorzy.service.dbloaders.BikeXmlToDBLoader;
+import com.infoshareacademy.jjdd6.errorzy.service.dbloaders.PlaceXmlToDBLoader;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.InjectMocks;
