@@ -14,8 +14,8 @@ public class CountryService {
     CountryDao countryDao;
 
     public List<CountryModel> getAllList() {
-        List<CountryModel> countryModel = countryDao.findAll();
-        return countryModel;
+        List<CountryModel> countryModelList = countryDao.findAll();
+        return countryModelList;
     }
 
     public CountryModel getCountry(String countryName) {
