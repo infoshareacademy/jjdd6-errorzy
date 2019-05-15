@@ -1,9 +1,8 @@
 package com.infoshareacademy.jjdd6.errorzy.web;
 
-import com.infoshareacademy.jjdd6.errorzy.Country;
 import com.infoshareacademy.jjdd6.errorzy.dao.CountryDao;
 import com.infoshareacademy.jjdd6.errorzy.freemarker.TemplateProvider;
-import com.infoshareacademy.jjdd6.errorzy.statistics.dao.CountryStatisticsDao;
+import com.infoshareacademy.jjdd6.errorzy.model.CountryModel;
 import com.infoshareacademy.jjdd6.errorzy.xmlunmarshaller.CountrySearch;
 import freemarker.template.Template;
 import freemarker.template.TemplateException;
@@ -19,6 +18,7 @@ import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 import java.io.Writer;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 @WebServlet("/country-servlet")
@@ -26,8 +26,6 @@ public class CountryServlet extends HttpServlet {
 
     private static final Logger LOGGER = LogManager.getLogger(CountryServlet.class.getName());
 
-    @Inject
-    private CountrySearch countrySearch;
     @Inject
     private TemplateProvider templateProvider;
     @Inject
@@ -40,10 +38,10 @@ public class CountryServlet extends HttpServlet {
         Writer writer = resp.getWriter();
         Template template = templateProvider.getTemplate(getServletContext(), "country-servlet.ftlh");
 
-        Map<String, Country> countryMap = countrySearch.getMapOfCountries();
+        List<CountryModel> countryModelList = countryDao.findAll();
         Map<String, Object> model = new HashMap<>();
 
-        model.put("modelData", countryMap);
+        model.put("modelData", countryModelList);
 
         try {
             template.process(model, writer);
