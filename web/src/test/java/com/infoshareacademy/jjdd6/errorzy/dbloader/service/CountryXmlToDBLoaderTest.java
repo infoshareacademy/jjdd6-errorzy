@@ -1,10 +1,10 @@
-package com.infoshareacademy.jjdd6.errorzy.service;
+package com.infoshareacademy.jjdd6.errorzy.dbloader.service;
 
 import com.infoshareacademy.jjdd6.errorzy.Country;
-import com.infoshareacademy.jjdd6.errorzy.dao.CountryDao;
-import com.infoshareacademy.jjdd6.errorzy.model.CountryModel;
-import com.infoshareacademy.jjdd6.errorzy.service.dbloaders.CityXmlToDBLoader;
-import com.infoshareacademy.jjdd6.errorzy.service.dbloaders.CountryXmlToDBLoader;
+import com.infoshareacademy.jjdd6.errorzy.dbloader.dao.CountryDao;
+import com.infoshareacademy.jjdd6.errorzy.dbloader.model.CountryModel;
+import com.infoshareacademy.jjdd6.errorzy.dbloader.service.dbloaders.CityXmlToDBLoader;
+import com.infoshareacademy.jjdd6.errorzy.dbloader.service.dbloaders.CountryXmlToDBLoader;
 import com.infoshareacademy.jjdd6.errorzy.xmlunmarshaller.CountrySearch;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;

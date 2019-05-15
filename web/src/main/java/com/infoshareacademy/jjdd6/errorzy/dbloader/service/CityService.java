@@ -1,7 +1,7 @@
-package com.infoshareacademy.jjdd6.errorzy.service;
+package com.infoshareacademy.jjdd6.errorzy.dbloader.service;
 
-import com.infoshareacademy.jjdd6.errorzy.dao.CityDao;
-import com.infoshareacademy.jjdd6.errorzy.model.CityModel;
+import com.infoshareacademy.jjdd6.errorzy.dbloader.dao.CityDao;
+import com.infoshareacademy.jjdd6.errorzy.dbloader.model.CityModel;
 
 import javax.ejb.Stateless;
 import javax.inject.Inject;

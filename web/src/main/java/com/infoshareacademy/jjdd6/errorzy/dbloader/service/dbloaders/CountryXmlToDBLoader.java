@@ -1,7 +1,7 @@
-package com.infoshareacademy.jjdd6.errorzy.service.dbloaders;
+package com.infoshareacademy.jjdd6.errorzy.dbloader.service.dbloaders;
 
-import com.infoshareacademy.jjdd6.errorzy.dao.CountryDao;
-import com.infoshareacademy.jjdd6.errorzy.model.CountryModel;
+import com.infoshareacademy.jjdd6.errorzy.dbloader.dao.CountryDao;
+import com.infoshareacademy.jjdd6.errorzy.dbloader.model.CountryModel;
 import com.infoshareacademy.jjdd6.errorzy.xmlunmarshaller.CountrySearch;
 import org.jboss.ejb3.annotation.TransactionTimeout;
 

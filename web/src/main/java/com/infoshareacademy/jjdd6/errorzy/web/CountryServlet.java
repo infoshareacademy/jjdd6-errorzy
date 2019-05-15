@@ -1,7 +1,7 @@
 package com.infoshareacademy.jjdd6.errorzy.web;
 
 import com.infoshareacademy.jjdd6.errorzy.freemarker.TemplateProvider;
-import com.infoshareacademy.jjdd6.errorzy.service.CountryService;
+import com.infoshareacademy.jjdd6.errorzy.dbloader.service.CountryService;
 import freemarker.template.Template;
 import freemarker.template.TemplateException;
 import org.apache.logging.log4j.LogManager;

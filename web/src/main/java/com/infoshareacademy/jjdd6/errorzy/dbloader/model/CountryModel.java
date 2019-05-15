@@ -1,4 +1,4 @@
-package com.infoshareacademy.jjdd6.errorzy.model;
+package com.infoshareacademy.jjdd6.errorzy.dbloader.model;
 
 import javax.persistence.*;
 import javax.validation.constraints.NotNull;

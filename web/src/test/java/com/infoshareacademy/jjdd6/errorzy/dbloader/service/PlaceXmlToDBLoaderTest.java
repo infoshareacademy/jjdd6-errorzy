@@ -1,12 +1,12 @@
-package com.infoshareacademy.jjdd6.errorzy.service;
+package com.infoshareacademy.jjdd6.errorzy.dbloader.service;
 
 import com.infoshareacademy.jjdd6.errorzy.City;
 import com.infoshareacademy.jjdd6.errorzy.Place;
-import com.infoshareacademy.jjdd6.errorzy.dao.PlaceDao;
-import com.infoshareacademy.jjdd6.errorzy.model.CityModel;
-import com.infoshareacademy.jjdd6.errorzy.model.PlaceModel;
-import com.infoshareacademy.jjdd6.errorzy.service.dbloaders.BikeXmlToDBLoader;
-import com.infoshareacademy.jjdd6.errorzy.service.dbloaders.PlaceXmlToDBLoader;
+import com.infoshareacademy.jjdd6.errorzy.dbloader.dao.PlaceDao;
+import com.infoshareacademy.jjdd6.errorzy.dbloader.model.CityModel;
+import com.infoshareacademy.jjdd6.errorzy.dbloader.model.PlaceModel;
+import com.infoshareacademy.jjdd6.errorzy.dbloader.service.dbloaders.BikeXmlToDBLoader;
+import com.infoshareacademy.jjdd6.errorzy.dbloader.service.dbloaders.PlaceXmlToDBLoader;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.InjectMocks;

@@ -1,4 +1,4 @@
-package com.infoshareacademy.jjdd6.errorzy.dao.genericdao;
+package com.infoshareacademy.jjdd6.errorzy.dbloader.dao.genericdao;
 
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;

@@ -1,7 +1,7 @@
-package com.infoshareacademy.jjdd6.errorzy.dao;
+package com.infoshareacademy.jjdd6.errorzy.dbloader.dao;
 
-import com.infoshareacademy.jjdd6.errorzy.dao.genericdao.GenericDao;
-import com.infoshareacademy.jjdd6.errorzy.model.PlaceModel;
+import com.infoshareacademy.jjdd6.errorzy.dbloader.dao.genericdao.GenericDao;
+import com.infoshareacademy.jjdd6.errorzy.dbloader.model.PlaceModel;
 
 import javax.ejb.Stateless;
 import javax.persistence.Query;
@@ -9,6 +9,7 @@ import java.util.List;
 
 @Stateless
 public class PlaceDao extends GenericDao<PlaceModel, Long> {
+
     public PlaceDao() {
         super(PlaceModel.class);
     }
@@ -19,6 +20,18 @@ public class PlaceDao extends GenericDao<PlaceModel, Long> {
 
         List<PlaceModel> result = query.getResultList();
         if (result.isEmpty()) {
+            return null;
+        } else {
+            return result;
+        }
+    }
+
+    public PlaceModel findByName(String name) {
+        Query query = entityManager.createQuery("SELECT p FROM PlaceModel p WHERE p.name = :name");
+        query.setParameter("name", name);
+
+        PlaceModel result = (PlaceModel) query.getSingleResult();
+        if (result == null) {
             return null;
         } else {
             return result;

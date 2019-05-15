@@ -1,7 +1,7 @@
-package com.infoshareacademy.jjdd6.errorzy.dao;
+package com.infoshareacademy.jjdd6.errorzy.dbloader.dao;
 
-import com.infoshareacademy.jjdd6.errorzy.dao.genericdao.GenericDao;
-import com.infoshareacademy.jjdd6.errorzy.model.CityModel;
+import com.infoshareacademy.jjdd6.errorzy.dbloader.dao.genericdao.GenericDao;
+import com.infoshareacademy.jjdd6.errorzy.dbloader.model.CityModel;
 
 import javax.ejb.Stateless;
 import javax.persistence.Query;
@@ -9,6 +9,7 @@ import java.util.List;
 
 @Stateless
 public class CityDao extends GenericDao<CityModel, Long> {
+
     public CityDao() {
         super(CityModel.class);
     }

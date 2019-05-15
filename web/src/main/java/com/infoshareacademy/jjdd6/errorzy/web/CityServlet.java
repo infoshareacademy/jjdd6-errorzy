@@ -1,8 +1,8 @@
 package com.infoshareacademy.jjdd6.errorzy.web;
 
 import com.infoshareacademy.jjdd6.errorzy.freemarker.TemplateProvider;
-import com.infoshareacademy.jjdd6.errorzy.model.CityModel;
-import com.infoshareacademy.jjdd6.errorzy.service.CityService;
+import com.infoshareacademy.jjdd6.errorzy.dbloader.model.CityModel;
+import com.infoshareacademy.jjdd6.errorzy.dbloader.service.CityService;
 import freemarker.template.Template;
 import freemarker.template.TemplateException;
 import org.apache.logging.log4j.LogManager;

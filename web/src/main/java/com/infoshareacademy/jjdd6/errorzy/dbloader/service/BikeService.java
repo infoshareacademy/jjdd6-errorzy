@@ -1,7 +1,7 @@
-package com.infoshareacademy.jjdd6.errorzy.service;
+package com.infoshareacademy.jjdd6.errorzy.dbloader.service;
 
-import com.infoshareacademy.jjdd6.errorzy.dao.BikeDao;
-import com.infoshareacademy.jjdd6.errorzy.model.BikeModel;
+import com.infoshareacademy.jjdd6.errorzy.dbloader.dao.BikeDao;
+import com.infoshareacademy.jjdd6.errorzy.dbloader.model.BikeModel;
 
 import javax.ejb.Stateless;
 import javax.inject.Inject;

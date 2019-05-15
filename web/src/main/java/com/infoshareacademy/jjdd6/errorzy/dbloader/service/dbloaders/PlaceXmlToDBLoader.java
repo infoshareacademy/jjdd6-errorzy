@@ -1,9 +1,9 @@
-package com.infoshareacademy.jjdd6.errorzy.service.dbloaders;
+package com.infoshareacademy.jjdd6.errorzy.dbloader.service.dbloaders;
 
 import com.infoshareacademy.jjdd6.errorzy.City;
-import com.infoshareacademy.jjdd6.errorzy.dao.PlaceDao;
-import com.infoshareacademy.jjdd6.errorzy.model.CityModel;
-import com.infoshareacademy.jjdd6.errorzy.model.PlaceModel;
+import com.infoshareacademy.jjdd6.errorzy.dbloader.dao.PlaceDao;
+import com.infoshareacademy.jjdd6.errorzy.dbloader.model.CityModel;
+import com.infoshareacademy.jjdd6.errorzy.dbloader.model.PlaceModel;
 
 import javax.ejb.EJB;
 import javax.ejb.Stateless;

@@ -1,13 +1,13 @@
 package com.infoshareacademy.jjdd6.errorzy.web;
 
+import com.infoshareacademy.jjdd6.errorzy.dbloader.model.BikeModel;
+import com.infoshareacademy.jjdd6.errorzy.dbloader.model.CityModel;
+import com.infoshareacademy.jjdd6.errorzy.dbloader.model.PlaceModel;
+import com.infoshareacademy.jjdd6.errorzy.dbloader.service.BikeService;
+import com.infoshareacademy.jjdd6.errorzy.dbloader.service.CityService;
+import com.infoshareacademy.jjdd6.errorzy.dbloader.service.CountryService;
+import com.infoshareacademy.jjdd6.errorzy.dbloader.service.PlaceService;
 import com.infoshareacademy.jjdd6.errorzy.freemarker.TemplateProvider;
-import com.infoshareacademy.jjdd6.errorzy.model.BikeModel;
-import com.infoshareacademy.jjdd6.errorzy.model.CityModel;
-import com.infoshareacademy.jjdd6.errorzy.model.PlaceModel;
-import com.infoshareacademy.jjdd6.errorzy.service.BikeService;
-import com.infoshareacademy.jjdd6.errorzy.service.CityService;
-import com.infoshareacademy.jjdd6.errorzy.service.CountryService;
-import com.infoshareacademy.jjdd6.errorzy.service.PlaceService;
 import com.infoshareacademy.jjdd6.errorzy.statistics.dao.CityStatisticsDao;
 import com.infoshareacademy.jjdd6.errorzy.statistics.dao.CountryStatisticsDao;
 import com.infoshareacademy.jjdd6.errorzy.statistics.dao.PlaceStatisticsDao;

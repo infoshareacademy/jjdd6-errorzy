@@ -176,7 +176,7 @@
                                 </tr>
                             </#list>
                             </tbody>
-                        </table>
+                        </table≠>
                     </#if>
                 </center>
             </div>

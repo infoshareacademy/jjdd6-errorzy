@@ -1,6 +1,8 @@
 package com.infoshareacademy.jjdd6.errorzy.web;
 
 import com.infoshareacademy.jjdd6.errorzy.Place;
+import com.infoshareacademy.jjdd6.errorzy.dbloader.model.PlaceModel;
+import com.infoshareacademy.jjdd6.errorzy.dbloader.service.PlaceService;
 import com.infoshareacademy.jjdd6.errorzy.freemarker.TemplateProvider;
 import com.infoshareacademy.jjdd6.errorzy.statistics.dao.PlaceStatisticsDao;
 import com.infoshareacademy.jjdd6.geoservice.ClosestStation;
@@ -30,6 +32,8 @@ public class ClosestStationServlet extends HttpServlet {
     @Inject
     private ClosestStation closestStation;
     @Inject
+    private PlaceService placeService;
+    @Inject
     private PlaceStatisticsDao placeStatisticsDao;
 
     @Override
@@ -56,6 +60,7 @@ public class ClosestStationServlet extends HttpServlet {
             String distanceUnit = req.getParameter("unit");
 
             Place closestPlace = closestStation.findTheClosestPlace(lat, lng);
+            PlaceModel placeModel = placeService.getPlaceByName(closestPlace.getName());
 
             placeStatisticsDao.addToStatistics(closestPlace.getName());
 
@@ -65,7 +70,7 @@ public class ClosestStationServlet extends HttpServlet {
                 distance = distance * 1000.0;
             }
 
-            model.put("place", closestPlace);
+            model.put("place", placeModel);
             model.put("distanceToPlace", distance);
             model.put("distanceUnit", distanceUnit + "s");
             model.put("lateralValue", lat);

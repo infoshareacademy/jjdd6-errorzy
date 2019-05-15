@@ -6,6 +6,7 @@ import javax.ejb.Stateless;
 import javax.inject.Inject;
 import java.util.List;
 import java.util.Map;
+import java.util.Objects;
 import java.util.TreeMap;
 import java.util.stream.Collectors;
 
@@ -17,8 +18,10 @@ public class PlaceSearch {
 
     public List<Place> getPlaces() {
         return citySearch.getCities().stream()
+                .filter(Objects::nonNull)
                 .map(city -> city.getPlaceList())
                 .flatMap(places -> places.stream())
+                .filter(Objects::nonNull)
                 .collect(Collectors.toList());
     }
 

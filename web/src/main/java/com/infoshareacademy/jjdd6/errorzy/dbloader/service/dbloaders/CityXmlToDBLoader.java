@@ -1,9 +1,9 @@
-package com.infoshareacademy.jjdd6.errorzy.service.dbloaders;
+package com.infoshareacademy.jjdd6.errorzy.dbloader.service.dbloaders;
 
 import com.infoshareacademy.jjdd6.errorzy.Country;
-import com.infoshareacademy.jjdd6.errorzy.dao.CityDao;
-import com.infoshareacademy.jjdd6.errorzy.model.CityModel;
-import com.infoshareacademy.jjdd6.errorzy.model.CountryModel;
+import com.infoshareacademy.jjdd6.errorzy.dbloader.dao.CityDao;
+import com.infoshareacademy.jjdd6.errorzy.dbloader.model.CityModel;
+import com.infoshareacademy.jjdd6.errorzy.dbloader.model.CountryModel;
 import org.jboss.ejb3.annotation.TransactionTimeout;
 
 import javax.ejb.EJB;

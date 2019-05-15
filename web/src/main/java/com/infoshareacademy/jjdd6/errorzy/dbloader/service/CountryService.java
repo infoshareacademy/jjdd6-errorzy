@@ -1,8 +1,7 @@
-package com.infoshareacademy.jjdd6.errorzy.service;
+package com.infoshareacademy.jjdd6.errorzy.dbloader.service;
 
-import com.infoshareacademy.jjdd6.errorzy.dao.CountryDao;
-import com.infoshareacademy.jjdd6.errorzy.model.CountryModel;
-import org.hibernate.Hibernate;
+import com.infoshareacademy.jjdd6.errorzy.dbloader.dao.CountryDao;
+import com.infoshareacademy.jjdd6.errorzy.dbloader.model.CountryModel;
 
 import javax.ejb.Stateless;
 import javax.inject.Inject;
@@ -16,7 +15,6 @@ public class CountryService {
     private CountryDao countryDao;
 
     public List<Object> getAllList() {
-        Hibernate.initialize(countryDao.findAll());
         return new ArrayList<>(countryDao.findAll());
     }
 
