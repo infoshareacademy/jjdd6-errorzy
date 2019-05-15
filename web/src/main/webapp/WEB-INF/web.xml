@@ -24,7 +24,6 @@
         <user>root</user>
         <password>pass123</password>
     </data-source>-->
-    </data-source> -->
 
     <context-param>
         <param-name>com.auth0.domain</param-name>

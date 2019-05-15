@@ -11,7 +11,7 @@ import java.util.List;
 public class CountryService {
 
     @Inject
-    CountryDao countryDao;
+    private CountryDao countryDao;
 
     public List<CountryModel> getAllList() {
         List<CountryModel> countryModelList = countryDao.findAll();

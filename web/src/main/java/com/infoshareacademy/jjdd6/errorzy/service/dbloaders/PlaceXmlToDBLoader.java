@@ -7,9 +7,12 @@ import com.infoshareacademy.jjdd6.errorzy.model.PlaceModel;
 
 import javax.ejb.EJB;
 import javax.ejb.Stateless;
+import java.util.logging.Logger;
 
 @Stateless
 public class PlaceXmlToDBLoader {
+
+    private static final Logger LOGGER = Logger.getLogger(PlaceXmlToDBLoader.class.getName());
 
     @EJB
     private PlaceDao placeDao;
@@ -28,6 +31,9 @@ public class PlaceXmlToDBLoader {
                         cityModel);
                 placeDao.save(placeModel);
 
+//                if (place.getBikeList() != null) {
+//                    LOGGER.info("Saving " + place.getBikeList().size() + " bikes");
+//                }
                 bikeXmlToDBLoader.loadBikeModelToDataBase(place, placeModel);
             });
         }

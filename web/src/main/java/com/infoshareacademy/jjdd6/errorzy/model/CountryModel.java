@@ -13,7 +13,7 @@ public class CountryModel {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @OneToMany(mappedBy = "country", fetch = FetchType.EAGER)
+    @OneToMany(mappedBy = "country", fetch = FetchType.LAZY)
     private List<CityModel> cityList;
 
     @Column(name = "lateral_coordinate")
@@ -22,7 +22,7 @@ public class CountryModel {
     @Column(name = "longitudinal_coordinate")
     private double lng;
 
-    @Column(name = "country_name")
+    @Column(name = "country_name", length = 32)
     @NotNull
     private String countryName;
 

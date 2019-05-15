@@ -2,6 +2,8 @@ package com.infoshareacademy.jjdd6.errorzy.web;
 
 import com.infoshareacademy.jjdd6.errorzy.City;
 import com.infoshareacademy.jjdd6.errorzy.freemarker.TemplateProvider;
+import com.infoshareacademy.jjdd6.errorzy.model.CityModel;
+import com.infoshareacademy.jjdd6.errorzy.service.CityService;
 import com.infoshareacademy.jjdd6.errorzy.statistics.dao.CityStatisticsDao;
 import com.infoshareacademy.jjdd6.errorzy.xmlunmarshaller.CitySearch;
 import freemarker.template.Template;
@@ -26,7 +28,7 @@ public class CityListServlet extends HttpServlet {
     private static final Logger LOG = LogManager.getLogger(CityListServlet.class);
 
     @Inject
-    private CitySearch citySearch;
+    private CityService cityService;
     @Inject
     private TemplateProvider templateProvider;
 
@@ -37,8 +39,8 @@ public class CityListServlet extends HttpServlet {
         Writer writer = resp.getWriter();
         Template template = templateProvider.getTemplate(getServletContext(), "city-list-servlet.ftlh");
 
-        List<City> listOfCity = citySearch.getCities();
-        Map<String, List<City>> model = new HashMap();
+        List<CityModel> listOfCity = cityService.getAllList();
+        Map<String, List<CityModel>> model = new HashMap();
 
         model.put("rootCity", listOfCity);
 
@@ -47,6 +49,5 @@ public class CityListServlet extends HttpServlet {
         } catch (TemplateException e) {
             LOG.error("Template " + e +" not found.");
         }
-
     }
 }
