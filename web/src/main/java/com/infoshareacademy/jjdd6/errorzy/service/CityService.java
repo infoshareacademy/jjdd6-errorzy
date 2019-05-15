@@ -5,6 +5,7 @@ import com.infoshareacademy.jjdd6.errorzy.model.CityModel;
 
 import javax.ejb.Stateless;
 import javax.inject.Inject;
+import java.util.ArrayList;
 import java.util.List;
 
 @Stateless
@@ -14,13 +15,10 @@ public class CityService {
     private CityDao cityDao;
 
     public List<CityModel> getAllList() {
-        List<CityModel> cityModelList = cityDao.findAll();
-        return cityModelList;
+        return new ArrayList<>(cityDao.findAll());
     }
 
-    public CityModel getCity(String cityName) {
-        CityModel cityModel = cityDao.findByName(cityName);
-        return cityModel;
+    public List<CityModel> getCitiesByCountry(String countryName) {
+        return cityDao.findByCountry(countryName);
     }
-
 }

@@ -2,7 +2,6 @@ package com.infoshareacademy.jjdd6.errorzy.dao;
 
 import com.infoshareacademy.jjdd6.errorzy.dao.genericdao.GenericDao;
 import com.infoshareacademy.jjdd6.errorzy.model.CityModel;
-import com.infoshareacademy.jjdd6.errorzy.model.CountryModel;
 
 import javax.ejb.Stateless;
 import javax.persistence.Query;
@@ -14,16 +13,15 @@ public class CityDao extends GenericDao<CityModel, Long> {
         super(CityModel.class);
     }
 
-
-    public CityModel findByName(String name) {
-        Query query = entityManager.createQuery("SELECT c FROM CityModel c WHERE c.name = :name");
-        query.setParameter("name", name);
+    public List<CityModel> findByCountry(String countryName) {
+        Query query = entityManager.createQuery("SELECT c FROM CityModel c WHERE c.country.countryName = :name");
+        query.setParameter("name", countryName);
 
         List<CityModel> result = query.getResultList();
         if (result.isEmpty()) {
             return null;
         } else {
-            return result.get(0);
+            return result;
         }
     }
 }

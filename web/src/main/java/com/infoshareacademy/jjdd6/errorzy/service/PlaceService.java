@@ -5,6 +5,7 @@ import com.infoshareacademy.jjdd6.errorzy.model.PlaceModel;
 
 import javax.ejb.Stateless;
 import javax.inject.Inject;
+import java.util.ArrayList;
 import java.util.List;
 
 @Stateless
@@ -14,13 +15,14 @@ public class PlaceService {
     private PlaceDao placeDao;
 
     public List<PlaceModel> getAllList() {
-        List<PlaceModel> placeModelList = placeDao.findAll();
+        List<PlaceModel> placeModelList = new ArrayList<>();
+        placeDao.findAll().forEach(placeModel -> {
+            placeModelList.add(placeModel);
+        });
         return placeModelList;
     }
 
-    public PlaceModel getPlace(String placeName) {
-        PlaceModel placeModel = placeDao.findByName(placeName);
-        return placeModel;
+    public List<PlaceModel> getPlaceByCity(String cityName) {
+        return placeDao.findByCity(cityName);
     }
-
 }

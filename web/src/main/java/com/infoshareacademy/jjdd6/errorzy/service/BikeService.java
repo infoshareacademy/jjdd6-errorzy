@@ -16,4 +16,8 @@ public class BikeService {
     public List<BikeModel> getAllList() {
         return bikeDao.findAll();
     }
+
+    public List<BikeModel> getAllBikesForPlace(String placeName) {
+        return bikeDao.findByPlace(placeName);
+    }
 }

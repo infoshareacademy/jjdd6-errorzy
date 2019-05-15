@@ -1,8 +1,7 @@
 package com.infoshareacademy.jjdd6.errorzy.web;
 
-import com.infoshareacademy.jjdd6.errorzy.dao.CountryDao;
 import com.infoshareacademy.jjdd6.errorzy.freemarker.TemplateProvider;
-import com.infoshareacademy.jjdd6.errorzy.model.CountryModel;
+import com.infoshareacademy.jjdd6.errorzy.service.CountryService;
 import freemarker.template.Template;
 import freemarker.template.TemplateException;
 import org.apache.logging.log4j.LogManager;
@@ -19,7 +18,6 @@ import java.io.Writer;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
-import java.util.stream.Collectors;
 
 @WebServlet("/country-servlet")
 public class CountryServlet extends HttpServlet {
@@ -27,9 +25,9 @@ public class CountryServlet extends HttpServlet {
     private static final Logger LOGGER = LogManager.getLogger(CountryServlet.class.getName());
 
     @Inject
-    private TemplateProvider templateProvider;
+    private CountryService countryService;
     @Inject
-    private CountryDao countryDao;
+    private TemplateProvider templateProvider;
 
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
@@ -38,12 +36,10 @@ public class CountryServlet extends HttpServlet {
         Writer writer = resp.getWriter();
         Template template = templateProvider.getTemplate(getServletContext(), "country-servlet.ftlh");
 
-        List<String> countryName = countryDao.findAll().stream()
-                .map(CountryModel::getCountryName)
-                .collect(Collectors.toList());
-        Map<String, Object> model = new HashMap<>();
+        List<Object> countryModelList = countryService.getAllList();
 
-        model.put("modelData", countryName);
+        Map<String, List<Object>> model = new HashMap<>();
+        model.put("modelData", countryModelList);
 
         try {
             template.process(model, writer);

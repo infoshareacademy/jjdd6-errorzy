@@ -13,16 +13,15 @@ public class BikeDao extends GenericDao<BikeModel, Long> {
         super(BikeModel.class);
     }
 
-    public BikeModel findByNumber(int number) {
-        Query query = entityManager.createQuery("SELECT c FROM BikeModel c WHERE c.number = :number");
-        query.setParameter("number", number);
+    public List<BikeModel> findByPlace(String placeName) {
+        Query query = entityManager.createQuery("SELECT b FROM BikeModel b WHERE b.place.name = :place");
+        query.setParameter("place", placeName);
 
         List<BikeModel> result = query.getResultList();
         if (result.isEmpty()) {
             return null;
         } else {
-            return result.get(0);
+            return result;
         }
     }
-
 }

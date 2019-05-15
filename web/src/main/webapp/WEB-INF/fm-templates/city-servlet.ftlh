@@ -100,10 +100,10 @@
                                 <th scope="col">City</th>
                             </tr>
                             </thead>
-                            <#list rootCity as value>
+                            <#list rootCity as values>
                                 <tr>
-                                    <th scope="row">${value?index+1}</th>
-                                    <td>${value.name}</td>
+                                    <th scope="row">${values?index+1}</th>
+                                    <td>${values.name}</td>
                                 </tr>
                             </#list>
                             </tbody>

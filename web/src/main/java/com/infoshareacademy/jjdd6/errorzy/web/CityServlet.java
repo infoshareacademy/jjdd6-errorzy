@@ -34,17 +34,17 @@ public class CityServlet extends HttpServlet {
         LOG.info("CityList servlet loaded.");
         resp.setContentType("text/html;charset=UTF-8");
         Writer writer = resp.getWriter();
-        Template template = templateProvider.getTemplate(getServletContext(), "city-list-servlet.ftlh");
+        Template template = templateProvider.getTemplate(getServletContext(), "city-servlet.ftlh");
 
-        List<CityModel> listOfCity = cityService.getAllList();
+        List<CityModel> cityModelList = cityService.getAllList();
+
         Map<String, List<CityModel>> model = new HashMap();
-
-        model.put("rootCity", listOfCity);
+        model.put("rootCity", cityModelList);
 
         try {
             template.process(model, writer);
         } catch (TemplateException e) {
-            LOG.error("Template " + e +" not found.");
+            LOG.error("Template " + e + " not found.");
         }
     }
 }

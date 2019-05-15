@@ -1,17 +1,16 @@
 package com.infoshareacademy.jjdd6.errorzy.web;
 
-import com.infoshareacademy.jjdd6.errorzy.Bike;
-import com.infoshareacademy.jjdd6.errorzy.City;
-import com.infoshareacademy.jjdd6.errorzy.Country;
-import com.infoshareacademy.jjdd6.errorzy.Place;
 import com.infoshareacademy.jjdd6.errorzy.freemarker.TemplateProvider;
+import com.infoshareacademy.jjdd6.errorzy.model.BikeModel;
+import com.infoshareacademy.jjdd6.errorzy.model.CityModel;
+import com.infoshareacademy.jjdd6.errorzy.model.PlaceModel;
+import com.infoshareacademy.jjdd6.errorzy.service.BikeService;
+import com.infoshareacademy.jjdd6.errorzy.service.CityService;
+import com.infoshareacademy.jjdd6.errorzy.service.CountryService;
+import com.infoshareacademy.jjdd6.errorzy.service.PlaceService;
 import com.infoshareacademy.jjdd6.errorzy.statistics.dao.CityStatisticsDao;
 import com.infoshareacademy.jjdd6.errorzy.statistics.dao.CountryStatisticsDao;
 import com.infoshareacademy.jjdd6.errorzy.statistics.dao.PlaceStatisticsDao;
-import com.infoshareacademy.jjdd6.errorzy.xmlunmarshaller.BikeSearch;
-import com.infoshareacademy.jjdd6.errorzy.xmlunmarshaller.CitySearch;
-import com.infoshareacademy.jjdd6.errorzy.xmlunmarshaller.CountrySearch;
-import com.infoshareacademy.jjdd6.errorzy.xmlunmarshaller.PlaceSearch;
 import freemarker.template.Template;
 import freemarker.template.TemplateException;
 import org.apache.logging.log4j.LogManager;
@@ -26,27 +25,23 @@ import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 @WebServlet("/bike-servlet/*")
 public class BikeServlet extends HttpServlet {
-
     private static final Logger LOGGER = LogManager.getLogger(BikeServlet.class.getName());
 
     @Inject
-    private CountrySearch countrySearch;
-
-    @Inject
-    private CitySearch citySearch;
-
-    @Inject
-    private PlaceSearch placeSearch;
-
-    @Inject
-    private BikeSearch bikeSearch;
-
-    @Inject
     private TemplateProvider templateProvider;
+    @Inject
+    private CountryService countryService;
+    @Inject
+    private CityService cityService;
+    @Inject
+    private PlaceService placeService;
+    @Inject
+    private BikeService bikeService;
 
     @Inject
     private CityStatisticsDao cityStatisticsDao;
@@ -61,43 +56,35 @@ public class BikeServlet extends HttpServlet {
         resp.setContentType("text/html;charset=UTF-8");
         PrintWriter writer = resp.getWriter();
 
-        if (!(req.getParameter("country") == null)) {
-            LOGGER.warn("Country doesn't exist.");
-            Map<String, City> cityMap = citySearch.getMapOfCitiesForCountry(req.getParameter("country"));
-            createRootMap(writer, cityMap, "cityRoot");
+        if (req.getParameter("country") != null) {
+            List<CityModel> cityModelList = cityService.getCitiesByCountry(req.getParameter("country"));
+            createRootMap(writer, cityModelList, "cityRoot");
 
             countryStatisticsDao.addToStatistics(req.getParameter("country"));
-        } else if (!(req.getParameter("city") == null)) {
-            LOGGER.warn("City doesn't exist.");
-            Map<String, Place> placeMap = placeSearch.getMapOfPlaces(req.getParameter("city"));
-            createRootMap(writer, placeMap, "placeRoot");
+
+        } else if (req.getParameter("city") != null) {
+            List<PlaceModel> placeModelList = placeService.getPlaceByCity(req.getParameter("city"));
+            createRootMap(writer, placeModelList, "placeRoot");
 
             cityStatisticsDao.addToStatistics("city");
-        } else if (!(req.getParameter("place") == null)) {
 
-            LOGGER.warn("Place doesn't exist.");
-            Map<String, Bike> bikeMap;
+        } else if (req.getParameter("place") != null) {
+
+            List<BikeModel> bikeModelList = bikeService.getAllBikesForPlace(req.getParameter("place"));
+            createRootMap(writer, bikeModelList, "bikeRoot");
 
             placeStatisticsDao.addToStatistics("place");
-            try {
-                bikeMap = bikeSearch.getMapOfBikesForPlace(req.getParameter("place"));
-                createRootMap(writer, bikeMap, "bikeRoot");
-                LOGGER.info("Map of bikes has been generated.");
-            } catch (Exception e) {
-                LOGGER.warn("Exception caught when loading bikes");
-                resp.setStatus(HttpServletResponse.SC_NOT_FOUND);
-            }
-
+            LOGGER.info("Map of bikes has been generated.");
         } else {
 
-            Map<String, Country> countryMap = countrySearch.getMapOfCountries();
-            createRootMap(writer, countryMap, "countryRoot");
+            List<Object> countryModelList = countryService.getAllList();
+            createRootMap(writer, countryModelList, "countryRoot");
         }
     }
 
-    private void createRootMap(PrintWriter writer, Object mapWithBikeData, String rootName) {
+    private void createRootMap(PrintWriter writer, Object ListObject, String rootName) {
         Map<String, Object> mapForFreemarker = new HashMap<>();
-        mapForFreemarker.put(rootName, mapWithBikeData);
+        mapForFreemarker.put(rootName, ListObject);
         try {
             processTemplate(writer, mapForFreemarker);
         } catch (IOException e) {

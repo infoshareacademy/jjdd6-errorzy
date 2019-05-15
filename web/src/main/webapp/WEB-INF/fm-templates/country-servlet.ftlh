@@ -103,7 +103,7 @@
                             <#list modelData as values>
                                 <tr>
                                     <th scope="row">${values?index+1}</th>
-                                    <td>${values}</td>
+                                    <td>${values.countryName}</td>
                                 </tr>
                             </#list>
                             </tbody>
