@@ -14,8 +14,16 @@
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
             integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
             crossorigin="anonymous"></script>
+    <meta http-equiv="Cache-Control" content="no-store" />
     <style>
         @import url('https://fonts.googleapis.com/css?family=Playfair+Display|Roboto:500');
+    </style>
+    <style>
+        /* Set the size of the div element that contains the map */
+        #map {
+            height: 400px;  /* The height is 400 pixels */
+            width: 100%;  /* The width is the width of the web page */
+        }
     </style>
     <title>Errorzy presents:</title>
 </head>
@@ -145,6 +153,64 @@
                         <#else>
                             ${distanceToPlace?string["0"]}
                         </#if> ${distanceUnit} from you.</h5>
+
+                    <div>
+
+                        <div id="map">
+
+                            <script type="text/javascript">
+                                function initMap() {
+                                    var locations = [
+                                        ['You', ${lateralValue}, ${longitudinalValue}],
+                                        ['${place.name}', ${place.lat}, ${place.lng}]
+                                    ];
+
+                                    var map = new google.maps.Map(document.getElementById('map'), {
+                                        center: new google.maps.LatLng(${lateralValue}, ${longitudinalValue}),
+                                        mapTypeId: google.maps.MapTypeId.ROADMAP
+                                    });
+
+                                    var infowindow = new google.maps.InfoWindow();
+
+                                    var marker, i;
+
+                                    var bounds  = new google.maps.LatLngBounds();
+
+                                    for (i = 0; i < locations.length; i++) {
+                                        if (i == 0) {
+                                            marker = new google.maps.Marker({
+                                                position: new google.maps.LatLng(locations[i][1], locations[i][2]),
+                                                map: map,
+                                                icon: {
+                                                    url: "http://maps.google.com/mapfiles/ms/icons/blue-dot.png"
+                                                }
+                                            });
+                                        } else {
+                                            marker = new google.maps.Marker({
+                                                position: new google.maps.LatLng(locations[i][1], locations[i][2]),
+                                                map: map
+                                            });
+                                        }
+
+                                        google.maps.event.addListener(marker, 'click', (function (marker, i) {
+                                            return function () {
+                                                infowindow.setContent(locations[i][0]);
+                                                infowindow.open(map, marker);
+                                            }
+                                        })(marker, i));
+
+                                        loc = new google.maps.LatLng(marker.position.lat(), marker.position.lng());
+                                        bounds.extend(loc);
+                                    }
+
+                                    map.fitBounds(bounds);
+                                    map.panToBounds(bounds);
+                                }
+                            </script>
+                        <script async defer
+                                src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBmgne83Z8Yl58mQT7AQnU_vS5MZViZznU&callback=initMap">
+                        </script>
+                    </div>
                 </#if>
 
             </div>
