@@ -17,7 +17,7 @@ public class CityModel {
     @JoinColumn(name = "country_id")
     private CountryModel country;
 
-    @OneToMany(mappedBy = "city", fetch = FetchType.EAGER)
+    @OneToMany(mappedBy = "city", fetch = FetchType.LAZY)
     private List<PlaceModel> placeList;
 
     @Column(name = "lateral_coordinate", columnDefinition = "DECIMAL(10,6)")

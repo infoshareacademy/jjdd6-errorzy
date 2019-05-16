@@ -5,10 +5,12 @@ import com.infoshareacademy.jjdd6.errorzy.dbloader.model.CountryModel;
 
 import javax.ejb.Stateless;
 import javax.inject.Inject;
+import javax.transaction.Transactional;
 import java.util.ArrayList;
 import java.util.List;
 
 @Stateless
+@Transactional
 public class CountryService {
 
     @Inject

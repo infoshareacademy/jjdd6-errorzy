@@ -7,8 +7,10 @@ import com.infoshareacademy.jjdd6.errorzy.dbloader.model.PlaceModel;
 
 import javax.ejb.EJB;
 import javax.ejb.Stateless;
+import javax.transaction.Transactional;
 
 @Stateless
+@Transactional
 public class BikeXmlToDBLoader {
 
     @EJB

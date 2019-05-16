@@ -17,7 +17,7 @@ public class PlaceModel {
     @JoinColumn(name = "city_id")
     private CityModel city;
 
-    @OneToMany(mappedBy = "place", fetch = FetchType.EAGER)
+    @OneToMany(mappedBy = "place", fetch = FetchType.LAZY)
     private List<BikeModel> bikeList;
 
     @Column(name = "lateral_coordinate")

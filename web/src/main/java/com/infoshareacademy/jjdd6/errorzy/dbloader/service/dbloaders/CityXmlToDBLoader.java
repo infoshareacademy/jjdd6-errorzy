@@ -10,12 +10,14 @@ import javax.ejb.EJB;
 import javax.ejb.Stateless;
 import javax.ejb.TransactionAttribute;
 import javax.ejb.TransactionAttributeType;
+import javax.transaction.Transactional;
 import java.util.concurrent.TimeUnit;
 import java.util.logging.Logger;
 
 @Stateless
+@Transactional
 @TransactionAttribute(value = TransactionAttributeType.REQUIRES_NEW)
-@TransactionTimeout(value=30, unit=TimeUnit.MINUTES)
+@TransactionTimeout(value = 30, unit = TimeUnit.MINUTES)
 public class CityXmlToDBLoader {
     private static final Logger LOGGER = Logger.getLogger(CityXmlToDBLoader.class.getName());
 
