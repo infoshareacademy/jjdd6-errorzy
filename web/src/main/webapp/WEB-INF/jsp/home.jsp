@@ -74,7 +74,7 @@
                 <li class="nav-item">
                     <a class="nav-link" href="/login">
                         <button type="button" class="btn btn-outline-light">
-                            HOME
+                            Login
                         </button>
                     </a>
                 </li>
@@ -82,48 +82,46 @@
         </div>
     </div>
 </nav>
-<div id="intro" class="view">
+<div class="container">
+    <div class="card border-0 shadow my-5 bg-dark">
+        <div class="card-body p-5">
+            <div style="height: 500px">
+                <center>
+                    <h1 class="text-light">
+                        Welcome to RvR application
+                    </h1>
+                    <br>
+                    <img class="ui-widget-shadow" src="https://i.imgur.com/A9yFQNe.png" alt="RvR application logo">
+                    <br>
+                    <br>
+                    <br>
+                    <h4 class="text-light">
+                        Thanks to this application You can find all closest bicycles available in Your neighbourhood.
+                    </h4>
+                </center>
 
-    <div class="mask">
 
+            </div>
+        </div>
     </div>
+</div>
+</main>
+<footer>
+    <center>
+        <h5 class="text-light">Made by Errorzy</h5>
+    </center>
+</footer>
 
-
-    <div>
-
-        <footer class="jumbotron">
-            <center>
-                <h1 class="text-white-150"> Welcome in RvR application!!! </h1>
-                <h2 class="text-white-100">Thought RvR api you can quickly and 100% reliably find the nearest nextbike
-                    station. </h2>
-                <h4 class="text-white-100">Login by yours gmail and ENJOY CYCLING !!! </h4>
-            </center>
-        </footer>
-    </div>
-
-
-    <div>
-
-        <footer class="jumbotron">
-            <center>
-                <h4 class="text-white-80"> &copy; 2019 Company Inc</h4>
-                <h5 class="text-white-80"> &copy; Made by Errorzy </h5>
-            </center>
-        </footer>
-
-    </div>
-
-
-    <script type="text/javascript">
-        $("#qsLogoutBtn").click(function (e) {
-            e.preventDefault();
-            $("#home").removeClass("active");
-            $("#password-login").removeClass("active");
-            $("#qsLogoutBtn").addClass("active");
-            // assumes we are not part of SSO so just logout of local session
-            window.location = "${fn:replace(pageContext.request.requestURL, pageContext.request.requestURI, '')}/logout";
-        });
-    </script>
+<script type="text/javascript">
+    $("#qsLogoutBtn").click(function (e) {
+        e.preventDefault();
+        $("#home").removeClass("active");
+        $("#password-login").removeClass("active");
+        $("#qsLogoutBtn").addClass("active");
+        // assumes we are not part of SSO so just logout of local session
+        window.location = "${fn:replace(pageContext.request.requestURL, pageContext.request.requestURI, '')}/logout";
+    });
+</script>
 
 </body>
 </html>

@@ -17,13 +17,13 @@
     </data-source>
 
     <!-- USE FOR DOCKER WILDFLY -->
-  <!--  <data-source>
-        <name>java:ds/errorzy</name>
-        <class-name>com.mysql.cj.jdbc.MysqlDataSource</class-name>
-        <url>jdbc:mysql://db/errorzy_database?useLegacyDatetimeCode=false&amp;serverTimezone=Europe/Warsaw</url>
-        <user>root</user>
-        <password>pass123</password>
-    </data-source>-->
+    <!--<data-source>-->
+        <!--<name>java:ds/errorzy</name>-->
+        <!--<class-name>com.mysql.cj.jdbc.MysqlDataSource</class-name>-->
+        <!--<url>jdbc:mysql://db/errorzy_database?useLegacyDatetimeCode=false&amp;serverTimezone=Europe/Warsaw</url>-->
+        <!--<user>root</user>-->
+        <!--<password>pass123</password>-->
+    <!--</data-source>-->
 
     <context-param>
         <param-name>com.auth0.domain</param-name>
