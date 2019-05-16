@@ -18,11 +18,18 @@ public class ContactFormServlet extends HttpServlet {
 
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+
         super.doGet(req, resp);
     }
 
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+        System.out.println(req.getParameterMap().keySet());
+        String name = req.getParameter("name");
+
+//        message.setname(name);
+//        email.send(message);
+
         super.doPost(req, resp);
     }
 }
