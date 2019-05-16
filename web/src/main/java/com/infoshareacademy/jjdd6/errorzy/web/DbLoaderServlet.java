@@ -30,5 +30,7 @@ public class DbLoaderServlet extends HttpServlet {
 
         Runnable task = () -> countryXmlToDBLoader.loadCountryModelAtStart();
         new Thread(task).start();
+
+        resp.sendRedirect("/admin");
     }
 }
