@@ -25,10 +25,8 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 import java.io.PrintWriter;
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
+import java.util.stream.Collectors;
 
 @WebServlet("/bike-servlet/*")
 public class BikeServlet extends HttpServlet {
@@ -71,7 +69,7 @@ public class BikeServlet extends HttpServlet {
 
             List<Place> cities = new ArrayList(cityMap.values());
 
-            createRootMap(writer, cityMap, "cityRoot", new ArrayList<>());
+            createRootMap(writer, cityMap, "cityRoot", cities);
 
             countryStatisticsDao.addToStatistics(req.getParameter("country"));
 
@@ -86,15 +84,21 @@ public class BikeServlet extends HttpServlet {
             cityStatisticsDao.addToStatistics("city");
         } else if (!(req.getParameter("place") == null)) {
 
-            LOGGER.warn("Place doesn't exist.");
-            Map<String, Bike> bikeMap = bikeSearch.getMapOfBikesForPlace(req.getParameter("bike"));
-
-            List<Place> bikes = new ArrayList(bikeMap.values());
 
             placeStatisticsDao.addToStatistics("place");
             try {
-                bikeMap = bikeSearch.getMapOfBikesForPlace(req.getParameter("place"));
-                createRootMap(writer, bikeMap, "bikeRoot", new ArrayList<>());
+                Map<String, Bike> bikeMap = bikeSearch.getMapOfBikesForPlace(req.getParameter("place"));
+
+                Map<String, Country> countryMap = countrySearch.getMapOfCountries();
+                List<Place> places = countryMap.values().stream()
+                        .filter(country -> country.getCityList() != null)
+                        .flatMap(country -> country.getCityList().stream())
+                        .filter(city -> city.getPlaceList() != null)
+                        .flatMap(city -> city.getPlaceList().stream())
+                        .filter(place -> place.getName() != null && req.getParameter("place").equals(place.getName()))
+                        .collect(Collectors.toList());
+
+                createRootMap(writer, bikeMap, "bikeRoot", places);
                 LOGGER.info("Map of bikes has been generated.");
             } catch (Exception e) {
                 LOGGER.warn("Exception caught when loading bikes");
@@ -104,9 +108,17 @@ public class BikeServlet extends HttpServlet {
         } else {
 
             Map<String, Country> countryMap = countrySearch.getMapOfCountries();
-            createRootMap(writer, countryMap, "countryRoot", new ArrayList<>());
 
-            List<Place> places = new ArrayList(countryMap.values());
+            List<Place> places = countryMap.values().stream()
+                    .filter(country -> country.getCityList() != null)
+                    .flatMap(country -> country.getCityList().stream())
+                    .filter(city -> city.getPlaceList() != null)
+                    .flatMap(city -> city.getPlaceList().stream())
+                    .collect(Collectors.toList());
+
+
+            createRootMap(writer, countryMap, "countryRoot", places);
+
         }
     }
 

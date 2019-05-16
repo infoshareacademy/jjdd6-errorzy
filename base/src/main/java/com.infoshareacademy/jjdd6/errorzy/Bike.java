@@ -36,6 +36,10 @@ public class Bike {
         this.bikeType = bikeType;
     }
 
+    public Place getPlace() {
+        return place;
+    }
+
     @Override
     public String toString() {
         return "Bike{" +

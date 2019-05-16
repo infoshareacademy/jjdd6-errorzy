@@ -15,12 +15,12 @@
             integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
             crossorigin="anonymous"></script>
 
-    <meta http-equiv="Cache-Control" content="no-store" />
+    <meta http-equiv="Cache-Control" content="no-store"/>
     <style>
         /* Set the size of the div element that contains the map */
         #map {
-            height: 400px;  /* The height is 400 pixels */
-            width: 100%;  /* The width is the width of the web page */
+            height: 400px; /* The height is 400 pixels */
+            width: 100%; /* The width is the width of the web page */
         }
     </style>
     <style>
@@ -195,7 +195,7 @@
                                     var locations = [];
 
                                     <#list places as place>
-                                        locations.push(['${place.name}', ${place.lat}, ${place.lng}])
+                                    locations.push(['${place.name}', ${place.lat}, ${place.lng}])
                                     </#list>
 
                                     var map = new google.maps.Map(document.getElementById('map'), {
@@ -206,14 +206,14 @@
 
                                     var marker, i;
 
-                                    var bounds  = new google.maps.LatLngBounds();
+                                    var bounds = new google.maps.LatLngBounds();
 
                                     for (i = 0; i < locations.length; i++) {
 
-                                            marker = new google.maps.Marker({
-                                                position: new google.maps.LatLng(locations[i][1], locations[i][2]),
-                                                map: map
-                                            });
+                                        marker = new google.maps.Marker({
+                                            position: new google.maps.LatLng(locations[i][1], locations[i][2]),
+                                            map: map
+                                        });
 
                                         google.maps.event.addListener(marker, 'click', (function (marker, i) {
                                             return function () {
@@ -246,8 +246,6 @@
     <center>
         <h5 class="text-black-50">Made by Errorzy©</h5>
     </center>
-
-
 </footer>
 </body>
 </html>
