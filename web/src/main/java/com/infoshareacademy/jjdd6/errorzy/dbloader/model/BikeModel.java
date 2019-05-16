@@ -15,7 +15,7 @@ public class BikeModel {
     @JoinColumn(name = "place_id")
     private PlaceModel place;
 
-    @Column(name = "bike_number")
+    @Column(name = "bike_number", unique = true)
     private int number;
 
     @Column(name = "bike_type")

@@ -22,7 +22,7 @@ public class CountryModel {
     @Column(name = "longitudinal_coordinate")
     private double lng;
 
-    @Column(name = "country_name", length = 32)
+    @Column(name = "country_name", length = 32, unique = true)
     @NotNull
     private String countryName;
 

@@ -26,7 +26,7 @@ public class CityModel {
     @Column(name = "longitudinal_coordinate", columnDefinition = "DECIMAL(10,6)")
     private double lng;
 
-    @Column(name = "city_name", length = 64)
+    @Column(name = "city_name", length = 64, unique = true)
     @NotNull
     private String name;
 

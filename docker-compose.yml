@@ -5,7 +5,7 @@ services:
     environment:
       - MYSQL_ROOT_PASSWORD=pass123
       - MYSQL_DATABASE=errorzy_database
-      - MYSQL_USER=errorzy
+      - MYSQL_USER=root
       - MYSQL_PASSWORD=pass123
     ports:
       - 4322:3306

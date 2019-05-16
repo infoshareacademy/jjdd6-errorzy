@@ -20,6 +20,7 @@ public class PlaceSearch {
         return citySearch.getCities().stream()
                 .filter(Objects::nonNull)
                 .map(city -> city.getPlaceList())
+                .filter(Objects::nonNull)
                 .flatMap(places -> places.stream())
                 .filter(Objects::nonNull)
                 .collect(Collectors.toList());
