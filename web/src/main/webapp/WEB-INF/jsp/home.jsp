@@ -53,6 +53,7 @@
     <style>
         @import url('https://fonts.googleapis.com/css?family=Playfair+Display|Roboto:500');
     </style>
+    <link rel="shortcut icon" type="image/png" href="https://i.imgur.com/A9yFQNe.png"/>
 </head>
 
 <body background="https://wallpapers-house.com/data/out/6/wallpaper2you_109365.jpg">
