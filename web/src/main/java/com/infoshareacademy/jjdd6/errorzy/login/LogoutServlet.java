@@ -19,6 +19,7 @@ public class LogoutServlet extends HttpServlet {
 
     @Override
     public void init(ServletConfig config) {
+        LOG.info("Servlet config {} has been initialized." + config);
         domain = config.getServletContext().getInitParameter("com.auth0.domain");
         clientId = config.getServletContext().getInitParameter("com.auth0.clientId");
     }
