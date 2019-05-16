@@ -19,6 +19,36 @@
             integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
             crossorigin="anonymous"></script>
 
+    <script>function bs_input_file() {
+            $(".input-file").before(
+                function () {
+                    if (!$(this).prev().hasClass('input-ghost')) {
+                        var element = $("<input type='file' class='input-ghost' style='visibility:hidden; height:0'>");
+                        element.attr("name", $(this).attr("name"));
+                        element.change(function () {
+                            element.next(element).find('input').val((element.val()).split('\\').pop());
+                        });
+                        $(this).find("button.btn-choose").click(function () {
+                            element.click();
+                        });
+                        $(this).find("button.btn-reset").click(function () {
+                            element.val(null);
+                            $(this).parents(".input-file").find('input').val('');
+                        });
+                        $(this).find('input').css("cursor", "pointer");
+                        $(this).find('input').mousedown(function () {
+                            $(this).parents('.input-file').prev().click();
+                            return false;
+                        });
+                        return element;
+                    }
+                }
+            );
+        }
+
+        $(function () {
+            bs_input_file();
+        });</script>
     <style>
         @import url('https://fonts.googleapis.com/css?family=Playfair+Display|Roboto:500');
     </style>
@@ -48,7 +78,13 @@
         <div class="collapse navbar-collapse" id="navbarResponsive">
             <ul class="navbar-nav ml-auto">
 
-
+                <li class="nav-item">
+                    <a class="nav-link" href="/logout">
+                        <button type="button" class="btn btn-outline-light">
+                            Logout
+                        </button>
+                    </a>
+                </li>
                 <li class="nav-item">
                     <a class="nav-link" href="/bike-servlet">
                         <button type="button" class="btn btn-outline-light">
@@ -77,20 +113,6 @@
                         </button>
                     </a>
                 </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="/admin">
-                        <button type="button" class="btn btn-outline-light">
-                            Admin
-                        </button>
-                    </a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="/logout">
-                        <button type="button" class="btn btn-outline-light">
-                            Logout
-                        </button>
-                    </a>
-                </li>
             </ul>
         </div>
     </div>
@@ -116,7 +138,27 @@
                         </h1>
                         <br>
                         <br>
-                       RVR is meant to help city-bike users to find the nearest bicycle.
+                        <form method="post" action="/upload" enctype="multipart/form-data">
+                            <!-- COMPONENT START -->
+                            <div class="form-group">
+                                <div class="input-group input-file" name="file">
+                                    <input type="text" class="form-control" placeholder='Choose an xml file...'
+                                           name="file"/>
+                                    <span class="input-group-btn">
+        		                    <button class="btn btn-light btn-choose" type="button">Choose</button>
+    		                    </span>
+                                </div>
+                            </div>
+                            <!-- COMPONENT END -->
+                            <div class="form-group">
+                                <button type="submit" class="btn btn-primary" name="save">Submit</button>
+                                <button type="reset" class="btn btn-danger">Reset</button>
+                            </div>
+                        </form>
+
+                        <form method="post" action="/db-load">
+                            <input type="submit" value="Load to DB">
+                        </form>
                 </div>
             </div>
         </div>
@@ -131,4 +173,3 @@
 </body>
 
 </html>
-
