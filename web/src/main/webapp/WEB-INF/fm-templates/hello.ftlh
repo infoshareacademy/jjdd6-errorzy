@@ -66,7 +66,7 @@
 <nav class="navbar navbar-expand-lg navbar-dark bg-dark static-top mb-4 shadow-lg">
     <div class="container">
 
-        <a class="navbar-brand" href="hello.ftlh">
+        <a class="navbar-brand" href="/portal/home">
             <img width="70" height="70" class="ui-widget-shadow" src="https://i.imgur.com/A9yFQNe.png" alt="RvR application logo"></a>
 
 
@@ -161,15 +161,11 @@
     </div>
     </center>
 </main>
-
-<!--Footer-->
 <footer>
     <center>
-        <h5 class="text-light-50">Made by Errorzy©</h5>
+        <h5 class="text-light">Made by Errorzy<br>2019</h5>
     </center>
-
 </footer>
-
 </body>
 
 </html>

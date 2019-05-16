@@ -109,7 +109,7 @@
 </main>
 <footer>
     <center>
-        <h5 class="text-light">Made by Errorzy</h5>
+        <h5 class="text-light">Made by Errorzy<br>2019</h5>
     </center>
 </footer>
 
