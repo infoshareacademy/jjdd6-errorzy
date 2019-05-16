@@ -18,6 +18,7 @@
         @import url('https://fonts.googleapis.com/css?family=Playfair+Display|Roboto:500');
     </style>
     <title>Errorzy presents:</title>
+    <link rel="shortcut icon" type="image/png" href="https://i.imgur.com/A9yFQNe.png"/>
 </head>
 
 <body background="https://wallpapers-house.com/data/out/6/wallpaper2you_109365.jpg">
@@ -27,7 +28,9 @@
     <nav class="navbar navbar-expand-lg navbar-dark bg-dark static-top mb-4 shadow-lg">
         <div class="container">
 
-            <a class="navbar-brand" href="hello.ftlh"><strong class="googlefont">RvЯ</strong></a>
+            <a class="navbar-brand" href="/portal/home">
+                <img width="70" height="70" class="ui-widget-shadow" src="https://i.imgur.com/A9yFQNe.png" alt="RvR application logo">
+            </a>
 
 
             <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive"
@@ -119,10 +122,8 @@
 <!--Footer-->
 <footer>
     <center>
-        <h5 class="text-black-50">Made by Errorzy©</h5>
+        <h5 class="text-light">Made by Errorzy<br>2019</h5>
     </center>
-
-
 </footer>
 </body>
 </html>

@@ -1,6 +1,8 @@
 package com.infoshareacademy.jjdd6.errorzy.web;
 
+import com.infoshareacademy.jjdd6.errorzy.freemarker.TemplateProvider;
 import com.infoshareacademy.jjdd6.errorzy.upload.FileUploadProcessorBean;
+import freemarker.template.Template;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
@@ -22,6 +24,8 @@ public class UploadServlet extends HttpServlet {
 
     @Inject
     private FileUploadProcessorBean fileUploadProcessorBean;
+    @Inject
+    private TemplateProvider templateProvider;
 
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
@@ -40,5 +44,7 @@ public class UploadServlet extends HttpServlet {
             LOGGER.warn("Uploading file failed.");
             resp.setStatus(HttpServletResponse.SC_BAD_REQUEST);
         }
+        Template template = templateProvider.getTemplate(getServletContext(), "hello.ftlh");
+        template.dump(resp.getWriter());
     }
 }
