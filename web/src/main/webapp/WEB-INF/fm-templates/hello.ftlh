@@ -154,6 +154,10 @@
                                 <button type="reset" class="btn btn-danger">Reset</button>
                             </div>
                         </form>
+
+                        <form method="post" action="/db-load">
+                            <input type="submit" value="Load to DB">
+                        </form>
                 </div>
             </div>
         </div>

@@ -24,9 +24,11 @@ public class DbLoaderServlet extends HttpServlet {
     private NextBikeAPI nextBikeAPI;
 
     @Override
-    protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+    protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         LOGGER.info(DbLoaderServlet.class.getName() + " called.");
         nextBikeAPI.loadXMLFromURL();
-        countryXmlToDBLoader.loadCountryModelAtStart();
+
+        Runnable task = () -> countryXmlToDBLoader.loadCountryModelAtStart();
+        new Thread(task).start();
     }
 }
