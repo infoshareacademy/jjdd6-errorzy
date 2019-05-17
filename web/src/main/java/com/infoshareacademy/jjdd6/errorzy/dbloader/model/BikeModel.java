@@ -1,4 +1,4 @@
-package com.infoshareacademy.jjdd6.errorzy.model;
+package com.infoshareacademy.jjdd6.errorzy.dbloader.model;
 
 import javax.persistence.*;
 
@@ -15,7 +15,7 @@ public class BikeModel {
     @JoinColumn(name = "place_id")
     private PlaceModel place;
 
-    @Column(name = "bike_number")
+    @Column(name = "bike_number", unique = true)
     private int number;
 
     @Column(name = "bike_type")

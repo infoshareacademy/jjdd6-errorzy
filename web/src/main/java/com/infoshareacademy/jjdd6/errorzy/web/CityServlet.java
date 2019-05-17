@@ -1,9 +1,8 @@
 package com.infoshareacademy.jjdd6.errorzy.web;
 
-import com.infoshareacademy.jjdd6.errorzy.City;
 import com.infoshareacademy.jjdd6.errorzy.freemarker.TemplateProvider;
-import com.infoshareacademy.jjdd6.errorzy.statistics.dao.CityStatisticsDao;
-import com.infoshareacademy.jjdd6.errorzy.xmlunmarshaller.CitySearch;
+import com.infoshareacademy.jjdd6.errorzy.dbloader.model.CityModel;
+import com.infoshareacademy.jjdd6.errorzy.dbloader.service.CityService;
 import freemarker.template.Template;
 import freemarker.template.TemplateException;
 import org.apache.logging.log4j.LogManager;
@@ -22,11 +21,11 @@ import java.util.List;
 import java.util.Map;
 
 @WebServlet("/show-city-list")
-public class CityListServlet extends HttpServlet {
-    private static final Logger LOG = LogManager.getLogger(CityListServlet.class);
+public class CityServlet extends HttpServlet {
+    private static final Logger LOG = LogManager.getLogger(CityServlet.class);
 
     @Inject
-    private CitySearch citySearch;
+    private CityService cityService;
     @Inject
     private TemplateProvider templateProvider;
 
@@ -35,18 +34,17 @@ public class CityListServlet extends HttpServlet {
         LOG.info("CityList servlet loaded.");
         resp.setContentType("text/html;charset=UTF-8");
         Writer writer = resp.getWriter();
-        Template template = templateProvider.getTemplate(getServletContext(), "city-list-servlet.ftlh");
+        Template template = templateProvider.getTemplate(getServletContext(), "city-servlet.ftlh");
 
-        List<City> listOfCity = citySearch.getCities();
-        Map<String, List<City>> model = new HashMap();
+        List<CityModel> cityModelList = cityService.getAllList();
 
-        model.put("rootCity", listOfCity);
+        Map<String, List<CityModel>> model = new HashMap();
+        model.put("rootCity", cityModelList);
 
         try {
             template.process(model, writer);
         } catch (TemplateException e) {
-            LOG.error("Template " + e +" not found.");
+            LOG.error("Template " + e + " not found.");
         }
-
     }
 }

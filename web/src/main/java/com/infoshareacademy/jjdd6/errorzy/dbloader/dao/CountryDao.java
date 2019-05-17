@@ -1,8 +1,7 @@
-package com.infoshareacademy.jjdd6.errorzy.dao;
+package com.infoshareacademy.jjdd6.errorzy.dbloader.dao;
 
-import com.infoshareacademy.jjdd6.errorzy.Country;
-import com.infoshareacademy.jjdd6.errorzy.dao.genericdao.GenericDao;
-import com.infoshareacademy.jjdd6.errorzy.model.CountryModel;
+import com.infoshareacademy.jjdd6.errorzy.dbloader.dao.genericdao.GenericDao;
+import com.infoshareacademy.jjdd6.errorzy.dbloader.model.CountryModel;
 
 import javax.ejb.Stateless;
 import javax.persistence.Query;

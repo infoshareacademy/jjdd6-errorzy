@@ -103,10 +103,10 @@
                                 <th scope="col">Country</th>
                             </tr>
                             </thead>
-                            <#list modelData?keys as key>
+                            <#list modelData as values>
                                 <tr>
-                                    <th scope="row">${key?index+1}</th>
-                                    <td>${key}</td>
+                                    <th scope="row">${values?index+1}</th>
+                                    <td>${values.countryName}</td>
                                 </tr>
                             </#list>
                             </tbody>

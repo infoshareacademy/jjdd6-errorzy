@@ -1,14 +1,16 @@
-package com.infoshareacademy.jjdd6.errorzy.service;
+package com.infoshareacademy.jjdd6.errorzy.dbloader.service.dbloaders;
 
 import com.infoshareacademy.jjdd6.errorzy.Place;
-import com.infoshareacademy.jjdd6.errorzy.dao.BikeDao;
-import com.infoshareacademy.jjdd6.errorzy.model.BikeModel;
-import com.infoshareacademy.jjdd6.errorzy.model.PlaceModel;
+import com.infoshareacademy.jjdd6.errorzy.dbloader.dao.BikeDao;
+import com.infoshareacademy.jjdd6.errorzy.dbloader.model.BikeModel;
+import com.infoshareacademy.jjdd6.errorzy.dbloader.model.PlaceModel;
 
 import javax.ejb.EJB;
 import javax.ejb.Stateless;
+import javax.transaction.Transactional;
 
 @Stateless
+@Transactional
 public class BikeXmlToDBLoader {
 
     @EJB

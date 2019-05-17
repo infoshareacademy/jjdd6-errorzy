@@ -1,4 +1,4 @@
-package com.infoshareacademy.jjdd6.errorzy.model;
+package com.infoshareacademy.jjdd6.errorzy.dbloader.model;
 
 import javax.persistence.*;
 import javax.validation.constraints.NotNull;
@@ -17,7 +17,7 @@ public class CityModel {
     @JoinColumn(name = "country_id")
     private CountryModel country;
 
-    @OneToMany(mappedBy = "city")
+    @OneToMany(mappedBy = "city", fetch = FetchType.LAZY)
     private List<PlaceModel> placeList;
 
     @Column(name = "lateral_coordinate", columnDefinition = "DECIMAL(10,6)")
@@ -26,7 +26,7 @@ public class CityModel {
     @Column(name = "longitudinal_coordinate", columnDefinition = "DECIMAL(10,6)")
     private double lng;
 
-    @Column(name = "city_name")
+    @Column(name = "city_name", length = 64, unique = true)
     @NotNull
     private String name;
 

@@ -12,7 +12,6 @@ import java.util.List;
 public class CountryStatisticsDao {
 
     @PersistenceContext
-
     private EntityManager entityManager;
 
     public CountryStatistics findByName(String country) {

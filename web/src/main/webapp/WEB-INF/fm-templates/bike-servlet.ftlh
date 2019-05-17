@@ -106,10 +106,10 @@
                             </tr>
                             </thead>
 
-                            <#list countryRoot?keys as key>
+                            <#list countryRoot as values>
                                 <tr>
-                                    <td scope="row">${key?index+1}</td>
-                                    <td><a href="/bike-servlet?country=${key}" style="color:white">${key}</a></td>
+                                    <td scope="row">${values?index+1}</td>
+                                    <td><a href="/bike-servlet?country=${values.countryName}" style="color:white">${values.countryName}</a></td>
                                 </tr>
                             </#list>
 
@@ -128,10 +128,10 @@
                             </tr>
                             </thead>
 
-                            <#list cityRoot?keys as key>
+                            <#list cityRoot as values>
                                 <tr>
-                                    <td scope="row">${key?index+1}</td>
-                                    <td><a href="/bike-servlet?city=${key}" style="color:white">${key}</a></td>
+                                    <td scope="row">${values?index+1}</td>
+                                    <td><a href="/bike-servlet?city=${values.name}" style="color:white">${values.name}</a></td>
                                 </tr>
                             </#list>
 
@@ -146,14 +146,14 @@
                             <thead>
                             <tr>
                                 <th scope="col">#</th>
-                                <th scope="col">City</th>
+                                <th scope="col">Place</th>
                             </tr>
                             </thead>
 
-                            <#list placeRoot?keys as key>
+                            <#list placeRoot as values>
                                 <tr>
-                                    <td scope="row">${key?index+1}</td>
-                                    <td><a href="/bike-servlet?place=${key}" style="color:white">${key}</a></td>
+                                    <td scope="row">${values?index+1}</td>
+                                    <td><a href="/bike-servlet?place=${values.name}" style="color:white">${values.name}</a></td>
                                 </tr>
                             </#list>
                             </tbody>
@@ -171,14 +171,14 @@
                             </tr>
                             </thead>
 
-                            <#list bikeRoot?keys as key>
+                            <#list bikeRoot as values>
                                 <tr>
-                                    <td scope="row">${key?index+1}</td>
-                                    <td>${key}</td>
+                                    <td scope="row">${values?index+1}</td>
+                                    <td>${values.number?c}</td>
                                 </tr>
                             </#list>
                             </tbody>
-                        </table>
+                        </table≠>
                     </#if>
                 </center>
             </div>
