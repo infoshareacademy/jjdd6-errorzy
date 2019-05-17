@@ -61,6 +61,7 @@
 </div>
 <nav class="navbar navbar-expand-lg navbar-dark bg-dark static-top mb-4 shadow-lg">
     <div class="container">
+        <a class="navbar-brand" href="home.jsp"><strong class="googlefont">RvЯ</strong></a>
 
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive"
                 aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
@@ -89,12 +90,13 @@
     </div>
 
 
-    <div>
+    <main>
+        <div>
 
         <footer class="jumbotron">
             <center>
                 <h1 class="text-white-150"> Welcome in RvR application!!! </h1>
-                <h2 class="text-white-100">Through RvR api you can quickly and 100% reliably find the nearest nextbike
+                <h2 class="text-white-100">Thought RvR api you can quickly and 100% reliably find the nearest nextbike
                     station. </h2>
                 <h4 class="text-white-100">Login by yours gmail and ENJOY CYCLING !!! </h4>
             </center>
