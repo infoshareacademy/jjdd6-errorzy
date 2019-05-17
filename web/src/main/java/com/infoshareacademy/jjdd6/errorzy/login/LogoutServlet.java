@@ -1,5 +1,7 @@
 package com.infoshareacademy.jjdd6.errorzy.login;
 
+import com.auth0.AuthenticationController;
+
 import javax.servlet.ServletConfig;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -7,6 +9,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
+import java.io.UnsupportedEncodingException;
 
 @WebServlet(urlPatterns = {"/logout"})
 public class LogoutServlet extends HttpServlet {
@@ -25,17 +28,17 @@ public class LogoutServlet extends HttpServlet {
         if (request.getSession() != null) {
             request.getSession().invalidate();
         }
-        String returnUrl = String.format("%s://%s", request.getScheme(), request.getServerName());
-        if ((request.getScheme().equals("http") && request.getServerPort() != 80) || (request.getScheme().equals("https") && request.getServerPort() != 443)) {
-            returnUrl += ":" + request.getServerPort();
-        }
-        returnUrl += "/login";
-        String logoutUrl = String.format(
-                "https://%s/v2/logout?client_id=%s&returnTo=%s",
-                domain,
-                clientId,
-                returnUrl
-        );
+//        String returnUrl = String.format("%s://%s", request.getScheme(), request.getServerName());
+//        if ((request.getScheme().equals("http") && request.getServerPort() != 80) || (request.getScheme().equals("https") && request.getServerPort() != 443)) {
+//            returnUrl += ":" + request.getServerPort();
+//        }
+//        returnUrl += "/login";
+//        String logoutUrl = String.format(
+//                "https://%s/v2/logout?client_id=%s&returnTo=%s",
+//                domain,
+//                clientId,
+//                returnUrl
+//        );
         response.sendRedirect("/home");
     }
 

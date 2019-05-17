@@ -40,8 +40,6 @@ public class CountrySearch {
                 })
                 .collect(Collectors.toList());
 
-        countries.forEach(System.out::println);
-
         LOG.info("XML file loaded.");
     }
 

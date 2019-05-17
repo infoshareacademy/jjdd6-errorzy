@@ -5,11 +5,11 @@ import com.infoshareacademy.jjdd6.errorzy.model.CountryModel;
 import com.infoshareacademy.jjdd6.errorzy.xmlunmarshaller.CountrySearch;
 
 import javax.ejb.EJB;
-import javax.ejb.Singleton;
+import javax.ejb.Stateless;
 import javax.transaction.Transactional;
 import java.util.logging.Logger;
 
-@Singleton
+@Stateless
 @Transactional
 public class CountryXmlToDBLoader {
     private static final Logger LOGGER = Logger.getLogger(CountryXmlToDBLoader.class.getName());
@@ -22,6 +22,7 @@ public class CountryXmlToDBLoader {
     private CityXmlToDBLoader cityXmlToDBLoader;
 
     public void loadCountryModelAtStart() {
+        LOGGER.info("Loading to database started.");
         loadCountryModelToDataBase();
     }
 

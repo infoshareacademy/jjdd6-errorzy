@@ -4,13 +4,11 @@ import com.infoshareacademy.jjdd6.errorzy.City;
 import com.infoshareacademy.jjdd6.errorzy.dao.PlaceDao;
 import com.infoshareacademy.jjdd6.errorzy.model.CityModel;
 import com.infoshareacademy.jjdd6.errorzy.model.PlaceModel;
-import com.infoshareacademy.jjdd6.errorzy.xmlunmarshaller.PlaceSearch;
 
 import javax.ejb.EJB;
-import javax.ejb.Singleton;
-import java.util.logging.Logger;
+import javax.ejb.Stateless;
 
-@Singleton
+@Stateless
 public class PlaceXmlToDBLoader {
 
     @EJB
@@ -19,16 +17,19 @@ public class PlaceXmlToDBLoader {
     private BikeXmlToDBLoader bikeXmlToDBLoader;
 
     public void loadPlaceModelToDataBase(City city, CityModel cityModel) {
-        city.getPlaceList().forEach(place -> {
 
-            PlaceModel placeModel = new PlaceModel(place.getLat(),
-                    place.getLng(),
-                    place.getName(),
-                    place.getNumber(),
-                    cityModel);
-            placeDao.save(placeModel);
+        if (city.getPlaceList() != null) {
+            city.getPlaceList().forEach(place -> {
 
-            bikeXmlToDBLoader.loadBikeModelToDataBase(place, placeModel);
-        });
+                PlaceModel placeModel = new PlaceModel(place.getLat(),
+                        place.getLng(),
+                        place.getName(),
+                        place.getNumber(),
+                        cityModel);
+                placeDao.save(placeModel);
+
+                bikeXmlToDBLoader.loadBikeModelToDataBase(place, placeModel);
+            });
+        }
     }
 }

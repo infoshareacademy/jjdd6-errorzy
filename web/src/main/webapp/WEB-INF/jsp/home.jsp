@@ -61,7 +61,6 @@
 </div>
 <nav class="navbar navbar-expand-lg navbar-dark bg-dark static-top mb-4 shadow-lg">
     <div class="container">
-        <a class="navbar-brand" href="home.jsp"><strong class="googlefont">RvЯ</strong></a>
 
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive"
                 aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
@@ -90,45 +89,30 @@
     </div>
 
 
-    <main>
-        <div>
+    <div>
 
-            <footer class="jumbotron">
-                <center>
-                    <h1 class="text-white-150"> Welcome in RvR application!!! </h1>
-                </center>
-            </footer>
-            <footer class="jumbotron">
-                <center>
-                    <h6 class="text-white-100">Thought RvR api you can quickly and 100% reliably find the nearest
-                        nextbike station. </h6>
-                </center>
-            </footer>
-            <footer class="jumbotron">
-                <center>
-                    <h6 class="text-white-100">Login by yours gmail and ENJOY CYCLING !!! </h6>
-                </center>
-            </footer>
-        </div>
-    </main>
+        <footer class="jumbotron">
+            <center>
+                <h1 class="text-white-150"> Welcome in RvR application!!! </h1>
+                <h2 class="text-white-100">Through RvR api you can quickly and 100% reliably find the nearest nextbike
+                    station. </h2>
+                <h4 class="text-white-100">Login by yours gmail and ENJOY CYCLING !!! </h4>
+            </center>
+        </footer>
+    </div>
 
-    <main>
-        <div>
 
-            <footer class="jumbotron">
-                <center>
-                    <h5 class="text-white-80"> &copy; 2019 Company Inc</h5>
-                </center>
-            </footer>
-            <footer class="jumbotron">
-                <center>
-                    <h6 class="text-white-80">Made by Errorzy &copy; </h6>
-                </center>
+    <div>
 
-            </footer>
+        <footer class="jumbotron">
+            <center>
+                <h4 class="text-white-80"> &copy; 2019 Company Inc</h4>
+                <h5 class="text-white-80"> &copy; Made by Errorzy </h5>
+            </center>
+        </footer>
 
-        </div>
-    </main>
+    </div>
+
 
     <script type="text/javascript">
         $("#qsLogoutBtn").click(function (e) {
