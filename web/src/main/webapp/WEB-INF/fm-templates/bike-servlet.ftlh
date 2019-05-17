@@ -202,6 +202,45 @@
                                         mapTypeId: google.maps.MapTypeId.ROADMAP
                                     });
 
+                                    map.setMap(map);
+                                    map.set('styles', [
+                                        {
+                                            "featureType": "road",
+                                            "elementType": "geometry.fill",
+                                            "stylers": [
+                                                { "color": "#cfbaff" }
+                                            ]
+                                        },{
+                                            "featureType": "landscape.man_made",
+                                            "elementType": "geometry",
+                                            "stylers": [
+                                                { "visibility": "off" }
+                                            ]
+                                        },{
+                                            "featureType": "landscape.natural",
+                                            "stylers": [
+                                                { "saturation": 50 },
+                                                { "lightness": 80 }
+                                            ]
+                                        },{
+                                            "featureType": "poi.park",
+                                            "stylers": [
+                                                { "color": "#96e1a5" }
+                                            ]
+                                        },{
+                                            "stylers": [
+                                                { "invert_lightness": true },
+                                                { "hue": "#00ddff" }
+                                            ]
+                                        },{
+                                            "elementType": "labels.text.fill",
+                                            "stylers": [
+                                                { "color": "#ffffff" }
+                                            ]
+                                        }
+                                    ]);
+
+
                                     var infowindow = new google.maps.InfoWindow();
 
                                     var marker, i;
