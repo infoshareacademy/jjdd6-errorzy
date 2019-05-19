@@ -48,8 +48,7 @@
 <nav class="navbar navbar-expand-lg navbar-dark bg-dark static-top mb-4 shadow-lg">
     <div class="container">
 
-        <a class="navbar-brand" href="/portal/home">
-            <img width="70" height="70" class="ui-widget-shadow" src="https://i.imgur.com/A9yFQNe.png" alt="RvR application logo"></a>
+        <a class="navbar-brand" href="/portal/home"><strong class="googlefont"><img class="zoom" src="https://imgur.com/VYijABi.png" height="70" width="70"></strong></a>
 
 
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive"
@@ -344,7 +343,7 @@
 <footer>
     
         <h5 style="text-align: center; font-size: 12pt; font-weight: 200; font-family:Segoe UI; color:white">made in 2019 by</h5>
-    <img src="https://imgur.com/EhqOLb3.png" style="display: block; margin-bottom: 30px; ; margin-left: auto; margin-right: auto;">
+    <img class="zoom"src="https://imgur.com/EhqOLb3.png" style="display: block; margin-bottom: 30px; ; margin-left: auto; margin-right: auto;">
 
     </footer>
 </body>
