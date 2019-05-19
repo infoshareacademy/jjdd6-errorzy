@@ -40,7 +40,7 @@ public class LogoutServlet extends HttpServlet {
                 clientId,
                 returnUrl
         );
-        response.sendRedirect("/home");
+        response.sendRedirect("https://errorzy.eu.auth0.com/v2/logout?returnTo=http://errorzy.jjdd6.is-academy.pl/home");
     }
 
 }
