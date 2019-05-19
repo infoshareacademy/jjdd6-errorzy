@@ -77,14 +77,6 @@
 
         <div class="collapse navbar-collapse" id="navbarResponsive">
             <ul class="navbar-nav ml-auto">
-
-                <li class="nav-item">
-                    <a class="nav-link" href="/logout">
-                        <button type="button" class="btn btn-outline-light">
-                            Logout
-                        </button>
-                    </a>
-                </li>
                 <li class="nav-item">
                     <a class="nav-link" href="/bike-servlet">
                         <button type="button" class="btn btn-outline-light">
@@ -110,6 +102,20 @@
                     <a class="nav-link" href="/show-city-list">
                         <button type="button" class="btn btn-outline-light">
                             Show list of cities
+                        </button>
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="/admin">
+                        <button type="button" class="btn btn-outline-light">
+                            Admin
+                        </button>
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="/logout">
+                        <button type="button" class="btn btn-outline-light">
+                            Logout
                         </button>
                     </a>
                 </li>
