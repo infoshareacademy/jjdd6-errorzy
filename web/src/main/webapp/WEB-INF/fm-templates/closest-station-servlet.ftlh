@@ -71,6 +71,20 @@
                             </button>
                         </a>
                     </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="/admin">
+                            <button type="button" class="btn btn-outline-light">
+                                Admin
+                            </button>
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="/logout">
+                            <button type="button" class="btn btn-outline-light">
+                                Logout
+                            </button>
+                        </a>
+                    </li>
                 </ul>
             </div>
         </div>

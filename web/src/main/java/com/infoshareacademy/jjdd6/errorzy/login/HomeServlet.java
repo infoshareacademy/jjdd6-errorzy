@@ -28,5 +28,6 @@ public class HomeServlet extends HttpServlet {
         }
         LOG.warn("No token from the user");
         req.getRequestDispatcher("/WEB-INF/jsp/home.jsp").forward(req, res);
+
     }
 }
