@@ -49,6 +49,14 @@
         $(function () {
             bs_input_file();
         });</script>
+        <style>
+                .zoom {
+                    transition: transform .2s; /* Animation */
+            }
+                .zoom:hover {
+                transform: scale(1.2); /* (150% zoom - Note: if the zoom is too large, it will go outside of the viewport) */
+            }  
+              </style>
     <style>
         @import url('https://fonts.googleapis.com/css?family=Playfair+Display|Roboto:500');
     </style>
@@ -66,8 +74,7 @@
 <nav class="navbar navbar-expand-lg navbar-dark bg-dark static-top mb-4 shadow-lg">
     <div class="container">
 
-        <a class="navbar-brand" href="/portal/home">
-            <img width="70" height="70" class="ui-widget-shadow" src="https://i.imgur.com/A9yFQNe.png" alt="RvR application logo"></a>
+        <a class="navbar-brand" href="portal/home"><strong class="googlefont"><img class="zoom" src="https://imgur.com/VYijABi.png" height="70" width="70"></strong></a>
 
 
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive"
@@ -172,9 +179,8 @@
     </center>
 </main>
 <footer>
-    <center>
-        <h5 class="text-light">Made by Errorzy<br>2019</h5>
-    </center>
+        <h5 style="text-align: center; font-size: 12pt; font-weight: 200; font-family:Segoe UI; color:white">made in 2019 by</h5>
+    <img class="zoom"src="https://imgur.com/EhqOLb3.png" style="display: block; margin-bottom: 30px; ; margin-left: auto; margin-right: auto;">
 </footer>
 </body>
 
