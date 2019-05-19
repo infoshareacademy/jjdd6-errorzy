@@ -136,7 +136,7 @@
       var map, infoWindow;
       function initMap() {
         map = new google.maps.Map(document.getElementById('map'), {
-          center: {lat: 54.397, lng: 18.644},
+          center: {lat: 54.4032133, lng: 18.5684889},
           zoom: 2,
           mapTypeId: 'roadmap',
           styles: [
