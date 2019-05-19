@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
           integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+
     <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
             integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
             crossorigin="anonymous"></script>
@@ -29,7 +30,8 @@
         <div class="container">
 
             <a class="navbar-brand" href="/portal/home">
-                <img width="70" height="70" class="ui-widget-shadow" src="https://i.imgur.com/A9yFQNe.png" alt="RvR application logo"></a>
+                <img width="70" height="70" class="ui-widget-shadow" src="https://i.imgur.com/A9yFQNe.png"
+                     alt="RvR application logo"></a>
 
 
             <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive"
@@ -102,7 +104,12 @@
                     <div class="form-group col-md-6">
                         <label for="latInput"> <font color="white">Lateral coordinates:</font></label>
                         <input type="number" step="any" class="form-control" id="latInput"
-                               name="lat" <#if lateralValue??> value="${lateralValue?string["0.#############"]}" </#if> >
+                               name="lat"
+                                <#if lateralValue??>
+                                    value="${lateralValue?string["0.#############"]}"
+                                <#else>
+                                    value=""
+                                </#if> >
                         <small id="latHelp" class="form-text text-muted">Insert lateral coordinates (i.e.
                             54.5188900), North with '+', South with'-'
                         </small>
@@ -111,7 +118,12 @@
                     <div class="form-group col-md-6">
                         <label for="lngInput"> <font color="white"> Longitudinal coordinates:</font></label>
                         <input type="number" step="any" class="form-control" id="lngInput"
-                               name="lng" <#if longitudinalValue??> value="${longitudinalValue?string["0.#############"]}" </#if> >
+                               name="lng"
+                                <#if longitudinalValue??>
+                                    value="${longitudinalValue?string["0.#############"]}"
+                                <#else>
+                                    value=""
+                                </#if> >
                         <small id="lngHelp" class="form-text text-muted">Insert longitudinal coordinates (i.e.
                             18.5318800), East with '+', West with'-'
                         </small>
@@ -159,5 +171,25 @@
         <h5 class="text-light">Made by Errorzy<br>2019</h5>
     </center>
 </footer>
+
+<script>
+
+    var inputLat = document.querySelector("form #latInput");
+    var inputIng = document.querySelector("form #lngInput");
+
+    if (navigator.geolocation) {
+        navigator.geolocation.getCurrentPosition(showPosition);
+    } else {
+        x.innerHTML = "Geolocation is not supported by this browser.";
+    }
+
+    function showPosition(position) {
+        $('#latInput').val(position.coords.latitude);
+        $('#lngInput').val(position.coords.longitude);
+    }
+
+
+</script>
+
 </body>
 </html>
