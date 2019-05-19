@@ -29,17 +29,22 @@ public class CityXmlToDBLoader {
     public void loadCityModelToDataBase(Country country, CountryModel countryModel) {
 
         if (country.getCityList() != null) {
-            country.getCityList().stream().forEach(city -> {
+            country.getCityList().forEach(city -> {
 
                 CityModel cityModel = new CityModel(city.getLat(),
                         city.getLng(),
                         city.getName(),
                         countryModel);
 
-                cityDao.save(cityModel);
+                CityModel cityModelRepeated = cityDao.findByName(city.getName());
 
-                //LOGGER.info("Saving " + city.getPlaceList().size() + " places");
-                placeXmlToDBLoader.loadPlaceModelToDataBase(city, cityModel);
+                if (cityModelRepeated == null) {
+                    cityDao.save(cityModel);
+                    placeXmlToDBLoader.loadPlaceModelToDataBase(city, cityModel);
+
+                } else {
+                    placeXmlToDBLoader.loadPlaceModelToDataBase(city, cityModelRepeated);
+                }
             });
         }
     }

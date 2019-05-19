@@ -25,4 +25,16 @@ public class CityDao extends GenericDao<CityModel, Long> {
             return result;
         }
     }
+
+    public CityModel findByName(String name) {
+        Query query = entityManager.createQuery("SELECT c FROM CityModel c WHERE c.name = :cityName");
+        query.setParameter("cityName", name);
+
+        List<CityModel> result = query.getResultList();
+        if (result.isEmpty()) {
+            return null;
+        } else {
+            return result.get(0);
+        }
+    }
 }

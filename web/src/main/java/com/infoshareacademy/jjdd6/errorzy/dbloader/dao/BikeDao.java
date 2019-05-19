@@ -25,4 +25,16 @@ public class BikeDao extends GenericDao<BikeModel, Long> {
             return result;
         }
     }
+
+    public BikeModel findByNumber(int number) {
+        Query query = entityManager.createQuery("SELECT b FROM BikeModel b WHERE b.number = :bikeNumber");
+        query.setParameter("bikeNumber", number);
+
+        List<BikeModel> result = query.getResultList();
+        if (result.isEmpty()) {
+            return null;
+        } else {
+            return result.get(0);
+        }
+    }
 }

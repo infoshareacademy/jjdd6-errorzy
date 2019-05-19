@@ -66,14 +66,14 @@ public class BikeServlet extends HttpServlet {
             List<PlaceModel> placeModelList = placeService.getPlaceByCity(req.getParameter("city"));
             createRootMap(writer, placeModelList, "placeRoot");
 
-            cityStatisticsDao.addToStatistics("city");
+            cityStatisticsDao.addToStatistics(req.getParameter("city"));
 
         } else if (req.getParameter("place") != null) {
 
             List<BikeModel> bikeModelList = bikeService.getAllBikesForPlace(req.getParameter("place"));
             createRootMap(writer, bikeModelList, "bikeRoot");
 
-            placeStatisticsDao.addToStatistics("place");
+            placeStatisticsDao.addToStatistics(req.getParameter("place"));
             LOGGER.info("Map of bikes has been generated.");
         } else {
 
