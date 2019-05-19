@@ -51,6 +51,14 @@ public class PlaceModel {
         this.city = cityModel;
     }
 
+    public CityModel getCity() {
+        return city;
+    }
+
+    public void setCity(CityModel city) {
+        this.city = city;
+    }
+
     public double getLat() {
         return lat;
     }

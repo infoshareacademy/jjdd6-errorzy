@@ -167,7 +167,7 @@
                 <#if place??>
                     <#setting number_format="computer">
 
-                    <h5 class="text-light">The closest bike stand is ${place.name} in ${place}, it is
+                    <h5 class="text-light">The closest bike stand is ${place.name} in ${cityName}, it is
                         <#if distanceUnit == "kilometers">
                             ${distanceToPlace?string["0.###"]}
                         <#else>
@@ -185,9 +185,8 @@
         <h5 class="text-light">Made by Errorzy<br>2019</h5>
     </center>
 </footer>
-
+<#if !longitudinalValue??>
 <script>
-
     var inputLat = document.querySelector("form #latInput");
     var inputIng = document.querySelector("form #lngInput");
 
@@ -201,9 +200,8 @@
         $('#latInput').val(position.coords.latitude);
         $('#lngInput').val(position.coords.longitude);
     }
-
-
 </script>
+</#if>
 
 </body>
 </html>
