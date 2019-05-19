@@ -5,7 +5,9 @@ import javax.validation.constraints.NotNull;
 import java.util.List;
 
 @Entity
-@Table(name = "PLACES")
+@Table(name = "PLACES",
+        uniqueConstraints =
+        @UniqueConstraint(columnNames = {"place_name", "lateral_coordinate", "longitudinal_coordinate"}))
 public class PlaceModel {
 
     @Id

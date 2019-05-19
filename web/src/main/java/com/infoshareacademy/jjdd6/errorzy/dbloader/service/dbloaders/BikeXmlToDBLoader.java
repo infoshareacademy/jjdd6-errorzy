@@ -19,7 +19,7 @@ public class BikeXmlToDBLoader {
     public void loadBikeModelToDataBase(Place place, PlaceModel placeModel) {
 
         if (place.getBikeList() != null) {
-            place.getBikeList().stream().forEach(bike -> {
+            place.getBikeList().forEach(bike -> {
 
                 BikeModel bikeModel = new BikeModel(bike.getNumber(),
                         bike.getBikeType(),
