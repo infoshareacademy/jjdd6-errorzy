@@ -19,7 +19,7 @@ public class PlaceModel {
     @JoinColumn(name = "city_id")
     private CityModel city;
 
-    @OneToMany(mappedBy = "place", fetch = FetchType.LAZY)
+    @OneToMany(mappedBy = "place", fetch = FetchType.LAZY, cascade = CascadeType.PERSIST)
     private List<BikeModel> bikeList;
 
     @Column(name = "lateral_coordinate")

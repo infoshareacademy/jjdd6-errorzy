@@ -153,7 +153,7 @@
                 <#if place??>
                     <#setting number_format="computer">
 
-                    <h5 class="text-light">The closest bike stand is ${place.name}, it is
+                    <h5 class="text-light">The closest bike stand is ${place.name} in ${place}, it is
                         <#if distanceUnit == "kilometers">
                             ${distanceToPlace?string["0.###"]}
                         <#else>

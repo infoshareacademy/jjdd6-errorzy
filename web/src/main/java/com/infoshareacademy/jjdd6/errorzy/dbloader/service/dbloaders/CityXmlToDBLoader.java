@@ -36,14 +36,15 @@ public class CityXmlToDBLoader {
                         city.getName(),
                         countryModel);
 
-                CityModel cityModelToBePassed = cityDao.findByName(city.getName());
+                CityModel cityModelRepeated = cityDao.findByName(city.getName());
 
-                if (cityModelToBePassed == null) {
+                if (cityModelRepeated == null) {
                     cityDao.save(cityModel);
-                    LOGGER.info(city.getName() + " saved to DB.");
-                }
+                    placeXmlToDBLoader.loadPlaceModelToDataBase(city, cityModel);
 
-                placeXmlToDBLoader.loadPlaceModelToDataBase(city, cityModelToBePassed);
+                } else {
+                    placeXmlToDBLoader.loadPlaceModelToDataBase(city, cityModelRepeated);
+                }
             });
         }
     }

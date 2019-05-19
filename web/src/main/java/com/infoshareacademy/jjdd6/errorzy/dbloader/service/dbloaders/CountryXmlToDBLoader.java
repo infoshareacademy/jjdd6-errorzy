@@ -44,19 +44,22 @@ public class CountryXmlToDBLoader {
                     country.getLng(),
                     country.getCountryName());
 
-            CountryModel countryModelToBePassed = countryDao.findByName(countryModel.getCountryName());
+            CountryModel countryModelRepeated = countryDao.findByName(country.getCountryName());
 
-            if (countryModelToBePassed == null) {
+            if (countryModelRepeated == null) {
                 countryDao.save(countryModel);
+
                 LOGGER.info(country.getCountryName() + ": Added to DB.");
+                LOGGER.info("Saving " + country.getCityList().size() + " cities");
+
+                cityXmlToDBLoader.loadCityModelToDataBase(country, countryModel);
 
             } else {
-
                 LOGGER.info(country.getCountryName() + " is already in database.");
-            }
+                LOGGER.info("Saving " + country.getCityList().size() + " cities");
 
-            LOGGER.info("Saving " + country.getCityList().size() + " cities");
-            cityXmlToDBLoader.loadCityModelToDataBase(country, countryModelToBePassed);
+                cityXmlToDBLoader.loadCityModelToDataBase(country, countryModelRepeated);
+            }
         });
         LOGGER.info("Loading to DB finished.");
     }

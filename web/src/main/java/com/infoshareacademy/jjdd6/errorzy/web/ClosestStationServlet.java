@@ -2,6 +2,7 @@ package com.infoshareacademy.jjdd6.errorzy.web;
 
 import com.infoshareacademy.jjdd6.errorzy.Place;
 import com.infoshareacademy.jjdd6.errorzy.dbloader.model.PlaceModel;
+import com.infoshareacademy.jjdd6.errorzy.dbloader.service.CityService;
 import com.infoshareacademy.jjdd6.errorzy.dbloader.service.PlaceService;
 import com.infoshareacademy.jjdd6.errorzy.freemarker.TemplateProvider;
 import com.infoshareacademy.jjdd6.errorzy.statistics.dao.PlaceStatisticsDao;
@@ -33,6 +34,8 @@ public class ClosestStationServlet extends HttpServlet {
     private ClosestStation closestStation;
     @Inject
     private PlaceService placeService;
+    @Inject
+    private CityService cityService;
     @Inject
     private PlaceStatisticsDao placeStatisticsDao;
 

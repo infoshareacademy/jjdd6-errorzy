@@ -7,7 +7,7 @@ import java.util.List;
 @Entity
 @Table(name = "CITIES",
         uniqueConstraints =
-        @UniqueConstraint(columnNames = {"name", "lateral_coordinate", "longitudinal_coordinate"}))
+        @UniqueConstraint(columnNames = {"city_name", "lateral_coordinate", "longitudinal_coordinate"}))
 public class CityModel {
 
     @Id
@@ -23,7 +23,7 @@ public class CityModel {
     @NotNull
     private String name;
 
-    @OneToMany(mappedBy = "city", fetch = FetchType.LAZY)
+    @OneToMany(mappedBy = "city", fetch = FetchType.LAZY, cascade = CascadeType.PERSIST)
     private List<PlaceModel> placeList;
 
     @Column(name = "lateral_coordinate", columnDefinition = "DECIMAL(10,6)")

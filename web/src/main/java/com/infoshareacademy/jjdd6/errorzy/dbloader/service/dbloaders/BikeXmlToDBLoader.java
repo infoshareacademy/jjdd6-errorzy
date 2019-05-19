@@ -24,6 +24,7 @@ public class BikeXmlToDBLoader {
                 BikeModel bikeModel = new BikeModel(bike.getNumber(),
                         bike.getBikeType(),
                         placeModel);
+
                 bikeDao.save(bikeModel);
             });
         }
