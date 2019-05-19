@@ -4,20 +4,18 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
-    <#--    BOOTSTRAP 4-->
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
-    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
-
-    <#--    DATATABLES + JQUERY-->
+    <#--    BOOTSTRAP 4-4.1.1 + JQUERY 3.3.1 + DataTable 1.10.18-->
     <link rel="stylesheet" type="text/css"
-          href="https://cdn.datatables.net/v/bs4/jq-3.3.1/dt-1.10.18/datatables.min.css"/>
+          href="https://cdn.datatables.net/v/bs4-4.1.1/jq-3.3.1/dt-1.10.18/datatables.min.css"/>
     <script type="text/javascript"
-            src="https://cdn.datatables.net/v/bs4/jq-3.3.1/dt-1.10.18/datatables.min.js"></script>
-    <#--    <script type="text/javascript" src="../static/views/country/country.js"></script>-->
-    <script>$(document).ready(function () {
+            src="https://cdn.datatables.net/v/bs4-4.1.1/jq-3.3.1/dt-1.10.18/datatables.min.js"></script>
+
+    <script>
+        $(document).ready(function () {
             $('#countryTable').DataTable();
-        });</script>
+        });
+    </script>
+
     <style>
         @import url('https://fonts.googleapis.com/css?family=Playfair+Display|Roboto:500');
     </style>
@@ -105,33 +103,34 @@
 <main>
 
     <div class="container">
-        <div class="card border-0 shadow my-5 bg-dark">
-            <div class="card-body p-5">
+        <div class="card border-0 shadow my-5 bg-dark card-body p-5">
 
-                <center>
-                    <h2 class="text-light">All available countries</h2>
+            <h2 class="text-light">All available countries</h2>
 
-                    <table id="countryTable" class="table table-striped text-light col-lg-4">
+            <#if modelData??>
+                <table id="countryTable" class="table table-striped text-light mx-auto w-auto">
 
-                        <thead>
-                        <tr>
-                            <th>Country</th>
-                        </tr>
-                        </thead>
-
-                        <#list modelData as values>
-                        <tbody>
+                    <thead>
+                    <tr>
+                        <th>Country</th>
+                        <th>Lateral</th>
+                        <th>Longitudinal</th>
+                        <th>No. of cities</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    <#list modelData as values>
                         <tr>
                             <td>${values.countryName}</td>
+                            <td>${values.lat}</td>
+                            <td>${values.lng}</td>
                         </tr>
-                        </tbody>
-                        </#list>
-                    </table>
+                    </#list>
+                    </tbody>
+                </table>
+            </#if>
 
-                </center>
-            </div>
         </div>
-    </div>
     </div>
 </main>
 

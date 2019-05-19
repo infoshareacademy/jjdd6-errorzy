@@ -61,6 +61,7 @@ public class CountryXmlToDBLoader {
                 cityXmlToDBLoader.loadCityModelToDataBase(country, countryModelRepeated);
             }
         });
+
         LOGGER.info("Loading to DB finished.");
     }
 }

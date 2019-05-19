@@ -16,7 +16,7 @@ public class CountryService {
     @Inject
     private CountryDao countryDao;
 
-    public List<Object> getAllList() {
+    public List<CountryModel> getAllList() {
         return new ArrayList<>(countryDao.findAll());
     }
 

@@ -4,16 +4,17 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
-    <script src="https://code.jquery.com/jquery-3.4.0.min.js"></script>
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
-          integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"
-            integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1"
-            crossorigin="anonymous"></script>
+    <#--    BOOTSTRAP 4-4.1.1 + JQUERY 3.3.1 + DataTable 1.10.18-->
+    <link rel="stylesheet" type="text/css"
+          href="https://cdn.datatables.net/v/bs4-4.1.1/jq-3.3.1/dt-1.10.18/datatables.min.css"/>
+    <script type="text/javascript"
+            src="https://cdn.datatables.net/v/bs4-4.1.1/jq-3.3.1/dt-1.10.18/datatables.min.js"></script>
 
-    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
-            integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
-            crossorigin="anonymous"></script>
+    <script>
+        $(document).ready(function () {
+            $('.table').DataTable();
+        });
+    </script>
 
     <style>
         @import url('https://fonts.googleapis.com/css?family=Playfair+Display|Roboto:500');
@@ -30,7 +31,8 @@
         <div class="container">
 
             <a class="navbar-brand" href="/portal/home">
-                <img width="70" height="70" class="ui-widget-shadow" src="https://i.imgur.com/A9yFQNe.png" alt="RvR application logo"></a>
+                <img width="70" height="70" class="ui-widget-shadow" src="https://i.imgur.com/A9yFQNe.png"
+                     alt="RvR application logo"></a>
 
 
             <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive"
@@ -102,101 +104,102 @@
 <main>
 
     <div class="container">
-        <div class="card border-0 shadow my-5 bg-dark">
-            <div class="card-body p-5">
+        <div class="card border-0 shadow my-5 bg-dark card-body p-5">
 
-                <center>
-                    <h2 class="text-light">Find your bike</h2>
-                    <#if countryRoot??>
+            <center>
+                <h2 class="text-light">Find your bike</h2>
+                <#if countryRoot??>
 
-                        <table class="table table-striped text-light col-md-4">
-                            <br>
-                            <tbody>
-                            <thead>
+                    <table class="table table-striped text-light mx-auto w-auto">
+
+                        <thead>
+                        <tr>
+                            <th>Country</th>
+                            <th>Lateral</th>
+                            <th>Longitudinal</th>
+                            <th>No. of cities</th>
+                        </tr>
+                        </thead>
+
+                        <tbody>
+                        <#list countryRoot as values>
                             <tr>
-                                <th scope="col">#</th>
-                                <th scope="col">Country</th>
+                                <td><a href="/bike-servlet?country=${values.countryName}"
+                                       style="color:white">${values.countryName}</a></td>
+                                <td>${values.lat}</td>
+                                <td>${values.lng}</td>
                             </tr>
-                            </thead>
+                        </#list>
+                        </tbody>
+                    </table>
+                </#if>
 
-                            <#list countryRoot as values>
-                                <tr>
-                                    <td scope="row">${values?index+1}</td>
-                                    <td><a href="/bike-servlet?country=${values.countryName}" style="color:white">${values.countryName}</a></td>
-                                </tr>
-                            </#list>
+                <#if cityRoot??>
+                    <table class="table table-striped text-light mx-auto w-auto">
 
-                            </tbody>
-                        </table>
-                    </#if>
+                        <thead>
+                        <tr>
+                            <th scope="col">#</th>
+                            <th scope="col">City</th>
+                        </tr>
+                        </thead>
 
-                    <#if cityRoot??>
-                        <table class="table table-striped text-light col-md-4">
-                            <br>
-                            <tbody>
-                            <thead>
+                        <tbody>
+                        <#list cityRoot as values>
                             <tr>
-                                <th scope="col">#</th>
-                                <th scope="col">City</th>
+                                <td scope="row">${values?index+1}</td>
+                                <td><a href="/bike-servlet?city=${values.name}" style="color:white">${values.name}</a>
+                                </td>
                             </tr>
-                            </thead>
+                        </#list>
+                        </tbody>
+                    </table>
+                </#if>
 
-                            <#list cityRoot as values>
-                                <tr>
-                                    <td scope="row">${values?index+1}</td>
-                                    <td><a href="/bike-servlet?city=${values.name}" style="color:white">${values.name}</a></td>
-                                </tr>
-                            </#list>
+                <#if placeRoot??>
+                    <table class="table table-striped text-light mx-auto w-auto">
+                        <thead>
+                        <tr>
+                            <th scope="col">#</th>
+                            <th scope="col">Place</th>
+                        </tr>
+                        </thead>
 
-                            </tbody>
-                        </table>
-                    </#if>
-
-                    <#if placeRoot??>
-                        <table class="table table-striped text-light col-md-4">
-                            <br>
-                            <tbody>
-                            <thead>
+                        <tbody>
+                        <#list placeRoot as values>
                             <tr>
-                                <th scope="col">#</th>
-                                <th scope="col">Place</th>
+                                <td scope="row">${values?index+1}</td>
+                                <td><a href="/bike-servlet?place=${values.name}" style="color:white">${values.name}</a>
+                                </td>
                             </tr>
-                            </thead>
+                        </#list>
+                        </tbody>
+                    </table>
+                </#if>
 
-                            <#list placeRoot as values>
-                                <tr>
-                                    <td scope="row">${values?index+1}</td>
-                                    <td><a href="/bike-servlet?place=${values.name}" style="color:white">${values.name}</a></td>
-                                </tr>
-                            </#list>
-                            </tbody>
-                        </table>
-                    </#if>
+                <#if bikeRoot??>
+                    <table class="table table-striped text-light mx-auto w-auto">
 
-                    <#if bikeRoot??>
-                        <table class="table table-striped text-light col-md-4">
-                            <br>
-                            <tbody>
-                            <thead>
+
+                        <thead>
+                        <tr>
+                            <th scope="col">#</th>
+                            <th scope="col">Bike</th>
+                        </tr>
+                        </thead>
+
+                        <tbody>
+                        <#list bikeRoot as values>
                             <tr>
-                                <th scope="col">#</th>
-                                <th scope="col">Bike</th>
+                                <td scope="row">${values?index+1}</td>
+                                <td>${values.number?c}</td>
                             </tr>
-                            </thead>
-
-                            <#list bikeRoot as values>
-                                <tr>
-                                    <td scope="row">${values?index+1}</td>
-                                    <td>${values.number?c}</td>
-                                </tr>
-                            </#list>
-                            </tbody>
-                        </table≠>
-                    </#if>
-                </center>
-            </div>
+                        </#list>
+                        </tbody>
+                    </table>
+                </#if>
+            </center>
         </div>
-    </div>
     </div>
 </main>
 <!--Footer-->
