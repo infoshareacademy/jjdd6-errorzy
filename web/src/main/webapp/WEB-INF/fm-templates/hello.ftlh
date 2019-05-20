@@ -341,11 +341,9 @@
     
 </main>
 <footer>
-    
-        <h5 style="text-align: center; font-size: 12pt; font-weight: 200; font-family:Segoe UI; color:white">made in 2019 by</h5>
-    <img class="zoom"src="https://imgur.com/EhqOLb3.png" style="display: block; margin-bottom: 30px; ; margin-left: auto; margin-right: auto;">
-
-    </footer>
+    <h5 style="text-align: center; font-size: 12pt; font-weight: 200; color:white">2019</h5>
+    <img class="zoom" src="https://imgur.com/EhqOLb3.png" style="display: block; margin-bottom: 30px; ; margin-left: auto; margin-right: auto;">
+</footer>
 </body>
 
 </html>
