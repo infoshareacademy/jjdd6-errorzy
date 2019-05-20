@@ -15,6 +15,19 @@
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
             integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
             crossorigin="anonymous"></script>
+<style>
+        /* Set the size of the div element that contains the map */
+        #map {
+            height: 500px; /* The height is 400 pixels */
+            width: 100%; /* The width is the width of the web page */
+        }
+        .zoom {
+  transition: transform .2s; /* Animation */
+}
+.zoom:hover {
+  transform: scale(1.2); /* (150% zoom - Note: if the zoom is too large, it will go outside of the viewport) */
+}
+  </style>
     <style>
         @import url('https://fonts.googleapis.com/css?family=Playfair+Display|Roboto:500');
     </style>
@@ -29,9 +42,7 @@
     <nav class="navbar navbar-expand-lg navbar-dark bg-dark static-top mb-4 shadow-lg">
         <div class="container">
 
-            <a class="navbar-brand" href="/portal/home">
-                <img width="70" height="70" class="ui-widget-shadow" src="https://i.imgur.com/A9yFQNe.png"
-                     alt="RvR application logo"></a>
+             <a class="navbar-brand" href="/portal/home"><strong class="googlefont"><img class="zoom" src="https://imgur.com/VYijABi.png" height="70" width="70"></strong></a>
 
 
             <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive"
@@ -107,9 +118,7 @@
             <div class="card-body p-5">
 
                 <center>
-                    <h2 class="text-light">
-                        <strong>Find the nearest bike station <br></strong>
-                    </h2>
+                    <h2 class="text-light">Find the nearest bike station<br></h2>
                     <br>
                     <br>
 
@@ -181,26 +190,25 @@
 </main>
 <!--Footer-->
 <footer>
-    <center>
-        <h5 class="text-light">Made by Errorzy<br>2019</h5>
-    </center>
+    <h5 style="text-align: center; font-size: 12pt; font-weight: 200; color:white">2019</h5>
+    <img class="zoom" src="https://imgur.com/EhqOLb3.png" style="display: block; margin-bottom: 30px; ; margin-left: auto; margin-right: auto;">
 </footer>
 <#if !longitudinalValue??>
-<script>
-    var inputLat = document.querySelector("form #latInput");
-    var inputIng = document.querySelector("form #lngInput");
+    <script>
+        var inputLat = document.querySelector("form #latInput");
+        var inputIng = document.querySelector("form #lngInput");
 
-    if (navigator.geolocation) {
-        navigator.geolocation.getCurrentPosition(showPosition);
-    } else {
-        x.innerHTML = "Geolocation is not supported by this browser.";
-    }
+        if (navigator.geolocation) {
+            navigator.geolocation.getCurrentPosition(showPosition);
+        } else {
+            x.innerHTML = "Geolocation is not supported by this browser.";
+        }
 
-    function showPosition(position) {
-        $('#latInput').val(position.coords.latitude);
-        $('#lngInput').val(position.coords.longitude);
-    }
-</script>
+        function showPosition(position) {
+            $('#latInput').val(position.coords.latitude);
+            $('#lngInput').val(position.coords.longitude);
+        }
+    </script>
 </#if>
 
 </body>

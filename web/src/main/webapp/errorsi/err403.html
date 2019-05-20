@@ -19,6 +19,15 @@
             integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
             crossorigin="anonymous"></script>
 
+            <style>
+                    
+                .zoom {
+                    transition: transform .2s; /* Animation */
+            }
+                .zoom:hover {
+                transform: scale(1.2); /* (150% zoom - Note: if the zoom is too large, it will go outside of the viewport) */
+            }  
+              </style>
     <style>
         @import url('https://fonts.googleapis.com/css?family=Playfair+Display|Roboto:500');
     </style>
@@ -35,12 +44,8 @@
 <!--NAVIGATION BAR-->
 <nav class="navbar navbar-expand-lg navbar-dark bg-dark static-top mb-4 shadow-lg">
     <div class="container">
-        <a class="navbar-brand" href="/portal/home">
-            <img width="70" height="70" class="ui-widget-shadow" style="text-align: center" src="https://i.imgur.com/A9yFQNe.png"
-                 alt="RvR application logo"></a>
-        <a class="navbar-brand" href="/portal/home">
-            <img width="70" height="70" class="ui-widget-shadow" style="text-align: center" src="https://i.imgur.com/A9yFQNe.png"
-                 alt="RvR application logo"></a>
+        <a class="navbar-brand" href="portal/home"><strong class="googlefont"><img class="zoom" src="https://imgur.com/VYijABi.png" height="70" width="70"></strong></a>
+        <a class="navbar-brand" href="portal/home"><strong class="googlefont"><img class="zoom" src="https://imgur.com/VYijABi.png" height="70" width="70"></strong></a>
 
     </div>
 </nav>
@@ -58,30 +63,37 @@
     <div class="container">
         <div class="card border-0 shadow my-5 bg-dark">
             <div class="card-body p-5">
-                <div style="height: 500px">
-                    <center>
-                        <h1 class="text-light">
-                            Code 403
-                        </h1>
-                        <br><h1 class="text-light">FORBIDDEN</h1>
-                        <img style="width: 250px;height: 250px" src="https://cdn2.iconfinder.com/data/icons/cyclist-bike-glyph-icon-collection/100/27-512.png">
-                        <br>
-                        <br>
-                        <br><a class="navbar-brand" href="/portal/home">
-                        <img width="40" height="40" class="ui-widget-shadow" style="text-align: center" src="http://iconbug.com/data/c2/507/c2c8465ce02042f2a5f915fbef5f1264.png"><h4 class="text-light">Go back to the main view</h4></a>
-                        <br>
+                <div class="row d-flex flex-wrap align-items-center">
+                    <div class="col-md-6 text-light">
+                        <h1 class="font-weight-bold">Oops!</h1>
+                        <h3 class="font-weight-bold">We can't seem to find the page you're looking for.</h3>
+                    </br>
+                </br>
+                <p>Here are some helpful links instead:</p>
+                
+                <span><a class="text-light" href="/portal/home">Home</a></span></br>
+                <span><a class="text-light" href="/bike-servlet">Find your bike</a></span></br>
+                <span><a class="text-light" href="/closestPlace-servlet">Find the nearest bike station</a></span></br>
+                <span><a class="text-light" href="/country-servlet">Show list of countries</a></span></br>
+                <span><a class="text-light" href="/show-city-list">Show list of cities</a></span></br>
+            </br>
+                <span><a class="text-light" href="/portal/home">Back to main page</a></span></br>
+            </br></br>
+                    </div>
+                    <div class="col-md-6 text-light"><img class="zoom align-middle" src="https://imgur.com/Qbj7Rvp.png"></div>
                 </div>
+                
             </div>
         </div>
     </div>
-    </center>
+    
 </main>
 <footer>
-    <center>
-        <h5 class="text-light">Made by Errorzy<br>2019</h5>
-    </center>
-</footer>
+    
+        <h5 style="text-align: center; font-size: 12pt; font-weight: 200; font-family:Segoe UI; color:white">made in 2019 by</h5>
+    <img class="zoom"src="https://imgur.com/EhqOLb3.png" style="display: block; margin-bottom: 30px; ; margin-left: auto; margin-right: auto;">
+
+    </footer>
 </body>
 
 </html>
-
