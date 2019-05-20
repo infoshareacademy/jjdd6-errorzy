@@ -126,6 +126,30 @@
                         </button>
                     </a>
                 </li>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="/country-statistics-servle">
+                        <button type="button" class="btn btn-outline-light">
+                            Visit statistics for countries
+                        </button>
+                    </a>
+                </li>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="/city-statistics-servlet">
+                        <button type="button" class="btn btn-outline-light">
+                            Visit statistics for cities
+                        </button>
+                    </a>
+                </li>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="/place-servlet">
+                        <button type="button" class="btn btn-outline-light">
+                            Visit statistics for places
+                        </button>
+                    </a>
+                </li>
             </ul>
         </div>
     </div>
