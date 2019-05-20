@@ -92,6 +92,17 @@
                             </button>
                         </a>
                     </li>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            Statistics of visit
+                        </a>
+                        <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+                            <a class="dropdown-item" href="/country-statistics">Country statistics</a>
+                            <a class="dropdown-item" href="/city-statistics">City statistics</a>
+                            <a class="dropdown-item" href="/place-statistics">Place statistics</a>
+                        </div>
+                    </li>
+
                     <li class="nav-item">
                         <a class="nav-link" href="/logout">
                             <button type="button" class="btn btn-outline-light">
@@ -99,30 +110,7 @@
                             </button>
                         </a>
                     </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="/country-statistics-servlet">
-                            <button type="button" class="btn btn-outline-light">
-                                Visit statistics for countries
-                            </button>
-                        </a>
-                    </li>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="/city-statistics-servlet">
-                            <button type="button" class="btn btn-outline-light">
-                                Visit statistics for cities
-                            </button>
-                        </a>
-                    </li>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="/place-servlet">
-                            <button type="button" class="btn btn-outline-light">
-                                Visit statistics for places
-                            </button>
-                        </a>
-                    </li>
-                </ul>
+
             </div>
         </div>
     </nav>
@@ -164,9 +152,10 @@
 
 
 
-    <!--Footer-->
-    <footer>
-        <h5 style="text-align: center; font-size: 12pt; font-weight: 200; font-family:Segoe UI; color:white">made in 2019 by</h5>
-        <img class="zoom"src="https://imgur.com/EhqOLb3.png" style="display: block; margin-bottom: 30px; ; margin-left: auto; margin-right: auto;">
-    </footer>
+<!--Footer-->
+<footer>
+    <h5 style="text-align: center; font-size: 12pt; font-weight: 200; color:white">2019</h5>
+    <img class="zoom" src="https://imgur.com/EhqOLb3.png"
+         style="display: block; margin-bottom: 30px; ; margin-left: auto; margin-right: auto;">
+</footer>
 </body>
