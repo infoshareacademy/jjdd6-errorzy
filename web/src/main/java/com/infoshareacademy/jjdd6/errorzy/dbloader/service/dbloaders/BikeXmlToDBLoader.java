@@ -24,9 +24,8 @@ public class BikeXmlToDBLoader {
                 BikeModel bikeModel = new BikeModel(bike.getNumber(),
                         bike.getBikeType(),
                         placeModel);
-                BikeModel bikeModelRepeated = bikeDao.findByNumber(bike.getNumber());
 
-                if (bikeModelRepeated == null) {
+                if (!bikeDao.findByNumber(bike.getNumber()).isPresent()) {
                     bikeDao.save(bikeModel);
                 }
             });
