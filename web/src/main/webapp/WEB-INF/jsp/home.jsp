@@ -84,7 +84,7 @@
                 <li class="nav-item">
                     <a class="nav-link" href="/login">
                         <button type="button" class="btn btn-outline-light">
-                            HOME
+                            LOGIN
                         </button>
                     </a>
                 </li>

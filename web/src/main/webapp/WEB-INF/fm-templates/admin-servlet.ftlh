@@ -99,7 +99,6 @@
                         </button>
                     </a>
                 </li>
-
                 <li class="nav-item">
                     <a class="nav-link" href="/logout">
                         <button type="button" class="btn btn-outline-light">
@@ -144,7 +143,7 @@
                         <label class="col-md-4 control-label" for="textinput">Number of countries</label>
                         <div class="col-md-4">
                             <input id="textinput" name="textinput" type="number" placeholder=${countryNumber!0}
-                                   class="form-control input-md" disabled>
+                            class="form-control input-md" disabled>
                         </div>
                     </div>
 
@@ -153,7 +152,7 @@
                         <label class="col-md-4 control-label" for="textCities">Number of cities</label>
                         <div class="col-md-4">
                             <input id="textCities" name="textCities" type="number" placeholder=${cityNumber!0}
-                                   class="form-control input-md" disabled>
+                            class="form-control input-md" disabled>
                         </div>
                     </div>
 
@@ -162,7 +161,7 @@
                         <label class="col-md-4 control-label" for="textPlace">Number of places</label>
                         <div class="col-md-4">
                             <input id="textPlace" name="textPlace" type="number" placeholder=${placeNumber!0}
-                                   class="form-control input-md" disabled>
+                            class="form-control input-md" disabled>
                         </div>
                     </div>
 
@@ -171,14 +170,14 @@
                         <label class="col-md-4 control-label" for="textBikes">Number of bikes</label>
                         <div class="col-md-4">
                             <input id="textBikes" name="textBikes" type="number" placeholder=${bikeNumber!0}
-                                   class="form-control input-md" disabled>
+                            class="form-control input-md" disabled>
                         </div>
                     </div>
                     <!-- Button -->
                     <div class="form-group">
                         <label class="col-md-4 control-label" for="singlebutton">Load to DB</label>
                         <div class="col-md-4">
-                            <button id="singlebutton" name="singlebutton" class="btn btn-primary">Load !
+                            <button id="loadButton" name="singlebutton" class="btn btn-primary">Load !
                             </button>
                         </div>
                     </div>
@@ -186,8 +185,31 @@
                 </fieldset>
             </form>
 
+            <#--Send email report-->
+            <form class="form-horizontal text-light" method="POST" action="/mail">
+                <fieldset>
+                    <!-- Button -->
+                    <div class="form-group">
+                        <label class="col-md-4 control-label" for="singlebutton">Send report email</label>
+                        <div class="col-md-4">
+                            <button id="sendButton" name="singlebutton" class="btn btn-primary">Send report!
+                            </button>
+                        </div>
+                    </div>
+                </fieldset>
+            </form>
         </div>
     </div>
+    <script>
+        $(document).ready(function(){
+            $('#sendButton').click(function(){
+                alert("Email has been sent !");
+            });
+            $('#loadButton').click(function(){
+                alert("Loading to database has been started !");
+            });
+        });
+    </script>
 </main>
 <footer>
     <h5 style="text-align: center; font-size: 12pt; font-weight: 200; color:white">2019</h5>
