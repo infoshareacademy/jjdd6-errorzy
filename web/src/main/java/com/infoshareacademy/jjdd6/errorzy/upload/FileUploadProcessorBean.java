@@ -41,6 +41,7 @@ public class FileUploadProcessorBean {
         Properties settings = new Properties();
         settings.load(Thread.currentThread()
                 .getContextClassLoader().getResource(SETTINGS_FILE).openStream());
+        LOGGER.info("Loaded files with settings " + SETTINGS_FILE);
         return settings.getProperty("Upload.Path");
     }
 }
