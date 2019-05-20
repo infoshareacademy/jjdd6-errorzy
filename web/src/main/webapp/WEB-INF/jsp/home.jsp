@@ -56,7 +56,7 @@
             }
                 .zoom:hover {
                 transform: scale(1.2); /* (150% zoom - Note: if the zoom is too large, it will go outside of the viewport) */
-            }  
+            }
             </style>
     <style>
         @import url('https://fonts.googleapis.com/css?family=Playfair+Display|Roboto:500');
@@ -77,13 +77,14 @@
             <span class="navbar-toggler-icon"></span>
         </button>
 
+
         <div class="collapse navbar-collapse" id="navbarResponsive">
 
             <ul class="navbar-nav ml-auto">
                 <li class="nav-item">
                     <a class="nav-link" href="/login">
                         <button type="button" class="btn btn-outline-light">
-                            Login
+                            HOME
                         </button>
                     </a>
                 </li>

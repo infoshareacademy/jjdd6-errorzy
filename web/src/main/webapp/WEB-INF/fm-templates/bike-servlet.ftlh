@@ -4,12 +4,11 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
-    <script src="https://code.jquery.com/jquery-3.4.0.min.js"></script>
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
-          integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"
-            integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1"
-            crossorigin="anonymous"></script>
+    <#--    BOOTSTRAP 4-4.1.1 + JQUERY 3.3.1 + DataTable 1.10.18-->
+    <link rel="stylesheet" type="text/css"
+          href="https://cdn.datatables.net/v/bs4-4.1.1/jq-3.3.1/dt-1.10.18/datatables.min.css"/>
+    <script type="text/javascript"
+            src="https://cdn.datatables.net/v/bs4-4.1.1/jq-3.3.1/dt-1.10.18/datatables.min.js"></script>
 
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
             integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
@@ -27,6 +26,24 @@
 
         .zoom:hover {
             transform: scale(1.2); /* (150% zoom - Note: if the zoom is too large, it will go outside of the viewport) */
+        }
+    </style>
+    <script>
+        $(document).ready(function () {
+            $('.table').DataTable();
+        });
+    </script>
+    <style>
+        label {
+            display: inline-block;
+            margin-bottom: .5rem;
+            color: white;
+        }
+
+        div.dataTables_info {
+            padding-top: 0.85em;
+            white-space: nowrap;
+            color: white;
         }
     </style>
     <style>
@@ -116,105 +133,112 @@
 <main>
 
     <div class="container">
-        <div class="card border-0 shadow my-5 bg-dark">
-            <div class="card-body p-5">
+        <div class="card border-0 shadow my-5 bg-dark card-body p-5">
 
-                <center>
-                    <div class="text-center">
-                        <h2 class="text-light">Find your bike</h2>
-                        <p class="text-light">Click the links below to find available bicycle</p>
-                    </div>
-                    <#if countryRoot??>
+            <center>
+                <div class="text-center">
+                    <h2 class="text-light">Find your bike</h2>
+                    <p class="text-light">Click the links below to find available bicycle</p>
+                </div>
+                <#if countryRoot??>
 
-                        <table class="table table-striped text-light col-md-4">
-                            <br>
-                            <tbody>
-                            <thead>
-                            <tr>
-                                <th scope="col">#</th>
-                                <th scope="col">Country</th>
-                            </tr>
-                            </thead>
+                    <table class="table table-striped text-light mx-auto w-auto">
 
-                            <#list countryRoot as values>
-                                <tr>
-                                    <td scope="row">${values?index+1}</td>
-                                    <td><a href="/bike-servlet?country=${values.countryName}"
-                                           style="color:white">${values.countryName}</a></td>
-                                </tr>
-                            </#list>
-
-                            </tbody>
-                        </table>
-                    </#if>
-
-                    <#if cityRoot??>
-                        <table class="table table-striped text-light col-md-4">
-                            <br>
-                            <tbody>
-                            <thead>
-                            <tr>
-                                <th scope="col">#</th>
-                                <th scope="col">City</th>
-                            </tr>
-                            </thead>
-
-                            <#list cityRoot as values>
-                                <tr>
-                                    <td scope="row">${values?index+1}</td>
-                                    <td><a href="/bike-servlet?city=${values.name}"
-                                           style="color:white">${values.name}</a></td>
-                                </tr>
-                            </#list>
-
-                            </tbody>
-                        </table>
-                    </#if>
-
-                    <#if placeRoot??>
-                        <table class="table table-striped text-light col-md-4">
-                            <br>
-                            <tbody>
-                            <thead>
-                            <tr>
-                                <th scope="col">#</th>
-                                <th scope="col">Place</th>
-                            </tr>
-                            </thead>
-
-                            <#list placeRoot as values>
-                                <tr>
-                                    <td scope="row">${values?index+1}</td>
-                                    <td><a href="/bike-servlet?place=${values.name}"
-                                           style="color:white">${values.name}</a></td>
-                                </tr>
-                            </#list>
-                            </tbody>
-                        </table>
-                    </#if>
-
-                    <#if bikeRoot??>
-                    <table class="table table-striped text-light col-md-4">
-                        <br>
-                        <tbody>
                         <thead>
                         <tr>
-                            <th scope="col">#</th>
-                            <th scope="col">Bike</th>
+                            <th>Country</th>
+                            <th>Lateral</th>
+                            <th>Longitudinal</th>
+                            <th>No. of cities</th>
                         </tr>
                         </thead>
 
+                        <tbody>
+                        <#list countryRoot as values>
+                            <tr>
+                                <td><a href="/bike-servlet?country=${values.countryName}"
+                                       style="color:white">${values.countryName}</a></td>
+                                <td>${values.lat}</td>
+                                <td>${values.lng}</td>
+                                <td> ${values.getCityList()?size} </td>
+                            </tr>
+
+                        </#list>
+                        </tbody>
+                    </table>
+                </#if>
+
+                <#if cityRoot??>
+                    <table class="table table-striped text-light mx-auto w-auto">
+
+                        <thead>
+                        <tr>
+                            <th>City</th>
+                            <th>Lateral</th>
+                            <th>Longitudinal</th>
+                            <th>No. of bike stands</th>
+                        </tr>
+                        </thead>
+
+                        <tbody>
+                        <#list cityRoot as values>
+                            <tr>
+                                <td><a href="/bike-servlet?city=${values.name}" style="color:white">${values.name}</a>
+                                </td>
+                                <td>${values.lat}</td>
+                                <td>${values.lng}</td>
+                                <td>${values.getPlaceList()?size}</td>
+                            </tr>
+                        </#list>
+                        </tbody>
+                    </table>
+                </#if>
+
+                <#if placeRoot??>
+                    <table class="table table-striped text-light mx-auto w-auto">
+                        <thead>
+                        <tr>
+                            <th>Place</th>
+                            <th>Lateral</th>
+                            <th>Longitudinal</th>
+                            <th>No. of bikes</th>
+                        </tr>
+                        </thead>
+
+                        <tbody>
+                        <#list placeRoot as values>
+                            <tr>
+                                <td><a href="/bike-servlet?place=${values.name}" style="color:white">${values.name}</a>
+                                </td>
+                                <td>${values.lat}</td>
+                                <td>${values.lng}</td>
+                                <td>${values.getBikeList()?size}</td>
+                            </tr>
+                        </#list>
+                        </tbody>
+                    </table>
+                </#if>
+
+                <#if bikeRoot??>
+                    <table class="table table-striped text-light mx-auto w-auto">
+                        <thead>
+                        <tr>
+                            <th>#</th>
+                            <th>Bike</th>
+                        </tr>
+                        </thead>
+
+                        <tbody>
                         <#list bikeRoot as values>
                             <tr>
-                                <td scope="row">${values?index+1}</td>
+                                <td>${values?index+1}</td>
                                 <td>${values.number?c}</td>
                             </tr>
                         </#list>
                         </tbody>
-                    </table≠>
-                        </#if>
-                </center>
-            </div>
+                    </table>
+                </#if>
+            </center>
         </div>
     </div>
     </div>
@@ -222,7 +246,8 @@
 <!--Footer-->
 <footer>
     <h5 style="text-align: center; font-size: 12pt; font-weight: 200; color:white">2019</h5>
-    <img class="zoom" src="https://imgur.com/EhqOLb3.png" style="display: block; margin-bottom: 30px; ; margin-left: auto; margin-right: auto;">
+    <img class="zoom" src="https://imgur.com/EhqOLb3.png"
+         style="display: block; margin-bottom: 30px; ; margin-left: auto; margin-right: auto;">
 </footer>
 </body>
 </html>

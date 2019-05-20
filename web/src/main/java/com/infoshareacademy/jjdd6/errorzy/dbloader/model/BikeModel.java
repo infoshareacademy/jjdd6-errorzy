@@ -3,19 +3,20 @@ package com.infoshareacademy.jjdd6.errorzy.dbloader.model;
 import javax.persistence.*;
 
 @Entity
-@Table(name = "BIKES")
+@Table(name = "BIKES",
+        uniqueConstraints = @UniqueConstraint(columnNames = {"bike_number", "place_id"}))
+
 public class BikeModel {
 
     @Id
     @Column(name = "id")
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-
     @ManyToOne
     @JoinColumn(name = "place_id")
     private PlaceModel place;
 
-    @Column(name = "bike_number", unique = true)
+    @Column(name = "bike_number")
     private int number;
 
     @Column(name = "bike_type")

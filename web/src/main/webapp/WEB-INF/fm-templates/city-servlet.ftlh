@@ -3,29 +3,44 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
-          integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
-    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
-            integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
-            crossorigin="anonymous"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"
-            integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1"
-            crossorigin="anonymous"></script>
-    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
-            integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
-            crossorigin="anonymous"></script>
-            <style>
-            /* Set the size of the div element that contains the map */
-    #map {
-        height: 500px; /* The height is 400 pixels */
-        width: 100%; /* The width is the width of the web page */
-    }
-    .zoom {
-transition: transform .2s; /* Animation */
-    }
-    .zoom:hover {
-        transform: scale(1.2); /* (150% zoom - Note: if the zoom is too large, it will go outside of the viewport) */
-    }  
+    <#--    BOOTSTRAP 4-4.1.1 + JQUERY 3.3.1 + DataTable 1.10.18-->
+    <link rel="stylesheet" type="text/css"
+          href="https://cdn.datatables.net/v/bs4-4.1.1/jq-3.3.1/dt-1.10.18/datatables.min.css"/>
+    <script type="text/javascript"
+            src="https://cdn.datatables.net/v/bs4-4.1.1/jq-3.3.1/dt-1.10.18/datatables.min.js"></script>
+
+    <script>
+        $(document).ready(function () {
+            $('.table').DataTable();
+        });
+    </script>
+    <style>
+        label {
+            display: inline-block;
+            margin-bottom: .5rem;
+            color: white;
+        }
+
+        div.dataTables_info {
+            padding-top: 0.85em;
+            white-space: nowrap;
+            color: white;
+        }
+    </style>
+    <style>
+        /* Set the size of the div element that contains the map */
+        #map {
+            height: 500px; /* The height is 400 pixels */
+            width: 100%; /* The width is the width of the web page */
+        }
+
+        .zoom {
+            transition: transform .2s; /* Animation */
+        }
+
+        .zoom:hover {
+            transform: scale(1.2); /* (150% zoom - Note: if the zoom is too large, it will go outside of the viewport) */
+        }
     </style>
     <style>
         @import url('https://fonts.googleapis.com/css?family=Playfair+Display|Roboto:500');
@@ -41,8 +56,9 @@ transition: transform .2s; /* Animation */
     <nav class="navbar navbar-expand-lg navbar-dark bg-dark static-top mb-4 shadow-lg">
         <div class="container">
 
-            <a class="navbar-brand" href="/portal/home"><strong class="googlefont"><img class="zoom" src="https://imgur.com/VYijABi.png" height="70" width="70"></strong></a>
-
+            <a class="navbar-brand" href="/portal/home"><strong class="googlefont"><img class="zoom"
+                                                                                        src="https://imgur.com/VYijABi.png"
+                                                                                        height="70" width="70"></strong></a>
 
 
             <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive"
@@ -118,21 +134,23 @@ transition: transform .2s; /* Animation */
             <div class="card-body p-5">
                 <#--                <div style="height: 500px">-->
                 <center>
-                    <h2 class="text-light">All cities available:</h2>
+                    <h2 class="text-light">All cities available</h2>
                     <#if rootCity??>
-                        <table class="table table-striped text-light col-lg-4">
-                            <br>
-                            <tbody>
+                        <table class="table table-striped text-light mx-auto w-auto">
+
                             <thead>
                             <tr>
-                                <th scope="col">#</th>
-                                <th scope="col">City</th>
+                                <th>City</th>
+                                <th>Lateral</th>
+                                <th>Longitudinal</th>
                             </tr>
                             </thead>
+                            <tbody>
                             <#list rootCity as values>
                                 <tr>
-                                    <th scope="row">${values?index+1}</th>
                                     <td>${values.name}</td>
+                                    <td>${values.lat}</td>
+                                    <td>${values.lng}</td>
                                 </tr>
                             </#list>
                             </tbody>
@@ -148,7 +166,8 @@ transition: transform .2s; /* Animation */
 <!--Footer-->
 <footer>
     <h5 style="text-align: center; font-size: 12pt; font-weight: 200; color:white">2019</h5>
-    <img class="zoom" src="https://imgur.com/EhqOLb3.png" style="display: block; margin-bottom: 30px; ; margin-left: auto; margin-right: auto;">
+    <img class="zoom" src="https://imgur.com/EhqOLb3.png"
+         style="display: block; margin-bottom: 30px; ; margin-left: auto; margin-right: auto;">
 </footer>
 </body>
 </html>

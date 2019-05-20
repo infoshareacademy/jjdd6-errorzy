@@ -34,11 +34,11 @@ public class CityStatisticsServlet extends HttpServlet {
         }
 
         if (action.equals("findByName")) {
-            findByNameCityStatiscics(req, resp);
+            findByNameCityStatistics(req, resp);
         } else if (action.equals("findAll")) {
             findAllCityStatistics(req, resp);
         } else if (action.equals("findMostChecked")) {
-            findMostCityCountryStatiscics(req, resp);
+            findMostCityCountryStatistics(req, resp);
         } else {
             resp.getWriter().write("Unknown action.");
         }
@@ -53,14 +53,14 @@ public class CityStatisticsServlet extends HttpServlet {
         }
     }
 
-    private void findMostCityCountryStatiscics(HttpServletRequest req, HttpServletResponse resp) throws IOException {
+    private void findMostCityCountryStatistics(HttpServletRequest req, HttpServletResponse resp) throws IOException {
         final CityStatistics cityName = cityStatisticsDao.findMostChecked();
         LOGGER.info("Found {} objects", cityName.toString());
 
         resp.getWriter().write(cityName.toString());
     }
 
-    private void findByNameCityStatiscics(HttpServletRequest req, HttpServletResponse resp) throws IOException {
+    private void findByNameCityStatistics(HttpServletRequest req, HttpServletResponse resp) throws IOException {
         final String name = req.getParameter("city");
         final CityStatistics cityName = cityStatisticsDao.findByName(name);
         LOGGER.info("Found {} objects", cityName.toString());

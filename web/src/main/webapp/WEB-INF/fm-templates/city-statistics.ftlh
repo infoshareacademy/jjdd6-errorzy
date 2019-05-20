@@ -1,45 +1,29 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+          integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
 
-    <#--    BOOTSTRAP 4-4.1.1 + JQUERY 3.3.1 + DataTable 1.10.18-->
-    <link rel="stylesheet" type="text/css"
-          href="https://cdn.datatables.net/v/bs4-4.1.1/jq-3.3.1/dt-1.10.18/datatables.min.css"/>
-    <script type="text/javascript"
-            src="https://cdn.datatables.net/v/bs4-4.1.1/jq-3.3.1/dt-1.10.18/datatables.min.js"></script>
-
-    <script>
-        $(document).ready(function () {
-            $('#countryTable').DataTable();
-        });
-    </script>
-    <style>
-        label {
-            display: inline-block;
-            margin-bottom: .5rem;
-            color: white;
-        }
-
-        div.dataTables_info {
-            padding-top: 0.85em;
-            white-space: nowrap;
-            color: white;
-        }
-    </style>
-
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
+            integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
+            crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"
+            integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1"
+            crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
+            integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
+            crossorigin="anonymous"></script>
     <style>
         /* Set the size of the div element that contains the map */
         #map {
             height: 500px; /* The height is 400 pixels */
             width: 100%; /* The width is the width of the web page */
         }
-
         .zoom {
             transition: transform .2s; /* Animation */
         }
-
         .zoom:hover {
             transform: scale(1.2); /* (150% zoom - Note: if the zoom is too large, it will go outside of the viewport) */
         }
@@ -50,7 +34,10 @@
     <title>Errorzy presents:</title>
     <link rel="shortcut icon" type="image/png" href="https://i.imgur.com/A9yFQNe.png"/>
 </head>
+<body>
 
+</body>
+</html>
 <body background="https://wallpapers-house.com/data/out/6/wallpaper2you_109365.jpg">
 <header>
 
@@ -58,9 +45,7 @@
     <nav class="navbar navbar-expand-lg navbar-dark bg-dark static-top mb-4 shadow-lg">
         <div class="container">
 
-            <a class="navbar-brand" href="/portal/home"><strong class="googlefont"><img class="zoom"
-                                                                                        src="https://imgur.com/VYijABi.png"
-                                                                                        height="70" width="70"></strong></a>
+            <a class="navbar-brand" href="/portal/home"><strong class="googlefont"><img class="zoom" src="https://imgur.com/VYijABi.png" height="70" width="70"></strong></a>
 
 
             <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive"
@@ -114,6 +99,29 @@
                             </button>
                         </a>
                     </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="/country-statistics-servlet">
+                            <button type="button" class="btn btn-outline-light">
+                                Visit statistics for countries
+                            </button>
+                        </a>
+                    </li>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="/city-statistics-servlet">
+                            <button type="button" class="btn btn-outline-light">
+                                Visit statistics for cities
+                            </button>
+                        </a>
+                    </li>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="/place-servlet">
+                            <button type="button" class="btn btn-outline-light">
+                                Visit statistics for places
+                            </button>
+                        </a>
+                    </li>
                 </ul>
             </div>
         </div>
@@ -127,47 +135,38 @@
     </div>
 </header>
 
-<!-- Page Content -->
-
 <main>
 
     <div class="container">
-        <div class="card border-0 shadow my-5 bg-dark card-body p-5">
-            <center>
-                <h2 class="text-light">All available countries</h2>
+        <div class="card border-0 shadow my-5 bg-dark">
+            <div class="card-body p-5">
 
-                <#if modelData??>
-                    <table id="countryTable" class="table table-striped text-light mx-auto w-auto">
+                <center>
+                    <h2 class="text-light">Visit statistics for countries</h2>
+                    <#if modelData??>
+                        <table class="table table-striped text-light col-lg-4">
 
-                        <thead>
-                        <tr>
-                            <th>Country</th>
-                            <th>Lateral</th>
-                            <th>Longitudinal</th>
-                        </tr>
-                        </thead>
-                        <tbody>
-                        <#list modelData as values>
-                            <tr>
-                                <td>${values.countryName}</td>
-                                <td>${values.lat}</td>
-                                <td>${values.lng}</td>
-                            </tr>
-                        </#list>
-                        </tbody>
-                    </table>
-                </#if>
-            </center>
+
+
+
+
+                        </table>
+                    </#if>
+                </center>
+            </div>
+            <#--            </div>-->
         </div>
     </div>
     </div>
 </main>
 
-<!--Footer-->
-<footer>
-    <h5 style="text-align: center; font-size: 12pt; font-weight: 200; color:white">2019</h5>
-    <img class="zoom" src="https://imgur.com/EhqOLb3.png"
-         style="display: block; margin-bottom: 30px; ; margin-left: auto; margin-right: auto;">
-</footer>
+
+
+
+
+    <!--Footer-->
+    <footer>
+        <h5 style="text-align: center; font-size: 12pt; font-weight: 200; font-family:Segoe UI; color:white">made in 2019 by</h5>
+        <img class="zoom"src="https://imgur.com/EhqOLb3.png" style="display: block; margin-bottom: 30px; ; margin-left: auto; margin-right: auto;">
+    </footer>
 </body>
-</html>

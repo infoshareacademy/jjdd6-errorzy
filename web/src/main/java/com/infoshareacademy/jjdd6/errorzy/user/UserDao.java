@@ -28,7 +28,7 @@ public class UserDao {
         }
     }
 
-    public UserModel findById(String id) {
+    public UserModel findById(Long id) {
         return entityManager.find(UserModel.class, id);
     }
 
@@ -36,4 +36,5 @@ public class UserDao {
         final Query query = entityManager.createQuery("SELECT u FROM UserModel u");
         return query.getResultList();
     }
+
 }

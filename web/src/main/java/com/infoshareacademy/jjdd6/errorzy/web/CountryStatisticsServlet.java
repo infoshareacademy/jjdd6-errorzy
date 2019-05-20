@@ -34,11 +34,11 @@ public class CountryStatisticsServlet extends HttpServlet {
         }
 
         if (action.equals("findByName")) {
-            findByNameCountryStatiscics(req, resp);
+            findByNameCountryStatistics(req, resp);
         } else if (action.equals("findAll")) {
             findAllCountryStatistics(req, resp);
         } else if (action.equals("findMostChecked")) {
-            findMostCheckedCountryStatiscics(req, resp);
+            findMostCheckedCountryStatistics(req, resp);
         } else {
             resp.getWriter().write("Unknown action.");
         }
@@ -53,14 +53,14 @@ public class CountryStatisticsServlet extends HttpServlet {
         }
     }
 
-    private void findMostCheckedCountryStatiscics(HttpServletRequest req, HttpServletResponse resp) throws IOException {
+    private void findMostCheckedCountryStatistics(HttpServletRequest req, HttpServletResponse resp) throws IOException {
         final CountryStatistics countryName = countryStatisticsDao.findMostChecked();
         LOGGER.info("Found {} objects", countryName.toString());
 
         resp.getWriter().write(countryName.toString());
     }
 
-    private void findByNameCountryStatiscics(HttpServletRequest req, HttpServletResponse resp) throws IOException {
+    private void findByNameCountryStatistics(HttpServletRequest req, HttpServletResponse resp) throws IOException {
         final String name = req.getParameter("country");
         final CountryStatistics countryName = countryStatisticsDao.findByName(name);
         LOGGER.info("Found {} objects", countryName.toString());

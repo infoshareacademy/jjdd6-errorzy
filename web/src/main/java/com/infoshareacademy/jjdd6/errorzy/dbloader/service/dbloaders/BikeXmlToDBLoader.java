@@ -19,12 +19,16 @@ public class BikeXmlToDBLoader {
     public void loadBikeModelToDataBase(Place place, PlaceModel placeModel) {
 
         if (place.getBikeList() != null) {
-            place.getBikeList().stream().forEach(bike -> {
+            place.getBikeList().forEach(bike -> {
 
                 BikeModel bikeModel = new BikeModel(bike.getNumber(),
                         bike.getBikeType(),
                         placeModel);
-                bikeDao.save(bikeModel);
+                BikeModel bikeModelRepeated = bikeDao.findByNumber(bike.getNumber());
+
+                if (bikeModelRepeated == null) {
+                    bikeDao.save(bikeModel);
+                }
             });
         }
     }

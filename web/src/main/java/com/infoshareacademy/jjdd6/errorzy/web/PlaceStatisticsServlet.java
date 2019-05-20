@@ -33,11 +33,11 @@ public class PlaceStatisticsServlet extends HttpServlet {
         }
 
         if (action.equals("findByName")) {
-            findByNamePlaceStatiscics(req, resp);
+            findByNamePlaceStatistics(req, resp);
         } else if (action.equals("findAll")) {
             findAllPlaceStatistics(req, resp);
         } else if (action.equals("findMostChecked")) {
-            findMostPlaceCountryStatiscics(req, resp);
+            findMostPlaceCountryStatistics(req, resp);
         } else {
             resp.getWriter().write("Unknown action.");
         }
@@ -52,14 +52,14 @@ public class PlaceStatisticsServlet extends HttpServlet {
         }
     }
 
-    private void findMostPlaceCountryStatiscics(HttpServletRequest req, HttpServletResponse resp) throws IOException {
+    private void findMostPlaceCountryStatistics(HttpServletRequest req, HttpServletResponse resp) throws IOException {
         final PlaceStatistics placeName = placeStatisticsDao.findMostChecked();
         LOGGER.info("Found {} objects", placeName.toString());
 
         resp.getWriter().write(placeName.toString());
     }
 
-    private void findByNamePlaceStatiscics(HttpServletRequest req, HttpServletResponse resp) throws IOException {
+    private void findByNamePlaceStatistics(HttpServletRequest req, HttpServletResponse resp) throws IOException {
         final String name = req.getParameter("place");
         final PlaceStatistics placeName = placeStatisticsDao.findByName(name);
         LOGGER.info("Found {} objects", placeName.toString());
