@@ -131,7 +131,7 @@
                 <h2 class="text-light">Number of country visits</h2>
             </div>
             <#if countryNumber??>
-                <table class="table table-striped text-light mx-auto w-auto">
+                <table class="table table-striped text-light mx-auto w-100">
 
                     <thead>
                     <tr>
@@ -163,7 +163,7 @@
                 <h2 class="text-light">Number of city visits</h2>
             </div>
             <#if cityNumber??>
-                <table class="table table-striped text-light mx-auto w-auto">
+                <table class="table table-striped text-light mx-auto w-100">
 
                     <thead>
                     <tr>
@@ -195,7 +195,7 @@
                 <h2 class="text-light">Number of places visits</h2>
             </div>
             <#if placeNumber??>
-                <table class="table table-striped text-light mx-auto w-auto">
+                <table class="table table-striped text-light mx-auto w-100">
 
                     <thead>
                     <tr>
@@ -220,7 +220,7 @@
 
 <!--Footer-->
 <footer>
-    <h5 style="text-align: center; font-size: 12pt; font-weight: 200; font-family:Segoe UI; color:white">made in 2019
+    <h5 style="text-align: center; font-size: 12pt; font-weight: 200; color:white">made in 2019
         by</h5>
     <img class="zoom" src="https://imgur.com/EhqOLb3.png"
          style="display: block; margin-bottom: 30px; ; margin-left: auto; margin-right: auto;">
