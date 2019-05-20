@@ -201,9 +201,7 @@
                 </#if>
 
                 <#if bikeRoot??>
-                    <table class="table table-striped text-light col-md-4">
-
-
+                    <table class="table table-striped text-light mx-auto w-auto">
                         <thead>
                         <tr>
                             <th>#</th>
