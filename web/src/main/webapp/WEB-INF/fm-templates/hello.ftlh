@@ -144,6 +144,7 @@
                                     locations.push(['${country.countryName}', ${country.lat}, ${country.lng}])
                                     </#list>
 
+                                    var image = 'https://imgur.com/KoD1BLN.png';
                                     var map = new google.maps.Map(document.getElementById('map'), {
                                         mapTypeId: 'roadmap',
                                         styles: [
@@ -319,7 +320,8 @@
 
                                         marker = new google.maps.Marker({
                                             position: new google.maps.LatLng(locations[i][1], locations[i][2]),
-                                            map: map
+                                            map: map,
+                                            icon: 'http://cdn.com/my-custom-icon.png'
                                         });
 
                                         google.maps.event.addListener(marker, 'click', (function (marker, i) {
