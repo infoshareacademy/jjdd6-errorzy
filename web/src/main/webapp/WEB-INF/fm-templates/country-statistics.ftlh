@@ -99,28 +99,15 @@
                             </button>
                         </a>
                     </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="/country-statistics">
-                            <button type="button" class="btn btn-outline-light">
-                                Visit statistics for countries
-                            </button>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            Statistics of visit
                         </a>
-                    </li>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="/city-statistics">
-                            <button type="button" class="btn btn-outline-light">
-                                Visit statistics for cities
-                            </button>
-                        </a>
-                    </li>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="/place-statistics">
-                            <button type="button" class="btn btn-outline-light">
-                                Visit statistics for places
-                            </button>
-                        </a>
+                        <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+                            <a class="dropdown-item" href="/country-statistics">Country statistics</a>
+                            <a class="dropdown-item" href="/city-statistics">City statistics</a>
+                            <a class="dropdown-item" href="/place-statistics">Place statistics</a>
+                        </div>
                     </li>
                 </ul>
             </div>
