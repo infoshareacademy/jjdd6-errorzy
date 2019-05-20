@@ -50,6 +50,7 @@ public class CountryStatisticsServlet extends HttpServlet {
 
         for (CountryStatistics cou : countryList) {
             resp.getWriter().write(cou.toString() + "\n");
+
         }
     }
 
