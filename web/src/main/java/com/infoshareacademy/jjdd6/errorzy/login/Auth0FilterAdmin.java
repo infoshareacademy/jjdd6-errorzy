@@ -1,7 +1,6 @@
 package com.infoshareacademy.jjdd6.errorzy.login;
 
 import com.auth0.SessionUtils;
-import jdk.internal.org.jline.utils.Log;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
@@ -49,8 +48,8 @@ public class Auth0FilterAdmin implements Filter {
 
     @Override
     public void destroy() {
-        isUserAdmin = false;
         LOG.info("Authentication failed.");
+        isUserAdmin = false;
     }
 }
 
