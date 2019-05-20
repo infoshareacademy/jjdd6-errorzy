@@ -3,8 +3,10 @@ package com.infoshareacademy.jjdd6.errorzy.web;
 import com.infoshareacademy.jjdd6.errorzy.email.EmailService;
 import com.infoshareacademy.jjdd6.errorzy.statistics.dao.CityStatisticsDao;
 import com.infoshareacademy.jjdd6.errorzy.statistics.dao.CountryStatisticsDao;
+import com.infoshareacademy.jjdd6.errorzy.statistics.dao.PlaceStatisticsDao;
 import com.infoshareacademy.jjdd6.errorzy.statistics.model.CityStatistics;
 import com.infoshareacademy.jjdd6.errorzy.statistics.model.CountryStatistics;
+import com.infoshareacademy.jjdd6.errorzy.statistics.model.PlaceStatistics;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
@@ -19,9 +21,11 @@ import java.time.LocalDateTime;
 import java.util.List;
 
 @WebServlet("/mail")
-public class EmailTestServlet extends HttpServlet {
+public class EmailServlet extends HttpServlet {
 
-    private static final Logger LOG = LogManager.getLogger(EmailTestServlet.class);
+    private static final Logger LOG = LogManager.getLogger(EmailServlet.class);
+    private static final String EMAIL = "krzesniak1@gmil.com";
+    private static final String EMAIL_TOPIC = "Errorzy report: " + LocalDateTime.now();
 
     @Inject
     private EmailService emailService;
@@ -29,6 +33,8 @@ public class EmailTestServlet extends HttpServlet {
     private CountryStatisticsDao countryStatisticsDao;
     @Inject
     private CityStatisticsDao cityStatisticsDao;
+    @Inject
+    private PlaceStatisticsDao placeStatisticsDao;
 
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
@@ -40,13 +46,21 @@ public class EmailTestServlet extends HttpServlet {
 
         List<CountryStatistics> countryStatistics = countryStatisticsDao.findAll();
         List<CityStatistics> cityStatistics = cityStatisticsDao.findAll();
+        List<PlaceStatistics> placeStatistics = placeStatisticsDao.findAll();
 
-        //so far - parameters in the URL
-        // localhost:8080/mail?to=addres@mail.ua&topic=MailTopic&content=Test%20message%20here
+        StringBuilder sb = new StringBuilder();
 
-        String mailContent = "--------------- COUNTRY STATISTIC --------------- " + countryStatistics.toString();
+        String mailContent = sb.append("----------- COUNTRY STATISTIC -----------")
+                .append("\\n")
+                .append(countryStatistics.toString())
+                .append("----------- CITY STATISTIC -----------")
+                .append("\\n")
+                .append(cityStatistics.toString())
+                .append("----------- PLACE STATISTIC -----------")
+                .append("\\n")
+                .append(placeStatistics.toString())
+                .toString();
 
-
-                emailService.sendMail("krzesniak1@gmail.com", "Errorzy report: " + LocalDateTime.now(), mailContent);
+                emailService.sendMail(EMAIL, EMAIL_TOPIC, mailContent);
     }
 }
