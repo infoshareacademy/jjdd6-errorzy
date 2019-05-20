@@ -92,16 +92,14 @@
                         </button>
                     </a>
                 </li>
-                <li class="nav-item dropdown">
-                    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                        Statistics of visit
+                <li class="nav-item">
+                    <a class="nav-link" href="/statistics">
+                        <button type="button" class="btn btn-outline-light">
+                            Statistics of visits
+                        </button>
                     </a>
-                    <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-                        <a class="dropdown-item" href="/country-statistics">Country statistics</a>
-                        <a class="dropdown-item" href="/city-statistics">City statistics</a>
-                        <a class="dropdown-item" href="/place-statistics">Place statistics</a>
-                    </div>
                 </li>
+
                 <li class="nav-item">
                     <a class="nav-link" href="/logout">
                         <button type="button" class="btn btn-outline-light">
