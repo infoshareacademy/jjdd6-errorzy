@@ -108,17 +108,7 @@
                             </button>
                         </a>
                     </li>
-                    <li class="nav-item dropdown">
-                        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" data-toggle="dropdown"
-                           aria-haspopup="true" aria-expanded="false">
-                            Statistics of visit
-                        </a>
-                        <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-                            <a class="dropdown-item" href="/country-statistics">Country statistics</a>
-                            <a class="dropdown-item" href="/city-statistics">City statistics</a>
-                            <a class="dropdown-item" href="/place-statistics">Place statistics</a>
-                        </div>
-                    </li>
+
                 </ul>
             </div>
         </div>
@@ -137,7 +127,9 @@
 
     <div class="container">
         <div class="card border-0 shadow my-5 bg-dark card-body p-5">
-
+            <div class="text-center">
+                <h2 class="text-light">Number of country visits</h2>
+            </div>
             <#if countryNumber??>
                 <table class="table table-striped text-light mx-auto w-auto">
 
@@ -157,8 +149,19 @@
                     </tbody>
                 </table>
             </#if>
-
-
+            <br>
+            <br>
+            <br>
+            <br>
+            <br>
+            <br>
+            <br>
+            <br>
+            <br>
+            <br>
+            <div class="text-center">
+                <h2 class="text-light">Number of city visits</h2>
+            </div>
             <#if cityNumber??>
                 <table class="table table-striped text-light mx-auto w-auto">
 
@@ -178,8 +181,19 @@
                     </tbody>
                 </table>
             </#if>
-
-
+            <br>
+            <br>
+            <br>
+            <br>
+            <br>
+            <br>
+            <br>
+            <br>
+            <br>
+            <br>
+            <div class="text-center">
+                <h2 class="text-light">Number of places visits</h2>
+            </div>
             <#if placeNumber??>
                 <table class="table table-striped text-light mx-auto w-auto">
 
