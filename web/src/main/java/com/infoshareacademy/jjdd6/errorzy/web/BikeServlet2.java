@@ -6,6 +6,7 @@ import com.infoshareacademy.jjdd6.errorzy.Place;
 import com.infoshareacademy.jjdd6.errorzy.dbloader.dao.PlaceDao;
 import com.infoshareacademy.jjdd6.errorzy.dbloader.model.BikeModel;
 import com.infoshareacademy.jjdd6.errorzy.dbloader.model.CityModel;
+import com.infoshareacademy.jjdd6.errorzy.dbloader.model.CountryModel;
 import com.infoshareacademy.jjdd6.errorzy.dbloader.model.PlaceModel;
 import com.infoshareacademy.jjdd6.errorzy.dbloader.service.BikeService;
 import com.infoshareacademy.jjdd6.errorzy.dbloader.service.CityService;
@@ -139,7 +140,7 @@ public class BikeServlet2 extends HttpServlet {
                     .flatMap(city -> city.getPlaceList().stream())
                     .collect(Collectors.toList());
 
-            List<Object> countryModelList = countryService.getAllList();
+            List<CountryModel> countryModelList = countryService.getAllList();
 
             createRootMap(writer, countryModelList, "countryRoot", places);
 
