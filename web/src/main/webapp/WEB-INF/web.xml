@@ -8,23 +8,23 @@
         xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee http://xmlns.jcp.org/xml/ns/javaee/web-app_3_1.xsd"
         version="3.1">
 
+<!--    <data-source>-->
+<!--        <name>java:ds/errorzy</name>-->
+<!--        <class-name>com.mysql.cj.jdbc.MysqlDataSource</class-name>-->
+<!--        <url>jdbc:mysql://localhost:4322/errorzy_database?useLegacyDatetimeCode=false&amp;serverTimezone=Europe/Warsaw-->
+<!--        </url>-->
+<!--        <user>root</user>-->
+<!--        <password>pass123</password>-->
+<!--    </data-source>-->
 
-    <data-source>
-        <name>java:ds/errorzy</name>
-        <class-name>com.mysql.cj.jdbc.MysqlDataSource</class-name>
-        <url>jdbc:mysql://localhost:4322/errorzy_database?useLegacyDatetimeCode=false&amp;serverTimezone=Europe/Warsaw</url>
-        <user>errorzy</user>
-        <password>pass123</password>
-    </data-source>
-
-    <!-- Config for Docker
-    <data-source>
-        <name>java:ds/errorzy</name>
-        <class-name>com.mysql.cj.jdbc.MysqlDataSource</class-name>
-        <url>jdbc:mysql://db/errorzy_database?useLegacyDatetimeCode=false&amp;serverTimezone=Europe/Warsaw</url>
-        <user>errorzy</user>
-        <password>pass123</password>
-    </data-source> -->
+    <!--USE FOR DOCKER WILDFLY -->
+     <data-source>
+         <name>java:ds/errorzy</name>
+         <class-name>com.mysql.cj.jdbc.MysqlDataSource</class-name>
+         <url>jdbc:mysql://db/errorzy_database?useLegacyDatetimeCode=false&amp;serverTimezone=Europe/Warsaw</url>
+         <user>root</user>
+         <password>pass123</password>
+     </data-source>
 
     <context-param>
         <param-name>com.auth0.domain</param-name>
@@ -38,4 +38,30 @@
         <param-name>com.auth0.clientSecret</param-name>
         <param-value>HondA_BL2SeExfCTe5LBV-G8JKjbJ_dFQiQBUp29-kKopQ9Sc66UrMdKO0KrXWM-</param-value>
     </context-param>
+
+    <error-page>
+        <error-code>400</error-code>
+        <location>/errorsi/err400.html</location>
+    </error-page>
+
+    <error-page>
+        <error-code>401</error-code>
+        <location>/errorsi/err401.html</location>
+    </error-page>
+
+    <error-page>
+        <error-code>403</error-code>
+        <location>/errorsi/err403.html</location>
+    </error-page>
+
+    <error-page>
+        <error-code>404</error-code>
+        <location>/errorsi/err404.html</location>
+    </error-page>
+
+    <error-page>
+        <error-code>500</error-code>
+        <location>/errorsi/err500.html</location>
+    </error-page>
+
 </web-app>

@@ -14,11 +14,24 @@
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
             integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
             crossorigin="anonymous"></script>
-
+<style>
+        /* Set the size of the div element that contains the map */
+        #map {
+            height: 500px; /* The height is 500 pixels */
+            width: 100%; /* The width is the width of the web page */
+        }
+        .zoom {
+  transition: transform .2s; /* Animation */
+}
+.zoom:hover {
+  transform: scale(1.2); /* (150% zoom - Note: if the zoom is too large, it will go outside of the viewport) */
+}  
+  </style>
     <style>
         @import url('https://fonts.googleapis.com/css?family=Playfair+Display|Roboto:500');
     </style>
     <title>Errorzy presents</title>
+    <link rel="shortcut icon" type="image/png" href="https://i.imgur.com/A9yFQNe.png"/>
 </head>
 
 <body background="https://wallpapers-house.com/data/out/6/wallpaper2you_109365.jpg">
@@ -28,8 +41,7 @@
     <nav class="navbar navbar-expand-lg navbar-dark bg-dark static-top mb-4 shadow-lg">
         <div class="container">
 
-            <a class="navbar-brand" href="hello.ftlh"><strong class="googlefont">RvЯ</strong></a>
-
+            <a class="navbar-brand" href="portal/home"><strong class="googlefont"><img class="zoom" src="https://imgur.com/VYijABi.png" height="70" width="70"></strong></a>
 
             <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive"
                     aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
@@ -68,7 +80,20 @@
                             </button>
                         </a>
                     </li>
-
+                    <li class="nav-item">
+                        <a class="nav-link" href="/admin">
+                            <button type="button" class="btn btn-outline-light">
+                                Admin
+                            </button>
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="/logout">
+                            <button type="button" class="btn btn-outline-light">
+                                Logout
+                            </button>
+                        </a>
+                    </li>
                 </ul>
             </div>
         </div>
@@ -91,7 +116,10 @@
             <div class="card-body p-5">
 
                 <center>
+                    <div class="text-center">
                     <h2 class="text-light">Find your bike</h2>
+                    <p class="text-light">Click the links below to find available bicycle</p>
+                </div>
                     <#if countryRoot??>
 
                         <table class="table table-striped text-light col-md-4">
@@ -104,10 +132,10 @@
                             </tr>
                             </thead>
 
-                            <#list countryRoot?keys as key>
+                            <#list countryRoot as values>
                                 <tr>
-                                    <td scope="row">${key?index+1}</td>
-                                    <td><a href="/bike-servlet?country=${key}" style="color:white">${key}</a></td>
+                                    <td scope="row">${values?index+1}</td>
+                                    <td><a href="/bike-servlet?country=${values.countryName}" style="color:white">${values.countryName}</a></td>
                                 </tr>
                             </#list>
 
@@ -126,10 +154,10 @@
                             </tr>
                             </thead>
 
-                            <#list cityRoot?keys as key>
+                            <#list cityRoot as values>
                                 <tr>
-                                    <td scope="row">${key?index+1}</td>
-                                    <td><a href="/bike-servlet?city=${key}" style="color:white">${key}</a></td>
+                                    <td scope="row">${values?index+1}</td>
+                                    <td><a href="/bike-servlet?city=${values.name}" style="color:white">${values.name}</a></td>
                                 </tr>
                             </#list>
 
@@ -144,14 +172,14 @@
                             <thead>
                             <tr>
                                 <th scope="col">#</th>
-                                <th scope="col">City</th>
+                                <th scope="col">Place</th>
                             </tr>
                             </thead>
 
-                            <#list placeRoot?keys as key>
+                            <#list placeRoot as values>
                                 <tr>
-                                    <td scope="row">${key?index+1}</td>
-                                    <td><a href="/bike-servlet?place=${key}" style="color:white">${key}</a></td>
+                                    <td scope="row">${values?index+1}</td>
+                                    <td><a href="/bike-servlet?place=${values.name}" style="color:white">${values.name}</a></td>
                                 </tr>
                             </#list>
                             </tbody>
@@ -169,14 +197,14 @@
                             </tr>
                             </thead>
 
-                            <#list bikeRoot?keys as key>
+                            <#list bikeRoot as values>
                                 <tr>
-                                    <td scope="row">${key?index+1}</td>
-                                    <td>${key}</td>
+                                    <td scope="row">${values?index+1}</td>
+                                    <td>${values.number?c}</td>
                                 </tr>
                             </#list>
                             </tbody>
-                        </table>
+                        </table≠>
                     </#if>
                 </center>
             </div>
@@ -186,11 +214,10 @@
 </main>
 <!--Footer-->
 <footer>
-    <center>
-        <h5 class="text-black-50">Made by Errorzy©</h5>
-    </center>
+    
+        <h5 style="text-align: center; font-size: 12pt; font-weight: 200; font-family:Segoe UI; color:white">made in 2019 by</h5>
+    <img class="zoom"src="https://imgur.com/EhqOLb3.png" style="display: block; margin-bottom: 30px; ; margin-left: auto; margin-right: auto;">
 
-
-</footer>
+    </footer>
 </body>
 </html>

@@ -51,8 +51,17 @@
         bs_input_file();
     });</script>
     <style>
+                .zoom {
+                    transition: transform .2s; /* Animation */
+            }
+                .zoom:hover {
+                transform: scale(1.2); /* (150% zoom - Note: if the zoom is too large, it will go outside of the viewport) */
+            }
+            </style>
+    <style>
         @import url('https://fonts.googleapis.com/css?family=Playfair+Display|Roboto:500');
     </style>
+    <link rel="shortcut icon" type="image/png" href="https://i.imgur.com/A9yFQNe.png"/>
 </head>
 
 <body background="https://wallpapers-house.com/data/out/6/wallpaper2you_109365.jpg">
@@ -61,7 +70,7 @@
 </div>
 <nav class="navbar navbar-expand-lg navbar-dark bg-dark static-top mb-4 shadow-lg">
     <div class="container">
-        <a class="navbar-brand" href="home.jsp"><strong class="googlefont">RvЯ</strong></a>
+        <a class="navbar-brand" href="portal/home"><strong class="googlefont"><img class="zoom" src="https://imgur.com/VYijABi.png" height="70" width="70"></strong></a>
 
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive"
                 aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
@@ -83,49 +92,45 @@
         </div>
     </div>
 </nav>
-<div id="intro" class="view">
+<div class="container">
+    <div class="card border-0 shadow my-5 bg-dark">
+        <div class="card-body p-5">
+            <div style="height: 500px">
+                <center>
+                    <h1 class="text-light">
+                        Welcome to RvR application
+                    </h1>
+                    <br>
+                    <img class="ui-widget-shadow" src="https://i.imgur.com/A9yFQNe.png" alt="RvR application logo">
+                    <br>
+                    <br>
+                    <br>
+                    <h4 class="text-light">
+                        Thanks to this application You can find all closest bicycles available in Your neighbourhood.
+                    </h4>
+                </center>
 
-    <div class="mask">
 
+            </div>
+        </div>
     </div>
+</div>
+</main>
+<footer>
+     <h5 style="text-align: center; font-size: 12pt; font-weight: 200; font-family:Segoe UI; color:white">made in 2019 by</h5>
+    <img class="zoom"src="https://imgur.com/EhqOLb3.png" style="display: block; margin-bottom: 30px; ; margin-left: auto; margin-right: auto;">
+</footer>
 
-
-    <main>
-        <div>
-
-        <footer class="jumbotron">
-            <center>
-                <h1 class="text-white-150"> Welcome in RvR application!!! </h1>
-                <h2 class="text-white-100">Thought RvR api you can quickly and 100% reliably find the nearest nextbike
-                    station. </h2>
-                <h4 class="text-white-100">Login by yours gmail and ENJOY CYCLING !!! </h4>
-            </center>
-        </footer>
-    </div>
-
-
-    <div>
-
-        <footer class="jumbotron">
-            <center>
-                <h4 class="text-white-80"> &copy; 2019 Company Inc</h4>
-                <h5 class="text-white-80"> &copy; Made by Errorzy </h5>
-            </center>
-        </footer>
-
-    </div>
-
-
-    <script type="text/javascript">
-        $("#qsLogoutBtn").click(function (e) {
-            e.preventDefault();
-            $("#home").removeClass("active");
-            $("#password-login").removeClass("active");
-            $("#qsLogoutBtn").addClass("active");
-            // assumes we are not part of SSO so just logout of local session
-            window.location = "${fn:replace(pageContext.request.requestURL, pageContext.request.requestURI, '')}/logout";
-        });
-    </script>
+<script type="text/javascript">
+    $("#qsLogoutBtn").click(function (e) {
+        e.preventDefault();
+        $("#home").removeClass("active");
+        $("#password-login").removeClass("active");
+        $("#qsLogoutBtn").addClass("active");
+        // assumes we are not part of SSO so just logout of local session
+        window.location = "${fn:replace(pageContext.request.requestURL, pageContext.request.requestURI, '')}/logout";
+    });
+</script>
 
 </body>
 </html>

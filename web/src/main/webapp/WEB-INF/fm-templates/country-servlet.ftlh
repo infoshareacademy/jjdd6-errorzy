@@ -14,10 +14,24 @@
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
             integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
             crossorigin="anonymous"></script>
+            <style>
+            /* Set the size of the div element that contains the map */
+    #map {
+        height: 500px; /* The height is 400 pixels */
+        width: 100%; /* The width is the width of the web page */
+    }
+    .zoom {
+transition: transform .2s; /* Animation */
+    }
+    .zoom:hover {
+        transform: scale(1.2); /* (150% zoom - Note: if the zoom is too large, it will go outside of the viewport) */
+    }  
+    </style>
     <style>
         @import url('https://fonts.googleapis.com/css?family=Playfair+Display|Roboto:500');
     </style>
     <title>Errorzy presents:</title>
+    <link rel="shortcut icon" type="image/png" href="https://i.imgur.com/A9yFQNe.png"/>
 </head>
 
 <body background="https://wallpapers-house.com/data/out/6/wallpaper2you_109365.jpg">
@@ -27,7 +41,8 @@
     <nav class="navbar navbar-expand-lg navbar-dark bg-dark static-top mb-4 shadow-lg">
         <div class="container">
 
-            <a class="navbar-brand" href="hello.ftlh"><strong class="googlefont">RvЯ</strong></a>
+            <a class="navbar-brand" href="/portal/home"><strong class="googlefont"><img class="zoom" src="https://imgur.com/VYijABi.png" height="70" width="70"></strong></a>
+
 
 
             <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive"
@@ -67,6 +82,20 @@
                             </button>
                         </a>
                     </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="/admin">
+                            <button type="button" class="btn btn-outline-light">
+                                Admin
+                            </button>
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="/logout">
+                            <button type="button" class="btn btn-outline-light">
+                                Logout
+                            </button>
+                        </a>
+                    </li>
                 </ul>
             </div>
         </div>
@@ -100,10 +129,10 @@
                                 <th scope="col">Country</th>
                             </tr>
                             </thead>
-                            <#list modelData?keys as key>
+                            <#list modelData as values>
                                 <tr>
-                                    <th scope="row">${key?index+1}</th>
-                                    <td>${key}</td>
+                                    <th scope="row">${values?index+1}</th>
+                                    <td>${values.countryName}</td>
                                 </tr>
                             </#list>
                             </tbody>
@@ -118,11 +147,8 @@
 </main>
 <!--Footer-->
 <footer>
-    <center>
-        <h5 class="text-black-50">Made by Errorzy©</h5>
-    </center>
-
-
+        <h5 style="text-align: center; font-size: 12pt; font-weight: 200; font-family:Segoe UI; color:white">made in 2019 by</h5>
+        <img class="zoom"src="https://imgur.com/EhqOLb3.png" style="display: block; margin-bottom: 30px; ; margin-left: auto; margin-right: auto;">
 </footer>
 </body>
 </html>

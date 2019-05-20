@@ -1,7 +1,8 @@
 package com.infoshareacademy.jjdd6.errorzy.web;
 
 import com.infoshareacademy.jjdd6.errorzy.freemarker.TemplateProvider;
-import com.infoshareacademy.jjdd6.errorzy.dbloader.service.CountryService;
+import com.infoshareacademy.jjdd6.errorzy.dbloader.model.CityModel;
+import com.infoshareacademy.jjdd6.errorzy.dbloader.service.CityService;
 import freemarker.template.Template;
 import freemarker.template.TemplateException;
 import org.apache.logging.log4j.LogManager;
@@ -19,32 +20,31 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-@WebServlet("/country-servlet")
-public class CountryServlet extends HttpServlet {
-
-    private static final Logger LOGGER = LogManager.getLogger(CountryServlet.class.getName());
+@WebServlet("/show-city-list")
+public class CityServlet extends HttpServlet {
+    private static final Logger LOG = LogManager.getLogger(CityServlet.class);
 
     @Inject
-    private CountryService countryService;
+    private CityService cityService;
     @Inject
     private TemplateProvider templateProvider;
 
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        LOGGER.info("Country servlet has been loaded.");
+        LOG.info("CityList servlet loaded.");
         resp.setContentType("text/html;charset=UTF-8");
         Writer writer = resp.getWriter();
-        Template template = templateProvider.getTemplate(getServletContext(), "country-servlet.ftlh");
+        Template template = templateProvider.getTemplate(getServletContext(), "city-servlet.ftlh");
 
-        List<Object> countryModelList = countryService.getAllList();
+        List<CityModel> cityModelList = cityService.getAllList();
 
-        Map<String, List<Object>> model = new HashMap<>();
-        model.put("modelData", countryModelList);
+        Map<String, List<CityModel>> model = new HashMap();
+        model.put("rootCity", cityModelList);
 
         try {
             template.process(model, writer);
         } catch (TemplateException e) {
-            LOGGER.warn("Template " + e + " not found.");
+            LOG.error("Template " + e + " not found.");
         }
     }
 }
