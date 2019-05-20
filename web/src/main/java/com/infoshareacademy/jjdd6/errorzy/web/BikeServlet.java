@@ -23,6 +23,7 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.transaction.Transactional;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.util.HashMap;
@@ -30,6 +31,7 @@ import java.util.List;
 import java.util.Map;
 
 @WebServlet("/bike-servlet/*")
+@Transactional
 public class BikeServlet extends HttpServlet {
     private static final Logger LOGGER = LogManager.getLogger(BikeServlet.class.getName());
 

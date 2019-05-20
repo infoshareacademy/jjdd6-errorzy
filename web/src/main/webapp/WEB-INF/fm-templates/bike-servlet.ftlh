@@ -15,7 +15,20 @@
             $('.table').DataTable();
         });
     </script>
-
+    <style>
+        label {
+            display: inline-block;
+            margin-bottom: .5rem;
+            color: white;
+        }
+    </style>
+    <style>
+        div.dataTables_info {
+            padding-top: 0.85em;
+            white-space: nowrap;
+            color: white;
+        }
+    </style>
     <style>
         @import url('https://fonts.googleapis.com/css?family=Playfair+Display|Roboto:500');
     </style>
@@ -128,7 +141,9 @@
                                        style="color:white">${values.countryName}</a></td>
                                 <td>${values.lat}</td>
                                 <td>${values.lng}</td>
+                                <td> ${values.getCityList()?size} </td>
                             </tr>
+
                         </#list>
                         </tbody>
                     </table>
@@ -139,17 +154,21 @@
 
                         <thead>
                         <tr>
-                            <th scope="col">#</th>
-                            <th scope="col">City</th>
+                            <th>City</th>
+                            <th>Lateral</th>
+                            <th>Longitudinal</th>
+                            <th>No. of bike stands</th>
                         </tr>
                         </thead>
 
                         <tbody>
                         <#list cityRoot as values>
                             <tr>
-                                <td scope="row">${values?index+1}</td>
                                 <td><a href="/bike-servlet?city=${values.name}" style="color:white">${values.name}</a>
                                 </td>
+                                <td>${values.lat}</td>
+                                <td>${values.lng}</td>
+                                <td>${values.getPlaceList()?size}</td>
                             </tr>
                         </#list>
                         </tbody>
@@ -160,17 +179,21 @@
                     <table class="table table-striped text-light mx-auto w-auto">
                         <thead>
                         <tr>
-                            <th scope="col">#</th>
-                            <th scope="col">Place</th>
+                            <th>Place</th>
+                            <th>Lateral</th>
+                            <th>Longitudinal</th>
+                            <th>No. of bikes</th>
                         </tr>
                         </thead>
 
                         <tbody>
                         <#list placeRoot as values>
                             <tr>
-                                <td scope="row">${values?index+1}</td>
                                 <td><a href="/bike-servlet?place=${values.name}" style="color:white">${values.name}</a>
                                 </td>
+                                <td>${values.lat}</td>
+                                <td>${values.lng}</td>
+                                <td>${values.getBikeList()?size}</td>
                             </tr>
                         </#list>
                         </tbody>
@@ -178,20 +201,20 @@
                 </#if>
 
                 <#if bikeRoot??>
-                    <table class="table table-striped text-light mx-auto w-auto">
+                    <table class="table table-striped text-light col-md-4">
 
 
                         <thead>
                         <tr>
-                            <th scope="col">#</th>
-                            <th scope="col">Bike</th>
+                            <th>#</th>
+                            <th>Bike</th>
                         </tr>
                         </thead>
 
                         <tbody>
                         <#list bikeRoot as values>
                             <tr>
-                                <td scope="row">${values?index+1}</td>
+                                <td>${values?index+1}</td>
                                 <td>${values.number?c}</td>
                             </tr>
                         </#list>

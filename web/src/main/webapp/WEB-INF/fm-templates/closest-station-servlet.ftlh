@@ -186,21 +186,21 @@
     </center>
 </footer>
 <#if !longitudinalValue??>
-<script>
-    var inputLat = document.querySelector("form #latInput");
-    var inputIng = document.querySelector("form #lngInput");
+    <script>
+        var inputLat = document.querySelector("form #latInput");
+        var inputIng = document.querySelector("form #lngInput");
 
-    if (navigator.geolocation) {
-        navigator.geolocation.getCurrentPosition(showPosition);
-    } else {
-        x.innerHTML = "Geolocation is not supported by this browser.";
-    }
+        if (navigator.geolocation) {
+            navigator.geolocation.getCurrentPosition(showPosition);
+        } else {
+            x.innerHTML = "Geolocation is not supported by this browser.";
+        }
 
-    function showPosition(position) {
-        $('#latInput').val(position.coords.latitude);
-        $('#lngInput').val(position.coords.longitude);
-    }
-</script>
+        function showPosition(position) {
+            $('#latInput').val(position.coords.latitude);
+            $('#lngInput').val(position.coords.longitude);
+        }
+    </script>
 </#if>
 
 </body>

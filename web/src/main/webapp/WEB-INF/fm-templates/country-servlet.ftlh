@@ -15,7 +15,20 @@
             $('#countryTable').DataTable();
         });
     </script>
-
+    <style>
+        label {
+            display: inline-block;
+            margin-bottom: .5rem;
+            color: white;
+        }
+    </style>
+    <style>
+        div.dataTables_info {
+            padding-top: 0.85em;
+            white-space: nowrap;
+            color: white;
+        }
+    </style>
     <style>
         @import url('https://fonts.googleapis.com/css?family=Playfair+Display|Roboto:500');
     </style>
@@ -104,32 +117,31 @@
 
     <div class="container">
         <div class="card border-0 shadow my-5 bg-dark card-body p-5">
+            <center>
+                <h2 class="text-light">All available countries</h2>
 
-            <h2 class="text-light">All available countries</h2>
+                <#if modelData??>
+                    <table id="countryTable" class="table table-striped text-light mx-auto w-auto">
 
-            <#if modelData??>
-                <table id="countryTable" class="table table-striped text-light mx-auto w-auto">
-
-                    <thead>
-                    <tr>
-                        <th>Country</th>
-                        <th>Lateral</th>
-                        <th>Longitudinal</th>
-                        <th>No. of cities</th>
-                    </tr>
-                    </thead>
-                    <tbody>
-                    <#list modelData as values>
+                        <thead>
                         <tr>
-                            <td>${values.countryName}</td>
-                            <td>${values.lat}</td>
-                            <td>${values.lng}</td>
+                            <th>Country</th>
+                            <th>Lateral</th>
+                            <th>Longitudinal</th>
                         </tr>
-                    </#list>
-                    </tbody>
-                </table>
-            </#if>
-
+                        </thead>
+                        <tbody>
+                        <#list modelData as values>
+                            <tr>
+                                <td>${values.countryName}</td>
+                                <td>${values.lat}</td>
+                                <td>${values.lng}</td>
+                            </tr>
+                        </#list>
+                        </tbody>
+                    </table>
+                </#if>
+            </center>
         </div>
     </div>
 </main>
