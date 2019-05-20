@@ -21,12 +21,27 @@
             margin-bottom: .5rem;
             color: white;
         }
-    </style>
-    <style>
+
         div.dataTables_info {
             padding-top: 0.85em;
             white-space: nowrap;
             color: white;
+        }
+    </style>
+
+    <style>
+        /* Set the size of the div element that contains the map */
+        #map {
+            height: 500px; /* The height is 400 pixels */
+            width: 100%; /* The width is the width of the web page */
+        }
+
+        .zoom {
+            transition: transform .2s; /* Animation */
+        }
+
+        .zoom:hover {
+            transform: scale(1.2); /* (150% zoom - Note: if the zoom is too large, it will go outside of the viewport) */
         }
     </style>
     <style>
@@ -43,10 +58,10 @@
     <nav class="navbar navbar-expand-lg navbar-dark bg-dark static-top mb-4 shadow-lg">
         <div class="container">
 
-            <a class="navbar-brand" href="/portal/home">
-                <img width="70" height="70" class="ui-widget-shadow" src="https://i.imgur.com/A9yFQNe.png"
-                     alt="RvR application logo">
-            </a>
+            <a class="navbar-brand" href="/portal/home"><strong class="googlefont"><img class="zoom"
+                                                                                        src="https://imgur.com/VYijABi.png"
+                                                                                        height="70" width="70"></strong></a>
+
 
             <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive"
                     aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
@@ -55,6 +70,7 @@
 
             <div class="collapse navbar-collapse" id="navbarResponsive">
                 <ul class="navbar-nav ml-auto">
+
 
                     <li class="nav-item">
                         <a class="nav-link" href="/bike-servlet">
@@ -144,13 +160,14 @@
             </center>
         </div>
     </div>
+    </div>
 </main>
 
 <!--Footer-->
 <footer>
-    <center>
-        <h5 class="text-light">Made by Errorzy<br>2019</h5>
-    </center>
+    <h5 style="text-align: center; font-size: 12pt; font-weight: 200; color:white">2019</h5>
+    <img class="zoom" src="https://imgur.com/EhqOLb3.png"
+         style="display: block; margin-bottom: 30px; ; margin-left: auto; margin-right: auto;">
 </footer>
 </body>
 </html>

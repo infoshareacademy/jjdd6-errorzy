@@ -10,6 +10,24 @@
     <script type="text/javascript"
             src="https://cdn.datatables.net/v/bs4-4.1.1/jq-3.3.1/dt-1.10.18/datatables.min.js"></script>
 
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
+            integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
+            crossorigin="anonymous"></script>
+    <style>
+        /* Set the size of the div element that contains the map */
+        #map {
+            height: 500px; /* The height is 500 pixels */
+            width: 100%; /* The width is the width of the web page */
+        }
+
+        .zoom {
+            transition: transform .2s; /* Animation */
+        }
+
+        .zoom:hover {
+            transform: scale(1.2); /* (150% zoom - Note: if the zoom is too large, it will go outside of the viewport) */
+        }
+    </style>
     <script>
         $(document).ready(function () {
             $('.table').DataTable();
@@ -21,8 +39,7 @@
             margin-bottom: .5rem;
             color: white;
         }
-    </style>
-    <style>
+
         div.dataTables_info {
             padding-top: 0.85em;
             white-space: nowrap;
@@ -43,10 +60,9 @@
     <nav class="navbar navbar-expand-lg navbar-dark bg-dark static-top mb-4 shadow-lg">
         <div class="container">
 
-            <a class="navbar-brand" href="/portal/home">
-                <img width="70" height="70" class="ui-widget-shadow" src="https://i.imgur.com/A9yFQNe.png"
-                     alt="RvR application logo"></a>
-
+            <a class="navbar-brand" href="portal/home"><strong class="googlefont"><img class="zoom"
+                                                                                       src="https://imgur.com/VYijABi.png"
+                                                                                       height="70" width="70"></strong></a>
 
             <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive"
                     aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
@@ -120,7 +136,10 @@
         <div class="card border-0 shadow my-5 bg-dark card-body p-5">
 
             <center>
-                <h2 class="text-light">Find your bike</h2>
+                <div class="text-center">
+                    <h2 class="text-light">Find your bike</h2>
+                    <p class="text-light">Click the links below to find available bicycle</p>
+                </div>
                 <#if countryRoot??>
 
                     <table class="table table-striped text-light mx-auto w-auto">
@@ -222,12 +241,13 @@
             </center>
         </div>
     </div>
+    </div>
 </main>
 <!--Footer-->
 <footer>
-    <center>
-        <h5 class="text-light">Made by Errorzy<br>2019</h5>
-    </center>
+    <h5 style="text-align: center; font-size: 12pt; font-weight: 200; color:white">2019</h5>
+    <img class="zoom" src="https://imgur.com/EhqOLb3.png"
+         style="display: block; margin-bottom: 30px; ; margin-left: auto; margin-right: auto;">
 </footer>
 </body>
 </html>
