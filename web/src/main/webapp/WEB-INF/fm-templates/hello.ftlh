@@ -141,7 +141,7 @@
                                     var locations = [];
 
                                     <#list countries as country>
-                                    locations.push(['${country.name}', ${country.lat}, ${country.lng}])
+                                    locations.push(['${country.countryName}', ${country.lat}, ${country.lng}])
                                     </#list>
 
                                     var map = new google.maps.Map(document.getElementById('map'), {
