@@ -31,9 +31,16 @@ public class PlaceXmlToDBLoader {
                         place.getName(),
                         place.getNumber(),
                         cityModel);
-                placeDao.save(placeModel);
 
-                bikeXmlToDBLoader.loadBikeModelToDataBase(place, placeModel);
+                PlaceModel placeModelRepeated = placeDao.findByName(place.getName());
+
+                if (placeModelRepeated == null) {
+                    placeDao.save(placeModel);
+                    bikeXmlToDBLoader.loadBikeModelToDataBase(place, placeModel);
+
+                } else {
+                    bikeXmlToDBLoader.loadBikeModelToDataBase(place, placeModelRepeated);
+                }
             });
         }
     }

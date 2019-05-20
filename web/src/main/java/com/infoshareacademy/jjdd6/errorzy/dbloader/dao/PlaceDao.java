@@ -30,11 +30,11 @@ public class PlaceDao extends GenericDao<PlaceModel, Long> {
         Query query = entityManager.createQuery("SELECT p FROM PlaceModel p WHERE p.name = :name");
         query.setParameter("name", name);
 
-        PlaceModel result = (PlaceModel) query.getSingleResult();
-        if (result == null) {
+        List<PlaceModel> result = query.getResultList();
+        if (result.isEmpty()) {
             return null;
         } else {
-            return result;
+            return result.get(0);
         }
     }
 }

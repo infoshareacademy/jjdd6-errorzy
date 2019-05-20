@@ -128,7 +128,7 @@
                 </li>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="/country-statistics-servle">
+                    <a class="nav-link" href="/country-statistics">
                         <button type="button" class="btn btn-outline-light">
                             Visit statistics for countries
                         </button>
@@ -136,7 +136,7 @@
                 </li>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="/city-statistics-servlet">
+                    <a class="nav-link" href="/city-statistics">
                         <button type="button" class="btn btn-outline-light">
                             Visit statistics for cities
                         </button>
@@ -144,7 +144,7 @@
                 </li>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="/place-servlet">
+                    <a class="nav-link" href="/place-statistics">
                         <button type="button" class="btn btn-outline-light">
                             Visit statistics for places
                         </button>
@@ -203,8 +203,8 @@
     </center>
 </main>
 <footer>
-        <h5 style="text-align: center; font-size: 12pt; font-weight: 200; font-family:Segoe UI; color:white">made in 2019 by</h5>
-    <img class="zoom"src="https://imgur.com/EhqOLb3.png" style="display: block; margin-bottom: 30px; ; margin-left: auto; margin-right: auto;">
+    <h5 style="text-align: center; font-size: 12pt; font-weight: 200; color:white">2019</h5>
+    <img class="zoom" src="https://imgur.com/EhqOLb3.png" style="display: block; margin-bottom: 30px; ; margin-left: auto; margin-right: auto;">
 </footer>
 </body>
 

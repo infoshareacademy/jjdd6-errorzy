@@ -5,7 +5,9 @@ import javax.validation.constraints.NotNull;
 import java.util.List;
 
 @Entity
-@Table(name = "CITIES")
+@Table(name = "CITIES",
+        uniqueConstraints =
+        @UniqueConstraint(columnNames = {"city_name", "lateral_coordinate", "longitudinal_coordinate"}))
 public class CityModel {
 
     @Id
@@ -13,11 +15,15 @@ public class CityModel {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @ManyToOne
+    @ManyToOne()
     @JoinColumn(name = "country_id")
     private CountryModel country;
 
-    @OneToMany(mappedBy = "city", fetch = FetchType.LAZY)
+    @Column(name = "city_name", length = 64)
+    @NotNull
+    private String name;
+
+    @OneToMany(mappedBy = "city", fetch = FetchType.LAZY, cascade = CascadeType.PERSIST)
     private List<PlaceModel> placeList;
 
     @Column(name = "lateral_coordinate", columnDefinition = "DECIMAL(10,6)")
@@ -25,10 +31,6 @@ public class CityModel {
 
     @Column(name = "longitudinal_coordinate", columnDefinition = "DECIMAL(10,6)")
     private double lng;
-
-    @Column(name = "city_name", length = 64, unique = true)
-    @NotNull
-    private String name;
 
     @Transient
     private int numPlaces;
