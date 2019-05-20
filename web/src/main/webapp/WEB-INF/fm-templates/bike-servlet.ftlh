@@ -25,7 +25,7 @@
 }
 .zoom:hover {
   transform: scale(1.2); /* (150% zoom - Note: if the zoom is too large, it will go outside of the viewport) */
-}  
+}
   </style>
     <style>
         @import url('https://fonts.googleapis.com/css?family=Playfair+Display|Roboto:500');
@@ -214,7 +214,7 @@
 </main>
 <!--Footer-->
 <footer>
-    
+
         <h5 style="text-align: center; font-size: 12pt; font-weight: 200; font-family:Segoe UI; color:white">made in 2019 by</h5>
     <img class="zoom"src="https://imgur.com/EhqOLb3.png" style="display: block; margin-bottom: 30px; ; margin-left: auto; margin-right: auto;">
 
