@@ -20,6 +20,7 @@ public class NextBikeAPI {
     private static final String SETTINGS_FILE = "settings.properties";
 
     public void loadXMLFromURL() {
+
         try {
             URL url = new URL(FILE_URL);
             LOG.info("Start of loading file from URL: " + url);
