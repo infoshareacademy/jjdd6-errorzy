@@ -6,6 +6,7 @@ import com.infoshareacademy.jjdd6.errorzy.dbloader.model.BikeModel;
 import javax.ejb.Stateless;
 import javax.persistence.Query;
 import java.util.List;
+import java.util.Optional;
 
 @Stateless
 public class BikeDao extends GenericDao<BikeModel, Long> {
@@ -26,15 +27,15 @@ public class BikeDao extends GenericDao<BikeModel, Long> {
         }
     }
 
-    public BikeModel findByNumber(int number) {
+    public Optional<BikeModel> findByNumber(int number) {
         Query query = entityManager.createQuery("SELECT b FROM BikeModel b WHERE b.number = :bikeNumber");
         query.setParameter("bikeNumber", number);
 
         List<BikeModel> result = query.getResultList();
         if (result.isEmpty()) {
-            return null;
+            return Optional.empty();
         } else {
-            return result.get(0);
+            return Optional.ofNullable(result.get(0));
         }
     }
 }
