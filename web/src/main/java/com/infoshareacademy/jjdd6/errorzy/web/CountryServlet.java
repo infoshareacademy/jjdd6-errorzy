@@ -1,7 +1,8 @@
 package com.infoshareacademy.jjdd6.errorzy.web;
 
-import com.infoshareacademy.jjdd6.errorzy.freemarker.TemplateProvider;
+import com.infoshareacademy.jjdd6.errorzy.dbloader.model.CountryModel;
 import com.infoshareacademy.jjdd6.errorzy.dbloader.service.CountryService;
+import com.infoshareacademy.jjdd6.errorzy.freemarker.TemplateProvider;
 import freemarker.template.Template;
 import freemarker.template.TemplateException;
 import org.apache.logging.log4j.LogManager;
@@ -13,6 +14,7 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.transaction.Transactional;
 import java.io.IOException;
 import java.io.Writer;
 import java.util.HashMap;
@@ -20,6 +22,7 @@ import java.util.List;
 import java.util.Map;
 
 @WebServlet("/country-servlet")
+@Transactional
 public class CountryServlet extends HttpServlet {
 
     private static final Logger LOGGER = LogManager.getLogger(CountryServlet.class.getName());
@@ -36,9 +39,10 @@ public class CountryServlet extends HttpServlet {
         Writer writer = resp.getWriter();
         Template template = templateProvider.getTemplate(getServletContext(), "country-servlet.ftlh");
 
-        List<Object> countryModelList = countryService.getAllList();
+        List<CountryModel> countryModelList = countryService.getAllList();
 
-        Map<String, List<Object>> model = new HashMap<>();
+        Map<String, Object> model = new HashMap<>();
+
         model.put("modelData", countryModelList);
 
         try {

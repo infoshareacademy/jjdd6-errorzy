@@ -3,6 +3,7 @@ package com.infoshareacademy.jjdd6.errorzy.dbloader.service.dbloaders;
 import com.infoshareacademy.jjdd6.errorzy.dbloader.dao.CountryDao;
 import com.infoshareacademy.jjdd6.errorzy.dbloader.model.CountryModel;
 import com.infoshareacademy.jjdd6.errorzy.xmlunmarshaller.CountrySearch;
+import com.infoshareacademy.jjdd6.errorzy.xmlunmarshaller.XmlUnmarshaller;
 import org.jboss.ejb3.annotation.TransactionTimeout;
 
 import javax.ejb.EJB;
@@ -19,6 +20,7 @@ import java.util.logging.Logger;
 @TransactionTimeout(value = 30, unit = TimeUnit.MINUTES)
 public class CountryXmlToDBLoader {
     private static final Logger LOGGER = Logger.getLogger(CountryXmlToDBLoader.class.getName());
+    private static final String path = "/tmp/nextbike-live.xml";
 
     @EJB
     private CountryDao countryDao;
@@ -26,6 +28,8 @@ public class CountryXmlToDBLoader {
     private CountrySearch countrySearch;
     @EJB
     private CityXmlToDBLoader cityXmlToDBLoader;
+    @EJB
+    private XmlUnmarshaller xmlUnmarshaller;
 
     public void loadCountryModelAtStart() {
         LOGGER.info("Loading to database started.");
@@ -34,18 +38,28 @@ public class CountryXmlToDBLoader {
 
     private void loadCountryModelToDataBase() {
 
-
-        countrySearch.getMapOfCountries().values().forEach(country -> {
+        xmlUnmarshaller.getMarkersList(path).getCountryList().forEach(country -> {
 
             CountryModel countryModel = new CountryModel(country.getLat(),
                     country.getLng(),
                     country.getCountryName());
 
-            countryDao.save(countryModel);
-            LOGGER.info(countryModel.getCountryName() + ": Added to DB.");
+            CountryModel countryModelRepeated = countryDao.findByName(country.getCountryName());
 
-            LOGGER.info("Saving " + country.getCityList().size() + " cities");
-            cityXmlToDBLoader.loadCityModelToDataBase(country, countryModel);
+            if (countryModelRepeated == null) {
+                countryDao.save(countryModel);
+
+                LOGGER.info(country.getCountryName() + ": Added to DB.");
+                LOGGER.info("Saving " + country.getCityList().size() + " cities");
+
+                cityXmlToDBLoader.loadCityModelToDataBase(country, countryModel);
+
+            } else {
+                LOGGER.info(country.getCountryName() + " is already in database.");
+                LOGGER.info("Saving " + country.getCityList().size() + " cities");
+
+                cityXmlToDBLoader.loadCityModelToDataBase(country, countryModelRepeated);
+            }
         });
 
         LOGGER.info("Loading to DB finished.");

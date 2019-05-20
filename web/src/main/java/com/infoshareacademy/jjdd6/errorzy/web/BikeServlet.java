@@ -2,6 +2,7 @@ package com.infoshareacademy.jjdd6.errorzy.web;
 
 import com.infoshareacademy.jjdd6.errorzy.dbloader.model.BikeModel;
 import com.infoshareacademy.jjdd6.errorzy.dbloader.model.CityModel;
+import com.infoshareacademy.jjdd6.errorzy.dbloader.model.CountryModel;
 import com.infoshareacademy.jjdd6.errorzy.dbloader.model.PlaceModel;
 import com.infoshareacademy.jjdd6.errorzy.dbloader.service.BikeService;
 import com.infoshareacademy.jjdd6.errorzy.dbloader.service.CityService;
@@ -22,6 +23,7 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.transaction.Transactional;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.util.HashMap;
@@ -29,6 +31,7 @@ import java.util.List;
 import java.util.Map;
 
 @WebServlet("/bike-servlet/*")
+@Transactional
 public class BikeServlet extends HttpServlet {
     private static final Logger LOGGER = LogManager.getLogger(BikeServlet.class.getName());
 
@@ -66,18 +69,18 @@ public class BikeServlet extends HttpServlet {
             List<PlaceModel> placeModelList = placeService.getPlaceByCity(req.getParameter("city"));
             createRootMap(writer, placeModelList, "placeRoot");
 
-            cityStatisticsDao.addToStatistics("city");
+            cityStatisticsDao.addToStatistics(req.getParameter("city"));
 
         } else if (req.getParameter("place") != null) {
 
             List<BikeModel> bikeModelList = bikeService.getAllBikesForPlace(req.getParameter("place"));
             createRootMap(writer, bikeModelList, "bikeRoot");
 
-            placeStatisticsDao.addToStatistics("place");
+            placeStatisticsDao.addToStatistics(req.getParameter("place"));
             LOGGER.info("Map of bikes has been generated.");
         } else {
 
-            List<Object> countryModelList = countryService.getAllList();
+            List<CountryModel> countryModelList = countryService.getAllList();
             createRootMap(writer, countryModelList, "countryRoot");
         }
     }
