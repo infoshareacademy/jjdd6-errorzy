@@ -19,44 +19,15 @@
             integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
             crossorigin="anonymous"></script>
 
-    <script>function bs_input_file() {
-            $(".input-file").before(
-                function () {
-                    if (!$(this).prev().hasClass('input-ghost')) {
-                        var element = $("<input type='file' class='input-ghost' style='visibility:hidden; height:0'>");
-                        element.attr("name", $(this).attr("name"));
-                        element.change(function () {
-                            element.next(element).find('input').val((element.val()).split('\\').pop());
-                        });
-                        $(this).find("button.btn-choose").click(function () {
-                            element.click();
-                        });
-                        $(this).find("button.btn-reset").click(function () {
-                            element.val(null);
-                            $(this).parents(".input-file").find('input').val('');
-                        });
-                        $(this).find('input').css("cursor", "pointer");
-                        $(this).find('input').mousedown(function () {
-                            $(this).parents('.input-file').prev().click();
-                            return false;
-                        });
-                        return element;
-                    }
-                }
-            );
+    <style>
+        .zoom {
+            transition: transform .2s; /* Animation */
         }
 
-        $(function () {
-            bs_input_file();
-        });</script>
-        <style>
-                .zoom {
-                    transition: transform .2s; /* Animation */
-            }
-                .zoom:hover {
-                transform: scale(1.2); /* (150% zoom - Note: if the zoom is too large, it will go outside of the viewport) */
-            }  
-              </style>
+        .zoom:hover {
+            transform: scale(1.2); /* (150% zoom - Note: if the zoom is too large, it will go outside of the viewport) */
+        }
+    </style>
     <style>
         @import url('https://fonts.googleapis.com/css?family=Playfair+Display|Roboto:500');
     </style>
@@ -74,7 +45,9 @@
 <nav class="navbar navbar-expand-lg navbar-dark bg-dark static-top mb-4 shadow-lg">
     <div class="container">
 
-        <a class="navbar-brand" href="portal/home"><strong class="googlefont"><img class="zoom" src="https://imgur.com/VYijABi.png" height="70" width="70"></strong></a>
+        <a class="navbar-brand" href="portal/home"><strong class="googlefont"><img class="zoom"
+                                                                                   src="https://imgur.com/VYijABi.png"
+                                                                                   height="70" width="70"></strong></a>
 
 
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive"
@@ -166,45 +139,76 @@
 <main>
 
     <div class="container">
-        <div class="card border-0 shadow my-5 bg-dark">
-            <div class="card-body p-5">
-                <div style="height: 500px">
-                    <center>
-                        <h1 class="text-light">
-                            RvЯ application
-                        </h1>
-                        <br>
-                        <br>
-                        <form method="post" action="/upload" enctype="multipart/form-data">
-                            <!-- COMPONENT START -->
-                            <div class="form-group">
-                                <div class="input-group input-file" name="file">
-                                    <input type="text" class="form-control" placeholder='Choose an xml file...'
-                                           name="file"/>
-                                    <span class="input-group-btn">
-        		                    <button class="btn btn-light btn-choose" type="button">Choose</button>
-    		                    </span>
-                                </div>
-                            </div>
-                            <!-- COMPONENT END -->
-                            <div class="form-group">
-                                <button type="submit" class="btn btn-primary" name="save">Submit</button>
-                                <button type="reset" class="btn btn-danger">Reset</button>
-                            </div>
-                        </form>
+        <div class="card border-0 shadow my-5 bg-dark card-body p-5">
 
-                        <form method="post" action="/db-load">
-                            <input type="submit" value="Load to DB">
-                        </form>
-                </div>
-            </div>
+            <center>
+                <h1 class="text-light">
+                    RvЯ application
+                </h1>
+                <br>
+                <br>
+            </center>
+
+            <form class="form-horizontal text-light" method="post" action="/db-load">
+                <fieldset>
+
+                    <!-- Form Name -->
+                    <legend>Database information</legend>
+
+                    <!-- Text input-->
+                    <div class="form-group">
+                        <label class="col-md-4 control-label" for="textinput">Number of countries</label>
+                        <div class="col-md-4">
+                            <input id="textinput" name="textinput" type="number" placeholder=${countryNumber!0}
+                                   class="form-control input-md" disabled>
+                        </div>
+                    </div>
+
+                    <!-- Text input-->
+                    <div class="form-group">
+                        <label class="col-md-4 control-label" for="textCities">Number of cities</label>
+                        <div class="col-md-4">
+                            <input id="textCities" name="textCities" type="number" placeholder=${cityNumber!0}
+                                   class="form-control input-md" disabled>
+                        </div>
+                    </div>
+
+                    <!-- Text input-->
+                    <div class="form-group">
+                        <label class="col-md-4 control-label" for="textPlace">Number of places</label>
+                        <div class="col-md-4">
+                            <input id="textPlace" name="textPlace" type="number" placeholder=${placeNumber!0}
+                                   class="form-control input-md" disabled>
+                        </div>
+                    </div>
+
+                    <!-- Text input-->
+                    <div class="form-group">
+                        <label class="col-md-4 control-label" for="textBikes">Number of bikes</label>
+                        <div class="col-md-4">
+                            <input id="textBikes" name="textBikes" type="number" placeholder=${bikeNumber!0}
+                                   class="form-control input-md" disabled>
+                        </div>
+                    </div>
+                    <!-- Button -->
+                    <div class="form-group">
+                        <label class="col-md-4 control-label" for="singlebutton">Load to DB</label>
+                        <div class="col-md-4">
+                            <button id="singlebutton" name="singlebutton" class="btn btn-primary">Load !
+                            </button>
+                        </div>
+                    </div>
+
+                </fieldset>
+            </form>
+
         </div>
     </div>
-    </center>
 </main>
 <footer>
     <h5 style="text-align: center; font-size: 12pt; font-weight: 200; color:white">2019</h5>
-    <img class="zoom" src="https://imgur.com/EhqOLb3.png" style="display: block; margin-bottom: 30px; ; margin-left: auto; margin-right: auto;">
+    <img class="zoom" src="https://imgur.com/EhqOLb3.png"
+         style="display: block; margin-bottom: 30px; ; margin-left: auto; margin-right: auto;">
 </footer>
 </body>
 
