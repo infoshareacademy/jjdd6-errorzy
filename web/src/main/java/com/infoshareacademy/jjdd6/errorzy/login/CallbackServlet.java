@@ -4,14 +4,7 @@ import com.auth0.AuthenticationController;
 import com.auth0.IdentityVerificationException;
 import com.auth0.SessionUtils;
 import com.auth0.Tokens;
-import com.auth0.client.auth.AuthAPI;
-import com.auth0.json.auth.UserInfo;
-import com.auth0.net.Request;
-import com.infoshareacademy.jjdd6.errorzy.user.UserBean;
-import com.infoshareacademy.jjdd6.errorzy.user.UserDao;
-import com.infoshareacademy.jjdd6.errorzy.user.UserModel;
 
-import javax.inject.Inject;
 import javax.servlet.ServletConfig;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -20,7 +13,6 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 import java.io.UnsupportedEncodingException;
-import java.util.stream.Collectors;
 
 /**
  * The Servlet endpoint used as the callback handler in the OAuth 2.0 authorization code grant flow.
@@ -32,8 +24,7 @@ public class CallbackServlet extends HttpServlet {
     private String redirectOnSuccess;
     private String redirectOnFail;
     private AuthenticationController authenticationController;
-@Inject
-UserBean userBean;
+
 
     /**
      * Initialize this servlet with required configuration.
@@ -96,28 +87,6 @@ UserBean userBean;
             Tokens tokens = authenticationController.handle(req);
             SessionUtils.set(req, "accessToken", tokens.getAccessToken());
             SessionUtils.set(req, "idToken", tokens.getIdToken());
-
-            String body = req.getReader().lines().collect(Collectors.joining(System.lineSeparator()));
-
-            ServletConfig servletConfig = this.getServletConfig();
-            AuthAPI auth0 = new AuthAPI(AuthenticationControllerProvider.getDomain(servletConfig),
-                    AuthenticationControllerProvider.getClientId(servletConfig),
-                    AuthenticationControllerProvider.getClientSecret(servletConfig));
-
-            Request<UserInfo> request = auth0.userInfo(tokens.getAccessToken());
-            UserInfo userInfo = request.execute();
-
-            String userName = (String) userInfo.getValues().get("name");
-
-            UserModel userModel = new UserModel();
-            userModel.setUserId((Long)userInfo.getValues().get("id"));
-            userModel.setEmail((String)userInfo.getValues().get("email"));
-            userModel.setPromotedPoints((String)userInfo.getValues().get("promoted points"));
-            userModel.setRoleAdministration((Boolean)userInfo.getValues().get("role"));
-            UserModel user = userBean.getUser(userModel);
-
-            req.getSession().setAttribute("user", user);
-
             res.sendRedirect(redirectOnSuccess);
         } catch (IdentityVerificationException e) {
             e.printStackTrace();

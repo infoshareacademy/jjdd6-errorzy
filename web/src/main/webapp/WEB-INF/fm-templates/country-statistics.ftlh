@@ -146,21 +146,11 @@
                     <h2 class="text-light">Visit statistics for countries</h2>
                     <#if modelData??>
                         <table class="table table-striped text-light col-lg-4">
-                            <br>
-                            <tbody>
-                            <thead>
-                            <tr>
-                                <th scope="col">#</th>
-                                <th scope="col">Country</th>
-                            </tr>
-                            </thead>
-                            <#list modelData as values>
-                                <tr>
-                                    <th scope="row">${values?index+1}</th>
-                                    <td>${values.countryName}</td>
-                                </tr>
-                            </#list>
-                            </tbody>
+
+
+
+
+
                         </table>
                     </#if>
                 </center>
