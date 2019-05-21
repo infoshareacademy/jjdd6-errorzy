@@ -26,9 +26,12 @@ import javax.servlet.http.HttpServletResponse;
 import javax.transaction.Transactional;
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.util.Arrays;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+
+import static java.util.stream.Collectors.toList;
 
 @WebServlet("/bike-servlet/*")
 @Transactional
@@ -61,33 +64,52 @@ public class BikeServlet extends HttpServlet {
 
         if (req.getParameter("country") != null) {
             List<CityModel> cityModelList = cityService.getCitiesByCountry(req.getParameter("country"));
-            createRootMap(writer, cityModelList, "cityRoot");
+            List<PlaceModel> places = cityModelList.stream()
+                    .map(cm -> cm.getPlaceList())
+                    .flatMap(pl -> pl.stream())
+                    .collect(toList());
+
+            LOGGER.info("Showing map for " + places.size() + " places (by country)");
+
+            createRootMap(writer, cityModelList, "cityRoot", places);
 
             countryStatisticsDao.addToStatistics(req.getParameter("country"));
 
         } else if (req.getParameter("city") != null) {
             List<PlaceModel> placeModelList = placeService.getPlaceByCity(req.getParameter("city"));
-            createRootMap(writer, placeModelList, "placeRoot");
+
+            LOGGER.info("Showing map for " + placeModelList.size() + " places (by place)");
+
+            createRootMap(writer, placeModelList, "placeRoot", placeModelList);
 
             cityStatisticsDao.addToStatistics(req.getParameter("city"));
 
         } else if (req.getParameter("place") != null) {
 
             List<BikeModel> bikeModelList = bikeService.getAllBikesForPlace(req.getParameter("place"));
-            createRootMap(writer, bikeModelList, "bikeRoot");
+            createRootMap(writer, bikeModelList, "bikeRoot", Arrays.asList(placeService.getPlaceByName(req.getParameter("place"))));
 
             placeStatisticsDao.addToStatistics(req.getParameter("place"));
             LOGGER.info("Map of bikes has been generated.");
         } else {
 
             List<CountryModel> countryModelList = countryService.getAllList();
-            createRootMap(writer, countryModelList, "countryRoot");
+
+            List<PlaceModel> places = countryModelList.stream()
+                    .flatMap(c -> c.getCityList().stream())
+                    .flatMap(c -> c.getPlaceList().stream())
+                    .collect(toList());
+
+            LOGGER.info("Showing map for " + places.size() + " places (all)");
+
+            createRootMap(writer, countryModelList, "countryRoot", places);
         }
     }
 
-    private void createRootMap(PrintWriter writer, Object ListObject, String rootName) {
+    private void createRootMap(PrintWriter writer, Object ListObject, String rootName, List<PlaceModel> places) {
         Map<String, Object> mapForFreemarker = new HashMap<>();
         mapForFreemarker.put(rootName, ListObject);
+        mapForFreemarker.put("places", places);
         try {
             processTemplate(writer, mapForFreemarker);
         } catch (IOException e) {
