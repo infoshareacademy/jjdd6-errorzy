@@ -6,15 +6,14 @@ import javax.servlet.*;
 import javax.servlet.annotation.WebFilter;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 import java.io.IOException;
 
-@WebFilter(urlPatterns = {"/administration", "/loadToDB"})
+@WebFilter(urlPatterns = {"/admin", "/db-load", "/statistics", "/mail"})
 public class Auth0FilterAdmin implements Filter {
-    Boolean isUserAdmin;
 
     @Override
     public void init(FilterConfig filterConfig) throws ServletException {
-        Boolean isUserAdmin = Boolean.valueOf(filterConfig.getInitParameter("IsUserAdmin"));
     }
 
     /**
@@ -28,18 +27,27 @@ public class Auth0FilterAdmin implements Filter {
     public void doFilter(ServletRequest request, ServletResponse response, FilterChain next) throws IOException, ServletException {
         HttpServletRequest req = (HttpServletRequest) request;
         HttpServletResponse res = (HttpServletResponse) response;
+
         String accessToken = (String) SessionUtils.get(req, "accessToken");
         String idToken = (String) SessionUtils.get(req, "idToken");
         if (accessToken == null && idToken == null) {
             res.sendRedirect("/login");
             return;
         }
-        next.doFilter(request, response);
+
+
+        HttpSession session = req.getSession();
+        Object isAdminObj = session.getAttribute("isAdmin");
+
+        if (isAdminObj != null && ((Boolean) isAdminObj).booleanValue()) {
+            next.doFilter(request, response);
+        }
+
+        res.setStatus(401);
     }
 
     @Override
     public void destroy() {
-        isUserAdmin = false;
     }
 }
 
