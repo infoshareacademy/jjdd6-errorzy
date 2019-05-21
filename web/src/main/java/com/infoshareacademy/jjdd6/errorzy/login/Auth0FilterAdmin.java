@@ -48,9 +48,10 @@ public class Auth0FilterAdmin implements Filter {
 
         if (isAdminObj != null && ((Boolean) isAdminObj).booleanValue()) {
             next.doFilter(request, response);
+            return;
         }
 
-        res.setStatus(401);
+        res.sendRedirect("/errorsi/err401.html");
     }
 
     @Override
