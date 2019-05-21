@@ -125,12 +125,11 @@
         <div class="card border-0 shadow my-5 bg-dark">
             <div class="card-body p-5">
                 <div>
-
-                    <h1 class="text-light text-center">
-                        ЯvR application
-                    </h1>
-                    <p class="text-light text-center">ЯvR is meant to help city-bike users to find the nearest
-                        bicycle.</p>
+                    
+                        <h1 class="text-light text-center">
+                                RvЯ application
+                        </h1>
+                        <p class="text-light text-center">RVR is meant to help city-bike users to find the nearest bicycle.</p>
                 </div>
                 <div class="col">
                     <#if countries??>
@@ -144,7 +143,6 @@
                                     locations.push(['${country.countryName}', ${country.lat}, ${country.lng}])
                                     </#list>
 
-                                    var image = 'https://imgur.com/KoD1BLN.png';
                                     var map = new google.maps.Map(document.getElementById('map'), {
                                         mapTypeId: 'roadmap',
                                         styles: [
@@ -316,12 +314,13 @@
 
                                     var bounds = new google.maps.LatLngBounds();
 
+
                                     for (i = 0; i < locations.length; i++) {
 
                                         marker = new google.maps.Marker({
                                             position: new google.maps.LatLng(locations[i][1], locations[i][2]),
                                             map: map,
-                                            icon: 'http://cdn.com/my-custom-icon.png'
+                                            icon: 'https://i.imgur.com/ILTwYxv.png'
                                         });
 
                                         google.maps.event.addListener(marker, 'click', (function (marker, i) {
@@ -335,27 +334,26 @@
                                         bounds.extend(loc);
                                     }
 
-                                    map.fitBounds(bounds);
-                                    map.panToBounds(bounds);
-                                }
-                            </script>
-                            <script async defer
-                                    src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBmgne83Z8Yl58mQT7AQnU_vS5MZViZznU&callback=initMap">
-                            </script>
-                        </div>
-                    </#if>
-                </div>
-            </div>
+      function handleLocationError(browserHasGeolocation, infoWindow, pos) {
+        infoWindow.setPosition(pos);
+        infoWindow.setContent(browserHasGeolocation ?
+                              'Error: The Geolocation service failed.' :
+                              'Error: Your browser doesn\'t support geolocation.');
+        infoWindow.open(map);
+      }
+    </script>
+    <script async defer
+    src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBmgne83Z8Yl58mQT7AQnU_vS5MZViZznU&callback=initMap">
+    </script>
 
+            </div>
         </div>
     </div>
-    </div>
-
+    
 </main>
 <footer>
     <h5 style="text-align: center; font-size: 12pt; font-weight: 200; color:white">2019</h5>
-    <img class="zoom" src="https://imgur.com/EhqOLb3.png"
-         style="display: block; margin-bottom: 30px; ; margin-left: auto; margin-right: auto;">
+    <img class="zoom" src="https://imgur.com/EhqOLb3.png" style="display: block; margin-bottom: 30px; ; margin-left: auto; margin-right: auto;">
 </footer>
 </body>
 
