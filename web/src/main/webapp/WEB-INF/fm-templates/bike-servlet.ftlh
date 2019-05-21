@@ -238,11 +238,12 @@
                         </tbody>
                     </table>
                 </#if>
-
-
-                <#if places??>
-                <div>
-                    <div id="map"></div>
+            </center>
+        </div>
+        <div class="col">
+            <#if places??>
+            <div>
+                <div id="map">
                     <script type="text/javascript">
                         function initMap() {
                             var locations = [];
@@ -426,8 +427,7 @@
 
                                 marker = new google.maps.Marker({
                                     position: new google.maps.LatLng(locations[i][1], locations[i][2]),
-                                    map: map,
-                                    icon: 'https://i.imgur.com/ILTwYxv.png'
+                                    map: map
                                 });
 
                                 google.maps.event.addListener(marker, 'click', (function (marker, i) {
@@ -448,10 +448,9 @@
                     <script async defer
                             src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBmgne83Z8Yl58mQT7AQnU_vS5MZViZznU&callback=initMap">
                     </script>
-
-                    </#if>
                 </div>
-
+                </#if>
+            </div>
         </div>
     </div>
 </main>
