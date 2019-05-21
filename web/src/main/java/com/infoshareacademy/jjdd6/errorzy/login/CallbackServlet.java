@@ -7,11 +7,7 @@ import com.auth0.Tokens;
 import com.auth0.client.auth.AuthAPI;
 import com.auth0.json.auth.UserInfo;
 import com.auth0.net.Request;
-import com.infoshareacademy.jjdd6.errorzy.user.UserBean;
-import com.infoshareacademy.jjdd6.errorzy.user.UserDao;
-import com.infoshareacademy.jjdd6.errorzy.user.UserModel;
 
-import javax.inject.Inject;
 import javax.servlet.ServletConfig;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -20,6 +16,8 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 import java.io.UnsupportedEncodingException;
+import java.util.Arrays;
+import java.util.List;
 import java.util.stream.Collectors;
 
 /**
@@ -29,11 +27,10 @@ import java.util.stream.Collectors;
 @WebServlet(urlPatterns = {"/callback"})
 public class CallbackServlet extends HttpServlet {
 
+    private List<String> admins = Arrays.asList("errorzy.jjdd6@gmail.com");
     private String redirectOnSuccess;
     private String redirectOnFail;
     private AuthenticationController authenticationController;
-@Inject
-UserBean userBean;
 
     /**
      * Initialize this servlet with required configuration.
@@ -108,19 +105,12 @@ UserBean userBean;
             UserInfo userInfo = request.execute();
 
             String userName = (String) userInfo.getValues().get("name");
-
-            UserModel userModel = new UserModel();
-            userModel.setUserId((Long)userInfo.getValues().get("id"));
-            userModel.setEmail((String)userInfo.getValues().get("email"));
-            userModel.setPromotedPoints((String)userInfo.getValues().get("promoted points"));
-            userModel.setRoleAdministration((Boolean)userInfo.getValues().get("role"));
-            UserModel user = userBean.getUser(userModel);
-
-            req.getSession().setAttribute("user", user);
+            if (admins.contains((String)userInfo.getValues().get("email"))) {
+                req.getSession().setAttribute("isAdmin", true);
+            }
 
             res.sendRedirect(redirectOnSuccess);
         } catch (IdentityVerificationException e) {
-            e.printStackTrace();
             res.sendRedirect(redirectOnFail);
         }
     }
