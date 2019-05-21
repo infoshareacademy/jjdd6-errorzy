@@ -1,8 +1,9 @@
 package com.infoshareacademy.jjdd6.errorzy.web;
 
-import com.infoshareacademy.jjdd6.errorzy.dbloader.model.CountryModel;
-import com.infoshareacademy.jjdd6.errorzy.dbloader.service.CountryService;
 import com.infoshareacademy.jjdd6.errorzy.freemarker.TemplateProvider;
+import com.infoshareacademy.jjdd6.errorzy.statistics.dao.CityStatisticsDao;
+import com.infoshareacademy.jjdd6.errorzy.statistics.dao.CountryStatisticsDao;
+import com.infoshareacademy.jjdd6.errorzy.statistics.dao.PlaceStatisticsDao;
 import freemarker.template.Template;
 import freemarker.template.TemplateException;
 import org.apache.logging.log4j.LogManager;
@@ -14,36 +15,37 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import javax.transaction.Transactional;
 import java.io.IOException;
 import java.io.Writer;
 import java.util.HashMap;
-import java.util.List;
 import java.util.Map;
 
-@WebServlet("/country-servlet")
-@Transactional
-public class CountryServlet extends HttpServlet {
+@WebServlet("/statistics")
+public class StatisticsServlet extends HttpServlet {
 
-    private static final Logger LOGGER = LogManager.getLogger(CountryServlet.class.getName());
+    private static final Logger LOGGER = LogManager.getLogger(StatisticsServlet.class.getName());
 
     @Inject
-    private CountryService countryService;
+    private CountryStatisticsDao countryStatisticsDao;
+    @Inject
+    private CityStatisticsDao cityStatisticsDao;
+    @Inject
+    private PlaceStatisticsDao placeStatisticsDao;
     @Inject
     private TemplateProvider templateProvider;
 
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        LOGGER.info("Country servlet has been loaded.");
+        LOGGER.info("Admin dashboard has been loaded.");
         resp.setContentType("text/html;charset=UTF-8");
         Writer writer = resp.getWriter();
-        Template template = templateProvider.getTemplate(getServletContext(), "country-servlet.ftlh");
-
-        List<CountryModel> countryModelList = countryService.getAllList();
+        Template template = templateProvider.getTemplate(getServletContext(), "statistics.ftlh");
 
         Map<String, Object> model = new HashMap<>();
 
-        model.put("modelData", countryModelList);
+        model.put("countryNumber", countryStatisticsDao.findAll());
+        model.put("cityNumber", cityStatisticsDao.findAll());
+        model.put("placeNumber", placeStatisticsDao.findAll());
 
         try {
             template.process(model, writer);

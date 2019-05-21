@@ -5,7 +5,9 @@ import javax.validation.constraints.NotNull;
 import java.util.List;
 
 @Entity
-@Table(name = "PLACES")
+@Table(name = "PLACES",
+        uniqueConstraints =
+        @UniqueConstraint(columnNames = {"place_name", "lateral_coordinate", "longitudinal_coordinate"}))
 public class PlaceModel {
 
     @Id
@@ -17,7 +19,7 @@ public class PlaceModel {
     @JoinColumn(name = "city_id")
     private CityModel city;
 
-    @OneToMany(mappedBy = "place", fetch = FetchType.LAZY)
+    @OneToMany(mappedBy = "place", fetch = FetchType.LAZY, cascade = CascadeType.PERSIST)
     private List<BikeModel> bikeList;
 
     @Column(name = "lateral_coordinate")
@@ -47,6 +49,14 @@ public class PlaceModel {
         this.name = name;
         this.number = number;
         this.city = cityModel;
+    }
+
+    public CityModel getCity() {
+        return city;
+    }
+
+    public void setCity(CityModel city) {
+        this.city = city;
     }
 
     public double getLat() {

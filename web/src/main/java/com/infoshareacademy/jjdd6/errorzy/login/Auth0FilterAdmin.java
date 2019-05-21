@@ -1,6 +1,8 @@
 package com.infoshareacademy.jjdd6.errorzy.login;
 
 import com.auth0.SessionUtils;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 
 import javax.servlet.*;
 import javax.servlet.annotation.WebFilter;
@@ -12,8 +14,11 @@ import java.io.IOException;
 @WebFilter(urlPatterns = {"/admin", "/db-load", "/statistics", "/mail"})
 public class Auth0FilterAdmin implements Filter {
 
+    private static final Logger LOG = LogManager.getLogger(Auth0FilterAdmin.class);
+
     @Override
     public void init(FilterConfig filterConfig) throws ServletException {
+        Boolean isUserAdmin = Boolean.valueOf(filterConfig.getInitParameter("IsUserAdmin"));
     }
 
     /**
@@ -25,6 +30,8 @@ public class Auth0FilterAdmin implements Filter {
      **/
     @Override
     public void doFilter(ServletRequest request, ServletResponse response, FilterChain next) throws IOException, ServletException {
+        LOG.info("Filter method in authorisation of admins class has been runned");
+
         HttpServletRequest req = (HttpServletRequest) request;
         HttpServletResponse res = (HttpServletResponse) response;
 

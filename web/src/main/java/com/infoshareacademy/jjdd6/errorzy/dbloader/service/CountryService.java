@@ -2,6 +2,8 @@ package com.infoshareacademy.jjdd6.errorzy.dbloader.service;
 
 import com.infoshareacademy.jjdd6.errorzy.dbloader.dao.CountryDao;
 import com.infoshareacademy.jjdd6.errorzy.dbloader.model.CountryModel;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 
 import javax.ejb.Stateless;
 import javax.inject.Inject;
@@ -12,11 +14,13 @@ import java.util.List;
 @Stateless
 @Transactional
 public class CountryService {
+    private static final Logger LOG = LogManager.getLogger(CountryService.class);
 
     @Inject
     private CountryDao countryDao;
 
-    public List<Object> getAllList() {
+    public List<CountryModel> getAllList() {
+        LOG.info("List of all countries method called.");
         return new ArrayList<>(countryDao.findAll());
     }
 

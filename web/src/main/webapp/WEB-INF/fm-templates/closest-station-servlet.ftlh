@@ -26,7 +26,7 @@
 }
 .zoom:hover {
   transform: scale(1.2); /* (150% zoom - Note: if the zoom is too large, it will go outside of the viewport) */
-}  
+}
   </style>
     <style>
         @import url('https://fonts.googleapis.com/css?family=Playfair+Display|Roboto:500');
@@ -78,7 +78,7 @@
                     <li class="nav-item">
                         <a class="nav-link" href="/show-city-list">
                             <button type="button" class="btn btn-outline-light">
-                                Show list of cities
+                                Show all cities
                             </button>
                         </a>
                     </li>
@@ -132,7 +132,7 @@
                                     value="${lateralValue?string["0.#############"]}"
                                 <#else>
                                     value=""
-                                </#if> >
+                                </#if> required>
                         <small id="latHelp" class="form-text text-muted">Insert lateral coordinates (i.e.
                             54.5188900), North with '+', South with'-'
                         </small>
@@ -146,7 +146,7 @@
                                     value="${longitudinalValue?string["0.#############"]}"
                                 <#else>
                                     value=""
-                                </#if> >
+                                </#if> required>
                         <small id="lngHelp" class="form-text text-muted">Insert longitudinal coordinates (i.e.
                             18.5318800), East with '+', West with'-'
                         </small>
@@ -176,7 +176,7 @@
                 <#if place??>
                     <#setting number_format="computer">
 
-                    <h5 class="text-light">The closest bike stand is ${place.name}, it is
+                    <h5 class="text-light">The closest bike stand is ${place.name} in ${cityName}, it is
                         <#if distanceUnit == "kilometers">
                             ${distanceToPlace?string["0.###"]}
                         <#else>
@@ -190,28 +190,26 @@
 </main>
 <!--Footer-->
 <footer>
-        <h5 style="text-align: center; font-size: 12pt; font-weight: 200; font-family:Segoe UI; color:white">made in 2019 by</h5>
-        <img class="zoom"src="https://imgur.com/EhqOLb3.png" style="display: block; margin-bottom: 30px; ; margin-left: auto; margin-right: auto;">
+    <h5 style="text-align: center; font-size: 12pt; font-weight: 200; color:white">2019</h5>
+    <img class="zoom" src="https://imgur.com/EhqOLb3.png" style="display: block; margin-bottom: 30px; ; margin-left: auto; margin-right: auto;">
 </footer>
+<#if !longitudinalValue??>
+    <script>
+        var inputLat = document.querySelector("form #latInput");
+        var inputIng = document.querySelector("form #lngInput");
 
-<script>
+        if (navigator.geolocation) {
+            navigator.geolocation.getCurrentPosition(showPosition);
+        } else {
+            x.innerHTML = "Geolocation is not supported by this browser.";
+        }
 
-    var inputLat = document.querySelector("form #latInput");
-    var inputIng = document.querySelector("form #lngInput");
-
-    if (navigator.geolocation) {
-        navigator.geolocation.getCurrentPosition(showPosition);
-    } else {
-        x.innerHTML = "Geolocation is not supported by this browser.";
-    }
-
-    function showPosition(position) {
-        $('#latInput').val(position.coords.latitude);
-        $('#lngInput').val(position.coords.longitude);
-    }
-
-
-</script>
+        function showPosition(position) {
+            $('#latInput').val(position.coords.latitude);
+            $('#lngInput').val(position.coords.longitude);
+        }
+    </script>
+</#if>
 
 </body>
 </html>
