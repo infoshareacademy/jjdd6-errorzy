@@ -43,14 +43,15 @@ public class Auth0FilterAdmin implements Filter {
         }
 
 
-        String isAdmin = (String) SessionUtils.get(req, "isAdmin");
+        HttpSession session = req.getSession();
+        Object isAdminObj = session.getAttribute("isAdmin");
 
-        if (isAdmin != null && isAdmin.equals("admin")) {
+        if (isAdminObj != null && ((Boolean) isAdminObj).booleanValue()) {
             next.doFilter(request, response);
             return;
         }
 
-        res.setStatus(401);
+        res.sendRedirect("/errorsi/err401.html");
     }
 
     @Override

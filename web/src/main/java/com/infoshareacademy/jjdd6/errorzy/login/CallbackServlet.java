@@ -106,9 +106,7 @@ public class CallbackServlet extends HttpServlet {
 
             String userName = (String) userInfo.getValues().get("name");
             if (admins.contains((String)userInfo.getValues().get("email"))) {
-                SessionUtils.set(req, "isAdmin", "admin");
-            } else {
-                SessionUtils.set(req, "isAdmin", "no");
+                req.getSession().setAttribute("isAdmin", true);
             }
 
             res.sendRedirect(redirectOnSuccess);
