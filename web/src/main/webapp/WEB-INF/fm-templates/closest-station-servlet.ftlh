@@ -78,7 +78,7 @@
                     <li class="nav-item">
                         <a class="nav-link" href="/show-city-list">
                             <button type="button" class="btn btn-outline-light">
-                                Show list of cities
+                                Show all cities
                             </button>
                         </a>
                     </li>
@@ -132,7 +132,7 @@
                                     value="${lateralValue?string["0.#############"]}"
                                 <#else>
                                     value=""
-                                </#if> >
+                                </#if> required>
                         <small id="latHelp" class="form-text text-muted">Insert lateral coordinates (i.e.
                             54.5188900), North with '+', South with'-'
                         </small>
@@ -146,7 +146,7 @@
                                     value="${longitudinalValue?string["0.#############"]}"
                                 <#else>
                                     value=""
-                                </#if> >
+                                </#if> required>
                         <small id="lngHelp" class="form-text text-muted">Insert longitudinal coordinates (i.e.
                             18.5318800), East with '+', West with'-'
                         </small>

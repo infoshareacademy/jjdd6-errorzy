@@ -1,4 +1,4 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="utf-8">
@@ -48,7 +48,10 @@
     <title>Errorzy presents:</title>
     <link rel="shortcut icon" type="image/png" href="https://i.imgur.com/A9yFQNe.png"/>
 </head>
+<body>
 
+</body>
+</html>
 <body background="https://wallpapers-house.com/data/out/6/wallpaper2you_109365.jpg">
 <header>
 
@@ -99,19 +102,13 @@
                         </a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="/admin">
-                            <button type="button" class="btn btn-outline-light">
-                                Admin
-                            </button>
-                        </a>
-                    </li>
-                    <li class="nav-item">
                         <a class="nav-link" href="/logout">
                             <button type="button" class="btn btn-outline-light">
                                 Logout
                             </button>
                         </a>
                     </li>
+
                 </ul>
             </div>
         </div>
@@ -124,50 +121,108 @@
 
     </div>
 </header>
-
 <!-- Page Content -->
 
 <main>
 
     <div class="container">
-        <div class="card border-0 shadow my-5 bg-dark">
-            <div class="card-body p-5">
-                <#--                <div style="height: 500px">-->
-                <center>
-                    <h2 class="text-light">All cities available</h2>
-                    <#if rootCity??>
-                        <table class="table table-striped text-light mx-auto w-auto">
-
-                            <thead>
-                            <tr>
-                                <th>City</th>
-                                <th>Lateral</th>
-                                <th>Longitudinal</th>
-                            </tr>
-                            </thead>
-                            <tbody>
-                            <#list rootCity as values>
-                                <tr>
-                                    <td>${values.name}</td>
-                                    <td>${values.lat}</td>
-                                    <td>${values.lng}</td>
-                                </tr>
-                            </#list>
-                            </tbody>
-                        </table>
-                    </#if>
-                </center>
+        <div class="card border-0 shadow my-5 bg-dark card-body p-5">
+            <div class="text-center">
+                <h2 class="text-light">Number of country visits</h2>
             </div>
-            <#--            </div>-->
+            <#if countryNumber??>
+                <table class="table table-striped text-light mx-auto w-100">
+
+                    <thead>
+                    <tr>
+                        <th>Country</th>
+                        <th>Number of visits</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    <#list countryNumber as values>
+                        <tr>
+                            <td>${values.country}</td>
+                            <td>${values.numberOfVisits}</td>
+                        </tr>
+                    </#list>
+                    </tbody>
+                </table>
+            </#if>
+            <br>
+            <br>
+            <br>
+            <br>
+            <br>
+            <br>
+            <br>
+            <br>
+            <br>
+            <br>
+            <div class="text-center">
+                <h2 class="text-light">Number of city visits</h2>
+            </div>
+            <#if cityNumber??>
+                <table class="table table-striped text-light mx-auto w-100">
+
+                    <thead>
+                    <tr>
+                        <th>City</th>
+                        <th>Number of visits</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    <#list cityNumber as values>
+                        <tr>
+                            <td>${values.city}</td>
+                            <td>${values.numberOfVisits}</td>
+                        </tr>
+                    </#list>
+                    </tbody>
+                </table>
+            </#if>
+            <br>
+            <br>
+            <br>
+            <br>
+            <br>
+            <br>
+            <br>
+            <br>
+            <br>
+            <br>
+            <div class="text-center">
+                <h2 class="text-light">Number of places visits</h2>
+            </div>
+            <#if placeNumber??>
+                <table class="table table-striped text-light mx-auto w-100">
+
+                    <thead>
+                    <tr>
+                        <th>Place</th>
+                        <th>Number of visits</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    <#list placeNumber as values>
+                        <tr>
+                            <td>${values.place}</td>
+                            <td>${values.numberOfVisits}</td>
+                        </tr>
+                    </#list>
+                    </tbody>
+                </table>
+            </#if>
         </div>
     </div>
     </div>
 </main>
+
 <!--Footer-->
 <footer>
-    <h5 style="text-align: center; font-size: 12pt; font-weight: 200; color:white">2019</h5>
+    <h5 style="text-align: center; font-size: 12pt; font-weight: 200; color:white">made in 2019
+        by</h5>
     <img class="zoom" src="https://imgur.com/EhqOLb3.png"
          style="display: block; margin-bottom: 30px; ; margin-left: auto; margin-right: auto;">
 </footer>
 </body>
-</html>

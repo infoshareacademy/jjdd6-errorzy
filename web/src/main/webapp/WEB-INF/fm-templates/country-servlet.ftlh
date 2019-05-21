@@ -96,7 +96,7 @@
                     <li class="nav-item">
                         <a class="nav-link" href="/show-city-list">
                             <button type="button" class="btn btn-outline-light">
-                                Show list of cities
+                                Show all cities
                             </button>
                         </a>
                     </li>
