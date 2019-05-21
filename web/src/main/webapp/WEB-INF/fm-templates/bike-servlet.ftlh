@@ -142,7 +142,7 @@
                 </div>
                 <#if countryRoot??>
 
-                    <table class="table table-striped text-light mx-auto w-auto">
+                    <table class="table table-striped text-light mx-auto w-100">
 
                         <thead>
                         <tr>
@@ -169,7 +169,7 @@
                 </#if>
 
                 <#if cityRoot??>
-                    <table class="table table-striped text-light mx-auto w-auto">
+                    <table class="table table-striped text-light mx-auto w-100">
 
                         <thead>
                         <tr>
@@ -195,7 +195,7 @@
                 </#if>
 
                 <#if placeRoot??>
-                    <table class="table table-striped text-light mx-auto w-auto">
+                    <table class="table table-striped text-light mx-auto w-100">
                         <thead>
                         <tr>
                             <th>Place</th>
@@ -220,7 +220,7 @@
                 </#if>
 
                 <#if bikeRoot??>
-                    <table class="table table-striped text-light mx-auto w-auto">
+                    <table class="table table-striped text-light mx-auto w-100">
                         <thead>
                         <tr>
                             <th>#</th>
